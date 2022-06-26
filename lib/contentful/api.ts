@@ -85,10 +85,8 @@ export namespace Contentful {
 
     return fetchGraphQL(
       `
-        ${entryType}(id: ${id}, locale: ${locale}) { 
-          items {
-            ${itemQuery}
-          }
+        ${entryType}(id: "${id}", locale: "${locale}") { 
+          ${itemQuery}
         }
       `
     );
