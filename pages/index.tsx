@@ -10,13 +10,7 @@ import { Contentful } from '../lib/contentful/api'
 const Home: NextPage = (props) => {
 
   return <>
-    <h1>Jugend Entwickelt Informatik</h1>
-    <h2>Jugend Entwickelt Informatik</h2>
-    <h3>Jugend Entwickelt Informatik</h3>
-    <h4>Jugend Entwickelt Informatik</h4>
-    <h5>Jugend Entwickelt Informatik</h5>
-    <h6>Jugend Entwickelt Informatik</h6>
-    <p>Gemeinschaft für Digitales Entwickeln für Jugendliche</p>
+    <h1>Jugend Entwickelt Digital</h1>
   </>
 }
 
