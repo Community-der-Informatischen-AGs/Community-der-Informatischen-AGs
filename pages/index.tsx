@@ -3,7 +3,12 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-const Home: NextPage = () => {
+import { Contentful } from '../lib/contentful/api'
+
+// ! https://www.npmjs.com/package/@contentful/rich-text-react-renderer for rendering rich text
+
+const Home: NextPage = (props) => {
+
   return (
     <div className={styles.container}>
       <Head>
@@ -70,3 +75,25 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+export async function getStaticProps() {
+
+  console.log(
+    await Contentful.getSingleEntry(
+      "blogPost", 
+      "2ctqFDli2VAudHPYFQjjVa",
+      `
+        title
+        sys {
+          publishedAt
+        }
+      `
+    ));
+
+  return {
+    props: {
+      bruh: "bruh"
+    }
+  }
+
+}
