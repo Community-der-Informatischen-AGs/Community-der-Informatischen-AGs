@@ -1,34 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Jugend-Entwickelt-Informatik
 
-## Getting Started
+An alle leidenschaftliche jugendliche Programmierer\*innen und Informatiker\*innen: 
+*Ihr seid am richten Platz.*
 
-First, run the development server:
+Das Projekt "Jugend-Entwickelt-Informatik" besitzt das Ziel, Jugendliche im Alter von 15 bis 22 zu verbinden und zu vernetzen. Damit diese zusammen digitale Produkte entwickeln können.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Hierfür starten wir bei der Gruppe informatische Arbeitsgemeinschaften an diversen Schulen und verbinden und vernetzen diese.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Involvierte Schulen:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+An den folgenden Schulen werden schon Arbeitsgemeinschaften angeboten.
 
-## Learn More
+**Zusammen schafft man mehr.** Vielleicht kann auch deine Schule bald mal auf dieser Seite stehen! Wir freuen uns auf eine Anfrage: {insert Email here}
 
-To learn more about Next.js, take a look at the following resources:
+- Annette-von-Droste-Hülshoff-Gymnasium
+- Gymnasium an der Koblenzer Straße
+- Schloß Gymnasium.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Jetzige Projekte:
 
-## Deploy on Vercel
+Zwischen den Schulen
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Video Spiel (2d RPG)
+- Minecraft Clone
+- D&A Vizualisation
+- [Python Tutorial Serie](link)
+- [Einstieg in App Development Serie](link)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Social Media:
+
+...
