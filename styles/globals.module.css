@@ -1,0 +1,8 @@
+/* 
+  globals.module.scss ist a file which will aid globals.css in adding uniform 
+  styles while supporting classes.
+*/
+.heading {
+  /* absolute first heading on a page */
+  font-size: 5rem;
+}/*# sourceMappingURL=globals.module.css.map */
