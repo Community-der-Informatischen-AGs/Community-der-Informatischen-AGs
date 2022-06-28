@@ -15,9 +15,9 @@ body {
 
 html {
   width: 100%;
+  contain: paint;
 }
 body {
-  contain: paint;
   max-width: 100%;
   overflow-x: hidden;
 }
