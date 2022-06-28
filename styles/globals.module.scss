@@ -3,6 +3,23 @@
   styles while supporting classes.
 */
 
+.preserve {
+  padding: 0;
+  color: inherit;
+  white-space: pre;
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: 0;
+}
+
 .heading { /* absolute first heading on a page */
-  font-size: 5rem;
+  font-size: 4.5rem;
+}
+
+.unimportantButton {
+
+  box-shadow: none;
+  background-color: transparent;
+  color: white;
+
 }

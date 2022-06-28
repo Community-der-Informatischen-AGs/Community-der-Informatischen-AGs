@@ -6,18 +6,43 @@ import globalStyles from "../styles/globals.module.css";
 
 import { Contentful } from '../lib/contentful/api'
 
-import TypeAnimation from "react-type-animation";
+import TypeIt from 'typeit-react';
 
 // ! https://www.npmjs.com/package/@contentful/rich-text-react-renderer for rendering rich text
 
 const Home: NextPage = (props) => {
+
+  const decorationCode = `
+  
+  def foo(bar, leftBar, rightBar, x):
+    whileleftBar <= rightBar:
+
+        foobar = leftBar + (rightBar - leftBar) // 2
+
+        if arr[foobar] == x:
+            return foobar
+
+        elif arr[foobar] < x:
+          leftBar = foobar + 1
+
+        else:
+          rightBar = foobar - 1
+
+    return -1
+
+  `;
 
   return <>
     <Head>
       <title>Jugend Entwickelt Informatik</title>
     </Head>
     <main>
-      <section className={styles.headingSection}>
+      <section className={styles.landingSection}>
+          
+        <code lang="python" className={globalStyles.preserve}>  {/* This is decoration*/}
+          {decorationCode}
+        </code>
+
         <h1 className={globalStyles.heading + " " + styles.heading}>
           <span className={styles.seeThrough}>
             Die
@@ -29,16 +54,61 @@ const Home: NextPage = (props) => {
             Entwickelt
           </span>
           <span>
-            Informatik
+            Digital
             <span className={styles.seeThrough}>
-             -
+            e
             </span>
           </span>
           <span className={styles.seeThrough}>
             Projekte
           </span>
         </h1>
+        <section className={styles.contentSection}>
+          <h3>
+            <span>Eine Gemeinschaft für </span>
+            <TypeIt
+              options={{
+                speed: 50,
+                waitUntilVisible: true,
+                loop: true
+              }}
+              getBeforeInit={(instance) => {
+
+                const targets = [
+                  "VS-Code Hocker",
+                  "DBMS Nutzer",
+                  "Figma Enjoyer",
+                ];
+
+                for (const target of targets) {
+
+                  instance.type(target).pause(750).delete(target.length).pause(500);
+
+                }
+
+                return instance;
+
+              }}
+            />
+          </h3>
+          
+          <section className={styles.buttonSection}> 
+            <button>
+              Teilnehmen
+            </button>
+            <button className={globalStyles.unimportantButton}>
+              Mehr Infos
+            </button>
+          </section>
+
+        </section>
       </section>
+      <section className={styles.imageSection}>
+          <img
+            src="/assets/images/home/testimage1.jpg" //TODO: get better images
+            alt="Programming-Image"
+          />
+        </section>
     </main>
   </>;
 }
