@@ -13,13 +13,8 @@ body {
   //contain: paint;
 }
 
-html {
-  width: 100%;
+#__next {
   contain: paint;
-}
-body {
-  max-width: 100%;
-  overflow-x: hidden;
 }
 
 :root {
