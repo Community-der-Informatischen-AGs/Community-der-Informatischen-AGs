@@ -5,7 +5,6 @@ body {
   margin: 0;
   background-color: rgb(38, 50, 56);
   color: white;
-  contain: paint;
 }
 
 :root {
