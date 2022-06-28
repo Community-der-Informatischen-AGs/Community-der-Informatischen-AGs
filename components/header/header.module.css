@@ -1,0 +1,55 @@
+.header, .header .content, .header .content nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header {
+  height: 100px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  right: 0;
+  padding: 0 50px;
+  z-index: 9999;
+  background-color: transparent;
+  transition: background-color 0.5s ease;
+}
+.header .content {
+  height: 100%;
+  gap: 50px;
+}
+.header .content nav ul {
+  list-style: none;
+  gap: 50px;
+}
+.header .content nav ul li a {
+  cursor: pointer;
+}
+.header .content .searchSection {
+  height: 100%;
+}
+.header .content .searchSection form {
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  background-color: #263238;
+}
+.header .content .searchSection form input {
+  background-color: transparent;
+  color: white;
+}
+.header .content .searchSection form .searchButton {
+  cursor: pointer;
+}
+.header .content select {
+  height: 100%;
+}
+.header .content select option {
+  background-color: #263238;
+  color: white;
+  padding: 100px;
+}/*# sourceMappingURL=header.module.css.map */

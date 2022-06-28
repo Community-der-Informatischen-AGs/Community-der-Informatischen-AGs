@@ -6,7 +6,10 @@ import globalStyles from "../styles/globals.module.css";
 
 import { Contentful } from '../lib/contentful/api'
 
+
 import TypeIt from 'typeit-react';
+import { Header } from '../components/header/header';
+
 
 // ! https://www.npmjs.com/package/@contentful/rich-text-react-renderer for rendering rich text
 
@@ -32,14 +35,17 @@ const Home: NextPage = (props) => {
 
   `;
 
+  // TODO: add social media icons on the side of the landing-section
+
   return <>
     <Head>
-      <title>Jugend Entwickelt Informatik</title>
+      <title>Jugend Entwickelt Digital Projekt</title>
     </Head>
+    <Header/>
     <main>
       <section className={styles.landingSection}>
           
-        <code lang="python" className={globalStyles.preserve}>  {/* This is decoration*/}
+        <code lang="python" className={globalStyles.preserve + " " + globalStyles.background}>  {/* This is decoration*/}
           {decorationCode}
         </code>
 

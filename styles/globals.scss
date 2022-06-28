@@ -11,10 +11,11 @@ body {
   color: white;
   // * the following line does not work with ios. Do not use.
   //contain: paint;
+  // * this is because html { contain: paint; } does not work
 }
 
 #__next {
-  contain: paint;
+  contain: paint; // !!!! THIS IS IT!!!!
 }
 
 :root {
@@ -37,7 +38,7 @@ h4 { font-size: $h4fontSize; }
 h5 { font-size: $h5fontSize; }
 h6 { font-size: $h6fontSize; }
 
-p, q, blockquote {
+p, q, blockquote, a {
   /* this is the standard font for all blog content, etc. */
   font-family: 'Roboto Flex', sans-serif;
 }
@@ -45,6 +46,7 @@ p, q, blockquote {
 a {
   color: inherit;
   text-decoration: none;
+  cursor: pointer;
 }
 
 * {
@@ -97,4 +99,24 @@ button {
     transform: translateY(2px);
   }
 
+}
+
+
+// form stuff:
+
+input {
+  border: none;
+
+  &:active, &:focus {
+    outline: none;
+  }
+
+  &::-webkit-search-cancel-button{
+    display: none;
+  }
+
+}
+
+select {
+  border: none;
 }

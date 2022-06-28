@@ -1,0 +1,77 @@
+@import "./../../styles/module";
+@import "./../../styles/constants";
+
+.header, .header .content, .header .content nav ul {
+  @include centeredFlex();
+}
+
+.header {
+
+  height: 100px;
+
+  position: sticky;
+  top: 0;
+  right: 0;
+  padding: 0 50px;
+  z-index: 9999;
+
+  background-color: transparent;
+  transition: background-color 0.5s ease;
+
+  .content {
+
+    height: 100%;
+
+    gap: 50px;
+  
+    nav ul {
+      list-style: none;
+      gap: 50px;
+
+      li a {
+        cursor: pointer;
+      }
+
+    }
+
+    .searchSection { 
+      height: 100%; 
+
+      form {
+        height: 100%;
+        padding: 20px;
+        @include centeredFlex();
+  
+        height: 100%;
+  
+        background-color: $backgroundColor;
+  
+        input {
+          background-color: transparent;
+          color: white;
+        }
+  
+        .searchButton {
+          cursor: pointer;
+        }
+  
+      } 
+
+      .resultsSection {
+        
+      }
+
+    }
+
+    select {
+      height: 100%;
+      option {
+        background-color: $backgroundColor;
+        color: white;
+        padding: 100px;
+      }
+    }
+
+  }
+
+}
