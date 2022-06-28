@@ -8,6 +8,8 @@ body {
 
   background-color: $backgroundColor;
   color: white;
+  // * new way of containing elements and not showing overflow
+  contain: paint;
 }
 
 :root {

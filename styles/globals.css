@@ -5,6 +5,7 @@ body {
   margin: 0;
   background-color: rgb(38, 50, 56);
   color: white;
+  contain: paint;
 }
 
 :root {
@@ -21,7 +22,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 3.5rem;
 }
 
 h2 {
