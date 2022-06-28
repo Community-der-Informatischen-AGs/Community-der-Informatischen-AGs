@@ -1,14 +1,26 @@
+@import "./../_constants";
 
+.landingSection {
 
-.headingSection {
-
-  display: grid;
-  grid-template-columns: 0 repeat(3, 1fr);
-  grid-auto-flow: column;
-  grid-template-rows: 0 auto 100px;
-  height: 100vh;
+  padding: 200px 100px 100px 200px;
+  width: 100%;
   min-height: 700px;
-  
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 25%;
+
+
+  code {
+    position: absolute;
+    opacity: 0.05; 
+    right: 100px;
+    top: 0;
+    width: max-content;
+    height: fit-content;
+    font-size: 2rem;
+  }
 
   .heading {
     margin: 0;
@@ -16,27 +28,93 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+    
+    width: fit-content;
     height: fit-content;
 
-    grid-row: 2 / 2;
-    grid-column: 2 / 2;
-    width: max-content;
+    position: relative;
+    z-index: 1;
 
     .seeThrough {
       opacity: 0.1;
     }
 
   }
-  .invisibleHeadingSection {
 
-    width:fit-content;
-    height: fit-content;
-    grid-column: 3 / 3;
-    grid-row: 2 / 2;
+  .contentSection {
 
-    h1 {
-      opacity: 0.2;
+    position: relative;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    h3 {
+      display: flex;
+      flex-direction: column;
     }
+
+    .buttonSection {
+      width: fit-content;
+
+      button {
+        width: 100%;
+        margin: 50px 0;
+      }
+
+    } 
+
   }
 
+}
+
+.imageSection {
+  overflow: hidden;
+  height: 200px;
+  width: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+}
+
+@media screen and (max-width: 1165px) {
+  .landingSection { gap: 10%; }
+}
+@media screen and (max-width: 1000px) { 
+
+  .landingSection {
+    flex-direction: column;
+    gap: 100px;
+
+    code {
+      left: 0;
+      top: 300px;
+    }
+
+  }
+
+}
+@media screen and (max-width: 600px) {
+  // hardcoded height for typed content so as to prevent overflow and subsequent content shift
+  .landingSection {
+    
+    padding: 200px 10% 0px 10%;
+
+    .heading {
+      font-size: $h1fontSize;
+    }
+  } 
+}
+@media screen and (max-width: 500px) {
+    // hardcoded height for typed content so as to prevent overflow and subsequent content shift
+    .landingSection .contentSection h3 {
+      $line-height: 1.3;
+      line-height: $line-height;
+      height: $h3fontSize * $line-height * 5;
+    }
 }
