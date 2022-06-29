@@ -124,13 +124,10 @@ export const Header = () => {
         ]}
         initialSelectedIndex={0}
         onSelect={(selectedValue: string) => {
+          // TODO: change localization and implement localization
           console.log(selectedValue);
         }}
       />
-      <select name="language" id="language-selection"> { /* TODO: implement functionality */ }
-        <option value="de" selected>DE</option>
-        <option value="en-US">EN</option>
-      </select>
     </section>
   </header>;
 

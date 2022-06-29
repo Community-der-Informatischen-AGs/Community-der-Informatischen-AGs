@@ -1,3 +1,46 @@
 .Select {
+  position: relative;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  height: 100%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Select .selected {
+  text-align: center;
+  padding: 20px 20px;
+  margin: auto;
+  width: 100%;
+  border: 0.1px solid rgba(255, 255, 255, 0.3);
   cursor: pointer;
+}
+.Select .options {
+  transition: opacity 0.2s ease;
+  opacity: 0;
+  top: 100%;
+  position: absolute;
+  list-style: none;
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 0;
+  padding: 0 20px;
+  border: 0.1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.Select .options li {
+  cursor: pointer;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
 }/*# sourceMappingURL=select.module.css.map */

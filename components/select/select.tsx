@@ -17,6 +17,7 @@ export function Select<valueType>(props: {
 
   return <div className={styles.Select + " " + props.className}>
     <p 
+      className={styles.selected}
       ref={selectedRef}
       onClick={() => {
         setToggledState(!toggledState);
@@ -25,13 +26,14 @@ export function Select<valueType>(props: {
       {props.options[props.initialSelectedIndex].key}
     </p>
     <ul 
+      className={styles.options}
       style={{
-        display: toggledState ? "block" : "none"
+        opacity: toggledState ? 1 : 0
       }}
     >
       {
         props.options.map((option) => {
-          return <li onClick={
+          return <li key={option.key} onClick={
             () => {
               const selectedElement: any = selectedRef.current;
               selectedElement.innerHTML = option.key;
