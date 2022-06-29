@@ -2,6 +2,7 @@ import styles from "./header.module.css";
 import Link from "next/link";
 import { FormEvent, useEffect, useRef } from "react";
 import { MagnifyingGlass } from "phosphor-react";
+import { Select } from "../select/select";
 
 export const Header = () => {
 
@@ -110,8 +111,24 @@ export const Header = () => {
         </section>
 
       </section>
+      <Select
+        options={[
+          {  
+            key: "DE",
+            value: "de"
+          },
+          { 
+            key: "EN",
+            value:"en-US"
+          }
+        ]}
+        initialSelectedIndex={0}
+        onSelect={(selectedValue: string) => {
+          console.log(selectedValue);
+        }}
+      />
       <select name="language" id="language-selection"> { /* TODO: implement functionality */ }
-        <option value="de" selected>DE</option> 
+        <option value="de" selected>DE</option>
         <option value="en-US">EN</option>
       </select>
     </section>
