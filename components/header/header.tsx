@@ -1,7 +1,7 @@
 import styles from "./header.module.css";
 import Link from "next/link";
 import { FormEvent, MutableRefObject, useEffect, useRef, useState } from "react";
-import { LinkSimpleHorizontal, MagnifyingGlass, X } from "phosphor-react";
+import { LinkSimpleHorizontal, LinkSimpleHorizontalBreak, MagnifyingGlass, X } from "phosphor-react";
 import { Select } from "../select/select";
 
 
@@ -154,14 +154,24 @@ export const Header = () => {
             <ol>
               {
                 searchResults.length == 0 ?
-                  <li>press enter</li>
+                  <li style={{
+                    opacity: 0.7
+                  }}>nix.</li>
                   :
                   searchResults.map((pair) => {
+                    // TODO: implement entry system where the type of entry is protrayed.
                     return <li key={pair.entryId}>
                       <Link href={"/" + pair.entryId}>{pair.title}</Link>
                       <LinkSimpleHorizontal size={15} color="white" opacity={0.5} />
                     </li>
                   })
+              }
+              {
+                searchResults.length != 0 ?
+                  <li>
+                    <Link href="/search" className={styles.viewMore}>View more</Link>
+                    <LinkSimpleHorizontalBreak size={17} color="white" opacity={0.7} />
+                  </li> : null
               }
             </ol>
           </section>
