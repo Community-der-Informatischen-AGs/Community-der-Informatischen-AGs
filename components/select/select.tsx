@@ -28,7 +28,7 @@ export function Select<valueType>(props: {
     <ul 
       className={styles.options}
       style={{
-        opacity: toggledState ? 1 : 0
+        display: toggledState ? "block" : "none"
       }}
     >
       {

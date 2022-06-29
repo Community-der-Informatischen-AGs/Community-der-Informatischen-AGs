@@ -36,30 +36,60 @@
 
     .searchSection { 
       height: 100%; 
+      position: relative;
+      
+      @include centeredFlex();
 
       form {
-        height: 100%;
+        height: fit-content;
         padding: 20px;
         @include centeredFlex();
   
-        height: 100%;
   
         background-color: $backgroundColor;
-  
-        input {
+        position: relative;
+
+        .searchInput {
           background-color: transparent;
           color: white;
         }
-  
-        .searchButton {
-          cursor: pointer;
+
+        .resultsSection {
+          position: absolute;
+          background-color: $backgroundColor;
+          width: 100%;
+          height: fit-content;
+          top: 100%;
+          left: 0;
+          padding: 0 20px;
+          margin: 0;
+          margin-right: 20px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        
+          ol {
+            list-style: none;
+            width: 100%;
+            li {
+              padding: 5px 0;
+              margin: 5px 0;
+              width: 100%;
+
+              @include centeredFlex();
+              justify-content: space-between;
+
+            }
+          }
         }
   
-      } 
+        .xButton, .searchButton {
+          cursor: pointer;
+        }
+        .xButton {
+          position: absolute;
+          right: 50px;
+        }
 
-      .resultsSection {
-        
-      }
+      } 
 
     }
 

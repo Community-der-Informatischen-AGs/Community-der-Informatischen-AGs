@@ -28,22 +28,59 @@
 }
 .header .content .searchSection {
   height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .header .content .searchSection form {
-  height: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   padding: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100%;
   background-color: #263238;
+  position: relative;
 }
-.header .content .searchSection form input {
+.header .content .searchSection form .searchInput {
   background-color: transparent;
   color: white;
 }
-.header .content .searchSection form .searchButton {
+.header .content .searchSection form .resultsSection {
+  position: absolute;
+  background-color: #263238;
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  top: 100%;
+  left: 0;
+  padding: 0 20px;
+  margin: 0;
+  margin-right: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.header .content .searchSection form .resultsSection ol {
+  list-style: none;
+  width: 100%;
+}
+.header .content .searchSection form .resultsSection ol li {
+  padding: 5px 0;
+  margin: 5px 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  justify-content: space-between;
+}
+.header .content .searchSection form .xButton, .header .content .searchSection form .searchButton {
   cursor: pointer;
+}
+.header .content .searchSection form .xButton {
+  position: absolute;
+  right: 50px;
 }
 .header .content select {
   height: 100%;

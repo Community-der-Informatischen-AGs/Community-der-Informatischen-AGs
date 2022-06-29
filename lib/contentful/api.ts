@@ -6,7 +6,7 @@ export namespace Contentful {
   type contentfulLocales = "de" | "en-US";
 
 
-  async function fetchGraphQL(queryBody: string, preview = false) {
+  export async function fetchGraphQL(queryBody: string, preview = false) {
     return fetch(
       CONTENTFUL_GRAPH_QL_API + process.env.SECRET_CONTENTFUL_SPACE_ID,
       {
@@ -57,7 +57,7 @@ export namespace Contentful {
 
     return fetchGraphQL(
       `
-        ${collection}(limit: ${limit}, skip: ${skip}, locale: ${locale}, where: {${filter}}, order: ${order}) { 
+        ${collection}(limit: ${limit}, skip: ${skip}, locale: "${locale}", where: {${filter}}, order: ${order}) { 
           total
           items {
             ${itemQuery}

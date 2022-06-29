@@ -75,6 +75,7 @@
 @media screen and (max-width: 1000px) { 
 
   .landingSection {
+    padding-left: 20%;
     flex-direction: column;
     gap: 100px;
 
@@ -87,7 +88,6 @@
 
 }
 @media screen and (max-width: 600px) {
-  // hardcoded height for typed content so as to prevent overflow and subsequent content shift
   .landingSection {
     
     padding: 200px 10% 0px 10%;
