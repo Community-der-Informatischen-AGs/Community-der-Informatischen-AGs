@@ -1,0 +1,48 @@
+@import "./../../styles/module";
+@import "./../../styles/constants";
+
+.header, .header .content, .header .content nav ul {
+  @include centeredFlex();
+}
+
+.header {
+
+  height: 100px;
+
+  position: sticky;
+  top: 0;
+  right: 0;
+  padding: 0 50px;
+  z-index: 9999;
+
+  background-color: transparent;
+  transition: background-color 0.5s ease;
+
+
+  .logo {
+    height: 90px;
+    width: 90px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("./../../public/assets/svgs/jugend_entwickelt_digital_v_1_0_white.svg");
+    
+    cursor: pointer;
+  }
+
+  .content {
+    height: 100%;
+
+    gap: 50px;
+
+    select {
+      height: 100%;
+      option {
+        background-color: $backgroundColor;
+        color: white;
+        padding: 100px;
+      }
+    }
+
+  }
+
+}

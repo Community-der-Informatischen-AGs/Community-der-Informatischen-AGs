@@ -62,11 +62,11 @@
 @media screen and (max-width: 1165px) {
   .landingSection {
     gap: 10%;
+    padding-left: 15%;
   }
 }
 @media screen and (max-width: 1000px) {
   .landingSection {
-    padding-left: 20%;
     flex-direction: column;
     gap: 100px;
   }

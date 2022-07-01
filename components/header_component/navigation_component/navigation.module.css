@@ -1,0 +1,7 @@
+.navigation ul {
+  list-style: none;
+  gap: 50px;
+}
+.navigation ul li a {
+  cursor: pointer;
+}/*# sourceMappingURL=navigation.module.css.map */

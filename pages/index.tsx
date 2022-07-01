@@ -8,7 +8,7 @@ import { Contentful } from '../lib/contentful/api'
 
 
 import TypeIt from 'typeit-react';
-import { Header } from '../components/header/header';
+import { Header } from '../components/header_component/header';
 
 
 // ! https://www.npmjs.com/package/@contentful/rich-text-react-renderer for rendering rich text

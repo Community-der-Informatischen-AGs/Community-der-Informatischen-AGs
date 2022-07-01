@@ -3,33 +3,36 @@
 
 .Select {
 
+  $padding: 20px;
+
   position: relative;
   width: min-content;
-  height: 100%;
+  height: calc(100% - $padding * 2);
   user-select: none;
 
   @include centeredFlex();
   
-  $border: 0.1px solid rgba(255, 255, 255, 0.3);
+  $border: 0.1px solid rgba(255, 255, 255, 0.2);
   $width: 100%;
   $padding-side: 20px; 
 
   .selected {
 
+    height: 100%;
     text-align: center;
-    padding: 20px $padding-side;
+    padding: 0 $padding-side;
     margin: auto;
 
     width: $width;
+    background-color: $backgroundColor;
 
-    border: $border;
+    @include centeredFlex();
     cursor: pointer;
 
   }
 
   .options {
-
-    transition: opacity 0.2s ease;
+    background-color: $backgroundColor;
 
     top: 100%;
     position: absolute;
@@ -52,6 +55,15 @@
       width: 100%;
     }
 
+  }
+
+}
+
+@media screen and (max-width: 1200px) {
+
+  .Select {
+    padding: 0;
+    margin: 0;
   }
 
 }

@@ -1,0 +1,97 @@
+@import "./../../../styles/module";
+@import "./../../../styles/constants";
+
+.searchSection { 
+  height: 100%; 
+  position: relative;
+  
+  @include centeredFlex();
+
+  .searchActivateButton {
+    display: none;
+  }
+
+  form {
+    width: 100%;
+    height: fit-content;
+    padding: 20px;
+    @include centeredFlex();
+
+
+    background-color: $backgroundColor;
+    position: relative;
+
+    .searchInput {
+      background-color: transparent;
+      color: white;
+      width: 100%;
+    }
+
+    .xButton, .searchButton {
+      margin: 0;
+      padding: 0;
+      background-color: transparent;
+      box-shadow: none;
+      width: fit-content;
+      cursor: pointer;
+      @include centeredFlex();
+    }
+    .xButton {
+      margin-right: 10px;
+    }
+
+    .resultsSection {
+      position: absolute;
+      background-color: $backgroundColor;
+      width: 100%;
+      height: fit-content;
+      top: 100%;
+      left: 0;
+      padding: 0 20px;
+      margin: 0;
+      margin-right: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    
+      ol {
+        list-style: none;
+        width: 100%;
+        li {
+          padding: 5px 0;
+          margin: 5px 0;
+          width: 100%;
+
+          @include centeredFlex();
+          gap: 5px;
+          justify-content: space-between;
+
+          .linkTextWrapper {
+            width: calc(100% - 15px);
+            @include textCutOffEllipsis();
+          }
+
+        }
+      }
+
+      .viewMore {
+        height: fit-content;
+        width: 100%;
+        background-color: black;
+      }
+
+    }
+
+  } 
+
+}
+
+@media screen and (max-width: 1200px) {
+
+  .searchSection {
+    width: 150px; // TODO: FIX!!! WHERE IS THE MAGNIFYING GLASS?
+  }
+
+  .header .content {
+    gap: 25px;
+  }
+
+}
