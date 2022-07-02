@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: space-between;
 }
-.searchSection .searchActivateButton {
+.searchSection .miniSearch {
   display: none;
 }
 .searchSection form {
@@ -83,12 +83,22 @@
   background-color: black;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 650px) {
   .searchSection {
     width: 150px;
   }
+}
+@media screen and (max-width: 430px) {
+  .searchSection form {
+    display: none;
+  }
 
-  .header .content {
-    gap: 25px;
+  .searchSection {
+    width: 50px;
+  }
+  .searchSection .miniSearch {
+    display: block;
+    width: 25px;
+    height: 25px;
   }
 }/*# sourceMappingURL=search.module.css.map */

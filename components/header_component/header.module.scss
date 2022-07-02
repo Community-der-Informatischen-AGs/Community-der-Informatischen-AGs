@@ -13,7 +13,7 @@
   top: 0;
   right: 0;
   padding: 0 50px;
-  z-index: 9999;
+  z-index: 99;
 
   background-color: transparent;
   transition: background-color 0.5s ease;
@@ -45,4 +45,17 @@
 
   }
 
+}
+
+
+@media screen and (max-width: 1340px) {
+  .header { padding: 0 100px 0 15px; }
+}
+
+@media screen and (max-width: 650px) {
+  
+  .header .content {
+    gap: 15px;
+  }
+  .header { padding: 0 80px 0 15px; }
 }

@@ -7,7 +7,7 @@
   
   @include centeredFlex();
 
-  .searchActivateButton {
+  .miniSearch {
     display: none;
   }
 
@@ -84,14 +84,26 @@
 
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 650px) {
 
   .searchSection {
     width: 150px; // TODO: FIX!!! WHERE IS THE MAGNIFYING GLASS?
   }
 
-  .header .content {
-    gap: 25px;
-  }
+}
 
+@media screen and (max-width: 430px) {
+  .searchSection form {
+    display: none;
+  }
+  .searchSection {
+    width: 50px;
+  
+    .miniSearch {
+      display: block;
+      width: 25px;
+      height: 25px;
+    }
+    
+  }
 }

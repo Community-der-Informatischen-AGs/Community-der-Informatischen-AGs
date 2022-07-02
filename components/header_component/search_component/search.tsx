@@ -90,6 +90,14 @@ export const Search = () => {
   }, []);
 
   return <section className={styles.searchSection}>
+    <div className={styles.miniSearch}>
+      <MagnifyingGlass
+        size={25}
+        onClick={() => {
+          // TODO: send the user to the search site.
+        }}
+      />
+    </div>
     <form action="POST" onSubmit={(e) => searchSubmit(e)}
       onFocus={() => setSearchActive(true)}
       onBlur={handleBlur}

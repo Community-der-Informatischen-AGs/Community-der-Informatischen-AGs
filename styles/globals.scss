@@ -42,33 +42,6 @@ p, q, blockquote, a {
   font-family: 'Roboto Flex', sans-serif;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
-  position: relative;
-
-  &:after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 1px;
-    background-color: white;
-    opacity: 0.5;
-    bottom: -10px;
-    left: 0;
-
-    transition: width 0.2s ease;
-  }
-
-  &:hover {
-    &:after {
-      width: 100%;
-    }
-  }
-
-}
-
 * {
   box-sizing: border-box;
 }
