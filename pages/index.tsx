@@ -9,16 +9,13 @@ import { Contentful } from '../lib/contentful/api'
 
 import TypeIt from 'typeit-react';
 import { Header } from '../components/header_component/header';
-<<<<<<< HEAD
-=======
 import { Circle } from 'phosphor-react';
 import { Carousel } from '../components/carousel_component/carousel';
->>>>>>> 8b2fe642983be94006e39fe6f6784eb2ae9e58e5
 
 
 // ! https://www.npmjs.com/package/@contentful/rich-text-react-renderer for rendering rich text
 
-const Home: NextPage = (props) => {
+const Home: NextPage = (props: any) => {
 
   const decorationCode = `
   
@@ -44,11 +41,7 @@ const Home: NextPage = (props) => {
 
   return <>
     <Head>
-<<<<<<< HEAD
-      <title>Jugend Entwickelt Digital Projekt</title>
-=======
       <title>Jugend Entwickelt Digital: Eine Gemeinschaft für junge, interessierte Softwareentwickler in diversen schulischen Arbeitsgemeischaften</title>
->>>>>>> 8b2fe642983be94006e39fe6f6784eb2ae9e58e5
     </Head>
     <Header/>
     <main>
@@ -147,7 +140,7 @@ const Home: NextPage = (props) => {
           Eine Vernetzung von Software-AGs
         </h2>
         <p>
-          Die "Jugend-Entwickelt-Digital" Gemeinschaft bietet an unterschiedlichen Schulen Software-AGs an und verbindet diese.
+          Die {"'"}Jugend-Entwickelt-Digital{"'"} Gemeinschaft bietet an unterschiedlichen Schulen Software-AGs an und verbindet diese.
         </p>
         <p>
           Nehmen auch Sie zusammen mit Ihrer Schule am Programm teil!

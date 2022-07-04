@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import { urlToHttpOptions } from "url";
 import styles from "./select.module.css";
 
 export function Select<valueType>(props: {

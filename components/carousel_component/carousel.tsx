@@ -23,7 +23,7 @@ export const Carousel = (props: {
     <ul className={styles.selectorList}>
       {
         props.children.map((_, index) => {
-          return <li onClick={() => {
+          return <li key={index} onClick={() => {
             setCurrentSelectedIndex(index);
           }}>
             <a href={"#" + props.uniqueClassName + index}>

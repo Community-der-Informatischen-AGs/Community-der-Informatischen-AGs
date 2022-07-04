@@ -2,7 +2,7 @@ import styles from "./header.module.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FormEvent, MutableRefObject, useEffect, useRef, useState } from "react";
-import { LinkSimpleHorizontal, LinkSimpleHorizontalBreak, List, MagnifyingGlass, X } from "phosphor-react";
+import { LinkSimpleHorizontal, LinkSimpleHorizontalBreak, List, MagnifyingGlass } from "phosphor-react";
 import { Select } from "../select_component/select";
 import { Search } from "./search_component/search";
 import { Navigation } from "./navigation_component/navigation";
