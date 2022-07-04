@@ -89,6 +89,7 @@
     height: 16.25rem;
   }
 }
+<<<<<<< HEAD
 .imageSection {
   overflow: hidden;
   height: 400px;
@@ -99,4 +100,12 @@
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+=======
+.landingCarouselSection {
+  margin: 100px 0;
+  height: 400px;
+}
+.landingCarouselSection .landingCarousel {
+  width: 80%;
+>>>>>>> 8b2fe642983be94006e39fe6f6784eb2ae9e58e5
 }/*# sourceMappingURL=home.module.css.map */
