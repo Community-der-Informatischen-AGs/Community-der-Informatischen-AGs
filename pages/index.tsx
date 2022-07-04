@@ -45,7 +45,7 @@ const Home: NextPage = (props: any) => {
     </Head>
     <Header/>
     <main>
-      <section className={styles.landingSection}>
+      <section className={styles.landingSection + " " + styles.standardPaddingSection}>
           
         <code lang="python" className={globalStyles.preserve + " " + globalStyles.background}>  {/* This is decoration*/}
           {decorationCode}
@@ -115,6 +115,7 @@ const Home: NextPage = (props: any) => {
         <Carousel
           initialSelectedIndex={0}
           uniqueClassName={styles.landingCarousel}
+          rotationCycleDuration={20000}
         >
           <img
             src="/assets/images/home/testimage1.jpg" //TODO: get better images
@@ -135,7 +136,7 @@ const Home: NextPage = (props: any) => {
         </Carousel>
       </section>
 
-      <section className={styles.conceptSection}>
+      <section className={styles.conceptSection + " " + styles.standardPaddingSection}>
         <h2>
           Eine Vernetzung von Software-AGs
         </h2>
@@ -155,7 +156,7 @@ const Home: NextPage = (props: any) => {
         </section>
       </section>
 
-      <section>
+      <section className={styles.postSection + " " + styles.standardPaddingSection}>
         <h2>
           Spannende Projekte. Grenzenlose Kooperation.
         </h2>
@@ -167,7 +168,7 @@ const Home: NextPage = (props: any) => {
         </section>
       </section>
 
-      <section>
+      <section className={styles.philosophySection + " " + styles.standardPaddingSection}>
         <h2>Weiterbildung, Verbesserung, Vernetzung.</h2>
         <h3>Alles im eigenen Tempo</h3>
         <p>
@@ -181,7 +182,7 @@ const Home: NextPage = (props: any) => {
         </ul>
       </section>
 
-      <section>
+      <section className={styles.contactSection + " " + styles.standardPaddingSection}>
         <h2>Teilnehmen!</h2>
         <p>Worauf wartest du?</p>
         { /* Kontaktformular */ }
