@@ -32,6 +32,7 @@ export const Navigation = () => {
         <Link href={"/"}>Über Uns</Link>
         <ul className={styles.subLinks}>
           <li><Link href={"/die-idee"}>Die Idee</Link></li>
+          <li><Link href={"/philosophie"}>Unsere Philosophie</Link></li>
           <li><Link href={"/anfaenge"}>Anfänge</Link></li>
         </ul>
       </li> { /* only information about the concept, abstract, with personal message from me */ }

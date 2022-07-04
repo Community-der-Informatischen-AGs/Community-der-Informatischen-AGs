@@ -12,6 +12,8 @@ body {
   // * the following line does not work with ios. Do not use.
   //contain: paint;
   // * this is because html { contain: paint; } does not work
+
+  scroll-behavior: smooth;
 }
 
 #__next {

@@ -15,7 +15,7 @@ export default function Document() {
         <meta name="theme-color" content="#000000" />
         <meta
           name="description"
-          content="Die Webseite des Jugend-Entwickelt-Software-Projekts"
+          content="Die Webseite des Jugend-Entwickelt-Digital-Projekts: Eine Gemeinschaft für junge Softwareentwickler zwischen 15 und 20 Jahren."
         />
       </Head>
       <body>

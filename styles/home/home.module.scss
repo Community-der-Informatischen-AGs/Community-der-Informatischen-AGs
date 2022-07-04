@@ -108,15 +108,13 @@
     }
 }
 
-.imageSection {
-  overflow: hidden;
-  height: 400px;
-  width: 100%;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.landingCarouselSection {
+  margin: 100px 0;
+  height: 400px;
+
+  .landingCarousel {
+    width: 80%;
   }
 
 }
