@@ -20,4 +20,11 @@
   box-shadow: none;
   background-color: transparent;
   color: white;
+}
+
+.background {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }/*# sourceMappingURL=globals.module.css.map */

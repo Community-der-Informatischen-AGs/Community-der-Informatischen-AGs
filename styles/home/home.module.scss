@@ -1,8 +1,21 @@
 @import "./../_constants";
 
+.standardPaddingSection {
+  padding: 100px;
+}
+
+@media screen and (max-width: 600px) {
+  .standardPaddingSection {
+    
+    padding-right: 10%;
+    padding-left: 10%;
+  
+  }
+}
+
 .landingSection {
 
-  padding: 200px 100px 100px 200px;
+  padding: 100px 200px;
   width: 100%;
   min-height: 700px;
 
@@ -69,27 +82,12 @@
 
 }
 
-.imageSection {
-  overflow: hidden;
-  height: 200px;
-  width: 100%;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-}
-
 @media screen and (max-width: 1165px) {
-  .landingSection { gap: 10%; }
-}
-@media screen and (max-width: 1000px) { 
-
   .landingSection {
     flex-direction: column;
     gap: 100px;
+
+    padding: 100px 15%; 
 
     code {
       left: 0;
@@ -97,13 +95,11 @@
     }
 
   }
-
 }
 @media screen and (max-width: 600px) {
-  // hardcoded height for typed content so as to prevent overflow and subsequent content shift
   .landingSection {
     
-    padding: 200px 10% 0px 10%;
+    padding: 200px 10% 100px 10%;
 
     .heading {
       font-size: $h1fontSize;
@@ -117,4 +113,19 @@
       line-height: $line-height;
       height: $h3fontSize * $line-height * 5;
     }
+}
+
+
+.landingCarouselSection {
+  margin: 100px 0;
+  height: 400px;
+
+  .landingCarousel {
+    width: 100%;
+  }
+
+}
+
+.conceptSection {
+
 }

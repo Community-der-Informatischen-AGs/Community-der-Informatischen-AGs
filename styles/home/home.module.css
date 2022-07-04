@@ -1,5 +1,15 @@
+.standardPaddingSection {
+  padding: 100px;
+}
+
+@media screen and (max-width: 600px) {
+  .standardPaddingSection {
+    padding-right: 10%;
+    padding-left: 10%;
+  }
+}
 .landingSection {
-  padding: 200px 100px 100px 200px;
+  padding: 100px 200px;
   width: 100%;
   min-height: 700px;
   display: flex;
@@ -59,27 +69,11 @@
   margin: 50px 0;
 }
 
-.imageSection {
-  overflow: hidden;
-  height: 200px;
-  width: 100%;
-}
-.imageSection img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
 @media screen and (max-width: 1165px) {
-  .landingSection {
-    gap: 10%;
-  }
-}
-@media screen and (max-width: 1000px) {
   .landingSection {
     flex-direction: column;
     gap: 100px;
+    padding: 100px 15%;
   }
   .landingSection code {
     left: 0;
@@ -88,7 +82,7 @@
 }
 @media screen and (max-width: 600px) {
   .landingSection {
-    padding: 200px 10% 0px 10%;
+    padding: 200px 10% 100px 10%;
   }
   .landingSection .heading {
     font-size: 3.5rem;
@@ -99,4 +93,11 @@
     line-height: 1.3;
     height: 16.25rem;
   }
+}
+.landingCarouselSection {
+  margin: 100px 0;
+  height: 400px;
+}
+.landingCarouselSection .landingCarousel {
+  width: 100%;
 }/*# sourceMappingURL=home.module.css.map */

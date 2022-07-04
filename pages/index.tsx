@@ -6,11 +6,16 @@ import globalStyles from "../styles/globals.module.css";
 
 import { Contentful } from '../lib/contentful/api'
 
+
 import TypeIt from 'typeit-react';
+import { Header } from '../components/header_component/header';
+import { Circle } from 'phosphor-react';
+import { Carousel } from '../components/carousel_component/carousel';
+
 
 // ! https://www.npmjs.com/package/@contentful/rich-text-react-renderer for rendering rich text
 
-const Home: NextPage = (props) => {
+const Home: NextPage = (props: any) => {
 
   const decorationCode = `
   
@@ -32,14 +37,17 @@ const Home: NextPage = (props) => {
 
   `;
 
+  // TODO: add social media icons on the side of the landing-section
+
   return <>
     <Head>
-      <title>Jugend Entwickelt Informatik</title>
+      <title>Jugend Entwickelt Digital: Eine Gemeinschaft für junge, interessierte Softwareentwickler in diversen schulischen Arbeitsgemeischaften</title>
     </Head>
+    <Header/>
     <main>
-      <section className={styles.landingSection}>
+      <section className={styles.landingSection + " " + styles.standardPaddingSection}>
           
-        <code lang="python" className={globalStyles.preserve}>  {/* This is decoration*/}
+        <code lang="python" className={globalStyles.preserve + " " + globalStyles.background}>  {/* This is decoration*/}
           {decorationCode}
         </code>
 
@@ -103,12 +111,83 @@ const Home: NextPage = (props) => {
 
         </section>
       </section>
-      <section className={styles.imageSection}>
+      <section className={styles.landingCarouselSection}>
+        <Carousel
+          initialSelectedIndex={0}
+          uniqueClassName={styles.landingCarousel}
+          rotationCycleDuration={20000}
+        >
           <img
             src="/assets/images/home/testimage1.jpg" //TODO: get better images
-            alt="Programming-Image"
+            alt="Programming-Image-1"
           />
+          <img
+            src="/assets/images/home/testimage2.jpg" //TODO: get better images
+            alt="Programming-Image-2"
+          />
+          <img
+            src="/assets/images/home/testimage3.jpg" //TODO: get better images
+            alt="Programming-Image-3"
+          />
+          <img
+            src="/assets/images/home/testimage4.jpg" //TODO: get better images
+            alt="Programming-Image-4"
+          />
+        </Carousel>
+      </section>
+
+      <section className={styles.conceptSection + " " + styles.standardPaddingSection}>
+        <h2>
+          Eine Vernetzung von Software-AGs
+        </h2>
+        <p>
+          Die {"'"}Jugend-Entwickelt-Digital{"'"} Gemeinschaft bietet an unterschiedlichen Schulen Software-AGs an und verbindet diese.
+        </p>
+        <p>
+          Nehmen auch Sie zusammen mit Ihrer Schule am Programm teil!
+        </p>
+        <section>
+          <button className={globalStyles.unimportantButton}>
+            Mehr über das Konzept
+          </button>
+          <button>
+            Anmeldung
+          </button>
         </section>
+      </section>
+
+      <section className={styles.postSection + " " + styles.standardPaddingSection}>
+        <h2>
+          Spannende Projekte. Grenzenlose Kooperation.
+        </h2>
+        <p>
+          Zusammen arbeiten die Arbeitsgemeinschaften an weiterbildende und interessante Software-Projekte
+        </p>
+        <section>
+          { /* zwei carousels mit blog post teasers und project post teasers */ }
+        </section>
+      </section>
+
+      <section className={styles.philosophySection + " " + styles.standardPaddingSection}>
+        <h2>Weiterbildung, Verbesserung, Vernetzung.</h2>
+        <h3>Alles im eigenen Tempo</h3>
+        <p>
+          Bei der Jugend Entwickelt Digital Gemeinschaft erlauben wir 
+        </p>
+        <ul>
+          <li>Weiterbildung</li>
+          <li>Kooperation</li>
+          <li>und Verbesserung</li>
+          <li>Und alles ohne Stress. Alles im eigenen Tempo.</li>
+        </ul>
+      </section>
+
+      <section className={styles.contactSection + " " + styles.standardPaddingSection}>
+        <h2>Teilnehmen!</h2>
+        <p>Worauf wartest du?</p>
+        { /* Kontaktformular */ }
+      </section>
+
     </main>
   </>;
 }
