@@ -1,0 +1,69 @@
+@import "./../../styles/constants";
+@import "./../../styles/module";
+
+.Select {
+
+  $padding: 20px;
+
+  position: relative;
+  width: min-content;
+  height: calc(100% - $padding * 2);
+  user-select: none;
+
+  @include centeredFlex();
+  
+  $border: 0.1px solid rgba(255, 255, 255, 0.2);
+  $width: 100%;
+  $padding-side: 20px; 
+
+  .selected {
+
+    height: 100%;
+    text-align: center;
+    padding: 0 $padding-side;
+    margin: auto;
+
+    width: $width;
+    background-color: $backgroundColor;
+
+    @include centeredFlex();
+    cursor: pointer;
+
+  }
+
+  .options {
+    background-color: $backgroundColor;
+
+    top: 100%;
+    position: absolute;
+    list-style: none;
+    width: $width;
+    height: fit-content;
+
+    margin: 0;
+    padding: 0 $padding-side;
+
+    border: $border;
+
+    @include centeredFlex();
+    flex-direction: column;
+
+    li {
+      cursor: pointer;
+      padding: 10px 0;
+      text-align: center;
+      width: 100%;
+    }
+
+  }
+
+}
+
+@media screen and (max-width: 1200px) {
+
+  .Select {
+    padding: 0;
+    margin: 0;
+  }
+
+}

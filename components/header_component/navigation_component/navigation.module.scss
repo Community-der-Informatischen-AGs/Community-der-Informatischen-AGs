@@ -1,0 +1,121 @@
+@import "./../../../styles/module";
+@import "./../../../styles/constants";
+
+.navigation {
+
+  height: 100%;
+  gap: 20px;
+
+  .menuButton {
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    background-color: transparent;
+    @include centeredFlex();
+    position: absolute;
+    top: calc(50% - 20px); // becuase the logo is 40px large
+    right: 20px;
+    z-index: 9999;
+
+    &:after {
+      background-color: rgba(30, 30, 30, 0.5);
+    }
+  }
+  .menuButton, .menuButton > * {
+    display: none;
+  }
+  
+  ul {
+    list-style: none;
+    gap: 50px;
+    height: 100%;
+  
+    li {
+      position: relative;
+      height: 100%;
+      @include centeredFlex();
+
+      &:hover .subLinks {
+        display: flex;
+      }
+
+      a {
+
+        z-index: 1;
+        color: inherit;
+        text-decoration: none;
+        cursor: pointer;
+        position: relative;
+  
+        &:after {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 1px;
+          background-color: white;
+          opacity: 0.5;
+          bottom: -10px;
+          left: 0;
+      
+          transition: width 0.2s ease;
+        }
+
+        &:hover:only-child:after {
+          width: 100%;
+        }
+      
+      }
+
+      .subLinks {
+        $padding: 20px;
+        position: absolute;
+        min-width: calc(100% + #{$padding} * 2);
+        top: 0;
+        left: -$padding;
+        height: fit-content;
+        background-color: $darkerBackgroundColor;
+
+        @include centeredFlex();
+        flex-direction: column;
+        align-items: flex-start;
+        padding: calc($headerHeight + $padding) $padding $padding + 10px;
+
+        display: none;
+
+      }
+
+    }
+  
+  }
+
+}
+
+@media screen and (max-width: 1340px) {
+
+  .navigation {
+    height: 100%;
+      
+    ul {
+      z-index: 999;
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      top: -100vh;
+      right: 0;
+      transition: top 0.5s ease;
+
+      flex-direction: column;
+
+      background-color: #222b30;
+      padding: 100px;
+      overflow-y: auto;
+      overflow-x: hidden;
+
+    }
+  }
+
+  .navigation .menuButton, .navigation .menuButton > * {
+    display: block;
+  }
+
+}
