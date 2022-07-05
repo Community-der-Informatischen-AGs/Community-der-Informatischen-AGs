@@ -66,6 +66,7 @@
   height: -moz-fit-content;
   height: fit-content;
   background-color: #222b30;
+  gap: 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
