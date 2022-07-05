@@ -140,17 +140,15 @@ const Home: NextPage = (props: any) => {
       </section>
 
       <section className={styles.conceptSection + " " + styles.standardPaddingSection}>
-        <TypeIt
-          options={{
-            speed: 50,
-            waitUntilVisible: true,
-            loop: true
-          }}
-        >
-
-        </TypeIt>
         <h2>
-          Eine Vernetzung von Software-AGs
+          <TypeIt
+            options={{
+              speed: 50,
+              waitUntilVisible: true,
+            }}
+          >
+            Eine Vernetzung von Software-AGs
+          </TypeIt>
         </h2>
         <section className={styles.contentSubsection}>
           <Image
