@@ -35,8 +35,10 @@
       height: 100%;
       @include centeredFlex();
 
-      &:hover .subLinks {
-        display: flex;
+      &:hover {
+        & > .subLinks {
+          display: flex;
+        }
       }
 
       a {
