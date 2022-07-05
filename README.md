@@ -1,9 +1,9 @@
-# Jugend-Entwickelt-Informatik
+# Jugend-Entwickelt-Digital
 
 An alle leidenschaftliche jugendliche Programmierer\*innen und Informatiker\*innen: 
 *Ihr seid am richten Platz.*
 
-Das Projekt "Jugend-Entwickelt-Informatik" besitzt das Ziel, Jugendliche im Alter von 15 bis 22 zu verbinden und zu vernetzen. Damit diese zusammen digitale Produkte entwickeln können.
+Das Projekt "Jugend-Entwickelt-Digital" besitzt das Ziel, Jugendliche im Alter von 15 bis 22 zu verbinden und zu vernetzen. Damit diese zusammen digitale Produkte entwickeln können.
 
 Hierfür starten wir bei der Gruppe informatische Arbeitsgemeinschaften an diversen Schulen und verbinden und vernetzen diese.
 
