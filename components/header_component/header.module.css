@@ -1,4 +1,4 @@
-.header, .header .content, .header .content nav ul {
+.header, .header .content, .header .content nav > ul {
   display: flex;
   align-items: center;
   justify-content: space-between;

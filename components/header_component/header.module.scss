@@ -1,7 +1,7 @@
 @import "./../../styles/module";
 @import "./../../styles/constants";
 
-.header, .header .content, .header .content nav ul {
+.header, .header .content, .header .content nav > ul {
   @include centeredFlex();
 }
 
