@@ -21,29 +21,29 @@
 .navigation .menuButton, .navigation .menuButton > * {
   display: none;
 }
-.navigation ul {
+.navigation > ul {
   list-style: none;
   gap: 50px;
   height: 100%;
 }
-.navigation ul li {
+.navigation > ul li {
   position: relative;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.navigation ul li:hover > .subLinks {
+.navigation > ul li:hover > .subLinks {
   display: flex;
 }
-.navigation ul li a {
+.navigation > ul li a {
   z-index: 1;
   color: inherit;
   text-decoration: none;
   cursor: pointer;
   position: relative;
 }
-.navigation ul li a:after {
+.navigation > ul li a:after {
   content: "";
   position: absolute;
   width: 0;
@@ -54,10 +54,10 @@
   left: 0;
   transition: width 0.2s ease;
 }
-.navigation ul li a:hover:only-child:after {
+.navigation > ul li a:hover:only-child:after {
   width: 100%;
 }
-.navigation ul li .subLinks {
+.navigation > ul li .subLinks {
   position: absolute;
   min-width: calc(100% + 20px * 2);
   top: 0;
