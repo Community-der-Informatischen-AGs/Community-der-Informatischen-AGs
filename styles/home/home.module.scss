@@ -1,4 +1,5 @@
 @import "./../_constants";
+@import "./../module";
 
 .standardPaddingSection {
   padding: 100px;
@@ -23,7 +24,6 @@
   align-items: flex-start;
   justify-content: flex-start;
   gap: 25%;
-
 
   code {
     position: absolute;
@@ -128,4 +128,23 @@
 
 .conceptSection {
 
+  h2 {
+    width: 80%;
+  }
+
+  .contentSubsection {
+
+    @include centeredFlex();
+
+    gap: 100px; 
+
+    article {
+      width: 50%;
+      button {
+        margin: 50px 0;
+      }
+    }
+
+  }
+  
 }

@@ -100,4 +100,20 @@
 }
 .landingCarouselSection .landingCarousel {
   width: 100%;
+}
+
+.conceptSection h2 {
+  width: 80%;
+}
+.conceptSection .contentSubsection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 100px;
+}
+.conceptSection .contentSubsection article {
+  width: 50%;
+}
+.conceptSection .contentSubsection article button {
+  margin: 50px 0;
 }/*# sourceMappingURL=home.module.css.map */

@@ -12,6 +12,9 @@ import { Header } from '../components/header_component/header';
 import { Circle } from 'phosphor-react';
 import { Carousel } from '../components/carousel_component/carousel';
 
+// media:
+import conceptSVG from "./../public/assets/svgs/home/concept.svg";
+
 
 // ! https://www.npmjs.com/package/@contentful/rich-text-react-renderer for rendering rich text
 
@@ -137,22 +140,42 @@ const Home: NextPage = (props: any) => {
       </section>
 
       <section className={styles.conceptSection + " " + styles.standardPaddingSection}>
+        <TypeIt
+          options={{
+            speed: 50,
+            waitUntilVisible: true,
+            loop: true
+          }}
+        >
+
+        </TypeIt>
         <h2>
           Eine Vernetzung von Software-AGs
         </h2>
-        <p>
-          Die {"'"}Jugend-Entwickelt-Digital{"'"} Gemeinschaft bietet an unterschiedlichen Schulen Software-AGs an und verbindet diese.
-        </p>
-        <p>
-          Nehmen auch Sie zusammen mit Ihrer Schule am Programm teil!
-        </p>
-        <section>
-          <button className={globalStyles.unimportantButton}>
-            Mehr über das Konzept
-          </button>
-          <button>
-            Anmeldung
-          </button>
+        <section className={styles.contentSubsection}>
+          <Image
+            src="/assets/svgs/home/concept.svg"
+            width={409}
+            height={415}
+            alt="SVG für das Konzept"
+          />
+          <article>
+
+            <p>
+              Die {"'"}Jugend-Entwickelt-Digital{"'"} Gemeinschaft bietet an unterschiedlichen Schulen Software-AGs an und verbindet diese miteinander.
+            </p>
+            <p>
+              Nehme zusammen mit deiner Schule am Programm teil!
+            </p>
+            
+            <button>
+              Anmeldung
+            </button>
+            <button className={globalStyles.unimportantButton}>
+              Mehr über das Konzept
+            </button>
+
+          </article>
         </section>
       </section>
 
@@ -161,7 +184,7 @@ const Home: NextPage = (props: any) => {
           Spannende Projekte. Grenzenlose Kooperation.
         </h2>
         <p>
-          Zusammen arbeiten die Arbeitsgemeinschaften an weiterbildende und interessante Software-Projekte
+          Zusammen arbeiten und kooperieren die Arbeitsgemeinschaften an weiterbildende und interessante Software-Projekte
         </p>
         <section>
           { /* zwei carousels mit blog post teasers und project post teasers */ }
