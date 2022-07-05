@@ -76,6 +76,7 @@
         left: -$padding;
         height: fit-content;
         background-color: $darkerBackgroundColor;
+        gap: 40px;
 
         @include centeredFlex();
         flex-direction: column;
