@@ -9,7 +9,7 @@ export default function Document() {
       <Head>
         <link rel="shortcut icon" href="/favicon.ico"></link>
         <meta charSet="utf-8" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/assets/svgs/jugend_entwickelt_digital_v_1_0_white.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />    
         <meta httpEquiv="X-UA-Compatible" content="ie=edge"></meta>
         <meta name="theme-color" content="#000000" />
