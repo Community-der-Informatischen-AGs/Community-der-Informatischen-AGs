@@ -13,10 +13,6 @@ export default function Document() {
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />    
         <meta httpEquiv="X-UA-Compatible" content="ie=edge"></meta>
         <meta name="theme-color" content="#000000" />
-        <meta
-          name="description"
-          content="Die Webseite des Jugend-Entwickelt-Digital-Projekts: Eine Gemeinschaft für junge Softwareentwickler zwischen 15 und 20 Jahren."
-        />
       </Head>
       <body>
         <Main />

@@ -20,38 +20,69 @@ import conceptSVG from "./../public/assets/svgs/home/concept.svg";
 
 const Home: NextPage = (props: any) => {
 
-  const decorationCode = `
+  // Code snippets for decoration purposes:
+  const landingCode = `
   
   def foo(bar, leftBar, rightBar, x):
-    whileleftBar <= rightBar:
+    while leftBar <= rightBar:
 
         foobar = leftBar + (rightBar - leftBar) // 2
 
-        if arr[foobar] == x:
+        if array[foobar] == x:
             return foobar
 
-        elif arr[foobar] < x:
+        elif array[foobar] < x:
           leftBar = foobar + 1
 
         else:
           rightBar = foobar - 1
 
-    return -1
+    return "could not be found"
 
   `;
+
+  const conceptCode = `
+
+  function breadth_first_search = (start, end) => {
+
+    const frontier = new Queue([start]);
+
+    while (!frontier.isEmpty()) {
+
+      let currentNode = frontier.dequeue();
+
+      for (let neighboringNode of currentNode.neighbors()) {
+        if (neighboringNode === end) {
+          return "foo";
+        } else {
+          frontier.enqueue(neighboringNode);
+        }
+      }
+
+    }
+
+  }
+
+  `;
+
+
 
   // TODO: add social media icons on the side of the landing-section
 
   return <>
     <Head>
       <title>Jugend Entwickelt Digital: Eine Gemeinschaft für junge, interessierte Softwareentwickler in diversen schulischen Arbeitsgemeischaften</title>
+      <meta
+        name="description"
+        content="Die Webseite des Jugend-Entwickelt-Digital-Projekts: Eine Gemeinschaft für junge Softwareentwickler zwischen 15 und 20 Jahren."
+      />
     </Head>
     <Header/>
     <main>
       <section className={styles.landingSection + " " + styles.standardPaddingSection}>
           
-        <code lang="python" className={globalStyles.preserve + " " + globalStyles.background}>  {/* This is decoration*/}
-          {decorationCode}
+        <code lang="python" className={globalStyles.preserve + " " + globalStyles.background + " " + styles.decorationCode}>  {/* This is decoration*/}
+          {landingCode}
         </code>
 
         <h1 className={globalStyles.heading + " " + styles.heading}>
@@ -114,6 +145,7 @@ const Home: NextPage = (props: any) => {
 
         </section>
       </section>
+
       <section className={styles.landingCarouselSection}>
         <Carousel
           initialSelectedIndex={0}
@@ -140,6 +172,15 @@ const Home: NextPage = (props: any) => {
       </section>
 
       <section className={styles.conceptSection + " " + styles.standardPaddingSection}>
+
+        <code lang="javascript" className={globalStyles.preserve + " " + globalStyles.background + " " + styles.decorationCode}>  {/* This is decoration*/}
+          {conceptCode} 
+        </code>
+
+
+        <h3 className={styles.standardSectionInvisibleHeading}>
+          Was sind wir?
+        </h3>
         <h2>
           <TypeIt
             options={{
@@ -147,39 +188,53 @@ const Home: NextPage = (props: any) => {
               waitUntilVisible: true,
             }}
           >
-            Eine Vernetzung von Software-AGs
+            Eine Vernetzung von Software-AGs.
           </TypeIt>
         </h2>
-        <section className={styles.contentSubsection}>
-          <Image
-            src="/assets/svgs/home/concept.svg"
-            width={409}
-            height={415}
-            alt="SVG für das Konzept"
-          />
-          <article>
+        { /* improve picture by adding images of schools to it */ }
+        <Image
+          className={styles.conceptImage}
+          src="/assets/svgs/home/concept.svg" 
+          width={409}
+          height={415}
+          alt="SVG für das Konzept"
+        />
 
+        <section className={styles.textSection}>
+          <article>
             <p>
               Die {"'"}Jugend-Entwickelt-Digital{"'"} Gemeinschaft bietet an unterschiedlichen Schulen Software-AGs an und verbindet diese miteinander.
             </p>
             <p>
               Nehme zusammen mit deiner Schule am Programm teil!
             </p>
-            
+          </article>
+      
+          <section className={styles.buttonSection}>       
             <button>
               Anmeldung
             </button>
             <button className={globalStyles.unimportantButton}>
               Mehr über das Konzept
             </button>
-
-          </article>
+          </section>
         </section>
+        
       </section>
 
       <section className={styles.postSection + " " + styles.standardPaddingSection}>
+        <h3 className={styles.standardSectionInvisibleHeading}>
+          Was bieten wir?
+        </h3>
         <h2>
-          Spannende Projekte. Grenzenlose Kooperation.
+          <TypeIt
+            options={{
+              speed: 50,
+              waitUntilVisible: true
+            }}
+          >
+            Spannende Projekte. Grenzenlose Kooperation.
+          </TypeIt>
         </h2>
         <p>
           Zusammen arbeiten und kooperieren die Arbeitsgemeinschaften an weiterbildende und interessante Software-Projekte
@@ -190,7 +245,19 @@ const Home: NextPage = (props: any) => {
       </section>
 
       <section className={styles.philosophySection + " " + styles.standardPaddingSection}>
-        <h2>Weiterbildung, Verbesserung, Vernetzung.</h2>
+        <h3 className={styles.standardSectionInvisibleHeading}>
+          Was fördern wir?
+        </h3>
+        <h2>
+          <TypeIt
+            options={{
+              speed: 50,
+              waitUntilVisible: true,
+            }}
+          >
+            Weiterbildung. Verbesserung. Vernetzung.
+          </TypeIt>
+        </h2>
         <h3>Alles im eigenen Tempo</h3>
         <p>
           Bei der Jugend Entwickelt Digital Gemeinschaft erlauben wir 
@@ -204,7 +271,19 @@ const Home: NextPage = (props: any) => {
       </section>
 
       <section className={styles.contactSection + " " + styles.standardPaddingSection}>
-        <h2>Teilnehmen!</h2>
+        <h3 className={styles.standardSectionInvisibleHeading}>
+
+        </h3>
+        <h2>
+          <TypeIt
+            options={{
+              speed: 50,
+              waitUntilVisible: true,
+            }}
+          >
+            Teilnehmen!
+          </TypeIt>
+        </h2>
         <p>Worauf wartest du?</p>
         { /* Kontaktformular */ }
       </section>

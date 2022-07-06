@@ -53,6 +53,7 @@ h6 {
 p, q, blockquote, a {
   /* this is the standard font for all blog content, etc. */
   font-family: "Roboto Flex", sans-serif;
+  line-height: 1.5;
 }
 
 * {
