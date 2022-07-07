@@ -142,10 +142,15 @@
 
 .landingCarouselSection {
   margin: 100px 0;
-  height: 400px;
+  height: fit-content;
 
   .landingCarousel {
-    width: 100%;
+    width: 100vw;
+
+    img {
+      object-fit: cover;
+    }
+
   }
 
 }

@@ -120,10 +120,16 @@
 }
 .landingCarouselSection {
   margin: 100px 0;
-  height: 400px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 .landingCarouselSection .landingCarousel {
-  width: 100%;
+  width: 100vw;
+}
+.landingCarouselSection .landingCarousel img {
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .conceptSection {

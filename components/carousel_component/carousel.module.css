@@ -1,33 +1,38 @@
-.Carousel {
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  gap: 20px;
-}
-.Carousel ::-webkit-scrollbar {
-  display: none;
-}
-.Carousel .imageList {
-  width: 100%;
-  height: 100%;
+.Carousel .carouselWrapper {
+  overflow-x: hidden;
   position: relative;
-  list-style: none;
 }
-.Carousel .imageList li {
-  height: 100%;
-  width: 100%;
+.Carousel .carouselWrapper .componentList {
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  justify-content: stretch;
 }
-.Carousel .imageList li img {
+.Carousel .carouselWrapper .componentList li {
+  flex: 1;
+}
+.Carousel .carouselWrapper .componentList li > * {
   display: block;
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 .Carousel .selectorList {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   list-style: none;
+  justify-content: center;
+  gap: 50px;
+}
+.Carousel .selectorList li {
+  cursor: pointer;
+}
+.Carousel .selectorList p {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }/*# sourceMappingURL=carousel.module.css.map */

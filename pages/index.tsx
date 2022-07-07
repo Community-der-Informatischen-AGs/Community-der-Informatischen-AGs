@@ -150,7 +150,10 @@ const Home: NextPage = (props: any) => {
         <Carousel
           initialSelectedIndex={0}
           uniqueClassName={styles.landingCarousel}
-          rotationCycleDuration={20000}
+          rotationCycleDuration={3000}
+          heightInPixels={500}
+          width={100}
+          unit="vw"
         >
           <img
             src="/assets/images/home/testimage1.jpg" //TODO: get better images
