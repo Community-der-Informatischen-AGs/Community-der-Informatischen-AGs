@@ -1,5 +1,5 @@
 @import "./_constants";
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&family=Roboto+Flex:opsz,wght@8..144,300&family=Source+Code+Pro:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&family=Roboto+Flex:opsz,wght@8..144,300&family=Source+Code+Pro:wght@300&display=swap");
 
 #__next,
 html,
@@ -26,22 +26,45 @@ body {
 }
 
 * {
-  font-family: "Manrope", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Manrope", -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
+    Droid Sans, Helvetica Neue, sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 { font-weight: 800; }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 800;
+}
 
-h1 { font-size: $h1fontSize; }
-h2 { font-size: $h2fontSize; }
-h3 { font-size: $h3fontSize; }
-h4 { font-size: $h4fontSize; }
-h5 { font-size: $h5fontSize; }
-h6 { font-size: $h6fontSize; }
+h1 {
+  font-size: $h1fontSize;
+}
+h2 {
+  font-size: $h2fontSize;
+}
+h3 {
+  font-size: $h3fontSize;
+}
+h4 {
+  font-size: $h4fontSize;
+}
+h5 {
+  font-size: $h5fontSize;
+}
+h6 {
+  font-size: $h6fontSize;
+}
 
-p, q, blockquote, a {
+p,
+q,
+blockquote,
+a {
   /* this is the standard font for all blog content, etc. */
-  font-family: 'Roboto Flex', sans-serif;
+  font-family: "Roboto Flex", sans-serif;
   line-height: 1.5;
 }
 
@@ -50,10 +73,11 @@ p, q, blockquote, a {
 }
 
 code {
-  font-family: 'Source Code Pro', monospace;
+  font-family: "Source Code Pro", monospace;
 }
 
-ol, ul {
+ol,
+ul {
   margin: 0;
   padding: 0;
 }
@@ -85,37 +109,35 @@ button {
 
   &:hover {
     cursor: pointer;
-  
+
     &:after {
       height: 100%;
     }
-
   }
 
-  &:active, &:focus {
+  &:active,
+  &:focus {
     outline: none;
   }
 
   &:active {
     transform: translateY(2px);
   }
-
 }
-
 
 // form stuff:
 
 input {
   border: none;
 
-  &:active, &:focus {
+  &:active,
+  &:focus {
     outline: none;
   }
 
-  &::-webkit-search-cancel-button{
+  &::-webkit-search-cancel-button {
     display: none;
   }
-
 }
 
 select {

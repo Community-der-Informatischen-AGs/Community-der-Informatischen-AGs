@@ -1,126 +1,135 @@
-import { Circle } from "phosphor-react";
-import React, { Children, ReactNode, useEffect, useRef, useState } from "react";
-import styles from "./carousel.module.css";
-
+import { Circle } from "phosphor-react"
+import React, {
+  Children,
+  ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from "react"
+import styles from "./carousel.module.css"
 
 interface CarouselProps {
-  children: ReactNode[],
-  uniqueClassName: string,
-  initialSelectedIndex: number,
-  rotationCycleDuration: number,
-  heightInPixels: number,
-  width: number,
-  unit: string,
+  children: ReactNode[]
+  uniqueClassName: string
+  initialSelectedIndex: number
+  rotationCycleDuration: number
+  heightInPixels: number
+  width: number
+  unit: string
 }
 
-const carouselSelectorSize = 20;
+const carouselSelectorSize = 20
 
 export const Carousel = (props: CarouselProps) => {
-  
-  const [scrollIndex, setScrollIndex] = useState(0);
-  const maxIndex = props.children.length;
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const componentListRef = useRef<HTMLUListElement>(null);
+  const [scrollIndex, setScrollIndex] = useState(0)
+  const maxIndex = props.children.length
+  const carouselRef = useRef<HTMLDivElement>(null)
+  const componentListRef = useRef<HTMLUListElement>(null)
 
   // styling
   const standardBoxSize = {
     height: props.heightInPixels + carouselSelectorSize,
-    width: props.width + props.unit
-  };
-
+    width: props.width + props.unit,
+  }
 
   const scrollToIndex = (index: number) => {
-    console.log(index);
-    const nextElement = document.getElementById(props.uniqueClassName + index);
+    const nextElement = document.getElementById(
+      props.uniqueClassName + index
+    )
 
-    const elementOffset = nextElement?.offsetLeft;
+    const elementOffset = nextElement?.offsetLeft
 
     carouselRef.current?.scrollTo({
       left: elementOffset,
-      behavior: "smooth"
-    });
+      behavior: "smooth",
+    })
   }
 
   const repeatingScrollingFunction = () => {
     // animate a scroll animation to the corresponding element
-    let nextIndex = scrollIndex + 1;
+    let nextIndex = scrollIndex + 1
     if (nextIndex == maxIndex) {
-      nextIndex = 0;
+      nextIndex = 0
     }
 
-    setScrollIndex(nextIndex);
-    scrollToIndex(nextIndex);
-
+    setScrollIndex(nextIndex)
+    scrollToIndex(nextIndex)
   }
 
   useEffect(() => {
-    const intervalId = setInterval(repeatingScrollingFunction, props.rotationCycleDuration);
+    const intervalId = setInterval(
+      repeatingScrollingFunction,
+      props.rotationCycleDuration
+    )
 
     return () => {
-      clearInterval(intervalId);
+      clearInterval(intervalId)
     }
-  });
+  })
 
-  return <div 
-    className={styles.Carousel}
-    style={standardBoxSize}
-  >
-
-    <div 
+  return (
+    <div
+      className={styles.Carousel}
+      style={standardBoxSize}
+    >
+      <div
         ref={carouselRef}
-        className={styles.carouselWrapper + " " + props.uniqueClassName}
+        className={
+          styles.carouselWrapper +
+          " " +
+          props.uniqueClassName
+        }
         style={standardBoxSize}
       >
-      <ul 
-        ref={componentListRef}
-        className={styles.componentList}
-        style={{
-          height: props.heightInPixels,
-          width: `${props.width * props.children.length}${props.unit}`
-        }}
-      > 
-        {
-          props.children.map((element, index) => {
-            return <li 
-              key={index} 
-              id={props.uniqueClassName + index}
-              style={{
-                height: props.heightInPixels,
-                width: props.width + props.unit
+        <ul
+          ref={componentListRef}
+          className={styles.componentList}
+          style={{
+            height: props.heightInPixels,
+            width: `${props.width * props.children.length}${
+              props.unit
+            }`,
+          }}
+        >
+          {props.children.map((element, index) => {
+            return (
+              <li
+                key={index}
+                id={props.uniqueClassName + index}
+                style={{
+                  height: props.heightInPixels,
+                  width: props.width + props.unit,
+                }}
+              >
+                {element}
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+      <ul className={styles.selectorList}>
+        <p>{">"}</p>
+        {props.children.map((element, index) => {
+          return (
+            <li
+              key={index}
+              onClick={() => {
+                setScrollIndex(index)
+                scrollToIndex(index)
               }}
             >
-              {element}
-            </li>;
-          })
-        }
+              <Circle
+                size={carouselSelectorSize}
+                color={"white"}
+                weight={
+                  scrollIndex == index ? "fill" : "light"
+                }
+              />
+            </li>
+          )
+        })}
+        <p>{"<"}</p>
       </ul>
     </div>
-    <ul
-      className={styles.selectorList}
-    >
-      <p>{">"}</p>
-      {
-        props.children.map((element, index) => {
-          return <li
-            key={index}
-            onClick={() => {
-              setScrollIndex(index);
-              scrollToIndex(index);
-            }}
-          >
-            <Circle 
-              size={carouselSelectorSize}
-              color={"white"}
-              weight={
-                scrollIndex == index ? "fill" : "light"
-              }
-            />
-          </li>
-        })
-      }
-      <p>{"<"}</p>
-    </ul>
-
-  </div>;
-
+  )
 }

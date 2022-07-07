@@ -2,7 +2,6 @@
 @import "./../../styles/module";
 
 .Select {
-
   $padding: 20px;
 
   position: relative;
@@ -11,13 +10,12 @@
   user-select: none;
 
   @include centeredFlex();
-  
+
   $border: 0.1px solid rgba(255, 255, 255, 0.2);
   $width: 100%;
-  $padding-side: 20px; 
+  $padding-side: 20px;
 
   .selected {
-
     height: 100%;
     text-align: center;
     padding: 0 $padding-side;
@@ -28,7 +26,6 @@
 
     @include centeredFlex();
     cursor: pointer;
-
   }
 
   .options {
@@ -54,16 +51,12 @@
       text-align: center;
       width: 100%;
     }
-
   }
-
 }
 
 @media screen and (max-width: 1200px) {
-
   .Select {
     padding: 0;
     margin: 0;
   }
-
 }

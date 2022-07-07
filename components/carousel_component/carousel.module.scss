@@ -1,32 +1,29 @@
 @import "./../../styles/module";
 
 .Carousel {
-
   .carouselWrapper {
     overflow-x: hidden;
     position: relative;
-  
-  .componentList {
-    position: absolute; 
-    top: 0;
-    left: 0;
 
-    list-style: none;
-    @include centeredFlex();
-    justify-content: stretch;
+    .componentList {
+      position: absolute;
+      top: 0;
+      left: 0;
 
-    li {
-      flex: 1;
+      list-style: none;
+      @include centeredFlex();
+      justify-content: stretch;
 
-      & > * {
-        display: block;
-        width: 100%;
-        height: 100%;
+      li {
+        flex: 1;
+
+        & > * {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
       }
     }
-
-  }
-
   }
 
   .selectorList {
@@ -35,13 +32,11 @@
     justify-content: center;
     gap: 50px;
 
-    li { 
+    li {
       cursor: pointer;
     }
     p {
       height: fit-content;
     }
-
   }
-
 }

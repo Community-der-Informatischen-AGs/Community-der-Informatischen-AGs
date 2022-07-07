@@ -1,4 +1,6 @@
-.header, .header .content, .header .content nav > ul {
+.header,
+.header .content,
+.header .content nav > ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -49,4 +51,4 @@
   .header {
     padding: 0 80px 0 15px;
   }
-}/*# sourceMappingURL=header.module.css.map */
+} /*# sourceMappingURL=header.module.css.map */

@@ -1,13 +1,11 @@
 # Jugend-Entwickelt-Digital
 
-An alle leidenschaftliche jugendliche Programmierer\*innen und Informatiker\*innen: 
-*Ihr seid am richten Platz.*
+An alle leidenschaftliche jugendliche Programmierer\*innen und Informatiker\*innen:
+_Ihr seid am richten Platz._
 
 Das Projekt "Jugend-Entwickelt-Digital" besitzt das Ziel, Jugendliche im Alter von 15 bis 22 zu verbinden und zu vernetzen. Damit diese zusammen digitale Produkte entwickeln können.
 
 Hierfür starten wir bei der Gruppe informatische Arbeitsgemeinschaften an diversen Schulen und verbinden und vernetzen diese.
-
-
 
 ## Involvierte Schulen:
 
@@ -18,7 +16,6 @@ An den folgenden Schulen werden schon Arbeitsgemeinschaften angeboten.
 - Annette-von-Droste-Hülshoff-Gymnasium
 - Gymnasium an der Koblenzer Straße
 - Schloß Gymnasium.
-
 
 ## Jetzige Projekte:
 
