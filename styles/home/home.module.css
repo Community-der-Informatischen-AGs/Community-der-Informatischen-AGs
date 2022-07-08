@@ -129,27 +129,38 @@
 }
 .landingCarouselSection .landingCarousel img {
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 
 .conceptSection {
+  background-color: #2a3236;
   position: relative;
+  margin: auto;
   display: grid;
   grid-template-rows: -webkit-fit-content -webkit-fit-content -webkit-fit-content;
   grid-template-rows: fit-content fit-content fit-content;
   grid-template-columns: 1fr 1fr;
   row-gap: 50px;
-  -moz-column-gap: 50px;
-  column-gap: 50px;
+  -moz-column-gap: 10%;
+       column-gap: 10%;
+  align-items: center;
 }
-.conceptSection .conceptImage {
-  grid-row: 1/1;
+.conceptSection .conceptCarouselSection {
+  grid-row: 2/2;
   grid-column: 2/3;
+  position: relative;
+}
+.conceptSection .conceptCarouselSection .conceptGraphWrapper {
+  position: absolute;
+  bottom: -25%;
+  left: -25%;
   opacity: 0.5;
+  z-index: 1;
 }
-.conceptSection .conceptImageCarousel {
-  grid-row: 1/1;
-  grid-column: 2/3;
+.conceptSection .conceptCarouselSection .conceptImageCarousel {
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 .conceptSection .decorationCode {
   right: 0px;
@@ -170,6 +181,32 @@
   margin: 50px 0;
 }
 
+@media screen and (max-width: 1600px) {
+  .conceptSection {
+    grid-template-rows: repeat(4, -webkit-fit-content);
+    grid-template-rows: repeat(4, fit-content);
+    grid-template-columns: 1fr;
+    row-gap: 150px;
+    -moz-column-gap: 0;
+         column-gap: 0;
+  }
+  .conceptSection .conceptCarouselSection {
+    grid-row: 2/2;
+    grid-column: 1/1;
+  }
+  .conceptSection .textSection {
+    grid-row: 3/3;
+    grid-column: 1/1;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .conceptSection .conceptGraphWrapper {
+    left: 25%;
+    top: -25%;
+    bottom: initial;
+    right: 25%;
+  }
+}
 @media screen and (max-width: 980px) {
   .conceptSection {
     grid-template-rows: repeat(3, -webkit-fit-content);
@@ -188,4 +225,4 @@
     grid-row: 3/3;
     grid-column: 1/1;
   }
-} /*# sourceMappingURL=home.module.css.map */
+}/*# sourceMappingURL=home.module.css.map */
