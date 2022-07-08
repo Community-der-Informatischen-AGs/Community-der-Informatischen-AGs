@@ -97,7 +97,7 @@
   }
 
   .navigation .menuButton,
-.navigation .menuButton > * {
+  .navigation .menuButton > * {
     display: block;
   }
-}/*# sourceMappingURL=navigation.module.css.map */
+} /*# sourceMappingURL=navigation.module.css.map */

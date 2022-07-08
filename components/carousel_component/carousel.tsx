@@ -38,6 +38,7 @@ export const Carousel = (props: CarouselProps) => {
     )
 
     const elementOffset = nextElement?.offsetLeft
+    console.log(elementOffset);
 
     carouselRef.current?.scrollTo({
       left: elementOffset,

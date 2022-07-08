@@ -18,9 +18,7 @@ import conceptSVG from "./../public/assets/svgs/home/concept.svg"
 
 // ! https://www.npmjs.com/package/@contentful/rich-text-react-renderer for rendering rich text
 
-
 const LandingSection = () => {
-
   const landingCode = `
   
   def foo(bar, leftBar, rightBar, x):
@@ -41,7 +39,8 @@ const LandingSection = () => {
 
   `
 
-  return <section
+  return (
+    <section
       className={
         styles.landingSection +
         " " +
@@ -75,9 +74,7 @@ const LandingSection = () => {
           Digital
           <span className={styles.seeThrough}>e</span>
         </span>
-        <span className={styles.seeThrough}>
-          Projekte
-        </span>
+        <span className={styles.seeThrough}>Projekte</span>
       </h1>
       <section className={styles.contentSection}>
         <h3>
@@ -117,12 +114,11 @@ const LandingSection = () => {
           </button>
         </section>
       </section>
-    </section>;
-
+    </section>
+  )
 }
 
 const ConceptSection = () => {
-
   const conceptCode = `
 
   function breadth_first_search = (start, end) => {
@@ -147,197 +143,210 @@ const ConceptSection = () => {
 
   `
 
-  return <section
-    className={
-      styles.conceptSection +
-      " " +
-      styles.standardPaddingSection
-    }
-  >
-    {" "}
-    {/* TODO: Fotos vvon unterschiedlichen Schulen mit Adrian oder selber machne */}
-    <code
-      lang="javascript"
+  return (
+    <section
       className={
-        globalStyles.preserve +
+        styles.conceptSection +
         " " +
-        globalStyles.background +
-        " " +
-        styles.decorationCode
+        styles.standardPaddingSection
       }
     >
       {" "}
-      {/* This is decoration*/}
-      {conceptCode}
-    </code>
-    <h3
-      className={
-        styles.standardSectionInvisibleHeading
-      }
-    >
-      Was sind wir?
-    </h3>
-    <h2>
-      <TypeIt
-        options={{
-          speed: 50,
-          waitUntilVisible: true,
-        }}
+      {/* TODO: Fotos vvon unterschiedlichen Schulen mit Adrian oder selber machne */}
+      <code
+        lang="javascript"
+        className={
+          globalStyles.preserve +
+          " " +
+          globalStyles.background +
+          " " +
+          styles.decorationCode
+        }
       >
-        Eine Vernetzung von Software-AGs.
-      </TypeIt>
-    </h2>
-    {/* !improve picture by adding images of schools to it */}
-    <Image
-      className={styles.conceptImage}
-      src="/assets/svgs/home/concept.svg"
-      width={409}
-      height={415}
-      alt="SVG für das Konzept"
-    />
-    <section
-      className={styles.conceptImageCarousel}
-    >
-    </section>
-    <section className={styles.textSection}>
-      <article>
-        <p>
-          Die {"'"}Jugend-Entwickelt-Digital{"'"}{" "}
-          Gemeinschaft bietet an unterschiedlichen
-          Schulen Software-AGs an und verbindet diese
-          miteinander.
-        </p>
-        <p>
-          Nehme zusammen mit deiner Schule am Programm
-          teil!
-        </p>
-      </article>
-
-      <section className={styles.buttonSection}>
-        <button>Anmeldung</button>
-        <button
-          className={globalStyles.unimportantButton}
+        {" "}
+        {/* This is decoration*/}
+        {conceptCode}
+      </code>
+      <h3
+        className={styles.standardSectionInvisibleHeading}
+      >
+        Was sind wir?
+      </h3>
+      <h2>
+        <TypeIt
+          options={{
+            speed: 50,
+            waitUntilVisible: true,
+          }}
         >
-          Mehr über das Konzept
-        </button>
+          Eine Vernetzung von Software-AGs.
+        </TypeIt>
+      </h2>
+      {/* !improve picture by adding images of schools to it */}
+      <section
+        className={styles.conceptCarouselSection}
+      >
+        <div className={styles.conceptGraphWrapper}>
+          <Image
+            className={styles.conceptGraph}
+            src="/assets/svgs/home/concept.svg"
+            width={409}
+            height={415}
+            alt="SVG für das Konzept"
+          />
+        </div>
+        <Carousel
+          initialSelectedIndex={0}
+          uniqueClassName={styles.conceptImageCarousel}
+          rotationCycleDuration={2500}
+          heightInPixels={650}
+          width={100}
+          unit="%"
+        >
+          <img
+            src="/assets/images/home/schoolimage1.jpg" //TODO: get better images
+            alt="Programming-Image-1"
+          />
+          <img
+            src="/assets/images/home/schoolimage2.jpg" //TODO: get better images
+            alt="Programming-Image-2"
+          />
+          <img
+            src="/assets/images/home/schoolimage3.jpg" //TODO: get better images
+            alt="Programming-Image-3"
+          />
+        </Carousel>
+      </section>
+      <section className={styles.textSection}>
+        <article>
+          <p>
+            Die {"'"}Jugend-Entwickelt-Digital{"'"}{" "}
+            Gemeinschaft bietet an unterschiedlichen Schulen
+            Software-AGs an und verbindet diese miteinander.
+          </p>
+          <p>
+            Nehme zusammen mit deiner Schule am Programm
+            teil!
+          </p>
+        </article>
+
+        <section className={styles.buttonSection}>
+          <button>Anmeldung</button>
+          <button
+            className={globalStyles.unimportantButton}
+          >
+            Mehr über das Konzept
+          </button>
+        </section>
       </section>
     </section>
-  </section>;
+  )
 }
-
 
 const PostSection = () => {
-
-  return <section
-    className={
-      styles.postSection +
-      " " +
-      styles.standardPaddingSection
-    }
-  >
-    <h3
+  return (
+    <section
       className={
-        styles.standardSectionInvisibleHeading
+        styles.postSection +
+        " " +
+        styles.standardPaddingSection
       }
     >
-      Was bieten wir?
-    </h3>
-    <h2>
-      <TypeIt
-        options={{
-          speed: 50,
-          waitUntilVisible: true,
-        }}
+      <h3
+        className={styles.standardSectionInvisibleHeading}
       >
-        Entdecke Spannende Projekte
-      </TypeIt>
-    </h2>
-    <p>
-      Zusammen arbeiten und kooperieren die
-      Arbeitsgemeinschaften an weiterbildende und
-      interessante Software-Projekte
-    </p>
-    <section>
-      {/* zwei carousels mit blog post teasers und project post teasers */}
+        Was bieten wir?
+      </h3>
+      <h2>
+        <TypeIt
+          options={{
+            speed: 50,
+            waitUntilVisible: true,
+          }}
+        >
+          Entdecke Spannende Projekte
+        </TypeIt>
+      </h2>
+      <p>
+        Zusammen arbeiten und kooperieren die
+        Arbeitsgemeinschaften an weiterbildende und
+        interessante Software-Projekte
+      </p>
+      <section>
+        {/* zwei carousels mit blog post teasers und project post teasers */}
+      </section>
     </section>
-  </section>;
-
+  )
 }
 
-const PhilosophySection = () => { 
-
-  return <section
-    className={
-      styles.philosophySection +
-      " " +
-      styles.standardPaddingSection
-    }
-  >
-    <h3
+const PhilosophySection = () => {
+  return (
+    <section
       className={
-        styles.standardSectionInvisibleHeading
+        styles.philosophySection +
+        " " +
+        styles.standardPaddingSection
       }
     >
-      Was fördern wir?
-    </h3>
-    <h2>
-      <TypeIt
-        options={{
-          speed: 50,
-          waitUntilVisible: true,
-        }}
+      <h3
+        className={styles.standardSectionInvisibleHeading}
       >
-        Weiterbildung. Verbesserung. Vernetzung.
-      </TypeIt>
-    </h2>
-    <h3>Alles im eigenen Tempo</h3>
-    <p>
-      Bei der Jugend Entwickelt Digital Gemeinschaft
-      erlauben wir
-    </p>
-    <ul>
-      <li>Weiterbildung</li>
-      <li>Kooperation</li>
-      <li>und Verbesserung</li>
-      <li>
-        Und alles ohne Stress. Alles im eigenen Tempo.
-      </li>
-    </ul>
-  </section>
-
+        Was fördern wir?
+      </h3>
+      <h2>
+        <TypeIt
+          options={{
+            speed: 50,
+            waitUntilVisible: true,
+          }}
+        >
+          Weiterbildung. Verbesserung. Vernetzung.
+        </TypeIt>
+      </h2>
+      <h3>Alles im eigenen Tempo</h3>
+      <p>
+        Bei der Jugend Entwickelt Digital Gemeinschaft
+        erlauben wir
+      </p>
+      <ul>
+        <li>Weiterbildung</li>
+        <li>Kooperation</li>
+        <li>und Verbesserung</li>
+        <li>
+          Und alles ohne Stress. Alles im eigenen Tempo.
+        </li>
+      </ul>
+    </section>
+  )
 }
 
 const ContactSection = () => {
-
-  return <section
-    className={
-      styles.contactSection +
-      " " +
-      styles.standardPaddingSection
-    }
-  >
-    <h3
+  return (
+    <section
       className={
-        styles.standardSectionInvisibleHeading
+        styles.contactSection +
+        " " +
+        styles.standardPaddingSection
       }
-    ></h3>
-    <h2>
-      <TypeIt
-        options={{
-          speed: 50,
-          waitUntilVisible: true,
-        }}
-      >
-        Teilnehmen!
-      </TypeIt>
-    </h2>
-    <p>Worauf wartest du?</p>
-    {/* Kontaktformular */}
-  </section>;
-
+    >
+      <h3
+        className={styles.standardSectionInvisibleHeading}
+      ></h3>
+      <h2>
+        <TypeIt
+          options={{
+            speed: 50,
+            waitUntilVisible: true,
+          }}
+        >
+          Teilnehmen!
+        </TypeIt>
+      </h2>
+      <p>Worauf wartest du?</p>
+      {/* Kontaktformular */}
+    </section>
+  )
 }
-
-
 
 const Home: NextPage = (props: any) => {
   // Code snippets for decoration purposes:
@@ -370,7 +379,6 @@ const Home: NextPage = (props: any) => {
             width={100}
             unit="vw"
           >
-
             <img
               src="/assets/images/home/testimage1.jpg" //TODO: get better images
               alt="Programming-Image-1"
