@@ -129,10 +129,11 @@
 }
 .landingCarouselSection .landingCarousel img {
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 
 .conceptSection {
+  background-color: #2a3236;
   position: relative;
   display: grid;
   grid-template-rows: -webkit-fit-content -webkit-fit-content -webkit-fit-content;
@@ -140,7 +141,7 @@
   grid-template-columns: 1fr 1fr;
   row-gap: 50px;
   -moz-column-gap: 50px;
-  column-gap: 50px;
+       column-gap: 50px;
 }
 .conceptSection .conceptImage {
   grid-row: 1/1;
@@ -188,4 +189,4 @@
     grid-row: 3/3;
     grid-column: 1/1;
   }
-} /*# sourceMappingURL=home.module.css.map */
+}/*# sourceMappingURL=home.module.css.map */
