@@ -14,6 +14,8 @@ import { Carousel } from "../components/carousel_component/carousel"
 // media:
 import conceptSVG from "./../public/assets/svgs/home/concept.svg"
 
+// TODO: use next images and set the width and height
+
 // ! https://www.npmjs.com/package/@contentful/rich-text-react-renderer for rendering rich text
 
 const Home: NextPage = (props: any) => {
@@ -166,6 +168,7 @@ const Home: NextPage = (props: any) => {
             width={100}
             unit="vw"
           >
+
             <img
               src="/assets/images/home/testimage1.jpg" //TODO: get better images
               alt="Programming-Image-1"
@@ -235,7 +238,26 @@ const Home: NextPage = (props: any) => {
           />
           <section
             className={styles.conceptImageCarousel}
-          ></section>
+          >
+            <Carousel>
+              <img
+                src="/assets/images/home/testimage1.jpg" //TODO: get better images
+                alt="Programming-Image-1"
+              />
+              <img
+                src="/assets/images/home/testimage2.jpg" //TODO: get better images
+                alt="Programming-Image-2"
+              />
+              <img
+                src="/assets/images/home/testimage3.jpg" //TODO: get better images
+                alt="Programming-Image-3"
+              />
+              <img
+                src="/assets/images/home/testimage4.jpg" //TODO: get better images
+                alt="Programming-Image-4"
+              />
+            </Carousel>
+          </section>
           <section className={styles.textSection}>
             <article>
               <p>
