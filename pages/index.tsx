@@ -183,6 +183,7 @@ const ConceptSection = () => {
         </TypeIt>
       </h2>
       {/* !improve picture by adding images of schools to it */}
+      
       <section
         className={styles.conceptCarouselSection}
       >
@@ -217,6 +218,7 @@ const ConceptSection = () => {
           />
         </Carousel>
       </section>
+
       <section className={styles.textSection}>
         <article>
           <p>
@@ -239,6 +241,7 @@ const ConceptSection = () => {
           </button>
         </section>
       </section>
+
     </section>
   )
 }
