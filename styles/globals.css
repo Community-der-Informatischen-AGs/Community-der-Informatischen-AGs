@@ -19,10 +19,17 @@ body {
 }
 
 * {
-  font-family: "Manrope", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Manrope", -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
+    Droid Sans, Helvetica Neue, sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 800;
 }
 
@@ -50,9 +57,13 @@ h6 {
   font-size: 1.3rem;
 }
 
-p, q, blockquote, a {
+p,
+q,
+blockquote,
+a {
   /* this is the standard font for all blog content, etc. */
   font-family: "Roboto Flex", sans-serif;
+  line-height: 1.5;
 }
 
 * {
@@ -63,7 +74,8 @@ code {
   font-family: "Source Code Pro", monospace;
 }
 
-ol, ul {
+ol,
+ul {
   margin: 0;
   padding: 0;
 }
@@ -96,7 +108,8 @@ button:hover {
 button:hover:after {
   height: 100%;
 }
-button:active, button:focus {
+button:active,
+button:focus {
   outline: none;
 }
 button:active {
@@ -106,7 +119,8 @@ button:active {
 input {
   border: none;
 }
-input:active, input:focus {
+input:active,
+input:focus {
   outline: none;
 }
 input::-webkit-search-cancel-button {
@@ -115,4 +129,4 @@ input::-webkit-search-cancel-button {
 
 select {
   border: none;
-}/*# sourceMappingURL=globals.css.map */
+} /*# sourceMappingURL=globals.css.map */

@@ -25,7 +25,8 @@
   color: white;
   width: 100%;
 }
-.searchSection form .xButton, .searchSection form .searchButton {
+.searchSection form .xButton,
+.searchSection form .searchButton {
   margin: 0;
   padding: 0;
   background-color: transparent;
@@ -101,4 +102,4 @@
     width: 25px;
     height: 25px;
   }
-}/*# sourceMappingURL=search.module.css.map */
+} /*# sourceMappingURL=search.module.css.map */

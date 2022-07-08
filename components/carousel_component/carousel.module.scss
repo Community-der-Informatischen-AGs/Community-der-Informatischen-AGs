@@ -1,41 +1,42 @@
-.Carousel {
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  ::-webkit-scrollbar {
-    display: none;
-  }
+@import "./../../styles/module";
 
-  display: flex;
-  gap: 20px;
-  
-  .imageList {
-    width: 100%;
-    height: 100%;
+.Carousel {
+  .carouselWrapper {
+    overflow-x: hidden;
     position: relative;
 
-    list-style: none;
-
-    li {
-      height: 100%;
-      width: 100%;
-
+    .componentList {
       position: absolute;
       top: 0;
-      right: 0;
+      left: 0;
 
-      img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+      list-style: none;
+      @include centeredFlex();
+      justify-content: stretch;
+
+      li {
+        flex: 1;
+
+        & > * {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
       }
     }
-
   }
 
   .selectorList {
+    @include centeredFlex();
     list-style: none;
-  }
+    justify-content: center;
+    gap: 50px;
 
+    li {
+      cursor: pointer;
+    }
+    p {
+      height: fit-content;
+    }
+  }
 }

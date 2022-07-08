@@ -1,10 +1,10 @@
 @import "./../../../styles/module";
 @import "./../../../styles/constants";
 
-.searchSection { 
-  height: 100%; 
+.searchSection {
+  height: 100%;
   position: relative;
-  
+
   @include centeredFlex();
 
   .miniSearch {
@@ -17,7 +17,6 @@
     padding: 20px;
     @include centeredFlex();
 
-
     background-color: $backgroundColor;
     position: relative;
 
@@ -27,7 +26,8 @@
       width: 100%;
     }
 
-    .xButton, .searchButton {
+    .xButton,
+    .searchButton {
       margin: 0;
       padding: 0;
       background-color: transparent;
@@ -51,7 +51,7 @@
       margin: 0;
       margin-right: 20px;
       border: 1px solid rgba(255, 255, 255, 0.1);
-    
+
       ol {
         list-style: none;
         width: 100%;
@@ -68,7 +68,6 @@
             width: calc(100% - 15px);
             @include textCutOffEllipsis();
           }
-
         }
       }
 
@@ -77,19 +76,14 @@
         width: 100%;
         background-color: black;
       }
-
     }
-
-  } 
-
+  }
 }
 
 @media screen and (max-width: 650px) {
-
   .searchSection {
     width: 150px; // TODO: FIX!!! WHERE IS THE MAGNIFYING GLASS?
   }
-
 }
 
 @media screen and (max-width: 430px) {
@@ -98,12 +92,11 @@
   }
   .searchSection {
     width: 50px;
-  
+
     .miniSearch {
       display: block;
       width: 25px;
       height: 25px;
     }
-    
   }
 }

@@ -1,63 +1,135 @@
-import { Circle } from "phosphor-react";
-import { ReactNode, useEffect, useRef, useState } from "react";
-import styles from "./carousel.module.css";
+import { Circle } from "phosphor-react"
+import React, {
+  Children,
+  ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from "react"
+import styles from "./carousel.module.css"
 
-export const Carousel = (props: {
-  children: ReactNode[],
-  uniqueClassName: string,
-  initialSelectedIndex: number,
-  rotationCycleDuration: number,
-}) => {
+interface CarouselProps {
+  children: ReactNode[]
+  uniqueClassName: string
+  initialSelectedIndex: number
+  rotationCycleDuration: number
+  heightInPixels: number
+  width: number
+  unit: string
+}
 
-  useEffect(() => {
+const carouselSelectorSize = 20
 
-    // creating carousel animations dynamically
-    const imageAmount = props.children.length;
-    for (let i=0; i<imageAmount; i++) {
-      const imageListItem: HTMLDataListElement = document.querySelector(`#${props.uniqueClassName + i}`)!;
-      const keyframeList: Keyframe[] = [];
+export const Carousel = (props: CarouselProps) => {
+  const [scrollIndex, setScrollIndex] = useState(0)
+  const maxIndex = props.children.length
+  const carouselRef = useRef<HTMLDivElement>(null)
+  const componentListRef = useRef<HTMLUListElement>(null)
 
-      if (i == 0) {
+  // styling
+  const standardBoxSize = {
+    height: props.heightInPixels + carouselSelectorSize,
+    width: props.width + props.unit,
+  }
 
-        keyframeList.push({opacity: 1});
+  const scrollToIndex = (index: number) => {
+    const nextElement = document.getElementById(
+      props.uniqueClassName + index
+    )
 
-        for (let j=0; j<imageAmount-1; j++) {
-          keyframeList.push({opacity: 0});
-        }
+    const elementOffset = nextElement?.offsetLeft
 
-        keyframeList.push({opacity: 1});
+    carouselRef.current?.scrollTo({
+      left: elementOffset,
+      behavior: "smooth",
+    })
+  }
 
-      } else {
-
-        for (let j=0; j<imageAmount; j++) {
-          if (j == i) {
-            keyframeList.push({opacity: 1});
-          } else {
-            keyframeList.push({opacity: 0});
-          }
-        }
-        keyframeList.push({opacity: 0});
-
-      }
-
-      imageListItem.animate(keyframeList, {
-        duration: props.rotationCycleDuration,
-        iterations: Infinity
-      });
+  const repeatingScrollingFunction = () => {
+    // animate a scroll animation to the corresponding element
+    let nextIndex = scrollIndex + 1
+    if (nextIndex == maxIndex) {
+      nextIndex = 0
     }
 
-  });
-  
-  return <div className={styles.Carousel + " " + props.uniqueClassName}>
-    <ul className={styles.imageList}> 
-      {
-        props.children.map((element, index) => {
-          return <li key={index} id={props.uniqueClassName + index}>
-            {element}
-          </li>;
-        })
-      }
-    </ul>
-  </div>
+    setScrollIndex(nextIndex)
+    scrollToIndex(nextIndex)
+  }
 
+  useEffect(() => {
+    const intervalId = setInterval(
+      repeatingScrollingFunction,
+      props.rotationCycleDuration
+    )
+
+    return () => {
+      clearInterval(intervalId)
+    }
+  })
+
+  return (
+    <div
+      className={styles.Carousel}
+      style={standardBoxSize}
+    >
+      <div
+        ref={carouselRef}
+        className={
+          styles.carouselWrapper +
+          " " +
+          props.uniqueClassName
+        }
+        style={standardBoxSize}
+      >
+        <ul
+          ref={componentListRef}
+          className={styles.componentList}
+          style={{
+            height: props.heightInPixels,
+            width: `${props.width * props.children.length}${
+              props.unit
+            }`,
+          }}
+        >
+          {props.children.map((element, index) => {
+            return (
+              <li
+                key={index}
+                id={props.uniqueClassName + index}
+                style={{
+                  height: props.heightInPixels,
+                  width: props.width + props.unit,
+                }}
+              >
+                {element}
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+      <ul className={styles.selectorList}>
+        <p>{">"}</p>
+        {props.children.map((element, index) => {
+          return (
+            <li
+              key={index}
+              onClick={() => {
+                setScrollIndex(index)
+                scrollToIndex(index)
+              }}
+            >
+              <Circle
+                size={carouselSelectorSize}
+                color={"white"}
+                weight={
+                  scrollIndex == index ? "fill" : "light"
+                }
+              />
+            </li>
+          )
+        })}
+        <p>{"<"}</p>
+      </ul>
+    </div>
+  )
 }
