@@ -16,6 +16,9 @@ import conceptSVG from "./../public/assets/svgs/home/concept.svg"
 
 // TODO: use next images and set the width and height
 
+// TODO: set Concept Section carousel elements to images with text on it.
+// TODO: use different virbrant editor colors for keywords
+
 // ! https://www.npmjs.com/package/@contentful/rich-text-react-renderer for rendering rich text
 
 const LandingSection = () => {
@@ -87,9 +90,9 @@ const LandingSection = () => {
             }}
             getBeforeInit={(instance) => {
               const targets = [
-                "VS-Code Hocker",
-                "DBMS Nutzer",
-                "Figma Enjoyer",
+                "VSCodeHocker",
+                "DBMSNutzer",
+                "FigmaEnjoyer",
               ]
 
               for (const target of targets) {
@@ -179,7 +182,13 @@ const ConceptSection = () => {
             waitUntilVisible: true,
           }}
         >
-          Eine Vernetzung von Software-AGs.
+          Eine Vernetzung von 
+          <span style={{
+            color: "rgb(227, 190, 0)",
+            display: "block"
+          }}>
+            {`<SoftwareAGs />.`}
+          </span>
         </TypeIt>
       </h2>
       {/* !improve picture by adding images of schools to it */}

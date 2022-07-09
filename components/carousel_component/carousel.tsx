@@ -28,7 +28,7 @@ export const Carousel = (props: CarouselProps) => {
 
   // styling
   const standardBoxSize = {
-    height: props.heightInPixels + carouselSelectorSize,
+    height: props.heightInPixels,
     width: props.width + props.unit,
   }
 

@@ -120,13 +120,17 @@
   }
 }
 .landingCarouselSection {
-  margin: 100px 0;
+  position: relative;
+  z-index: 2;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
 }
 .landingCarouselSection .landingCarousel {
   width: 100vw;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 .landingCarouselSection .landingCarousel img {
   -o-object-fit: cover;
@@ -134,7 +138,9 @@
 }
 
 .conceptSection {
-  background-color: #2b383f;
+  z-index: 1;
+  background-color: rgb(29, 32, 32);
+  color: white;
   position: relative;
   margin: auto;
   padding-bottom: 200px;
