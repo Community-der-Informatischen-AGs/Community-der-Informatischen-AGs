@@ -227,6 +227,12 @@ const ConceptSection = () => {
             Software-AGs an und verbindet diese miteinander.
           </p>
           <p>
+            Untereinander arbeiten die AGs an schulinterne Projekte.
+          </p>
+          <p>
+            Zusammen kooperieren die AGs und arbeiten an schulunabhängige Projekte.
+          </p>
+          <p>
             Nehme zusammen mit deiner Schule am Programm
             teil!
           </p>
@@ -258,7 +264,7 @@ const PostSection = () => {
       <h3
         className={styles.standardSectionInvisibleHeading}
       >
-        Was bieten wir?
+        Was machen wir?
       </h3>
       <h2>
         <TypeIt
@@ -270,13 +276,32 @@ const PostSection = () => {
           Entdecke Spannende Projekte
         </TypeIt>
       </h2>
-      <p>
-        Zusammen arbeiten und kooperieren die
-        Arbeitsgemeinschaften an weiterbildende und
-        interessante Software-Projekte
-      </p>
-      <section>
-        {/* zwei carousels mit blog post teasers und project post teasers */}
+      {/* zwei carousels mit blog post teasers und project post teasers */}
+      <section className={styles.projectsSection}>
+        <Carousel
+          uniqueClassName={styles.projectCarousel}
+          initialSelectedIndex={0}
+          rotationCycleDuration={4000}
+          heightInPixels={500}
+          width={45}
+          unit={"vw"}
+        >
+          <div></div>
+          <div></div>
+        </Carousel>
+      </section>
+      <section className={styles.blogSection}>
+        <Carousel
+          uniqueClassName={styles.blogCarousel}
+          initialSelectedIndex={0}
+          rotationCycleDuration={4000}
+          heightInPixels={500}
+          width={45}
+          unit={"vw"}
+        >
+          <div></div>
+          <div></div>
+        </Carousel>
       </section>
     </section>
   )
