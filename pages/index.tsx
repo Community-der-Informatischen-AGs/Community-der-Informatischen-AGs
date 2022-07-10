@@ -13,13 +13,13 @@ import { Carousel } from "../components/carousel_component/carousel"
 
 // media:
 import conceptSVG from "./../public/assets/svgs/home/concept.svg"
+import { JSXElementComponent } from "../components/jsx_element_component/jsx_element_component"
 
 // TODO: use next images and set the width and height
 
 // TODO: set Concept Section carousel elements to images with text on it.
 
 // ! https://www.npmjs.com/package/@contentful/rich-text-react-renderer for rendering rich text
-
 
 const LandingSection = () => {
   const landingCode = `
@@ -182,20 +182,19 @@ const ConceptSection = () => {
             waitUntilVisible: true,
           }}
         >
-          Eine Vernetzung von 
-          <span style={{
-            color: "rgb(227, 190, 0)",
-            display: "block"
-          }}>
-            {`<SoftwareAGs />.`}
-          </span>
+          Eine Vernetzung von
+          <JSXElementComponent
+            color={"yellow"}
+            style={{
+              display: "block",
+            }}
+          >
+            SoftwareAGs
+          </JSXElementComponent>
         </TypeIt>
       </h2>
       {/* !improve picture by adding images of schools to it */}
-      
-      <section
-        className={styles.conceptCarouselSection}
-      >
+      <section className={styles.conceptCarouselSection}>
         <div className={styles.conceptGraphWrapper}>
           <Image
             className={styles.conceptGraph}
@@ -227,7 +226,6 @@ const ConceptSection = () => {
           />
         </Carousel>
       </section>
-
       <section className={styles.textSection}>
         <article>
           <p>
@@ -236,10 +234,12 @@ const ConceptSection = () => {
             Software-AGs an und verbindet diese miteinander.
           </p>
           <p>
-            Untereinander arbeiten die AGs an schulinterne Projekte.
+            Untereinander arbeiten die AGs an schulinterne
+            Projekte.
           </p>
           <p>
-            Zusammen kooperieren die AGs und arbeiten an schulunabhängige Projekte.
+            Zusammen kooperieren die AGs und arbeiten an
+            schulunabhängige Projekte.
           </p>
           <p>
             Nehme zusammen mit deiner Schule am Programm
@@ -256,7 +256,6 @@ const ConceptSection = () => {
           </button>
         </section>
       </section>
-
     </section>
   )
 }
