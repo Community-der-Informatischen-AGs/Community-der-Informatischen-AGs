@@ -7,11 +7,11 @@ import globalStyles from "../styles/globals.module.scss"
 import { Contentful } from "../lib/contentful/api"
 
 import TypeIt from "typeit-react"
-import { Header } from "../components/header_component/header"
-import { Carousel } from "../components/carousel_component/carousel"
-
-// media:
-import { JSXElementComponent } from "../components/jsx_element_component/jsx_element_component"
+import {
+  Carousel,
+  Header,
+  JSXElementComponent,
+} from "../components"
 
 // TODO: use next images and set the width and height
 

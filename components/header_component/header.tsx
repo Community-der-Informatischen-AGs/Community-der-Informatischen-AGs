@@ -1,21 +1,11 @@
 import styles from "./header.module.scss"
 import { useRouter } from "next/router"
+import { MutableRefObject, useEffect, useRef } from "react"
 import {
-  FormEvent,
-  MutableRefObject,
-  useEffect,
-  useRef,
-  useState,
-} from "react"
-import {
-  LinkSimpleHorizontal,
-  LinkSimpleHorizontalBreak,
-  List,
-  MagnifyingGlass,
-} from "phosphor-react"
-import { Select } from "../select_component/select"
-import { Search } from "./search_component/search"
-import { Navigation } from "./navigation_component/navigation"
+  Navigation,
+  Select,
+  Search,
+} from "../../components"
 
 function useWindowScrollEvent(
   headerRef: MutableRefObject<null>
