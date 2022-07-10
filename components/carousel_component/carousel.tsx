@@ -1,12 +1,11 @@
 import { Circle } from "phosphor-react"
 import React, {
-  Children,
   ReactNode,
   useEffect,
   useRef,
   useState,
 } from "react"
-import styles from "./carousel.module.css"
+import styles from "./carousel.module.scss"
 
 interface CarouselProps {
   children: ReactNode[]

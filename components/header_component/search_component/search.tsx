@@ -13,7 +13,7 @@ import {
   useState,
 } from "react"
 
-import styles from "./search.module.css"
+import styles from "./search.module.scss"
 
 export const Search = () => {
   const reservedInvalidId = ""

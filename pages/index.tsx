@@ -1,18 +1,16 @@
 import type { NextPage } from "next"
 import Head from "next/head"
 import Image from "next/image"
-import styles from "../styles/home/home.module.css"
-import globalStyles from "../styles/globals.module.css"
+import styles from "../styles/home/home.module.scss"
+import globalStyles from "../styles/globals.module.scss"
 
 import { Contentful } from "../lib/contentful/api"
 
 import TypeIt from "typeit-react"
 import { Header } from "../components/header_component/header"
-import { Circle } from "phosphor-react"
 import { Carousel } from "../components/carousel_component/carousel"
 
 // media:
-import conceptSVG from "./../public/assets/svgs/home/concept.svg"
 import { JSXElementComponent } from "../components/jsx_element_component/jsx_element_component"
 
 // TODO: use next images and set the width and height

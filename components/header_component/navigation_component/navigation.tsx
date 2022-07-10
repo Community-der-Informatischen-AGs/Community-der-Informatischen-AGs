@@ -2,7 +2,7 @@ import Link from "next/link"
 import { List } from "phosphor-react"
 import { useState } from "react"
 
-import styles from "./navigation.module.css"
+import styles from "./navigation.module.scss"
 
 export const Navigation = () => {
   const [menuActive, setMenuActive] = useState(false)

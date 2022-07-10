@@ -1,5 +1,5 @@
 import { useRef, useState } from "react"
-import styles from "./select.module.css"
+import styles from "./select.module.scss"
 
 export function Select<valueType>(props: {
   options: {
