@@ -17,9 +17,9 @@ import conceptSVG from "./../public/assets/svgs/home/concept.svg"
 // TODO: use next images and set the width and height
 
 // TODO: set Concept Section carousel elements to images with text on it.
-// TODO: use different virbrant editor colors for keywords
 
 // ! https://www.npmjs.com/package/@contentful/rich-text-react-renderer for rendering rich text
+
 
 const LandingSection = () => {
   const landingCode = `
@@ -90,9 +90,9 @@ const LandingSection = () => {
             }}
             getBeforeInit={(instance) => {
               const targets = [
-                "VSCodeHocker",
-                "DBMSNutzer",
-                "FigmaEnjoyer",
+                "<span style='color: #82AADF'>&ltVSCodeHocker /&gt</span>",
+                "<span style='color: #BC6778'>&ltDBMSNutzer /&gt</span>",
+                "<span style='color: #C792EA'>&ltDoksLeser /&gt</span>",
               ]
 
               for (const target of targets) {
