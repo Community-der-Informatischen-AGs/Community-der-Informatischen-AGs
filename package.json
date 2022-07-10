@@ -16,6 +16,7 @@
     "prettier": "^2.7.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sass": "^1.53.0",
     "typeit-react": "^2.5.1-alpha.0"
   },
   "devDependencies": {
