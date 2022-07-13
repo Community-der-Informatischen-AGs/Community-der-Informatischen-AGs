@@ -11,6 +11,7 @@ import {
   Carousel,
   Header,
   JSXElementComponent,
+  PostPreviewComponent,
 } from "../components"
 
 // TODO: use next images and set the width and height
@@ -292,7 +293,10 @@ const PostSection = () => {
           width={45}
           unit={"vw"}
         >
-          <div></div>
+          <PostPreviewComponent
+            entryId="7b14KZa8iHJbqK8blfbjSe"
+            contentTypeId="blogPost"
+          />
           <div></div>
         </Carousel>
       </section>
@@ -444,6 +448,7 @@ const Home: NextPage = (props: any) => {
 export default Home
 
 export async function getStaticProps() {
+  /*
   console.log(
     await Contentful.getSingleEntry(
       "blogPost",
@@ -456,6 +461,7 @@ export async function getStaticProps() {
       `
     )
   )
+  */
 
   return {
     props: {
