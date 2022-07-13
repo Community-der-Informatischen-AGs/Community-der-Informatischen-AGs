@@ -5,6 +5,8 @@ import { useRouter } from "next/router"
 import styles from "./post_preview_component.module.scss"
 import { useEffect, useRef } from "react"
 
+// TODO: create different components for different content types.
+
 /*
 
 query for getting all information for assets
