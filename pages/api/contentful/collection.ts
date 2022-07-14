@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next"
-import { Contentful } from "../../../../lib/contentful/api"
+import { Contentful } from "./../../../lib/contentful/api"
+
 
 /**
  * @param req a request with json-stringified body which should contain: collectionType, limit, itemQuery, filter

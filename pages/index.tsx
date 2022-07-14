@@ -13,6 +13,7 @@ import {
   JSXElementComponent,
   PostPreviewComponent,
 } from "../components"
+import { BlogPostPreviewComponent } from "../components/preview_post_component/preview_blog_post_component"
 
 // TODO: use next images and set the width and height
 
@@ -293,10 +294,7 @@ const PostSection = () => {
           width={45}
           unit={"vw"}
         >
-          <PostPreviewComponent
-            entryId="7b14KZa8iHJbqK8blfbjSe"
-            contentTypeId="blogPost"
-          />
+          <div></div>
           <div></div>
         </Carousel>
       </section>
@@ -309,8 +307,9 @@ const PostSection = () => {
           width={45}
           unit={"vw"}
         >
-          <div></div>
-          <div></div>
+          <BlogPostPreviewComponent entryId="7b14KZa8iHJbqK8blfbjSe" />
+          <BlogPostPreviewComponent entryId="7b14KZa8iHJbqK8blfbjSe" />
+          <BlogPostPreviewComponent entryId="7b14KZa8iHJbqK8blfbjSe" />
         </Carousel>
       </section>
     </section>
