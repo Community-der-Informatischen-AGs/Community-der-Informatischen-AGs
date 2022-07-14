@@ -243,6 +243,7 @@
     grid-template-rows: repeat(3, fit-content);
     grid-template-columns: 1fr;
     margin-right: 0px;
+    border-right: none;
 
     .decorationCode {
       top: initial;
@@ -262,7 +263,6 @@
 }
 
 .postSection {
-
   position: relative;
   width: 100%;
   display: grid;
@@ -315,5 +315,36 @@
       height: 100%;
     }
   } 
+
+}
+@media screen and (max-width: 1200px) {
+  .postSection {
+    grid-template-columns: fit-content;
+    grid-template-rows: repeat(5, fit-content);
+
+    h2 {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    
+    .projectsSection {
+      grid-row: 2;
+      grid-column: 1;
+    }
+    .projectHeading {
+      grid-row: 3;
+      grid-column: 1;
+    }
+
+    .blogSection {
+      grid-row: 4;
+      grid-column: 1;
+    }
+    .blogHeading {
+      grid-row: 5;
+      grid-column: 1;
+    }
+
+  }
 
 }

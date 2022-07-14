@@ -387,15 +387,17 @@ const PostSection = () => {
         </TypeIt>
       </h2>
       {/* zwei carousels mit blog post teasers und project post teasers */}
-      <h3>Project Posts</h3>
+      <h3 className={styles.projectHeading}>
+        Project Posts
+      </h3>
       <section className={styles.projectsSection}>
         <Carousel
           uniqueClassName={styles.projectCarousel}
           initialSelectedIndex={0}
           rotationCycleDuration={4000}
           heightInPixels={500}
-          width={42.5}
-          unit={"vw"}
+          width={100}
+          unit={"%"}
         >
           {projectPostIds.map((id) => {
             return (
@@ -407,15 +409,15 @@ const PostSection = () => {
           })}
         </Carousel>
       </section>
-      <h3>Blog Posts</h3>
+      <h3 className={styles.blogHeading}>Blog Posts</h3>
       <section className={styles.blogSection}>
         <Carousel
           uniqueClassName={styles.blogCarousel}
           initialSelectedIndex={0}
           rotationCycleDuration={4000}
           heightInPixels={500}
-          width={42.5}
-          unit={"vw"}
+          width={100}
+          unit={"%"}
         >
           {blogPostIds.map((id) => {
             return (
