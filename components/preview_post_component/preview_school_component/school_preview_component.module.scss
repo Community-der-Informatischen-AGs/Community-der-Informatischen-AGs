@@ -1,0 +1,34 @@
+.schoolPreviewComponent {
+
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+
+
+  position: relative;
+
+  .previewImage {
+    height: 100%;
+    overflow-y: hidden;
+
+    img {
+      width: 100%;
+      height: 60%;
+      object-fit: contain;
+    }
+
+  }
+
+  .previewText {
+    color: rgba(50, 50, 50, 1);
+    padding: 50px;
+    height: 40%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: whitesmoke;
+  }
+
+
+}

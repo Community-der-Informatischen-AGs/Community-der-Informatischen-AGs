@@ -2,26 +2,25 @@ import { Document } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styles from "./project_post_preview_component.module.scss"
 import React, { useEffect, useState } from "react"
-import { PostPreviewComponent } from "../post_preview_component"
+import {
+  ImageData,
+  PostPreviewComponent,
+  processImageData,
+} from "../post_preview_component"
 import { Circle } from "phosphor-react"
 
-const contentTypeId = "projectPost"
-const contentType = "Project Post"
+const CONTENT_TYPE_ID = "projectPost"
+const CONTENT_TYPE = "Project Post"
 
 export interface ProjectPostPreviewComponentProps {
   entryId: string
 }
 
-export interface ContentfulProjectPostProps {
+export interface ContentfulProjectPostPreviewProps {
   contentType: string
   title: string
   body: Document
-  image: {
-    imageUrl: string
-    imageHeight: number
-    imageWidth: number
-    imageTitle: string
-  }
+  image?: ImageData
   finished: boolean
   school: string
 }
@@ -29,10 +28,8 @@ export interface ContentfulProjectPostProps {
 const lazyLoad = async (
   props: ProjectPostPreviewComponentProps
 ) => {
-  console.log("lazy load content now")
-
   const bodyJson = {
-    entryType: contentTypeId,
+    entryType: CONTENT_TYPE_ID,
     entryId: props.entryId,
     entryQuery: `
       title
@@ -65,25 +62,16 @@ const lazyLoad = async (
     .data.projectPost
   const title = responseJsonData.title
   const bodyDocument = responseJsonData.body.json
-  const image =
-    responseJsonData.optionalTitleMediaCollection.items[0]
-  const imageUrl = image.url
-  const imageHeight = image.height
-  const imageWidth = image.width
-  const imageTitle = image.title
   const school = responseJsonData.assignedSchool.title
   const finished = responseJsonData.finished
+  const image =
+    responseJsonData.optionalTitleMediaCollection.items[0]
 
   return {
-    contentType: contentTypeId,
+    contentType: CONTENT_TYPE_ID,
     title: title,
     body: bodyDocument,
-    image: {
-      imageUrl: imageUrl,
-      imageHeight: imageHeight,
-      imageWidth: imageWidth,
-      imageTitle: imageTitle,
-    },
+    image: processImageData(image),
     school: school,
     finished: finished,
   }
@@ -93,7 +81,7 @@ export const ProjectPostPreviewComponent = (
   props: ProjectPostPreviewComponentProps
 ) => {
   const [postProps, setPostProps] =
-    useState<ContentfulProjectPostProps>(null!)
+    useState<ContentfulProjectPostPreviewProps>(null!)
   // lazy-loading post data
 
   useEffect(() => {
@@ -103,8 +91,8 @@ export const ProjectPostPreviewComponent = (
   return postProps == null ? null : (
     <PostPreviewComponent
       entryId={props.entryId}
-      contentType={contentType}
-      contentTypeId={contentTypeId}
+      contentType={CONTENT_TYPE}
+      contentTypeId={CONTENT_TYPE_ID}
       title={postProps.title}
       body={documentToReactComponents(postProps.body)}
       image={postProps.image}

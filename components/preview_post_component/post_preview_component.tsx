@@ -8,18 +8,33 @@ export interface PostPreviewComponentProps {
   contentType: string
   contentTypeId: string
   title: string
-  image?: {
-    imageTitle: string
-    imageHeight: number
-    imageWidth: number
-    imageUrl: string
-  }
+  image?: ImageData
   children?: ReactNode[] | ReactNode
-  body: ReactNode
+  body?: ReactNode
   className?: string
   imageSectionClassName?: string
   textSectionClassName?: string
   indicatorSectionClassName?: string
+}
+
+export interface ImageData {
+  imageUrl: string
+  imageHeight: number
+  imageWidth: number
+  imageTitle: string
+}
+
+export const processImageData = (image: any) => {
+  if (image !== undefined) {
+    return {
+      imageUrl: image.url,
+      imageHeight: image.height,
+      imageWidth: image.width,
+      imageTitle: image.title,
+    }
+  }
+
+  return undefined
 }
 
 // TODO: add common placeholder images etc.
@@ -53,9 +68,23 @@ export const PostPreviewComponent = (
         </section>
       ) : null}
       <section className={props.textSectionClassName}>
-        <span>
-          <h3>{props.title}</h3>
-          <p> ({props.contentType})</p>
+        <span
+          style={{
+            display: "block",
+          }}
+        >
+          <h3 style={{ display: "inline" }}>
+            {props.title}
+          </h3>
+          <p
+            style={{
+              display: "inline",
+              fontSize: "1rem",
+            }}
+          >
+            {" "}
+            ({props.contentType})
+          </p>
         </span>
         {props.children}
         <article>{props.body}</article>

@@ -2,10 +2,14 @@ import { Document } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styles from "./blog_post_preview_component.module.scss"
 import React, { useEffect, useState } from "react"
-import { PostPreviewComponent } from "../post_preview_component"
+import {
+  ImageData,
+  PostPreviewComponent,
+  processImageData,
+} from "../post_preview_component"
 
-const contentTypeId = "blogPost"
-const contentType = "Blog Post"
+const CONTENT_TYPE_ID = "blogPost"
+const CONTENT_TYPE = "Blog Post"
 
 export interface BlogPostPreviewComponentProps {
   entryId: string
@@ -17,21 +21,14 @@ export interface ContentfulBlogPostProps {
   title: string
   body: Document
   publishedAt: string
-  image: {
-    imageUrl: string
-    imageHeight: number
-    imageWidth: number
-    imageTitle: string
-  }
+  image?: ImageData
 }
 
 const lazyLoad = async (
   props: BlogPostPreviewComponentProps
 ) => {
-  console.log("lazy load content now")
-
   const bodyJson = {
-    entryType: contentTypeId,
+    entryType: CONTENT_TYPE_ID,
     entryId: props.entryId,
     entryQuery: `
       title
@@ -71,26 +68,17 @@ const lazyLoad = async (
   const publishedAt = new Date(
     responseJsonData.sys.publishedAt
   ).toLocaleDateString()
+  const author = responseJsonData.author.title
   const image =
     responseJsonData.optionalTitleMediaCollection.items[0]
-  const imageUrl = image.url
-  const imageHeight = image.height
-  const imageWidth = image.width
-  const imageTitle = image.title
-  const author = responseJsonData.author.title
 
   return {
     author: author,
-    contentType: contentTypeId,
+    contentType: CONTENT_TYPE_ID,
     title: title,
     body: bodyDocument,
     publishedAt: publishedAt,
-    image: {
-      imageUrl: imageUrl,
-      imageHeight: imageHeight,
-      imageWidth: imageWidth,
-      imageTitle: imageTitle,
-    },
+    image: processImageData(image),
   }
 }
 
@@ -108,8 +96,8 @@ export const BlogPostPreviewComponent = (
   return postProps == null ? null : (
     <PostPreviewComponent
       entryId={props.entryId}
-      contentType={contentType}
-      contentTypeId={contentTypeId}
+      contentType={CONTENT_TYPE}
+      contentTypeId={CONTENT_TYPE_ID}
       title={postProps.title}
       body={documentToReactComponents(postProps.body)}
       image={postProps.image}

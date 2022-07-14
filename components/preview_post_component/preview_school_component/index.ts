@@ -1,0 +1,1 @@
+export * from "./school_preview_component";

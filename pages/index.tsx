@@ -16,6 +16,9 @@ import {
 import { BlogPostPreviewComponent } from "../components/preview_post_component/preview_blog_post_component"
 import { ProjectPostPreviewComponent } from "../components/preview_post_component/preview_project_post_component/project_post_preview_component"
 import { Cursor, HandPointing } from "phosphor-react"
+import { useEffect, useState } from "react"
+import { json } from "stream/consumers"
+import { SchoolPreviewComponent } from "../components/preview_post_component/preview_school_component"
 
 // TODO: use next images and set the width and height
 
@@ -214,18 +217,8 @@ const ConceptSection = () => {
           width={100}
           unit="%"
         >
-          <img
-            src="/assets/images/home/schoolimage1.jpg" //TODO: get better images
-            alt="Programming-Image-1"
-          />
-          <img
-            src="/assets/images/home/schoolimage2.jpg" //TODO: get better images
-            alt="Programming-Image-2"
-          />
-          <img
-            src="/assets/images/home/schoolimage3.jpg" //TODO: get better images
-            alt="Programming-Image-3"
-          />
+          <SchoolPreviewComponent entryId="1qtX4IgPCZKniqZ7HrGwQP" />
+          <SchoolPreviewComponent entryId="1qtX4IgPCZKniqZ7HrGwQP" />
         </Carousel>
       </section>
       <section className={styles.textSection}>
@@ -263,6 +256,61 @@ const ConceptSection = () => {
 }
 
 const PostSection = () => {
+  const [projectPostIds, setProjectPostIds] = useState([])
+  const [blogPostIds, setblogPostIds] = useState([])
+
+  const extractIds = async () => {
+    const queryResponse = await fetch(
+      "/api/contentful/query",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          query: `
+          projectPostCollection(limit: 3) {
+            items {
+              sys {
+                id
+              }
+            }
+          }
+          blogPostCollection(limit: 3) {
+            items {
+              sys {
+                id
+              }
+            }
+          }
+        `,
+        }),
+      }
+    )
+
+    const jsonQueryResponse = (await queryResponse.json())
+      .data
+
+    const projectPostsData =
+      jsonQueryResponse.projectPostCollection.items
+    const blogPostsData =
+      jsonQueryResponse.blogPostCollection.items
+
+    const projectPostIds = projectPostsData.map(
+      (value: any) => {
+        return value.sys.id
+      }
+    )
+    const blogPostIds = blogPostsData.map((value: any) => {
+      return value.sys.id
+    })
+
+    setProjectPostIds(projectPostIds)
+    setblogPostIds(blogPostIds)
+  }
+
+  useEffect(() => {
+    // getting the entry ids for project posts and blog posts
+    extractIds()
+  }, [])
+
   // TODO: insert code snippet
   return (
     <section
@@ -313,8 +361,14 @@ const PostSection = () => {
           width={42.5}
           unit={"vw"}
         >
-          <ProjectPostPreviewComponent entryId="7qiRmHv3IJynh7C3ChX5BL" />
-          <ProjectPostPreviewComponent entryId="7qiRmHv3IJynh7C3ChX5BL" />
+          {projectPostIds.map((id) => {
+            return (
+              <ProjectPostPreviewComponent
+                key={id}
+                entryId={id}
+              />
+            )
+          })}
         </Carousel>
       </section>
       <h3>Blog Posts</h3>
@@ -327,9 +381,14 @@ const PostSection = () => {
           width={42.5}
           unit={"vw"}
         >
-          <BlogPostPreviewComponent entryId="7b14KZa8iHJbqK8blfbjSe" />
-          <BlogPostPreviewComponent entryId="7b14KZa8iHJbqK8blfbjSe" />
-          <BlogPostPreviewComponent entryId="7b14KZa8iHJbqK8blfbjSe" />
+          {blogPostIds.map((id) => {
+            return (
+              <BlogPostPreviewComponent
+                key={id}
+                entryId={id}
+              />
+            )
+          })}
         </Carousel>
       </section>
     </section>
@@ -466,6 +525,7 @@ const Home: NextPage = (props: any) => {
 
 export default Home
 
+/// !! Be careful! Get static props only generates stuff on build time. does not do it when user rerenders the page
 export async function getStaticProps() {
   /*
   console.log(
