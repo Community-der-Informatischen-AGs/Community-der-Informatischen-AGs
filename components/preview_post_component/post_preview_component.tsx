@@ -1,10 +1,12 @@
 import { useRouter } from "next/router"
 import Image from "next/image"
 import { ReactNode } from "react"
+import { HandPointing } from "phosphor-react"
 
 export interface PostPreviewComponentProps {
   entryId: string
   contentType: string
+  contentTypeId: string
   title: string
   image?: {
     imageTitle: string
@@ -12,12 +14,12 @@ export interface PostPreviewComponentProps {
     imageWidth: number
     imageUrl: string
   }
-  publishedAt?: string
-  author?: string
+  children?: ReactNode[] | ReactNode
   body: ReactNode
   className?: string
   imageSectionClassName?: string
   textSectionClassName?: string
+  indicatorSectionClassName?: string
 }
 
 // TODO: add common placeholder images etc.
@@ -35,7 +37,7 @@ export const PostPreviewComponent = (
       onClick={() => {
         // this should work...
         router.push(
-          `/${props.contentType}/${props.entryId}`
+          `/${props.contentTypeId}/${props.entryId}`
         )
       }}
     >
@@ -51,14 +53,20 @@ export const PostPreviewComponent = (
         </section>
       ) : null}
       <section className={props.textSectionClassName}>
-        <h3>{props.title}</h3>
-        {props.publishedAt ? (
-          <p>published on {props.publishedAt}</p>
-        ) : null}
-        {props.author ? (
-          <p>published by {props.author}</p>
-        ) : null}
+        <span>
+          <h3>{props.title}</h3>
+          <p> ({props.contentType})</p>
+        </span>
+        {props.children}
         <article>{props.body}</article>
+      </section>
+      <section className={props.indicatorSectionClassName}>
+        <HandPointing
+          size={32}
+          weight="fill"
+          color="white"
+        />
+        <p>Click me to read more!</p>
       </section>
     </div>
   )

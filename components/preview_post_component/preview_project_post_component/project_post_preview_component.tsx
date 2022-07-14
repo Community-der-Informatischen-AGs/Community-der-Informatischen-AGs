@@ -1,32 +1,33 @@
 import { Document } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import styles from "./blog_post_preview_component.module.scss"
+import styles from "./project_post_preview_component.module.scss"
 import React, { useEffect, useState } from "react"
 import { PostPreviewComponent } from "../post_preview_component"
+import { Circle } from "phosphor-react"
 
-const contentTypeId = "blogPost"
-const contentType = "Blog Post"
+const contentTypeId = "projectPost"
+const contentType = "Project Post"
 
-export interface BlogPostPreviewComponentProps {
+export interface ProjectPostPreviewComponentProps {
   entryId: string
 }
 
-export interface ContentfulBlogPostProps {
-  author: string
+export interface ContentfulProjectPostProps {
   contentType: string
   title: string
   body: Document
-  publishedAt: string
   image: {
     imageUrl: string
     imageHeight: number
     imageWidth: number
     imageTitle: string
   }
+  finished: boolean
+  school: string
 }
 
 const lazyLoad = async (
-  props: BlogPostPreviewComponentProps
+  props: ProjectPostPreviewComponentProps
 ) => {
   console.log("lazy load content now")
 
@@ -35,23 +36,21 @@ const lazyLoad = async (
     entryId: props.entryId,
     entryQuery: `
       title
-      author {
-        title
-      }
       optionalTitleMediaCollection (limit: 1) {
         items {
           title,
-          url,
-          height,
           width,
-        } 
+          height,
+          url
+        }
       }
       body {
         json
       }
-      sys {
-        publishedAt
+      assignedSchool {
+        title
       }
+      finished 
     `,
   }
   const responsePostData = await fetch(
@@ -63,42 +62,38 @@ const lazyLoad = async (
   )
 
   const responseJsonData = (await responsePostData.json())
-    .data.blogPost
-  console.log(responseJsonData)
+    .data.projectPost
   const title = responseJsonData.title
   const bodyDocument = responseJsonData.body.json
-  // TODO: add locales!
-  const publishedAt = new Date(
-    responseJsonData.sys.publishedAt
-  ).toLocaleDateString()
   const image =
     responseJsonData.optionalTitleMediaCollection.items[0]
   const imageUrl = image.url
   const imageHeight = image.height
   const imageWidth = image.width
   const imageTitle = image.title
-  const author = responseJsonData.author.title
+  const school = responseJsonData.assignedSchool.title
+  const finished = responseJsonData.finished
 
   return {
-    author: author,
     contentType: contentTypeId,
     title: title,
     body: bodyDocument,
-    publishedAt: publishedAt,
     image: {
       imageUrl: imageUrl,
       imageHeight: imageHeight,
       imageWidth: imageWidth,
       imageTitle: imageTitle,
     },
+    school: school,
+    finished: finished,
   }
 }
 
-export const BlogPostPreviewComponent = (
-  props: BlogPostPreviewComponentProps
+export const ProjectPostPreviewComponent = (
+  props: ProjectPostPreviewComponentProps
 ) => {
   const [postProps, setPostProps] =
-    useState<ContentfulBlogPostProps>(null!)
+    useState<ContentfulProjectPostProps>(null!)
   // lazy-loading post data
 
   useEffect(() => {
@@ -113,14 +108,21 @@ export const BlogPostPreviewComponent = (
       title={postProps.title}
       body={documentToReactComponents(postProps.body)}
       image={postProps.image}
-      className={styles.blogPostPreviewComponent}
+      className={styles.projectPostPreviewComponent}
       imageSectionClassName={styles.previewImage}
       textSectionClassName={styles.previewText}
     >
-      <p>
-        Published by {postProps.author} on{" "}
-        {postProps.publishedAt}
-      </p>
+      <div>
+        <p>Project by {postProps.school}</p>
+        <div className={styles.status}>
+          <Circle
+            color={postProps.finished ? "green" : "orange"}
+            weight="fill"
+            size={20}
+          />
+          {postProps.finished ? "finished" : "ongoing"}
+        </div>
+      </div>
     </PostPreviewComponent>
   )
 }

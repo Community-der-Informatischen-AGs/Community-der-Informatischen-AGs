@@ -14,6 +14,8 @@ import {
   PostPreviewComponent,
 } from "../components"
 import { BlogPostPreviewComponent } from "../components/preview_post_component/preview_blog_post_component"
+import { ProjectPostPreviewComponent } from "../components/preview_post_component/preview_project_post_component/project_post_preview_component"
+import { Cursor, HandPointing } from "phosphor-react"
 
 // TODO: use next images and set the width and height
 
@@ -261,6 +263,7 @@ const ConceptSection = () => {
 }
 
 const PostSection = () => {
+  // TODO: insert code snippet
   return (
     <section
       className={
@@ -269,6 +272,13 @@ const PostSection = () => {
         styles.standardPaddingSection
       }
     >
+      <Cursor
+        className={styles.decoration}
+        color="white"
+        size={200}
+        weight="thin"
+      />
+
       <h3
         className={styles.standardSectionInvisibleHeading}
       >
@@ -293,26 +303,28 @@ const PostSection = () => {
         </TypeIt>
       </h2>
       {/* zwei carousels mit blog post teasers und project post teasers */}
+      <h3>Project Posts</h3>
       <section className={styles.projectsSection}>
         <Carousel
           uniqueClassName={styles.projectCarousel}
           initialSelectedIndex={0}
           rotationCycleDuration={4000}
           heightInPixels={500}
-          width={45}
+          width={42.5}
           unit={"vw"}
         >
-          <div></div>
-          <div></div>
+          <ProjectPostPreviewComponent entryId="7qiRmHv3IJynh7C3ChX5BL" />
+          <ProjectPostPreviewComponent entryId="7qiRmHv3IJynh7C3ChX5BL" />
         </Carousel>
       </section>
+      <h3>Blog Posts</h3>
       <section className={styles.blogSection}>
         <Carousel
           uniqueClassName={styles.blogCarousel}
           initialSelectedIndex={0}
           rotationCycleDuration={4000}
           heightInPixels={500}
-          width={45}
+          width={42.5}
           unit={"vw"}
         >
           <BlogPostPreviewComponent entryId="7b14KZa8iHJbqK8blfbjSe" />
