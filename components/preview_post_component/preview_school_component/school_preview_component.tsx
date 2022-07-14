@@ -48,7 +48,6 @@ const lazyLoad = async (
 
   const responseJsonData = (await responsePostData.json())
     .data.schoolEntry
-  console.log(responseJsonData)
   const title = responseJsonData.title
   const agWebsiteUrl = responseJsonData.agWebsite
   const image = responseJsonData.picture

@@ -151,6 +151,41 @@ const ConceptSection = () => {
 
   `
 
+  const getSchoolIds = async () => {
+    const queryResponse = await fetch(
+      "/api/contentful/query",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          query: `
+          schoolEntryCollection(limit: 3) {
+            items {
+              sys {	
+                id
+              } 
+            }
+          }
+        `,
+        }),
+      }
+    )
+
+    const jsonQueryResponse = await queryResponse.json()
+
+    setSchoolIds(
+      Contentful.getIdsFromQueryData(
+        jsonQueryResponse,
+        "schoolEntryCollection"
+      )
+    )
+  }
+
+  const [schoolIds, setSchoolIds] = useState([])
+
+  useEffect(() => {
+    getSchoolIds()
+  }, [null])
+
   return (
     <section
       className={
@@ -217,8 +252,14 @@ const ConceptSection = () => {
           width={100}
           unit="%"
         >
-          <SchoolPreviewComponent entryId="1qtX4IgPCZKniqZ7HrGwQP" />
-          <SchoolPreviewComponent entryId="1qtX4IgPCZKniqZ7HrGwQP" />
+          {schoolIds.map((entryId) => {
+            return (
+              <SchoolPreviewComponent
+                key={entryId}
+                entryId={entryId}
+              />
+            )
+          })}
         </Carousel>
       </section>
       <section className={styles.textSection}>
@@ -285,25 +326,20 @@ const PostSection = () => {
       }
     )
 
-    const jsonQueryResponse = (await queryResponse.json())
-      .data
+    const jsonQueryResponse = await queryResponse.json()
 
-    const projectPostsData =
-      jsonQueryResponse.projectPostCollection.items
-    const blogPostsData =
-      jsonQueryResponse.blogPostCollection.items
-
-    const projectPostIds = projectPostsData.map(
-      (value: any) => {
-        return value.sys.id
-      }
+    setProjectPostIds(
+      Contentful.getIdsFromQueryData(
+        jsonQueryResponse,
+        "projectPostCollection"
+      )
     )
-    const blogPostIds = blogPostsData.map((value: any) => {
-      return value.sys.id
-    })
-
-    setProjectPostIds(projectPostIds)
-    setblogPostIds(blogPostIds)
+    setblogPostIds(
+      Contentful.getIdsFromQueryData(
+        jsonQueryResponse,
+        "blogPostCollection"
+      )
+    )
   }
 
   useEffect(() => {

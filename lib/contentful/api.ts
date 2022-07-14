@@ -90,4 +90,22 @@ export namespace Contentful {
       `
     )
   }
+
+  /**
+   * @param queryResponse the raw, unmodified json query response from contentful graphql endpoint
+   * @param collectionName the name of the collection that is being queried
+   * @returns the ids of all entries queried in the collection
+   */
+  export function getIdsFromQueryData(
+    queryResponse: any,
+    collectionName: string
+  ) {
+    const data = queryResponse.data[collectionName].items;
+    return data.map((v: any) => {
+      return v.sys.id;
+    });
+  }
+
+  
+
 }

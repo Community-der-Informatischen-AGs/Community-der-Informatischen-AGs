@@ -25,7 +25,7 @@ export interface ImageData {
 }
 
 export const processImageData = (image: any) => {
-  if (image !== undefined) {
+  if (image !== undefined && image !== null) {
     return {
       imageUrl: image.url,
       imageHeight: image.height,

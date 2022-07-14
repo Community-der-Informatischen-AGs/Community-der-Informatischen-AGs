@@ -15,7 +15,7 @@ export interface BlogPostPreviewComponentProps {
   entryId: string
 }
 
-export interface ContentfulBlogPostProps {
+export interface ContentfulBlogPostPreviewProps {
   author: string
   contentType: string
   title: string
@@ -61,7 +61,6 @@ const lazyLoad = async (
 
   const responseJsonData = (await responsePostData.json())
     .data.blogPost
-  console.log(responseJsonData)
   const title = responseJsonData.title
   const bodyDocument = responseJsonData.body.json
   // TODO: add locales!
@@ -86,7 +85,7 @@ export const BlogPostPreviewComponent = (
   props: BlogPostPreviewComponentProps
 ) => {
   const [postProps, setPostProps] =
-    useState<ContentfulBlogPostProps>(null!)
+    useState<ContentfulBlogPostPreviewProps>(null!)
   // lazy-loading post data
 
   useEffect(() => {
