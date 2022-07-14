@@ -281,7 +281,15 @@ const PostSection = () => {
             waitUntilVisible: true,
           }}
         >
-          Entdecke Spannende Projekte
+          Entdecke Spannende
+          <JSXElementComponent
+            color="green"
+            style={{
+              display: "block",
+            }}
+          >
+            Projekte
+          </JSXElementComponent>
         </TypeIt>
       </h2>
       {/* zwei carousels mit blog post teasers und project post teasers */}

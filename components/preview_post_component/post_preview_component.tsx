@@ -28,6 +28,9 @@ export const PostPreviewComponent = (
 
   return (
     <div
+      style={{
+        cursor: "pointer",
+      }}
       className={props.className}
       onClick={() => {
         // this should work...

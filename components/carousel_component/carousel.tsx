@@ -107,7 +107,6 @@ export const Carousel = (props: CarouselProps) => {
         </ul>
       </div>
       <ul className={styles.selectorList}>
-        <p>{">"}</p>
         {props.children.map((element, index) => {
           return (
             <li
@@ -127,7 +126,6 @@ export const Carousel = (props: CarouselProps) => {
             </li>
           )
         })}
-        <p>{"<"}</p>
       </ul>
     </div>
   )
