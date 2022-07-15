@@ -1,6 +1,9 @@
 @import "./../../styles/module";
 @import "./../../styles/constants";
 
+
+$subLinksPadding: 20px;
+
 .navigation {
   height: 100%;
   gap: 20px;
@@ -38,6 +41,8 @@
       &:hover {
         & > .subLinks {
           display: flex;
+          transform: translateY(0);
+          opacity: 1;
         }
       }
 
@@ -67,11 +72,10 @@
       }
 
       .subLinks {
-        $padding: 20px;
         position: absolute;
-        min-width: calc(100% + #{$padding} * 2);
+        min-width: calc(100% + #{$subLinksPadding} * 2);
         top: 0;
-        left: -$padding;
+        left: -$subLinksPadding;
         height: fit-content;
         background-color: $darkerBackgroundColor;
         gap: 40px;
@@ -79,15 +83,18 @@
         @include centeredFlex();
         flex-direction: column;
         align-items: flex-start;
-        padding: calc($headerHeight + $padding) $padding
-          $padding + 10px;
+        padding: calc($headerHeight + $subLinksPadding) $subLinksPadding
+          $subLinksPadding + 10px;
 
-        display: none;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+        opacity: 0;
+        transform: translateY(-100%);
       }
     }
   }
 }
 
+// TODO : fix!!!
 @media screen and (max-width: 1340px) {
   .navigation {
     height: 100%;
@@ -107,6 +114,39 @@
       padding: 100px;
       overflow-y: auto;
       overflow-x: hidden;
+
+      li {
+        height: fit-content;
+        width: 100%;
+        overflow: hidden;
+
+        display: flex;
+        flex-direction: column;
+        &:hover {
+          & > .subLinks {
+            height: fit-content;
+            transform: scaleY(1) translateY(0);
+          }
+        }
+        
+        a {
+          height: fit-content;
+          width: 100%;
+          padding: none;
+        }
+
+        .subLinks {
+          position: static;
+          opacity: 1;
+          width: 100%;
+          height: 0;
+          transform: scaleY(1) translateY(0);
+          padding: $subLinksPadding;
+          box-sizing: content-box;
+        }
+
+      }
+
     }
   }
 

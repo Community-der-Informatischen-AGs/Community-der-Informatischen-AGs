@@ -1,11 +1,19 @@
 import Link from "next/link"
 import { List } from "phosphor-react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import styles from "./navigation.module.scss"
 
 export const Navigation = () => {
   const [menuActive, setMenuActive] = useState(false)
+
+  useEffect(() => {
+    if (menuActive) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "auto"
+    }
+  }, [menuActive])
 
   return (
     <nav className={styles.navigation}>
