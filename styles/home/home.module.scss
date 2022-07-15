@@ -145,6 +145,15 @@
   }
 }
 
+.line {
+  display: block;
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background-color: white;
+  left: 33%;
+}
+
 .conceptSection {
   z-index: 1;
   color: white;
@@ -323,4 +332,13 @@
 
 /// philosophy section:
 
+.philosophySection {
 
+  .cooperationCard {
+    position: relative;
+    z-index: 2;
+    width: 600px;
+    height: 500px;
+  }
+
+}

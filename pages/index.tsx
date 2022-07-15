@@ -1,4 +1,6 @@
 import type { NextPage } from "next"
+import AOS from "aos"
+import "aos/dist/aos.css"
 import Head from "next/head"
 import Image from "next/image"
 import styles from "../styles/home/home.module.scss"
@@ -7,6 +9,8 @@ import globalStyles from "../styles/globals.module.scss"
 import { Contentful } from "../lib/contentful/api"
 
 import TypeIt from "typeit-react"
+import cn from "classnames"
+
 import {
   Carousel,
   Header,
@@ -16,9 +20,10 @@ import {
 import { BlogPostPreviewComponent } from "../components/preview_post_component/preview_blog_post_component"
 import { Cursor, HandPointing } from "phosphor-react"
 import { useEffect, useState } from "react"
-import { json } from "stream/consumers"
 import { SchoolPreviewComponent } from "../components/preview_post_component/preview_school_component"
 import { ProjectPostPreviewComponent } from "../components/preview_post_component/preview_project_post_component/project_post_preview_component"
+import { CardComponent } from "../components/card_component"
+import { LINKS } from "../lib/utils/constants"
 
 // TODO: use next images and set the width and height
 
@@ -49,21 +54,18 @@ const LandingSection = () => {
 
   return (
     <section
-      className={
-        styles.landingSection +
-        " " +
+      className={cn(
+        styles.landingSection,
         styles.standardPaddingSection
-      }
+      )}
     >
       <code
         lang="python"
-        className={
-          globalStyles.preserve +
-          " " +
-          globalStyles.background +
-          " " +
+        className={cn(
+          globalStyles.preserve,
+          globalStyles.background,
           styles.decorationCode
-        }
+        )}
       >
         {" "}
         {/* This is decoration*/}
@@ -71,9 +73,7 @@ const LandingSection = () => {
       </code>
 
       <h1
-        className={
-          globalStyles.heading + " " + styles.heading
-        }
+        className={cn(globalStyles.heading, styles.heading)}
       >
         <span className={styles.seeThrough}>Die</span>
         <span>Jugend</span>
@@ -188,23 +188,21 @@ const ConceptSection = () => {
 
   return (
     <section
-      className={
-        styles.conceptSection +
-        " " +
+      className={cn(
+        styles.conceptSection,
         styles.standardPaddingSection
-      }
+      )}
+      data-aos="fade"
     >
       {" "}
       {/* TODO: Fotos vvon unterschiedlichen Schulen mit Adrian oder selber machne */}
       <code
         lang="javascript"
-        className={
-          globalStyles.preserve +
-          " " +
-          globalStyles.background +
-          " " +
+        className={cn(
+          globalStyles.preserve,
+          globalStyles.background,
           styles.decorationCode
-        }
+        )}
       >
         {" "}
         {/* This is decoration*/}
@@ -352,11 +350,11 @@ const PostSection = () => {
   // TODO: insert code snippet
   return (
     <section
-      className={
-        styles.postSection +
-        " " +
+      className={cn(
+        styles.postSection,
         styles.standardPaddingSection
-      }
+      )}
+      data-aos="fade"
     >
       <Cursor
         className={styles.decoration}
@@ -436,11 +434,10 @@ const PostSection = () => {
 const PhilosophySection = () => {
   return (
     <section
-      className={
-        styles.philosophySection +
-        " " +
+      className={cn(
+        styles.philosophySection,
         styles.standardPaddingSection
-      }
+      )}
     >
       <h3
         className={styles.standardSectionInvisibleHeading}
@@ -481,16 +478,43 @@ const PhilosophySection = () => {
         </TypeIt>
       </h2>
       <h3>Alles im eigenen Tempo</h3>
-      <p>
-        Bei der Jugend Entwickelt Digital Gemeinschaft
-        fördern wir
-      </p>
-      <ul>
-        <li>Weiterbildung</li>
-        <li>Kooperation</li>
-        <li>und Verbesserung</li>
-        Und alles ohne Stress. Alles im eigenen Tempo.
-      </ul>
+      <section>
+        <CardComponent
+          className={styles.cooperationCard}
+          title="Kooperation"
+          text="Arbeite mit anderen Gleichgesinnten zusammen und stärke deine Teamfähigkeiten"
+          imageSource="assets/images/home/philosophy1.jpg"
+          imageAlt="Kooperationsbild"
+          link={`${LINKS.philosophie}#kooperation`}
+        />
+        <CardComponent
+          className={styles.improvementCard}
+          title="Verbesserung"
+          text="Bilde dich weiter. Zusammen in einer Gruppe kann man sich gegenseitig Tipps geben und etwas beibringen"
+          imageSource="assets/images/home/philosophy2.jpg"
+          imageAlt="Verbesserungsbild"
+          link={`${LINKS.philosophie}#verbesserung`}
+        />
+        <CardComponent
+          className={styles.connectionCard}
+          title="Vernetzung"
+          text="Lerne Glechgesinnte kennen und erweitere deinen Horizont."
+          imageSource="assets/images/home/philosophy3.jpg"
+          imageAlt="Vernetzungsbild"
+          link={`${LINKS.philosophie}#vernetzung`}
+        />
+        <CardComponent
+          className={styles.timeCard}
+          title="Im eigenen Tempo"
+          text="Jeder lernt mit der eigenen Geschwindigkeit. Hierfür setzt sich JED aktiv ein."
+          imageSource="assets/images/home/philosophy4.jpg"
+          imageAlt="Tempobild"
+          link={`${LINKS.philosophie}#tempo`}
+        />
+      </section>
+      <section className={styles.buttonSection}>
+        <button>Unsere Philosophie</button>
+      </section>
     </section>
   )
 }
@@ -524,7 +548,11 @@ const ContactSection = () => {
 }
 
 const Home: NextPage = (props: any) => {
-  // Code snippets for decoration purposes:
+  useEffect(() => {
+    AOS.init({
+      anchorPlacement: "center-bottom",
+    })
+  }, [])
 
   // TODO: add social media icons on the side of the landing-section
 
@@ -551,6 +579,7 @@ const Home: NextPage = (props: any) => {
             alt="Programming-Image-4"
           />
         </section>
+        <div className={styles.line} />
 
         <ConceptSection />
         <PostSection />

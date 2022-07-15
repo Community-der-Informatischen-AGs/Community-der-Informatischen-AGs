@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { List } from "phosphor-react"
 import { useState } from "react"
+import { LINKS } from "../../lib/utils/constants"
 
 import styles from "./navigation.module.scss"
 
@@ -21,47 +22,50 @@ export const Navigation = () => {
         }}
       >
         <li>
-          <Link href={"/"}>Mitmachen</Link>
+          <Link href={"#"}>Mitmachen</Link>
           <ul className={styles.subLinks}>
             <li>
-              <Link href={"/anmeldung"}>Anmeldung</Link>
+              <Link href={LINKS.anmeldung}>Anmeldung</Link>
             </li>
             <li>
-              <Link href={"/teilnahme-informationen"}>
-                Teilnahme Informationen
+              <Link href={LINKS.informationen}>
+                Informationen
               </Link>
             </li>
             <li>
-              <Link href={"/kooperation"}>Kooperation</Link>
+              <Link href={LINKS.kooperation}>
+                Kooperation
+              </Link>
             </li>
           </ul>
         </li>{" "}
         {/* Contact form for applications */}
         <li>
-          <Link href={"/"}>Über Uns</Link>
+          <Link href={"#"}>Über Uns</Link>
           <ul className={styles.subLinks}>
             <li>
-              <Link href={"/die-idee"}>Die Idee</Link>
-            </li>
-            <li>
-              <Link href={"/philosophie"}>
-                Unsere Philosophie
+              <Link href={LINKS.generelleInformationen}>
+                Generelles
               </Link>
             </li>
             <li>
-              <Link href={"/anfaenge"}>Anfänge</Link>
+              <Link href={LINKS.philosophie}>
+                Philosophie
+              </Link>
             </li>
           </ul>
         </li>{" "}
         {/* only information about the concept, abstract, with personal message from me */}
         <li>
-          <Link href={"/"}>Die Gemeinschaft</Link>
+          <Link href={"#"}>Die Gemeinschaft</Link>
           <ul className={styles.subLinks}>
             <li>
-              <Link href={"/schulen"}>Schulen und AGs</Link>
+              <Link href={LINKS.schulen}>
+                Schulen und AGs
+              </Link>
             </li>
             <li>
-              <Link href={"/ansprechpartner"}>
+              <Link href={LINKS.ansprechpartner}>
                 Ansprechpartner
               </Link>
             </li>
@@ -69,15 +73,18 @@ export const Navigation = () => {
         </li>{" "}
         {/* information about specific members and schools */}
         <li>
-          <Link href={"/arbeit"}>Unsere Arbeit</Link>
-        </li>{" "}
-        {/* Project Posts */}
+          <Link href={"#"}>Unsere Arbeit</Link>
+          <ul className={styles.subLinks}>
+            <li>
+              <Link href={LINKS.projekte}>Projekte</Link>
+            </li>
+            <li>
+              <Link href={LINKS.blogs}>Blogs</Link>
+            </li>
+          </ul>
+        </li>
         <li>
-          <Link href={"/blog"}>Blog</Link>
-        </li>{" "}
-        {/* Blog Posts */}
-        <li>
-          <Link href={"/kontakt"}>Kontakt</Link>
+          <Link href={LINKS.kontakt}>Kontakt</Link>
         </li>{" "}
         {/* Social Media, Links, Maps mit Schulen, Emails, etc. */}
       </ul>
