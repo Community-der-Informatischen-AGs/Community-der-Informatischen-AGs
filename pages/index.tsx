@@ -386,6 +386,13 @@ const PostSection = () => {
           </JSXElementComponent>
         </TypeIt>
       </h2>
+      <p>
+        Die Jugend-Entwickelt-Digital Gemeinschaft engagiert
+        sich freiwillig in Sachen der digitalen
+        Produkteerstellung mit Fokus auf
+        Softwareentwicklung.
+      </p>
+      <h5>Wir reden nicht nur. Wir machen auch.</h5>
       {/* zwei carousels mit blog post teasers und project post teasers */}
       <h3>Project Posts</h3>
       <section className={styles.projectsSection}>
@@ -438,6 +445,7 @@ const PhilosophySection = () => {
         styles.philosophySection,
         styles.standardPaddingSection
       )}
+      data-aos="fade"
     >
       <h3
         className={styles.standardSectionInvisibleHeading}
@@ -477,10 +485,22 @@ const PhilosophySection = () => {
           Eine Umgebung für
         </TypeIt>
       </h2>
-      <h3>Alles im eigenen Tempo</h3>
-      <section>
+      <p>
+        Jugend-Entwickelt-Digital ist eine Gemeinschaft für
+        Jugendliche und bietet eine{" "}
+        <u>
+          Umgebung für enthusiastische digitale Entwickler.
+        </u>
+      </p>
+      <p>
+        Für Programmierer / Software-Developer /
+        UX/UI-Designer haben wir eine Gemeinschaft
+        aufgebaut, die Gelegenheiten in den folgenden
+        Gebieten schafft
+      </p>
+      <section className={styles.cardSection}>
         <CardComponent
-          className={styles.cooperationCard}
+          className={styles.card}
           title="Kooperation"
           text="Arbeite mit anderen Gleichgesinnten zusammen und stärke deine Teamfähigkeiten"
           imageSource="assets/images/home/philosophy1.jpg"
@@ -488,7 +508,7 @@ const PhilosophySection = () => {
           link={`${LINKS.philosophie}#kooperation`}
         />
         <CardComponent
-          className={styles.improvementCard}
+          className={styles.card}
           title="Verbesserung"
           text="Bilde dich weiter. Zusammen in einer Gruppe kann man sich gegenseitig Tipps geben und etwas beibringen"
           imageSource="assets/images/home/philosophy2.jpg"
@@ -496,7 +516,7 @@ const PhilosophySection = () => {
           link={`${LINKS.philosophie}#verbesserung`}
         />
         <CardComponent
-          className={styles.connectionCard}
+          className={styles.card}
           title="Vernetzung"
           text="Lerne Glechgesinnte kennen und erweitere deinen Horizont."
           imageSource="assets/images/home/philosophy3.jpg"
@@ -504,7 +524,7 @@ const PhilosophySection = () => {
           link={`${LINKS.philosophie}#vernetzung`}
         />
         <CardComponent
-          className={styles.timeCard}
+          className={styles.card}
           title="Im eigenen Tempo"
           text="Jeder lernt mit der eigenen Geschwindigkeit. Hierfür setzt sich JED aktiv ein."
           imageSource="assets/images/home/philosophy4.jpg"
@@ -522,11 +542,10 @@ const PhilosophySection = () => {
 const ContactSection = () => {
   return (
     <section
-      className={
-        styles.contactSection +
-        " " +
-        styles.standardPaddingSection
-      }
+      className={cn(
+        styles.contactSection,
+        styles.standadPaddingSection
+      )}
     >
       <h3
         className={styles.standardSectionInvisibleHeading}
@@ -549,9 +568,7 @@ const ContactSection = () => {
 
 const Home: NextPage = (props: any) => {
   useEffect(() => {
-    AOS.init({
-      anchorPlacement: "center-bottom",
-    })
+    AOS.init()
   }, [])
 
   // TODO: add social media icons on the side of the landing-section
@@ -582,8 +599,8 @@ const Home: NextPage = (props: any) => {
         <div className={styles.line} />
 
         <ConceptSection />
-        <PostSection />
         <PhilosophySection />
+        <PostSection />
         <ContactSection />
       </main>
     </>
