@@ -3,6 +3,8 @@ import Image from "next/image"
 import { ReactNode } from "react"
 import { HandPointing } from "phosphor-react"
 
+import styles from "./post_preview_component.module.scss"
+
 export interface PostPreviewComponentProps {
   entryId: string
   contentType: string
@@ -48,7 +50,7 @@ export const PostPreviewComponent = (
       style={{
         cursor: "pointer",
       }}
-      className={props.className}
+      className={props.className + " " + styles.postPreview}
       onClick={() => {
         // this should work...
         router.push(
@@ -57,13 +59,19 @@ export const PostPreviewComponent = (
       }}
     >
       {props.image ? (
-        <section className={props.imageSectionClassName}>
+        <section
+          className={
+            props.imageSectionClassName +
+            " " +
+            styles.imageSection
+          }
+        >
           <Image
             src={props.image.imageUrl}
             width={props.image.imageWidth}
             height={props.image.imageHeight}
             alt={props.image.imageTitle}
-            layout="responsive"
+            layout="fill"
           />
         </section>
       ) : null}

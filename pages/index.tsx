@@ -14,11 +14,11 @@ import {
   PostPreviewComponent,
 } from "../components"
 import { BlogPostPreviewComponent } from "../components/preview_post_component/preview_blog_post_component"
-import { ProjectPostPreviewComponent } from "../components/preview_post_component/preview_project_post_component/project_post_preview_component"
 import { Cursor, HandPointing } from "phosphor-react"
 import { useEffect, useState } from "react"
 import { json } from "stream/consumers"
 import { SchoolPreviewComponent } from "../components/preview_post_component/preview_school_component"
+import { ProjectPostPreviewComponent } from "../components/preview_post_component/preview_project_post_component/project_post_preview_component"
 
 // TODO: use next images and set the width and height
 
@@ -244,10 +244,11 @@ const ConceptSection = () => {
             alt="SVG für das Konzept"
           />
         </div>
+        {/* //TODO: maybe use another component that looks better. */}
         <Carousel
           initialSelectedIndex={0}
           uniqueClassName={styles.conceptImageCarousel}
-          rotationCycleDuration={2500}
+          rotationCycleDuration={5000}
           heightInPixels={650}
           width={100}
           unit="%"
@@ -266,7 +267,8 @@ const ConceptSection = () => {
         <article>
           <p>
             Die {"'"}Jugend-Entwickelt-Digital{"'"}{" "}
-            Gemeinschaft bietet an unterschiedlichen Schulen
+            Gemeinschaft bietet{" "}
+            <u>an unterschiedlichen Schulen </u>
             Software-AGs an und verbindet diese miteinander.
           </p>
           <p>
@@ -393,9 +395,9 @@ const PostSection = () => {
           uniqueClassName={styles.projectCarousel}
           initialSelectedIndex={0}
           rotationCycleDuration={4000}
-          heightInPixels={500}
-          width={42.5}
-          unit={"vw"}
+          heightInPixels={700}
+          width={100}
+          unit={"%"}
         >
           {projectPostIds.map((id) => {
             return (
@@ -413,9 +415,9 @@ const PostSection = () => {
           uniqueClassName={styles.blogCarousel}
           initialSelectedIndex={0}
           rotationCycleDuration={4000}
-          heightInPixels={500}
-          width={42.5}
-          unit={"vw"}
+          heightInPixels={700}
+          width={100}
+          unit={"%"}
         >
           {blogPostIds.map((id) => {
             return (
@@ -450,23 +452,44 @@ const PhilosophySection = () => {
           options={{
             speed: 50,
             waitUntilVisible: true,
+            loop: true,
+          }}
+          getBeforeInit={(instance) => {
+            const words = [
+              "Weiterbildung",
+              "Verbesserung",
+              "Vernetzung",
+            ]
+            const targets = [
+              " <span style='color: #82AADF'>&ltWeiterbildung /&gt</span>",
+              " <span style='color: #BC6778'>&ltVerbesserung /&gt</span>",
+              " <span style='color: #C792EA'>&ltVernetzung /&gt</span>",
+            ]
+
+            for (let i = 0; i < targets.length; i++) {
+              instance
+                .type(targets[i])
+                .pause(750)
+                .delete(words[i].length + 4)
+                .pause(500)
+            }
+
+            return instance
           }}
         >
-          Weiterbildung. Verbesserung. Vernetzung.
+          Eine Umgebung für
         </TypeIt>
       </h2>
       <h3>Alles im eigenen Tempo</h3>
       <p>
         Bei der Jugend Entwickelt Digital Gemeinschaft
-        erlauben wir
+        fördern wir
       </p>
       <ul>
         <li>Weiterbildung</li>
         <li>Kooperation</li>
         <li>und Verbesserung</li>
-        <li>
-          Und alles ohne Stress. Alles im eigenen Tempo.
-        </li>
+        Und alles ohne Stress. Alles im eigenen Tempo.
       </ul>
     </section>
   )
@@ -523,31 +546,10 @@ const Home: NextPage = (props: any) => {
         <LandingSection />
 
         <section className={styles.landingCarouselSection}>
-          <Carousel
-            initialSelectedIndex={0}
-            uniqueClassName={styles.landingCarousel}
-            rotationCycleDuration={3000}
-            heightInPixels={500}
-            width={100}
-            unit="vw"
-          >
-            <img
-              src="/assets/images/home/testimage1.jpg" //TODO: get better images
-              alt="Programming-Image-1"
-            />
-            <img
-              src="/assets/images/home/testimage2.jpg" //TODO: get better images
-              alt="Programming-Image-2"
-            />
-            <img
-              src="/assets/images/home/testimage3.jpg" //TODO: get better images
-              alt="Programming-Image-3"
-            />
-            <img
-              src="/assets/images/home/testimage4.jpg" //TODO: get better images
-              alt="Programming-Image-4"
-            />
-          </Carousel>
+          <img
+            src="/assets/images/home/testimage4.jpg" //TODO: get better images
+            alt="Programming-Image-4"
+          />
         </section>
 
         <ConceptSection />
