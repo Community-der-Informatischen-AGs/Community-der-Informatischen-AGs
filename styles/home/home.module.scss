@@ -250,6 +250,7 @@
     grid-template-rows: repeat(3, fit-content);
     grid-template-columns: 1fr;
     margin-right: 0px;
+    border-right: none;
 
     .decorationCode {
       top: initial;
@@ -402,4 +403,22 @@
     margin: auto;
   }
 
+}
+@media screen and (max-width: 1700px) {
+  .philosophySection {
+    
+    border-right: none;
+    border-left: none;
+    width: 100%;
+
+    .cardSection {
+      gap: 20px;
+    }
+  }
+}
+@media screen and (max-width: 1420px) {
+  .philosophySection .cardSection {
+    @include centeredFlex();
+    flex-direction: column;
+  }
 }

@@ -28,6 +28,6 @@ export const JSXElementComponent = (
   styling.color = COLORTERM_TO_CSS_COLOR[props.color]
 
   return (
-    <span style={styling}>{`<${props.children} />`}</span>
+    <span style={styling}>{`<${props.children}/>`}</span>
   )
 }

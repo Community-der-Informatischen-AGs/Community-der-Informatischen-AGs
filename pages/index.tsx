@@ -95,9 +95,9 @@ const LandingSection = () => {
             }}
             getBeforeInit={(instance) => {
               const targets = [
-                "<span style='color: #82AADF'>&ltVSCodeHocker /&gt</span>",
-                "<span style='color: #BC6778'>&ltDBMSNutzer /&gt</span>",
-                "<span style='color: #C792EA'>&ltDoksLeser /&gt</span>",
+                "<span style='color: #82AADF'>&ltVSCodeHocker/&gt</span>",
+                "<span style='color: #BC6778'>&ltDBMSNutzer/&gt</span>",
+                "<span style='color: #C792EA'>&ltDoksLeser/&gt</span>",
               ]
 
               for (const target of targets) {
@@ -439,6 +439,7 @@ const PostSection = () => {
 }
 
 const PhilosophySection = () => {
+  // TODO: add code snippet
   return (
     <section
       className={cn(
@@ -457,6 +458,16 @@ const PhilosophySection = () => {
           options={{
             speed: 50,
             waitUntilVisible: true,
+          }}
+        >
+          Eine Umgebung für
+        </TypeIt>
+        <br></br>
+        <TypeIt
+          options={{
+            startDelay: 1200,
+            speed: 50,
+            waitUntilVisible: true,
             loop: true,
           }}
           getBeforeInit={(instance) => {
@@ -466,9 +477,9 @@ const PhilosophySection = () => {
               "Vernetzung",
             ]
             const targets = [
-              " <span style='color: #82AADF'>&ltWeiterbildung /&gt</span>",
-              " <span style='color: #BC6778'>&ltVerbesserung /&gt</span>",
-              " <span style='color: #C792EA'>&ltVernetzung /&gt</span>",
+              " <span style='color: #82AADF'>&ltWeiterbildung/&gt</span>",
+              " <span style='color: #BC6778'>&ltVerbesserung/&gt</span>",
+              " <span style='color: #C792EA'>&ltVernetzung/&gt</span>",
             ]
 
             for (let i = 0; i < targets.length; i++) {
@@ -481,23 +492,24 @@ const PhilosophySection = () => {
 
             return instance
           }}
-        >
-          Eine Umgebung für
-        </TypeIt>
+        />
       </h2>
-      <p>
-        Jugend-Entwickelt-Digital ist eine Gemeinschaft für
-        Jugendliche und bietet eine{" "}
-        <u>
-          Umgebung für enthusiastische digitale Entwickler.
-        </u>
-      </p>
-      <p>
-        Für Programmierer / Software-Developer /
-        UX/UI-Designer haben wir eine Gemeinschaft
-        aufgebaut, die Gelegenheiten in den folgenden
-        Gebieten schafft
-      </p>
+      <article>
+        <p>
+          Jugend-Entwickelt-Digital ist eine Gemeinschaft
+          für Jugendliche und bietet eine{" "}
+          <u>
+            Umgebung für enthusiastische digitale
+            Entwickler.
+          </u>
+        </p>
+        <p>
+          Für Programmierer / Software-Developer /
+          UX/UI-Designer haben wir eine Gemeinschaft
+          aufgebaut, die Gelegenheiten in den folgenden
+          Gebieten schafft
+        </p>
+      </article>
       <section className={styles.cardSection}>
         <CardComponent
           className={styles.card}
@@ -568,7 +580,9 @@ const ContactSection = () => {
 
 const Home: NextPage = (props: any) => {
   useEffect(() => {
-    AOS.init()
+    AOS.init({
+      anchorPlacement: "top-bottom",
+    })
   }, [])
 
   // TODO: add social media icons on the side of the landing-section
