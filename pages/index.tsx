@@ -1,4 +1,6 @@
 import type { NextPage } from "next"
+import AOS from "aos"
+import "aos/dist/aos.css"
 import Head from "next/head"
 import Image from "next/image"
 import styles from "../styles/home/home.module.scss"
@@ -7,6 +9,8 @@ import globalStyles from "../styles/globals.module.scss"
 import { Contentful } from "../lib/contentful/api"
 
 import TypeIt from "typeit-react"
+import cn from "classnames"
+
 import {
   Carousel,
   Header,
@@ -14,11 +18,12 @@ import {
   PostPreviewComponent,
 } from "../components"
 import { BlogPostPreviewComponent } from "../components/preview_post_component/preview_blog_post_component"
-import { ProjectPostPreviewComponent } from "../components/preview_post_component/preview_project_post_component/project_post_preview_component"
 import { Cursor, HandPointing } from "phosphor-react"
 import { useEffect, useState } from "react"
-import { json } from "stream/consumers"
 import { SchoolPreviewComponent } from "../components/preview_post_component/preview_school_component"
+import { ProjectPostPreviewComponent } from "../components/preview_post_component/preview_project_post_component/project_post_preview_component"
+import { CardComponent } from "../components/card_component"
+import { LINKS } from "../lib/utils/constants"
 
 // TODO: use next images and set the width and height
 
@@ -49,21 +54,18 @@ const LandingSection = () => {
 
   return (
     <section
-      className={
-        styles.landingSection +
-        " " +
+      className={cn(
+        styles.landingSection,
         styles.standardPaddingSection
-      }
+      )}
     >
       <code
         lang="python"
-        className={
-          globalStyles.preserve +
-          " " +
-          globalStyles.background +
-          " " +
+        className={cn(
+          globalStyles.preserve,
+          globalStyles.background,
           styles.decorationCode
-        }
+        )}
       >
         {" "}
         {/* This is decoration*/}
@@ -71,9 +73,7 @@ const LandingSection = () => {
       </code>
 
       <h1
-        className={
-          globalStyles.heading + " " + styles.heading
-        }
+        className={cn(globalStyles.heading, styles.heading)}
       >
         <span className={styles.seeThrough}>Die</span>
         <span>Jugend</span>
@@ -95,9 +95,9 @@ const LandingSection = () => {
             }}
             getBeforeInit={(instance) => {
               const targets = [
-                "<span style='color: #82AADF'>&ltVSCodeHocker /&gt</span>",
-                "<span style='color: #BC6778'>&ltDBMSNutzer /&gt</span>",
-                "<span style='color: #C792EA'>&ltDoksLeser /&gt</span>",
+                "<span style='color: #82AADF'>&ltVSCodeHocker/&gt</span>",
+                "<span style='color: #BC6778'>&ltDBMSNutzer/&gt</span>",
+                "<span style='color: #C792EA'>&ltDoksLeser/&gt</span>",
               ]
 
               for (const target of targets) {
@@ -188,23 +188,21 @@ const ConceptSection = () => {
 
   return (
     <section
-      className={
-        styles.conceptSection +
-        " " +
+      className={cn(
+        styles.conceptSection,
         styles.standardPaddingSection
-      }
+      )}
+      data-aos="fade"
     >
       {" "}
       {/* TODO: Fotos vvon unterschiedlichen Schulen mit Adrian oder selber machne */}
       <code
         lang="javascript"
-        className={
-          globalStyles.preserve +
-          " " +
-          globalStyles.background +
-          " " +
+        className={cn(
+          globalStyles.preserve,
+          globalStyles.background,
           styles.decorationCode
-        }
+        )}
       >
         {" "}
         {/* This is decoration*/}
@@ -244,10 +242,11 @@ const ConceptSection = () => {
             alt="SVG für das Konzept"
           />
         </div>
+        {/* //TODO: maybe use another component that looks better. */}
         <Carousel
           initialSelectedIndex={0}
           uniqueClassName={styles.conceptImageCarousel}
-          rotationCycleDuration={2500}
+          rotationCycleDuration={5000}
           heightInPixels={650}
           width={100}
           unit="%"
@@ -266,7 +265,8 @@ const ConceptSection = () => {
         <article>
           <p>
             Die {"'"}Jugend-Entwickelt-Digital{"'"}{" "}
-            Gemeinschaft bietet an unterschiedlichen Schulen
+            Gemeinschaft bietet{" "}
+            <u>an unterschiedlichen Schulen </u>
             Software-AGs an und verbindet diese miteinander.
           </p>
           <p>
@@ -350,11 +350,11 @@ const PostSection = () => {
   // TODO: insert code snippet
   return (
     <section
-      className={
-        styles.postSection +
-        " " +
+      className={cn(
+        styles.postSection,
         styles.standardPaddingSection
-      }
+      )}
+      data-aos="fade"
     >
       <Cursor
         className={styles.decoration}
@@ -386,6 +386,13 @@ const PostSection = () => {
           </JSXElementComponent>
         </TypeIt>
       </h2>
+      <p>
+        Die Jugend-Entwickelt-Digital Gemeinschaft engagiert
+        sich freiwillig in Sachen der digitalen
+        Produkteerstellung mit Fokus auf
+        Softwareentwicklung.
+      </p>
+      <h5>Wir reden nicht nur. Wir machen auch.</h5>
       {/* zwei carousels mit blog post teasers und project post teasers */}
       <h3 className={styles.projectHeading}>
         Project Posts
@@ -395,7 +402,7 @@ const PostSection = () => {
           uniqueClassName={styles.projectCarousel}
           initialSelectedIndex={0}
           rotationCycleDuration={4000}
-          heightInPixels={500}
+          heightInPixels={700}
           width={100}
           unit={"%"}
         >
@@ -415,7 +422,7 @@ const PostSection = () => {
           uniqueClassName={styles.blogCarousel}
           initialSelectedIndex={0}
           rotationCycleDuration={4000}
-          heightInPixels={500}
+          heightInPixels={700}
           width={100}
           unit={"%"}
         >
@@ -434,13 +441,14 @@ const PostSection = () => {
 }
 
 const PhilosophySection = () => {
+  // TODO: add code snippet
   return (
     <section
-      className={
-        styles.philosophySection +
-        " " +
+      className={cn(
+        styles.philosophySection,
         styles.standardPaddingSection
-      }
+      )}
+      data-aos="fade"
     >
       <h3
         className={styles.standardSectionInvisibleHeading}
@@ -454,22 +462,93 @@ const PhilosophySection = () => {
             waitUntilVisible: true,
           }}
         >
-          Weiterbildung. Verbesserung. Vernetzung.
+          Eine Umgebung für
         </TypeIt>
+        <br></br>
+        <TypeIt
+          options={{
+            startDelay: 1200,
+            speed: 50,
+            waitUntilVisible: true,
+            loop: true,
+          }}
+          getBeforeInit={(instance) => {
+            const words = [
+              "Weiterbildung",
+              "Verbesserung",
+              "Vernetzung",
+            ]
+            const targets = [
+              " <span style='color: #82AADF'>&ltWeiterbildung/&gt</span>",
+              " <span style='color: #BC6778'>&ltVerbesserung/&gt</span>",
+              " <span style='color: #C792EA'>&ltVernetzung/&gt</span>",
+            ]
+
+            for (let i = 0; i < targets.length; i++) {
+              instance
+                .type(targets[i])
+                .pause(750)
+                .delete(words[i].length + 4)
+                .pause(500)
+            }
+
+            return instance
+          }}
+        />
       </h2>
-      <h3>Alles im eigenen Tempo</h3>
-      <p>
-        Bei der Jugend Entwickelt Digital Gemeinschaft
-        erlauben wir
-      </p>
-      <ul>
-        <li>Weiterbildung</li>
-        <li>Kooperation</li>
-        <li>und Verbesserung</li>
-        <li>
-          Und alles ohne Stress. Alles im eigenen Tempo.
-        </li>
-      </ul>
+      <article>
+        <p>
+          Jugend-Entwickelt-Digital ist eine Gemeinschaft
+          für Jugendliche und bietet eine{" "}
+          <u>
+            Umgebung für enthusiastische digitale
+            Entwickler.
+          </u>
+        </p>
+        <p>
+          Für Programmierer / Software-Developer /
+          UX/UI-Designer haben wir eine Gemeinschaft
+          aufgebaut, die Gelegenheiten in den folgenden
+          Gebieten schafft
+        </p>
+      </article>
+      <section className={styles.cardSection}>
+        <CardComponent
+          className={styles.card}
+          title="Kooperation"
+          text="Arbeite mit anderen Gleichgesinnten zusammen und stärke deine Teamfähigkeiten"
+          imageSource="assets/images/home/philosophy1.jpg"
+          imageAlt="Kooperationsbild"
+          link={`${LINKS.philosophie}#kooperation`}
+        />
+        <CardComponent
+          className={styles.card}
+          title="Verbesserung"
+          text="Bilde dich weiter. Zusammen in einer Gruppe kann man sich gegenseitig Tipps geben und etwas beibringen"
+          imageSource="assets/images/home/philosophy2.jpg"
+          imageAlt="Verbesserungsbild"
+          link={`${LINKS.philosophie}#verbesserung`}
+        />
+        <CardComponent
+          className={styles.card}
+          title="Vernetzung"
+          text="Lerne Glechgesinnte kennen und erweitere deinen Horizont."
+          imageSource="assets/images/home/philosophy3.jpg"
+          imageAlt="Vernetzungsbild"
+          link={`${LINKS.philosophie}#vernetzung`}
+        />
+        <CardComponent
+          className={styles.card}
+          title="Im eigenen Tempo"
+          text="Jeder lernt mit der eigenen Geschwindigkeit. Hierfür setzt sich JED aktiv ein."
+          imageSource="assets/images/home/philosophy4.jpg"
+          imageAlt="Tempobild"
+          link={`${LINKS.philosophie}#tempo`}
+        />
+      </section>
+      <section className={styles.buttonSection}>
+        <button>Unsere Philosophie</button>
+      </section>
     </section>
   )
 }
@@ -477,11 +556,10 @@ const PhilosophySection = () => {
 const ContactSection = () => {
   return (
     <section
-      className={
-        styles.contactSection +
-        " " +
-        styles.standardPaddingSection
-      }
+      className={cn(
+        styles.contactSection,
+        styles.standadPaddingSection
+      )}
     >
       <h3
         className={styles.standardSectionInvisibleHeading}
@@ -503,7 +581,11 @@ const ContactSection = () => {
 }
 
 const Home: NextPage = (props: any) => {
-  // Code snippets for decoration purposes:
+  useEffect(() => {
+    AOS.init({
+      anchorPlacement: "top-bottom",
+    })
+  }, [])
 
   // TODO: add social media icons on the side of the landing-section
 
@@ -525,36 +607,16 @@ const Home: NextPage = (props: any) => {
         <LandingSection />
 
         <section className={styles.landingCarouselSection}>
-          <Carousel
-            initialSelectedIndex={0}
-            uniqueClassName={styles.landingCarousel}
-            rotationCycleDuration={3000}
-            heightInPixels={500}
-            width={100}
-            unit="vw"
-          >
-            <img
-              src="/assets/images/home/testimage1.jpg" //TODO: get better images
-              alt="Programming-Image-1"
-            />
-            <img
-              src="/assets/images/home/testimage2.jpg" //TODO: get better images
-              alt="Programming-Image-2"
-            />
-            <img
-              src="/assets/images/home/testimage3.jpg" //TODO: get better images
-              alt="Programming-Image-3"
-            />
-            <img
-              src="/assets/images/home/testimage4.jpg" //TODO: get better images
-              alt="Programming-Image-4"
-            />
-          </Carousel>
+          <img
+            src="/assets/images/home/testimage4.jpg" //TODO: get better images
+            alt="Programming-Image-4"
+          />
         </section>
+        <div className={styles.line} />
 
         <ConceptSection />
-        <PostSection />
         <PhilosophySection />
+        <PostSection />
         <ContactSection />
       </main>
     </>

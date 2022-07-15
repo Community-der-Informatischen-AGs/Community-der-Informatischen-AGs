@@ -10,7 +10,7 @@ import {
 import { Circle } from "phosphor-react"
 
 const CONTENT_TYPE_ID = "projectPost"
-const CONTENT_TYPE = "Project Post"
+const CONTENT_TYPE = "Project"
 
 export interface ProjectPostPreviewComponentProps {
   entryId: string

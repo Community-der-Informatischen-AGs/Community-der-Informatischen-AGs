@@ -1,3 +1,5 @@
+@import "./../../../styles/constants";
+
 .schoolPreviewComponent {
 
   width: 100%;
@@ -10,19 +12,12 @@
   .previewImage {
     height: 100%;
     overflow-y: hidden;
-
-    img {
-      width: 100%;
-      height: 60%;
-      object-fit: contain;
-    }
-
   }
 
   .previewText {
-    color: rgba(50, 50, 50, 1);
+    color: $darkFontColor;
     padding: 50px;
-    height: 40%;
+    height: fit-content;
     width: 100%;
     position: absolute;
     bottom: 0;

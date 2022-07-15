@@ -1,5 +1,7 @@
 import { Document } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+
+// TODO: import other stylesheets for different looks on different pages
 import styles from "./blog_post_preview_component.module.scss"
 import React, { useEffect, useState } from "react"
 import {
@@ -9,7 +11,7 @@ import {
 } from "../post_preview_component"
 
 const CONTENT_TYPE_ID = "blogPost"
-const CONTENT_TYPE = "Blog Post"
+const CONTENT_TYPE = "Blog"
 
 export interface BlogPostPreviewComponentProps {
   entryId: string
