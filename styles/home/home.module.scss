@@ -420,5 +420,6 @@
   .philosophySection .cardSection {
     @include centeredFlex();
     flex-direction: column;
+    gap: 50px;
   }
 }
