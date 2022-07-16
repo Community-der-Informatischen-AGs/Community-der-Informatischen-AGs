@@ -1,0 +1,106 @@
+@import "./../../styles/constants";
+@import "./../../styles/module";
+
+.footer {
+  width: 100%;
+  height: fit-content;
+
+  background-color: rgb(40, 40, 40);
+
+  position: relative;
+  z-index: 1;
+  padding: 50px 10%;
+  margin: 0;
+
+  border-top: $border;
+
+  display: grid;
+  grid-template-areas:
+    ". . ."
+    "cr cr cr";
+
+  row-gap: 100px;
+
+  a {transition: color 0.2s ease;}
+  a:hover {
+    color: white;
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    h6 {
+      margin-bottom: 10px;
+    }
+  }
+
+  .socialMediaSection {
+    .logoContainer {
+      flex-direction: row;
+      svg {
+        padding: 5px;
+        margin-right: 20px;
+        cursor: pointer; 
+        border: 1px solid transparent;
+
+        transition: background-color 0.2s ease, border 0.2s ease;
+        &:hover {
+          background-color: rgba(20, 20, 20, 0.6);
+          border: $border;
+        }
+
+      }
+    }
+  }
+
+  .contactSection {
+    .email {
+      @include centeredFlex();
+      justify-content: start;
+      gap: 10px;
+    }
+  }
+
+} 
+
+@media screen and (max-width: 1200px) {
+
+  .footer {
+    grid-template-areas:
+      ". ."
+      "social social"
+      "cr cr";
+    
+    .socialMediaSection {
+      grid-area: social;
+    }
+
+  }
+
+}
+@media screen and (max-width: 950px) {
+  .footer {
+    padding: 50px 5%;
+  }
+}
+@media screen and (max-width: 800px) {
+  .footer {
+
+    .contactSection {
+      grid-area: contact;
+    }
+    .socialMediaSection {
+      grid-area: social;
+    }
+    .linksSection {
+      grid-area: ags;
+    }
+    grid-template-areas:
+      "contact"
+      "ags"
+      "social"
+      "cr";
+  }
+}

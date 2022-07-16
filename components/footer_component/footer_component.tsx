@@ -3,27 +3,74 @@ import {
   Envelope,
   GithubLogo,
   InstagramLogo,
+  LinkSimple,
   YoutubeLogo,
 } from "phosphor-react"
+import { LINKS } from "../../lib/utils/constants"
 import styles from "./footer_component.module.scss"
 
 export const Footer = () => {
   return (
-    <footer>
-      <section className={styles.socialMedia}>
+    <footer className={styles.footer}>
+      <section className={styles.contactSection}>
+        <h6>Kontakt</h6>
+        <div className={styles.email}>
+          <Envelope size={32} weight="thin" />
+          <Link
+            href={
+              "mailto:jugend-entwickelt-software@gmail.com"
+            }
+          >
+            jugend-entwickelt-software@gmail.com
+          </Link>
+        </div>
+        <b>Hauptstandort:</b>
+        <p>Brucknerstraße 19, 40593 Düsseldorf</p>
+        <p>Annette-von-Droste-Hülshoff-Gymnasium</p>
+      </section>
+      <section className={styles.linksSection}>
+        <h6>Arbeitsgemeinschaften</h6>
+        <a href={LINKS.annette}>
+          Annette-Entwickelt-Digital
+        </a>
+        <a href={LINKS.schloss}>
+          Schloß-Entwickelt-Digital
+        </a>
+        <a href={LINKS.kobi}>Kobi-Entwickelt-Digital</a>
+      </section>
+      <section className={styles.socialMediaSection}>
+        <h6>Social Media</h6>
         {/* bunch of icons here */}
-        <InstagramLogo size={32} weight="thin" />
-        <YoutubeLogo size={32} weight="thin" />
-        <Envelope size={32} weight="thin" />
-        <GithubLogo size={32} weight="thin" />
+        <div className={styles.logoContainer}>
+          <InstagramLogo
+            onClick={() => {
+              window.location.href =
+                "https://www.instagram.com/"
+            }}
+            size={40}
+            weight="thin"
+          />
+          <YoutubeLogo
+            onClick={() => {
+              window.location.href =
+                "https://www.youtube.com/"
+            }}
+            size={40}
+            weight="thin"
+          />
+          <GithubLogo
+            onClick={() => {
+              window.location.href =
+                "https://www.github.com/"
+            }}
+            size={40}
+            weight="thin"
+          />
+        </div>
       </section>
-      <section className={styles.links}>
-        <Link href={}>Impressum</Link>
-        <Link href={}>Annette-Entwickelt-Digital</Link>
-        <Link href={}>Schloß-Entwickelt-Digital</Link>
-        <Link href={}>Kobi-Entwickelt-Digital</Link>
-      </section>
-      <h6>2022 © Jugend-Entwickelt-Digital</h6>
+      <h5 className={styles.copyright}>
+        © 2022 Jugend-Entwickelt-Digital
+      </h5>
     </footer>
   )
 }

@@ -7,7 +7,7 @@
 
   position: relative;
   margin: 200px 0;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: $border;
   background-color: #2a3236;
 
   .standardSectionInvisibleHeading {
@@ -143,6 +143,7 @@
     height: 100%;
     object-fit: cover;
   }
+  border: $border;
 }
 
 .line {
@@ -151,6 +152,7 @@
   width: 1px;
   height: 100%;
   background-color: white;
+  opacity: 0.1;
   left: 33%;
 }
 
@@ -347,27 +349,45 @@
       grid-column: 1;
       grid-row: 1;
     }
-    
-    .projectsSection {
+    > p {
+      justify-self: right;
+      grid-column: 1;
       grid-row: 2;
+      width: 100%;
+    }
+    > h5 {
+      grid-column: 1;
+      grid-row: 3;
+    }
+  
+
+    .projectsSection {
+      grid-row: 4;
       grid-column: 1;
     }
     .projectHeading {
-      grid-row: 3;
+      grid-row: 5;
       grid-column: 1;
     }
 
     .blogSection {
-      grid-row: 4;
+      grid-row: 6;
       grid-column: 1;
     }
     .blogHeading {
-      grid-row: 5;
+      grid-row: 7;
       grid-column: 1;
     }
 
   }
 
+}
+@media screen and (max-width: 980px) {
+  .postSection {
+    width: 100%;
+    margin-left: 0;
+    border-left: 0;
+  }
 }
 
 

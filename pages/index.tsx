@@ -24,6 +24,7 @@ import { SchoolPreviewComponent } from "../components/preview_post_component/pre
 import { ProjectPostPreviewComponent } from "../components/preview_post_component/preview_project_post_component/project_post_preview_component"
 import { CardComponent } from "../components/card_component"
 import { LINKS } from "../lib/utils/constants"
+import { Footer } from "../components/footer_component/footer_component"
 
 // TODO: use next images and set the width and height
 
@@ -619,6 +620,7 @@ const Home: NextPage = (props: any) => {
         <PostSection />
         <ContactSection />
       </main>
+      <Footer />
     </>
   )
 }
