@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next"
 import { Contentful } from "../../../lib/contentful/api"
 
-// TODO: implement search algorithm and return value here
 
 export default async function handler(
   req: NextApiRequest,

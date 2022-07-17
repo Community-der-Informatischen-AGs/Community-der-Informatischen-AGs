@@ -33,7 +33,6 @@ export const Search = () => {
         return false
       }
 
-      // TODO: use api, then create list component. update.
       // fetching from nextjs api to get data from contentful
 
       const searchResults = await fetch(

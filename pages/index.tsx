@@ -27,10 +27,9 @@ import { LINKS } from "../lib/utils/constants"
 import { Footer } from "../components/footer_component/footer_component"
 import { ContactForm } from "../components/contact_form_component/contact_form_component"
 
-// TODO: use next images and set the width and height
-// TODO: use webp formatting if still necessary with next images
-
-// TODO: set Concept Section carousel elements to images with text on it.
+// TODO: add social media icons on the side of the landing-section
+// TODO: Fotos vvon unterschiedlichen Schulen mit Adrian oder selber machne
+// TODO: add code snippets
 
 // ! https://www.npmjs.com/package/@contentful/rich-text-react-renderer for rendering rich text
 
@@ -209,7 +208,6 @@ const ConceptSection = () => {
       data-aos="fade"
     >
       {" "}
-      {/* TODO: Fotos vvon unterschiedlichen Schulen mit Adrian oder selber machne */}
       <code
         lang="javascript"
         className={cn(
@@ -256,7 +254,6 @@ const ConceptSection = () => {
             alt="SVG für das Konzept"
           />
         </div>
-        {/* //TODO: maybe use another component that looks better. */}
         <Carousel
           initialSelectedIndex={0}
           uniqueClassName={styles.conceptImageCarousel}
@@ -334,7 +331,6 @@ const PostSection = () => {
     "blogPostCollection"
   )
 
-  // TODO: insert code snippet
   return (
     <section
       className={cn(
@@ -428,7 +424,6 @@ const PostSection = () => {
 }
 
 const PhilosophySection = () => {
-  // TODO: add code snippet
   return (
     <section
       className={cn(
@@ -580,8 +575,6 @@ const Home: NextPage = (props: any) => {
       anchorPlacement: "top-bottom",
     })
   }, [])
-
-  // TODO: add social media icons on the side of the landing-section
 
   return (
     <>
