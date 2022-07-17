@@ -24,6 +24,7 @@ import { SchoolPreviewComponent } from "../components/preview_post_component/pre
 import { ProjectPostPreviewComponent } from "../components/preview_post_component/preview_project_post_component/project_post_preview_component"
 import { CardComponent } from "../components/card_component"
 import { LINKS } from "../lib/utils/constants"
+import { Footer } from "../components/footer_component/footer_component"
 
 // TODO: use next images and set the width and height
 
@@ -394,7 +395,9 @@ const PostSection = () => {
       </p>
       <h5>Wir reden nicht nur. Wir machen auch.</h5>
       {/* zwei carousels mit blog post teasers und project post teasers */}
-      <h3>Project Posts</h3>
+      <h3 className={styles.projectHeading}>
+        Project Posts
+      </h3>
       <section className={styles.projectsSection}>
         <Carousel
           uniqueClassName={styles.projectCarousel}
@@ -414,7 +417,7 @@ const PostSection = () => {
           })}
         </Carousel>
       </section>
-      <h3>Blog Posts</h3>
+      <h3 className={styles.blogHeading}>Blog Posts</h3>
       <section className={styles.blogSection}>
         <Carousel
           uniqueClassName={styles.blogCarousel}
@@ -569,7 +572,11 @@ const ContactSection = () => {
             waitUntilVisible: true,
           }}
         >
-          Teilnehmen!
+          Jetzt{" "}
+          <JSXElementComponent color="purple">
+            Teilnehmen
+          </JSXElementComponent>
+          !
         </TypeIt>
       </h2>
       <p>Worauf wartest du?</p>
@@ -617,6 +624,7 @@ const Home: NextPage = (props: any) => {
         <PostSection />
         <ContactSection />
       </main>
+      <Footer />
     </>
   )
 }

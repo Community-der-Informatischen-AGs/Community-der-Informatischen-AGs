@@ -1,25 +1,25 @@
-import styles from "./header.module.scss"
+import styles from "./header_component.module.scss"
 import { useRouter } from "next/router"
 import { MutableRefObject, useEffect, useRef } from "react"
-import {
-  Navigation,
-  Select,
-  Search,
-} from "../../components"
+import { Navigation, Select, Search } from ".."
 
 function useWindowScrollEvent(
-  headerRef: MutableRefObject<null>
+  headerRef: MutableRefObject<HTMLElement>
 ) {
   useEffect(() => {
     function windowScrollEvent() {
       try {
         if (window.scrollY != 0) {
-          const element: any = headerRef.current
+          const element = headerRef.current
           element.style.backgroundColor = "#222b30"
+          element.style.borderBottom =
+            "1px solid rgba(255, 255, 255, 0.1)"
         }
         if (window.scrollY == 0) {
-          const element: any = headerRef.current
+          const element = headerRef.current
           element.style.backgroundColor = "transparent"
+          element.style.borderBottom =
+            "1px solid transparent"
         }
       } catch (e) {
         console.log("scrolling error -> " + e)
@@ -40,7 +40,7 @@ function useWindowScrollEvent(
 export const Header = () => {
   const router = useRouter()
 
-  const headerRef = useRef(null)
+  const headerRef = useRef<HTMLElement>(null!)
 
   useWindowScrollEvent(headerRef)
 

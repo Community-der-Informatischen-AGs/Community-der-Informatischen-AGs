@@ -23,7 +23,6 @@ export default async function handler(
     let filter = reqbody.filter;
     let skip = reqbody.skip;
     let order = reqbody.order;
-
     
 
     if (filter === undefined) filter = "";

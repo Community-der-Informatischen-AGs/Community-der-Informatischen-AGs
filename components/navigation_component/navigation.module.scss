@@ -1,6 +1,9 @@
 @import "./../../styles/module";
 @import "./../../styles/constants";
 
+
+$subLinksPadding: 20px;
+
 .navigation {
   height: 100%;
   gap: 20px;
@@ -35,12 +38,6 @@
       height: 100%;
       @include centeredFlex();
 
-      &:hover {
-        & > .subLinks {
-          display: flex;
-        }
-      }
-
       a {
         z-index: 1;
         color: inherit;
@@ -55,7 +52,7 @@
           height: 1px;
           background-color: white;
           opacity: 0.5;
-          bottom: -10px;
+          bottom: -5px;
           left: 0;
 
           transition: width 0.2s ease;
@@ -66,12 +63,19 @@
         }
       }
 
+      &:hover {
+        & > .subLinks {
+          display: flex;
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
       .subLinks {
-        $padding: 20px;
         position: absolute;
-        min-width: calc(100% + #{$padding} * 2);
+        min-width: calc(100% + #{$subLinksPadding} * 2);
         top: 0;
-        left: -$padding;
+        left: -$subLinksPadding;
         height: fit-content;
         background-color: $darkerBackgroundColor;
         gap: 40px;
@@ -79,16 +83,19 @@
         @include centeredFlex();
         flex-direction: column;
         align-items: flex-start;
-        padding: calc($headerHeight + $padding) $padding
-          $padding + 10px;
+        padding: calc($headerHeight + $subLinksPadding) $subLinksPadding
+          $subLinksPadding + 10px;
 
-        display: none;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+        opacity: 0;
+        transform: translateY(-100%);
       }
     }
   }
 }
 
-@media screen and (max-width: 1340px) {
+// TODO : fix!!!
+@media screen and (max-width: 1200px) {
   .navigation {
     height: 100%;
 
@@ -107,6 +114,40 @@
       padding: 100px;
       overflow-y: auto;
       overflow-x: hidden;
+
+      li {
+        height: fit-content;
+        flex-direction: column;
+
+        a:only-child {
+          font-weight: 900;
+        }
+        a::after {
+          bottom: -1px;
+        }
+
+        &:hover {
+          & > .subLinks {
+            transform: none;
+            gap: 0;
+            display: block;
+          }
+        }
+
+        .subLinks {
+          overflow-y: visible;
+          position: static;
+          min-width: 0;
+          width: 100%;
+          height: fit-content;
+          padding: $subLinksPadding 0;
+          display: block;
+          opacity: 1;
+          transform: none;
+        }
+
+      }
+
     }
   }
 

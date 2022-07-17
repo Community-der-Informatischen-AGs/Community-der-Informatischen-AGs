@@ -10,4 +10,8 @@ export const LINKS = {
   projekte: "/projekte",
   blogs: "/blogs",
   kontakt: "/kontakt",
+  impressum: "/impressum",
+  annette: "https://www.entwicklung.annettegymnasium.de",
+  kobi: "https://www.entwicklung.kobi-gymnasium.de",
+  schloss: "https://www.entwicklung.schloss-gymnasium.de"
 }

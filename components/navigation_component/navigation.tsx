@@ -1,12 +1,20 @@
 import Link from "next/link"
 import { List } from "phosphor-react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { LINKS } from "../../lib/utils/constants"
 
 import styles from "./navigation.module.scss"
 
 export const Navigation = () => {
   const [menuActive, setMenuActive] = useState(false)
+
+  useEffect(() => {
+    if (menuActive) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "auto"
+    }
+  }, [menuActive])
 
   return (
     <nav className={styles.navigation}>
@@ -83,10 +91,6 @@ export const Navigation = () => {
             </li>
           </ul>
         </li>
-        <li>
-          <Link href={LINKS.kontakt}>Kontakt</Link>
-        </li>{" "}
-        {/* Social Media, Links, Maps mit Schulen, Emails, etc. */}
       </ul>
     </nav>
   )
