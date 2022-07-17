@@ -55,12 +55,10 @@
     }
   }
 
-  .contactSection {
-    .email {
-      @include centeredFlex();
-      justify-content: start;
-      gap: 10px;
-    }
+  .contactSection .email {
+    @include centeredFlex();
+    justify-content: start;
+    gap: 10px;
   }
 
 } 

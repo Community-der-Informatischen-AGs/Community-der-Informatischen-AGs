@@ -10,7 +10,7 @@ type JSXElementComponentColor =
 interface JSXElementComponentProps {
   color: JSXElementComponentColor
   children: ReactNode
-  style: CSSProperties
+  style?: CSSProperties
 }
 
 const COLORTERM_TO_CSS_COLOR = {
@@ -24,7 +24,7 @@ const COLORTERM_TO_CSS_COLOR = {
 export const JSXElementComponent = (
   props: JSXElementComponentProps
 ) => {
-  const styling = props.style
+  const styling = props.style ?? {}
   styling.color = COLORTERM_TO_CSS_COLOR[props.color]
 
   return (

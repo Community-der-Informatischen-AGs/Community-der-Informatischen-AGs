@@ -572,7 +572,11 @@ const ContactSection = () => {
             waitUntilVisible: true,
           }}
         >
-          Teilnehmen!
+          Jetzt{" "}
+          <JSXElementComponent color="purple">
+            Teilnehmen
+          </JSXElementComponent>
+          !
         </TypeIt>
       </h2>
       <p>Worauf wartest du?</p>

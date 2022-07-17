@@ -91,10 +91,6 @@ export const Navigation = () => {
             </li>
           </ul>
         </li>
-        <li>
-          <Link href={LINKS.kontakt}>Kontakt</Link>
-        </li>{" "}
-        {/* Social Media, Links, Maps mit Schulen, Emails, etc. */}
       </ul>
     </nav>
   )

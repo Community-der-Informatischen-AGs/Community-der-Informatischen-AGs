@@ -38,14 +38,6 @@ $subLinksPadding: 20px;
       height: 100%;
       @include centeredFlex();
 
-      &:hover {
-        & > .subLinks {
-          display: flex;
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
-
       a {
         z-index: 1;
         color: inherit;
@@ -60,7 +52,7 @@ $subLinksPadding: 20px;
           height: 1px;
           background-color: white;
           opacity: 0.5;
-          bottom: -10px;
+          bottom: -5px;
           left: 0;
 
           transition: width 0.2s ease;
@@ -68,6 +60,14 @@ $subLinksPadding: 20px;
 
         &:hover:only-child:after {
           width: 100%;
+        }
+      }
+
+      &:hover {
+        & > .subLinks {
+          display: flex;
+          transform: translateY(0);
+          opacity: 1;
         }
       }
 
@@ -95,7 +95,7 @@ $subLinksPadding: 20px;
 }
 
 // TODO : fix!!!
-@media screen and (max-width: 1340px) {
+@media screen and (max-width: 1200px) {
   .navigation {
     height: 100%;
 
@@ -117,32 +117,33 @@ $subLinksPadding: 20px;
 
       li {
         height: fit-content;
-        width: 100%;
-        overflow: hidden;
-
-        display: flex;
         flex-direction: column;
+
+        a:only-child {
+          font-weight: 900;
+        }
+        a::after {
+          bottom: -1px;
+        }
+
         &:hover {
           & > .subLinks {
-            height: fit-content;
-            transform: scaleY(1) translateY(0);
+            transform: none;
+            gap: 0;
+            display: block;
           }
-        }
-        
-        a {
-          height: fit-content;
-          width: 100%;
-          padding: none;
         }
 
         .subLinks {
+          overflow-y: visible;
           position: static;
-          opacity: 1;
+          min-width: 0;
           width: 100%;
-          height: 0;
-          transform: scaleY(1) translateY(0);
-          padding: $subLinksPadding;
-          box-sizing: content-box;
+          height: fit-content;
+          padding: $subLinksPadding 0;
+          display: block;
+          opacity: 1;
+          transform: none;
         }
 
       }
