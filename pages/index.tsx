@@ -25,12 +25,48 @@ import { ProjectPostPreviewComponent } from "../components/preview_post_componen
 import { CardComponent } from "../components/card_component"
 import { LINKS } from "../lib/utils/constants"
 import { Footer } from "../components/footer_component/footer_component"
+import { ContactForm } from "../components/contact_form_component/contact_form_component"
 
 // TODO: use next images and set the width and height
+// TODO: use webp formatting if still necessary with next images
 
 // TODO: set Concept Section carousel elements to images with text on it.
 
 // ! https://www.npmjs.com/package/@contentful/rich-text-react-renderer for rendering rich text
+
+const useEntryIds = (
+  query: string,
+  entryCollection: string
+) => {
+  const getEntryIds = async () => {
+    const queryResponse = await fetch(
+      "/api/contentful/query",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          query: query,
+        }),
+      }
+    )
+
+    const jsonQueryResponse = await queryResponse.json()
+
+    setEntryIds(
+      Contentful.getIdsFromQueryData(
+        jsonQueryResponse,
+        entryCollection
+      )
+    )
+  }
+
+  const [entryIds, setEntryIds] = useState([])
+
+  useEffect(() => {
+    getEntryIds()
+  }, [null])
+
+  return entryIds
+}
 
 const LandingSection = () => {
   const landingCode = `
@@ -152,40 +188,17 @@ const ConceptSection = () => {
 
   `
 
-  const getSchoolIds = async () => {
-    const queryResponse = await fetch(
-      "/api/contentful/query",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          query: `
-          schoolEntryCollection(limit: 3) {
-            items {
-              sys {	
-                id
-              } 
-            }
-          }
-        `,
-        }),
+  const schoolIds = useEntryIds(
+    `
+    schoolEntryCollection(limit: 3) {
+      items {
+        sys {	
+          id
+        } 
       }
-    )
-
-    const jsonQueryResponse = await queryResponse.json()
-
-    setSchoolIds(
-      Contentful.getIdsFromQueryData(
-        jsonQueryResponse,
-        "schoolEntryCollection"
-      )
-    )
-  }
-
-  const [schoolIds, setSchoolIds] = useState([])
-
-  useEffect(() => {
-    getSchoolIds()
-  }, [null])
+    }`,
+    "schoolEntryCollection"
+  )
 
   return (
     <section
@@ -264,6 +277,9 @@ const ConceptSection = () => {
       </section>
       <section className={styles.textSection}>
         <article>
+          <b>
+            Trete einer Gemeinschaft von Software-AGs bei.
+          </b>
           <p>
             Die {"'"}Jugend-Entwickelt-Digital{"'"}{" "}
             Gemeinschaft bietet{" "}
@@ -271,16 +287,12 @@ const ConceptSection = () => {
             Software-AGs an und verbindet diese miteinander.
           </p>
           <p>
-            Untereinander arbeiten die AGs an schulinterne
+            Unter sich arbeiten die AGs an schulinterne
             Projekte.
           </p>
           <p>
             Zusammen kooperieren die AGs und arbeiten an
             schulunabhängige Projekte.
-          </p>
-          <p>
-            Nehme zusammen mit deiner Schule am Programm
-            teil!
           </p>
         </article>
 
@@ -298,55 +310,29 @@ const ConceptSection = () => {
 }
 
 const PostSection = () => {
-  const [projectPostIds, setProjectPostIds] = useState([])
-  const [blogPostIds, setblogPostIds] = useState([])
-
-  const extractIds = async () => {
-    const queryResponse = await fetch(
-      "/api/contentful/query",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          query: `
-          projectPostCollection(limit: 3) {
-            items {
-              sys {
-                id
-              }
-            }
-          }
-          blogPostCollection(limit: 3) {
-            items {
-              sys {
-                id
-              }
-            }
-          }
-        `,
-        }),
+  const projectPostIds = useEntryIds(
+    `
+    projectPostCollection(limit: 3) {
+      items {
+        sys {
+          id
+        }
       }
-    )
-
-    const jsonQueryResponse = await queryResponse.json()
-
-    setProjectPostIds(
-      Contentful.getIdsFromQueryData(
-        jsonQueryResponse,
-        "projectPostCollection"
-      )
-    )
-    setblogPostIds(
-      Contentful.getIdsFromQueryData(
-        jsonQueryResponse,
-        "blogPostCollection"
-      )
-    )
-  }
-
-  useEffect(() => {
-    // getting the entry ids for project posts and blog posts
-    extractIds()
-  }, [])
+    }`,
+    "projectPostCollection"
+  )
+  const blogPostIds = useEntryIds(
+    `
+    blogPostCollection(limit: 3) {
+      items {
+        sys {
+          id
+        }
+      }
+    }
+    `,
+    "blogPostCollection"
+  )
 
   // TODO: insert code snippet
   return (
@@ -559,12 +545,15 @@ const ContactSection = () => {
     <section
       className={cn(
         styles.contactSection,
-        styles.standadPaddingSection
+        styles.standardPaddingSection
       )}
+      data-aos="fade"
     >
       <h3
         className={styles.standardSectionInvisibleHeading}
-      ></h3>
+      >
+        Anmeldung
+      </h3>
       <h2>
         <TypeIt
           options={{
@@ -579,8 +568,8 @@ const ContactSection = () => {
           !
         </TypeIt>
       </h2>
-      <p>Worauf wartest du?</p>
-      {/* Kontaktformular */}
+      <p>Schreibe uns einfach an. Den Rest regeln wir.</p>
+      <ContactForm />
     </section>
   )
 }
@@ -630,27 +619,3 @@ const Home: NextPage = (props: any) => {
 }
 
 export default Home
-
-/// !! Be careful! Get static props only generates stuff on build time. does not do it when user rerenders the page
-export async function getStaticProps() {
-  /*
-  console.log(
-    await Contentful.getSingleEntry(
-      "blogPost",
-      "7b14KZa8iHJbqK8blfbjSe",
-      `
-        title
-        sys {
-          publishedAt
-        }
-      `
-    )
-  )
-  */
-
-  return {
-    props: {
-      bruh: "bruh",
-    },
-  }
-}

@@ -291,7 +291,7 @@
   margin-left: $left-margin;
   border-right: none;
 
-  h2, h5, p {
+  h2, h5, > p {
     width: 100%;
     text-align: right;
   }
@@ -395,14 +395,6 @@
   }
 }
 
-
-
-
-
-
-
-
-
 /// philosophy section:
 
 .philosophySection {
@@ -483,3 +475,22 @@
     gap: 50px;
   }
 }
+
+.contactSection {
+
+  width: 100%;
+  > h2, > p {
+    text-align: center;
+  }
+
+  form {
+    margin: 50px auto;
+    width: 60%;
+  }
+
+}
+@media screen and (max-width: 1000px) {
+  .contactSection form {
+    width: 100%;
+  }
+} 

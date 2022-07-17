@@ -135,6 +135,7 @@ export const Search = () => {
               display:
                 searchInputValue != "" ? "block" : "none",
             }}
+            alt="cancel input"
           />
         </button>
         <button
@@ -142,6 +143,7 @@ export const Search = () => {
           onClick={(e) => searchSubmit(e)}
         >
           <MagnifyingGlass
+            alt="confirm search query"
             size={25}
             color="white"
             opacity={0.5}
