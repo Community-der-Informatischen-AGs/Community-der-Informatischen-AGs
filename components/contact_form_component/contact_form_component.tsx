@@ -3,12 +3,7 @@ import styles from "./contact_form_component.module.scss"
 // Make sure to run npm install @formspree/react
 // For more help visit https://formspr.ee/react-help
 import React, { FormEvent, useRef, useState } from "react"
-
-const NAME = "name"
-const EMAIL = "email"
-const SCHOOL = "school"
-const SCHOOLMAIL = "schoolMail"
-const MESSAGE = "message"
+import { CONTACT_FORM } from "../../lib/utils/constants"
 
 const useFormSubmission = (
   formRef: React.RefObject<HTMLFormElement>
@@ -21,28 +16,39 @@ const useFormSubmission = (
     const currentFormElement = formRef.current!
 
     const nameInput: HTMLInputElement =
-      currentFormElement.querySelector(`#${NAME}`)!
+      currentFormElement.querySelector(
+        `#${CONTACT_FORM.name}`
+      )!
     const emailInput: HTMLInputElement =
-      currentFormElement.querySelector(`#${EMAIL}`)!
+      currentFormElement.querySelector(
+        `#${CONTACT_FORM.email}`
+      )!
     const schoolInput: HTMLInputElement =
-      currentFormElement.querySelector(`#${SCHOOL}`)!
+      currentFormElement.querySelector(
+        `#${CONTACT_FORM.school}`
+      )!
     const schoolMailInput: HTMLInputElement =
-      currentFormElement.querySelector(`#${SCHOOLMAIL}`)!
+      currentFormElement.querySelector(
+        `#${CONTACT_FORM.schoolMail}`
+      )!
     const messageInput: HTMLTextAreaElement =
-      currentFormElement.querySelector(`#${MESSAGE}`)!
+      currentFormElement.querySelector(
+        `#${CONTACT_FORM.message}`
+      )!
 
     // TODO: send to api endpoint
 
-    const formData: FormData = new FormData()
-    formData.append(NAME, nameInput.value)
-    formData.append(EMAIL, emailInput.value)
-    formData.append(SCHOOL, schoolInput.value)
-    formData.append(SCHOOLMAIL, schoolMailInput.value)
-    formData.append(MESSAGE, messageInput.value)
+    const formData = {
+      [CONTACT_FORM.name]: nameInput.value,
+      [CONTACT_FORM.email]: emailInput.value,
+      [CONTACT_FORM.school]: schoolInput.value,
+      [CONTACT_FORM.schoolMail]: schoolMailInput.value,
+      [CONTACT_FORM.message]: messageInput.value,
+    }
 
     const response = await fetch("/api/contact", {
       method: "POST",
-      body: formData,
+      body: JSON.stringify(formData),
     })
 
     switch (response.status) {
@@ -74,47 +80,55 @@ export const ContactForm = () => {
       onSubmit={(e) => submit(e)}
       className={styles.contactForm}
     >
-      <label htmlFor={NAME}>Dein Name</label>
+      <label htmlFor={CONTACT_FORM.name}>Dein Name</label>
       <input
-        id={NAME}
+        id={CONTACT_FORM.name}
         type="text"
-        name={NAME}
+        name={CONTACT_FORM.name}
         placeholder="Max Mustermann"
         required
       />
 
-      <label htmlFor={EMAIL}>Deine Email</label>
+      <label htmlFor={CONTACT_FORM.email}>
+        Deine Email
+      </label>
       <input
         placeholder="max.mustermann@gmail.com"
-        id={EMAIL}
+        id={CONTACT_FORM.email}
         type="email"
-        name={EMAIL}
+        name={CONTACT_FORM.email}
         required
       />
 
-      <label htmlFor={SCHOOL}>Name der Schule</label>
+      <label htmlFor={CONTACT_FORM.school}>
+        Name der Schule
+      </label>
       <input
         placeholder="Annette-von-Droste-Hülshoff-Gymnasium"
-        id={SCHOOL}
+        id={CONTACT_FORM.school}
         type="text"
-        name={SCHOOL}
+        name={CONTACT_FORM.school}
         required
       />
 
-      <label htmlFor={SCHOOLMAIL}>Email der Schule</label>
+      <label htmlFor={CONTACT_FORM.schoolMail}>
+        Email der Schule
+      </label>
       <input
         placeholder="annettegymnasium@mail.com"
-        id={SCHOOLMAIL}
+        id={CONTACT_FORM.schoolMail}
         type="email"
-        name={SCHOOLMAIL}
+        name={CONTACT_FORM.schoolMail}
         required
       />
 
-      <label htmlFor={MESSAGE}>Nachricht</label>
+      <label htmlFor={CONTACT_FORM.message}>
+        Nachricht
+      </label>
       <textarea
-        id={MESSAGE}
+        id={CONTACT_FORM.message}
         placeholder="Weitere Gedanken, Fragen, Unklarheiten, Anmerkungen..."
-        name={MESSAGE}
+        name={CONTACT_FORM.message}
       />
 
       <button type="submit">Anmeldung einreichen</button>

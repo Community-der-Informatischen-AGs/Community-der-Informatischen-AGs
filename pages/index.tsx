@@ -23,7 +23,7 @@ import { useEffect, useState } from "react"
 import { SchoolPreviewComponent } from "../components/preview_post_component/preview_school_component"
 import { ProjectPostPreviewComponent } from "../components/preview_post_component/preview_project_post_component/project_post_preview_component"
 import { CardComponent } from "../components/card_component"
-import { LINKS } from "../lib/utils/constants"
+import { KEYWORDS, LINKS } from "../lib/utils/constants"
 import { Footer } from "../components/footer_component/footer_component"
 import { ContactForm } from "../components/contact_form_component/contact_form_component"
 
@@ -580,9 +580,8 @@ const Home: NextPage = (props: any) => {
     <>
       <Head>
         <title>
-          Jugend Entwickelt Digital: Eine Gemeinschaft für
-          junge, interessierte Softwareentwickler in
-          diversen schulischen Arbeitsgemeischaften
+          {KEYWORDS.name} - Eine Gemeinschaft für junge
+          Softwareentwickler
         </title>
         <meta
           name="description"

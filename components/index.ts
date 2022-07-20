@@ -5,3 +5,4 @@ export * from "./jsx_element_component";
 export * from "./navigation_component";
 export * from "./search_component";
 export * from "./preview_post_component";
+export * from "./standard_page_component";
