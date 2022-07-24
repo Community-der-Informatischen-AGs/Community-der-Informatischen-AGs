@@ -6,7 +6,7 @@ import {
   LinkSimple,
   YoutubeLogo,
 } from "phosphor-react"
-import { LINKS } from "../../lib/utils/constants"
+import { KEYWORDS, LINKS } from "../../lib/utils/constants"
 import styles from "./footer_component.module.scss"
 
 export const Footer = () => {
@@ -69,7 +69,7 @@ export const Footer = () => {
         </div>
       </section>
       <h5 className={styles.copyright}>
-        © 2022 Jugend-Entwickelt-Digital
+        © 2022 {KEYWORDS.nameConnected}
       </h5>
     </footer>
   )

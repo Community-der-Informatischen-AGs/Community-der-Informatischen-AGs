@@ -3,8 +3,8 @@ import AOS from "aos"
 import "aos/dist/aos.css"
 import Head from "next/head"
 import Image from "next/image"
-import styles from "../styles/home/home.module.scss"
 import globalStyles from "../styles/globals.module.scss"
+import styles from "../styles/home/home.module.scss"
 
 import { Contentful } from "../lib/contentful/api"
 
@@ -15,7 +15,6 @@ import {
   Carousel,
   Header,
   JSXElementComponent,
-  PostPreviewComponent,
 } from "../components"
 import { BlogPostPreviewComponent } from "../components/preview_post_component/preview_blog_post_component"
 import { Cursor, HandPointing } from "phosphor-react"
@@ -28,7 +27,7 @@ import { Footer } from "../components/footer_component/footer_component"
 import { ContactForm } from "../components/contact_form_component/contact_form_component"
 
 // TODO: add social media icons on the side of the landing-section
-// TODO: Fotos vvon unterschiedlichen Schulen mit Adrian oder selber machne
+// TODO: Fotos von unterschiedlichen Schulen mit Adrian oder selber machne
 // TODO: add code snippets
 
 // ! https://www.npmjs.com/package/@contentful/rich-text-react-renderer for rendering rich text
@@ -91,8 +90,8 @@ const LandingSection = () => {
   return (
     <section
       className={cn(
-        styles.landingSection,
-        styles.standardPaddingSection
+        globalStyles.standardPaddingSection,
+        styles.landingSection
       )}
     >
       <code
@@ -203,7 +202,7 @@ const ConceptSection = () => {
     <section
       className={cn(
         styles.conceptSection,
-        styles.standardPaddingSection
+        globalStyles.standardPaddingSection
       )}
       data-aos="fade"
     >
@@ -335,7 +334,7 @@ const PostSection = () => {
     <section
       className={cn(
         styles.postSection,
-        styles.standardPaddingSection
+        globalStyles.standardPaddingSection
       )}
       data-aos="fade"
     >
@@ -428,9 +427,8 @@ const PhilosophySection = () => {
     <section
       className={cn(
         styles.philosophySection,
-        styles.standardPaddingSection
+        globalStyles.standardPaddingSection
       )}
-      data-aos="fade"
     >
       <h3
         className={styles.standardSectionInvisibleHeading}
@@ -540,7 +538,7 @@ const ContactSection = () => {
     <section
       className={cn(
         styles.contactSection,
-        styles.standardPaddingSection
+        globalStyles.standardPaddingSection
       )}
       data-aos="fade"
     >
@@ -580,8 +578,8 @@ const Home: NextPage = (props: any) => {
     <>
       <Head>
         <title>
-          {KEYWORDS.name} - Eine Gemeinschaft für junge
-          Softwareentwickler
+          {KEYWORDS.nameSeparate} - Eine Gemeinschaft für
+          junge Softwareentwickler
         </title>
         <meta
           name="description"

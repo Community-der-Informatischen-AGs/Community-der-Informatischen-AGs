@@ -1,7 +1,8 @@
 
 
 export const KEYWORDS = {
-  name: "Jugend Entwickelt Digital"
+  nameSeparate: "Jugend Entwickelt Digital",
+  nameConnected: "Jugend-Entwickelt-Digital"
 }
 
 export const LINKS = {

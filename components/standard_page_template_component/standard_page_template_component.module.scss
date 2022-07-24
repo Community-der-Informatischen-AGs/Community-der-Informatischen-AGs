@@ -1,0 +1,50 @@
+@import "./../../styles/module";
+
+section.headingSection {
+
+  padding: 0 200px;
+
+  h1 {
+    @include centeredFlex();
+    flex-direction: column;
+    width: fit-content;
+
+    > span:not(:nth-child(4)) {
+      opacity: 0.1;
+    }
+
+  }
+
+
+}
+
+main.main {
+  position: relative;
+  top: -100px;
+}
+
+section.imageSection {
+  width: 100vw;
+  height: 400px;
+  position: relative;
+
+  border: none;
+  margin-top: 20px;
+  img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+  }
+
+}
+
+// this is the subcomponent of standard_page_template_component
+section.section {
+  border-right: none;
+  border-left: none;
+
+  margin: 50px initial;
+
+}
+
+ 

@@ -1,0 +1,1 @@
+export * from "./standard_page_template_component";

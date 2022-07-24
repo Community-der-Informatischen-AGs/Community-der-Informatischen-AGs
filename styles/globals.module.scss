@@ -1,3 +1,6 @@
+@import "./constants";
+@import "./module";
+
 /* 
   globals.module.scss ist a file which will aid globals.css in adding uniform 
   styles while supporting classes.
@@ -25,4 +28,24 @@
 
 .background {
   user-select: none;
+}
+
+.standardPaddingSection {
+  padding: 100px;
+
+  position: relative;
+  margin-top: 200px;
+  margin-bottom: 200px;
+  border: $border;
+  background-color: #2a3236;
+
+  p {
+    margin: 10px 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  .standardPaddingSection {
+    padding-right: 10%;
+    padding-left: 10%;
+  }
 }
