@@ -20,10 +20,11 @@
   font-size: 4.5rem;
 }
 
-.unimportantButton {
+button.unimportantButton {
   box-shadow: none;
   background-color: transparent;
   color: white;
+  border-radius: $standardBorderRadius / 2;
 }
 
 .background {
@@ -38,6 +39,9 @@
   margin-bottom: 200px;
   border: $border;
   background-color: #2a3236;
+
+  border-radius: $standardBorderRadius;
+  box-shadow: 0 50px 100px rgba(20, 20, 20, 0.1);
 
   p {
     margin: 10px 0;

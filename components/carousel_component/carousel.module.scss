@@ -6,10 +6,15 @@
   box-shadow: $boxShadow;
   width: 100%;
   height: 100%;
+  transition: transform 0.2s ease;
+  &:hover {
+    transform: scale(1.01);
+  }
 
   .carouselWrapper {
     overflow-x: hidden;
     position: relative;
+    border-radius: $standardBorderRadius / 2;
 
     .componentList {
       position: absolute;

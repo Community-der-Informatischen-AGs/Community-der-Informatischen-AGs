@@ -91,7 +91,8 @@ ul {
 }
 
 button {
-  border: none;
+  border-radius: $standardBorderRadius / 2;
+  border: $border;
   padding: 20px 40px;
   display: block;
   box-shadow: 0 20px 100px rgba(0, 0, 0, 0.4);
@@ -103,6 +104,7 @@ button {
 
   &:after {
     content: "";
+    border-radius: $standardBorderRadius / 2;
     display: block;
     position: absolute;
     background-color: $backgroundColor;
@@ -136,6 +138,7 @@ button {
 // form stuff:
 
 input, textarea {
+  border-radius: $standardBorderRadius / 2;
   border: none;
 
   &:active,

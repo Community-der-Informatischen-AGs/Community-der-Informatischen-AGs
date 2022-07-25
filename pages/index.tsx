@@ -17,7 +17,6 @@ import {
   JSXElementComponent,
 } from "../components"
 import { BlogPostPreviewComponent } from "../components/preview_post_component/preview_blog_post_component"
-import { Cursor, HandPointing } from "phosphor-react"
 import { useEffect, useState } from "react"
 import { SchoolPreviewComponent } from "../components/preview_post_component/preview_school_component"
 import { ProjectPostPreviewComponent } from "../components/preview_post_component/preview_project_post_component/project_post_preview_component"
@@ -244,15 +243,6 @@ const ConceptSection = () => {
       </h2>
       {/* !improve picture by adding images of schools to it */}
       <section className={styles.conceptCarouselSection}>
-        <div className={styles.conceptGraphWrapper}>
-          <Image
-            className={styles.conceptGraph}
-            src="/assets/svgs/home/concept.svg"
-            width={409}
-            height={415}
-            alt="SVG für das Konzept"
-          />
-        </div>
         <Carousel
           initialSelectedIndex={0}
           uniqueClassName={styles.conceptImageCarousel}
@@ -338,13 +328,6 @@ const PostSection = () => {
       )}
       data-aos="fade"
     >
-      <Cursor
-        className={styles.decoration}
-        color="white"
-        size={200}
-        weight="thin"
-      />
-
       <h3
         className={styles.standardSectionInvisibleHeading}
       >
@@ -374,7 +357,7 @@ const PostSection = () => {
         Produkteerstellung mit Fokus auf
         Softwareentwicklung.
       </p>
-      <h5>Wir reden nicht nur. Wir machen auch.</h5>
+      <b>Sieh dir unser Engagement in den Posts an!</b>
       {/* zwei carousels mit blog post teasers und project post teasers */}
       <h3 className={styles.projectHeading}>
         Project Posts
@@ -589,14 +572,6 @@ const Home: NextPage = (props: any) => {
       <Header />
       <main>
         <LandingSection />
-
-        <section className={styles.landingCarouselSection}>
-          <img
-            src="/assets/images/home/testimage4.jpg" //TODO: get better images
-            alt="Programming-Image-4"
-          />
-        </section>
-        <div className={styles.line} />
 
         <ConceptSection />
         <PhilosophySection />
