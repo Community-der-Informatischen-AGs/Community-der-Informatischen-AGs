@@ -95,6 +95,7 @@ const LandingSection = () => {
       <code
         lang="python"
         className={cn(
+          styles.decorationCode,
           globalStyles.preserve,
           globalStyles.background,
           globalStyles.decorationCode
@@ -212,6 +213,7 @@ const ConceptSection = () => {
       <code
         lang="javascript"
         className={cn(
+          styles.decorationCode,
           globalStyles.preserve,
           globalStyles.background,
           globalStyles.decorationCode

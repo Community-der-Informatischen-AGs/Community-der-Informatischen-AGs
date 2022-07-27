@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { ImageData } from "../../../lib/utils/types"
 import {
   PostPreviewComponent,
   processImageData,
