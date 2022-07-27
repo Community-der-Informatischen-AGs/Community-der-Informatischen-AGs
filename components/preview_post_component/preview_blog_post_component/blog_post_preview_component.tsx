@@ -5,10 +5,10 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styles from "./blog_post_preview_component.module.scss"
 import React, { useEffect, useState } from "react"
 import {
-  ImageData,
   PostPreviewComponent,
   processImageData,
 } from "../post_preview_component"
+import { ImageData } from "../../../lib/utils/types"
 
 const CONTENT_TYPE_ID = "blogPost"
 const CONTENT_TYPE = "Blog"

@@ -1,8 +1,12 @@
 
 
 export const KEYWORDS = {
-  nameSeparate: "Jugend Entwickelt Digital",
-  nameConnected: "Jugend-Entwickelt-Digital"
+  nameSeparate: "Community d. Informatischen AGs",
+  nameConnected: "Community-der-Informatischen-AGs",
+  nameAbbreviation: "C.D.I.A.",
+  annette: "Annette-Software-Entwicklung",
+  schloss: "Schloß-Software-Entwicklung",
+  kobi: "Kobi-Software-Entwicklung"
 }
 
 export const LINKS = {

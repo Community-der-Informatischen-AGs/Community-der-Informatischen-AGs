@@ -5,6 +5,7 @@ import { HandPointing } from "phosphor-react"
 
 import styles from "./post_preview_component.module.scss"
 import { CONTENT_TYPE_ID_TO_ROUTE } from "../../lib/contentful/constants"
+import { ImageData } from "../../lib/utils/types"
 
 export interface PostPreviewComponentProps {
   entryId: string
@@ -20,20 +21,13 @@ export interface PostPreviewComponentProps {
   indicatorSectionClassName?: string
 }
 
-export interface ImageData {
-  imageUrl: string
-  imageHeight: number
-  imageWidth: number
-  imageTitle: string
-}
-
 export const processImageData = (image: any) => {
   if (image !== undefined && image !== null) {
     return {
-      imageUrl: image.url,
-      imageHeight: image.height,
-      imageWidth: image.width,
-      imageTitle: image.title,
+      url: image.url,
+      height: image.height,
+      width: image.width,
+      title: image.title,
     }
   }
 
@@ -70,10 +64,10 @@ export const PostPreviewComponent = (
           }
         >
           <Image
-            src={props.image.imageUrl}
-            width={props.image.imageWidth}
-            height={props.image.imageHeight}
-            alt={props.image.imageTitle}
+            src={props.image.url}
+            width={props.image.width}
+            height={props.image.height}
+            alt={props.image.title}
             layout="fill"
           />
         </section>
@@ -99,14 +93,6 @@ export const PostPreviewComponent = (
         </span>
         {props.children}
         <article>{props.body}</article>
-      </section>
-      <section className={props.indicatorSectionClassName}>
-        <HandPointing
-          size={32}
-          weight="fill"
-          color="white"
-        />
-        <p>Click me to read more!</p>
       </section>
     </div>
   )

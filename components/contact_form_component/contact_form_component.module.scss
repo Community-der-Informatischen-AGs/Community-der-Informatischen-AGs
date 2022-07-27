@@ -1,3 +1,5 @@
+@import "./../../styles/constants";
+
 .contactForm {
  
   width: 100%;
@@ -19,7 +21,7 @@
   }
 
   button {
-    margin-top: 20px;
+    top: $sectionGap;
     width: fit-content;
   }
 

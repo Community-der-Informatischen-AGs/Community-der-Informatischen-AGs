@@ -1,21 +1,62 @@
 @import "./../../styles/module";
+@import "./../../styles/constants";
+
 
 section.headingSection {
 
-  padding: 0 200px;
+  padding: 150px 200px;
+  position: relative;
 
   h1 {
     @include centeredFlex();
     flex-direction: column;
     width: fit-content;
+    align-items: flex-start;
+  }
 
-    > span:not(:nth-child(4)) {
-      opacity: 0.1;
+  
+  .imageContainer {
+    width: 100%;
+    height: 400px;
+    position: relative;
+
+    border: none;
+    margin: auto;
+    margin-top: $sectionGap * 3;
+    border-radius: $standardBorderRadius / 2;
+    border: $border;
+    img {
+      border-radius: $standardBorderRadius / 2;
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
     }
 
   }
 
+  code.code {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 2rem;
+  }
 
+
+}
+
+@media screen and (max-width: 1165px) {
+  section.headingSection {
+    padding: 100px 15%;
+  }
+}
+@media screen and (max-width: 600px) {
+  section.headingSection {
+    padding: 200px 10% 100px 10%;
+
+    .heading {
+      font-size: $h1fontSize;
+    }
+  }
 }
 
 main.main {
@@ -23,27 +64,14 @@ main.main {
   top: -100px;
 }
 
-section.imageSection {
-  width: 100vw;
-  height: 400px;
-  position: relative;
-
-  border: none;
-  margin-top: 20px;
-  img {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-  }
-
-}
-
 // this is the subcomponent of standard_page_template_component
 section.section {
-  border-right: none;
-  border-left: none;
 
-  margin: 50px initial;
+  margin: 100px 5%;
+
+  h2 {
+    margin-bottom: $sectionGap;
+  }
 
 }
 

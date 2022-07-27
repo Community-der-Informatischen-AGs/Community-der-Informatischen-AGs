@@ -31,6 +31,15 @@ button.unimportantButton {
   user-select: none;
 }
 
+
+.decorationCode {
+  position: absolute;
+  opacity: 0.05;
+  width: max-content;
+  height: fit-content;
+  font-size: 1.3rem;
+}
+
 .standardPaddingSection {
   padding: 100px;
 

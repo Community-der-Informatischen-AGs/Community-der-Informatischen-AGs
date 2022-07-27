@@ -12,6 +12,7 @@
   }
 
   form {
+    border-radius: $standardBorderRadius / 2;
     width: 100%;
     height: fit-content;
     padding: 20px;
@@ -48,11 +49,12 @@
     }
 
     .resultsSection {
+      border-radius: $standardBorderRadius / 2;
       position: absolute;
       background-color: $backgroundColor;
       width: 100%;
       height: fit-content;
-      top: 100%;
+      top: 110%;
       left: 0;
       padding: 0 20px;
       margin: 0;

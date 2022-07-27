@@ -16,6 +16,8 @@
   $padding-side: 20px;
 
   .selected {
+    border-radius: $standardBorderRadius / 2;
+
     height: 100%;
     text-align: center;
     padding: 0 $padding-side;
@@ -30,8 +32,9 @@
 
   .options {
     background-color: $backgroundColor;
-
-    top: 100%;
+    
+    border-radius: $standardBorderRadius / 2;
+    top: 110%;
     position: absolute;
     list-style: none;
     width: $width;

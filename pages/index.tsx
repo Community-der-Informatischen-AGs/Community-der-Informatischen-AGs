@@ -2,7 +2,6 @@ import type { NextPage } from "next"
 import AOS from "aos"
 import "aos/dist/aos.css"
 import Head from "next/head"
-import Image from "next/image"
 import globalStyles from "../styles/globals.module.scss"
 import styles from "../styles/home/home.module.scss"
 
@@ -98,7 +97,7 @@ const LandingSection = () => {
         className={cn(
           globalStyles.preserve,
           globalStyles.background,
-          styles.decorationCode
+          globalStyles.decorationCode
         )}
       >
         {" "}
@@ -110,17 +109,21 @@ const LandingSection = () => {
         className={cn(globalStyles.heading, styles.heading)}
       >
         <span className={styles.seeThrough}>Die</span>
-        <span>Jugend</span>
-        <span>Entwickelt</span>
-        <span>
-          Digital
-          <span className={styles.seeThrough}>e</span>
+        <span>Community d.</span>
+        <span>Informatischen AGs</span>
+        <span className={styles.seeThrough}>
+          Entwickelt
         </span>
-        <span className={styles.seeThrough}>Projekte</span>
       </h1>
       <section className={styles.contentSection}>
         <h3>
-          <span>Eine Gemeinschaft für </span>
+          <span
+            style={{
+              opacity: 0.75,
+            }}
+          >
+            Eine Gemeinschaft für{" "}
+          </span>
           <TypeIt
             options={{
               speed: 50,
@@ -211,7 +214,7 @@ const ConceptSection = () => {
         className={cn(
           globalStyles.preserve,
           globalStyles.background,
-          styles.decorationCode
+          globalStyles.decorationCode
         )}
       >
         {" "}
@@ -264,21 +267,28 @@ const ConceptSection = () => {
       <section className={styles.textSection}>
         <article>
           <b>
-            Trete einer Gemeinschaft von Software-AGs bei.
+            Trete einer Gemeinschaft von Software-AGs bei
           </b>
           <p>
-            Die {"'"}Jugend-Entwickelt-Digital{"'"}{" "}
-            Gemeinschaft bietet{" "}
-            <u>an unterschiedlichen Schulen </u>
-            Software-AGs an und verbindet diese miteinander.
+            Die {KEYWORDS.nameSeparate} <b>bietet</b> an
+            unterschiedlichen Schulen <b>Software-AGs an</b>{" "}
+            und verbindet diese miteinander
+          </p>
+          <br />
+          <p>
+            Wir helfen interessierte Programmierer dabei,
+            eine eigene Software-AG zu gründen und
+            fortzuführen
           </p>
           <p>
-            Unter sich arbeiten die AGs an schulinterne
-            Projekte.
+            Wir nehmen schon bestehende AGs auf und
+            integrieren diese in die Community
           </p>
+          <br />
           <p>
-            Zusammen kooperieren die AGs und arbeiten an
-            schulunabhängige Projekte.
+            Mit unserer Arbeitsgemeinschaften-Erfahrung und
+            -Arbeit garantieren wir eine sichere
+            Einarbeitung, spannende Kooperation
           </p>
         </article>
 
@@ -340,24 +350,29 @@ const PostSection = () => {
             waitUntilVisible: true,
           }}
         >
-          Entdecke Spannende
+          Entdecke unser
           <JSXElementComponent
             color="green"
             style={{
               display: "block",
             }}
           >
-            Projekte
+            Engagement
           </JSXElementComponent>
         </TypeIt>
       </h2>
-      <p>
-        Die Jugend-Entwickelt-Digital Gemeinschaft engagiert
-        sich freiwillig in Sachen der digitalen
-        Produkteerstellung mit Fokus auf
-        Softwareentwicklung.
-      </p>
-      <b>Sieh dir unser Engagement in den Posts an!</b>
+      <article>
+        <p>
+          Die {KEYWORDS.nameSeparate} besteht aus mehreren
+          Mitglieder-AGs
+        </p>
+        <p>
+          Die AGs engagieren sich freiwillig in Sachen der
+          digitalen Produkteerstellung mit Fokus auf
+          Softwareentwicklung
+        </p>
+        <b>Sieh dir unser Engagement in den Posts an!</b>
+      </article>
       {/* zwei carousels mit blog post teasers und project post teasers */}
       <h3 className={styles.projectHeading}>
         Project Posts
@@ -461,18 +476,19 @@ const PhilosophySection = () => {
       </h2>
       <article>
         <p>
-          Jugend-Entwickelt-Digital ist eine Gemeinschaft
-          für Jugendliche und bietet eine{" "}
-          <u>
-            Umgebung für enthusiastische digitale
-            Entwickler.
-          </u>
+          {"'"}
+          {KEYWORDS.nameConnected}
+          {"'"} ist eine Gemeinschaft für Jugendliche und
+          bietet eine{" "}
+          <b>
+            Umgebung für enthusiastische digitale Entwickler
+          </b>
         </p>
         <p>
           Für Programmierer / Software-Developer /
-          UX/UI-Designer haben wir eine Gemeinschaft
-          aufgebaut, die Gelegenheiten in den folgenden
-          Gebieten schafft
+          UX/UI-Designer haben wir eine Gemeinschaft von
+          Software-AGs an diversen Schulen aufgebaut, die
+          Folgendes fördert:
         </p>
       </article>
       <section className={styles.cardSection}>
@@ -544,7 +560,17 @@ const ContactSection = () => {
           !
         </TypeIt>
       </h2>
-      <p>Schreibe uns einfach an. Den Rest regeln wir.</p>
+      <article>
+        <p>
+          Werdet Teil einer vielfältigen Community von
+          digitalen Entwicklern!
+        </p>
+        <p>
+          Egal wie die Situation aussieht, wir können euch
+          in unsere Community von Software-AGs einführen und
+          integrieren
+        </p>
+      </article>
       <ContactForm />
     </section>
   )
@@ -566,7 +592,7 @@ const Home: NextPage = (props: any) => {
         </title>
         <meta
           name="description"
-          content="Die Webseite des Jugend-Entwickelt-Digital-Projekts: Eine Gemeinschaft für junge Softwareentwickler zwischen 15 und 20 Jahren."
+          content={`Die Webseite des ${KEYWORDS.nameConnected}-Projekts: Eine Gemeinschaft für junge Softwareentwickler zwischen 15 und 20 Jahren.`}
         />
       </Head>
       <Header />

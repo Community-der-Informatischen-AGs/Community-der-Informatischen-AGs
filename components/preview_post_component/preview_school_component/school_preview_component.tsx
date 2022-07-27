@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import {
-  ImageData,
   PostPreviewComponent,
   processImageData,
 } from "../post_preview_component"

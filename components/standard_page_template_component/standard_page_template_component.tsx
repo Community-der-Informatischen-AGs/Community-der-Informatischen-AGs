@@ -4,11 +4,11 @@ import { PropsWithChildren, ReactNode } from "react"
 import { KEYWORDS } from "../../lib/utils/constants"
 import { Footer } from "../footer_component/footer_component"
 import { Header } from "../header_component"
-import { ImageData } from "../preview_post_component"
 
 import styles from "./standard_page_template_component.module.scss"
 import globalStyles from "./../../styles/globals.module.scss"
 import cn from "classnames"
+import { ImageData } from "../../lib/utils/types"
 
 export const StandardPageTemplate = (
   p: StandardPageTemplateProps
@@ -17,7 +17,8 @@ export const StandardPageTemplate = (
     <>
       <Head>
         <title>
-          {KEYWORDS.nameSeparate} - {p.title}
+          {KEYWORDS.nameSeparate} -{" "}
+          {p.titleSentence[p.titleIndex]}
         </title>
         <meta
           name="description"
@@ -28,31 +29,46 @@ export const StandardPageTemplate = (
       <main className={styles.main}>
         <section className={styles.headingSection}>
           <h1 className={globalStyles.heading}>
-            {Array.apply(0, Array(7)).map((x, i) => {
-              return <span key={i}>{p.heading}</span>
-            })}
+            {p.titleSentence.map(
+              (word: string, index: number) => {
+                return (
+                  <span
+                    style={{
+                      opacity:
+                        index == p.titleIndex ? 1 : 0.1,
+                    }}
+                  >
+                    {word}
+                  </span>
+                )
+              }
+            )}
           </h1>
+          {p.image != null ? (
+            <div className={styles.imageContainer}>
+              <Image
+                className={styles.image}
+                width={p.image.width}
+                height={p.image.height}
+                alt={p.image.title}
+                src={p.image.url}
+                layout="fill"
+              />
+            </div>
+          ) : null}
           {p.codeSnippet != null ? (
-            <code>{p.codeSnippet}</code>
+            <code
+              className={cn(
+                styles.code,
+                globalStyles.preserve,
+                globalStyles.decorationCode,
+                globalStyles.background
+              )}
+            >
+              {p.codeSnippet}
+            </code>
           ) : null}
         </section>
-
-        {p.image != null ? (
-          <section
-            className={cn(
-              styles.imageSection,
-              globalStyles.standardPaddingSection
-            )}
-          >
-            <Image
-              src={p.image.imageUrl}
-              alt={p.image.imageTitle}
-              height={p.image.imageHeight}
-              width={p.image.imageWidth}
-              layout="fill"
-            />
-          </section>
-        ) : null}
 
         {p.children}
       </main>
@@ -80,9 +96,10 @@ StandardPageTemplate.section = StandardPageTemplateSection
 
 interface StandardPageTemplateProps {
   heading: string
-  title: string
+  titleSentence: string[]
+  titleIndex: number
+  image: ImageData
   metaDescription: string
-  image?: ImageData
   children?: JSX.Element | JSX.Element[]
   codeSnippet?: string
 }
