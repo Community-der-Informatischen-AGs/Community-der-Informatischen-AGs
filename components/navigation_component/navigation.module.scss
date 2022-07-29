@@ -89,6 +89,8 @@ $subLinksPadding: 20px;
         transition: transform 0.4s ease, opacity 0.4s ease;
         opacity: 0;
         transform: translateY(-100%);
+        border-bottom-left-radius: $standardBorderRadius / 2;
+        border-bottom-right-radius: $standardBorderRadius / 2;
       }
     }
   }

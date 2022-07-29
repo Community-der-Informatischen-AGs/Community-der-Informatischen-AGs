@@ -11,15 +11,11 @@ function useWindowScrollEvent(
       try {
         if (window.scrollY != 0) {
           const element = headerRef.current
-          element.style.backgroundColor = "#222b30"
-          element.style.borderBottom =
-            "1px solid rgba(255, 255, 255, 0.1)"
+          element.classList.add(styles.headerActive)
         }
         if (window.scrollY == 0) {
           const element = headerRef.current
-          element.style.backgroundColor = "transparent"
-          element.style.borderBottom =
-            "1px solid transparent"
+          element.classList.remove(styles.headerActive)
         }
       } catch (e) {
         console.log("scrolling error -> " + e)

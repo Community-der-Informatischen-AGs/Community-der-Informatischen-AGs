@@ -8,9 +8,11 @@ import {
 } from "../post_preview_component"
 import { Circle } from "phosphor-react"
 import { ImageData } from "../../../lib/utils/types"
+import { CONTENT_TYPES } from "../../../lib/utils/constants"
+import { CONTENT_TYPE_IDS } from "../../../lib/contentful/constants"
 
-const CONTENT_TYPE_ID = "projectPost"
-const CONTENT_TYPE = "Project"
+const CONTENT_TYPE_ID = CONTENT_TYPE_IDS.project
+const CONTENT_TYPE = CONTENT_TYPES.project
 
 export interface ProjectPostPreviewComponentProps {
   entryId: string

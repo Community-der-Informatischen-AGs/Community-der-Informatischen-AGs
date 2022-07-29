@@ -47,6 +47,11 @@
   }
 }
 
+.headerActive {
+  background-color: $darkerBackgroundColor;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 @media screen and (max-width: 1340px) {
   .header {
     padding: 0 100px 0 15px;

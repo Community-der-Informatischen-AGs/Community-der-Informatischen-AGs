@@ -9,9 +9,11 @@ import {
   processImageData,
 } from "../post_preview_component"
 import { ImageData } from "../../../lib/utils/types"
+import { CONTENT_TYPE_IDS } from "../../../lib/contentful/constants"
+import { CONTENT_TYPES } from "../../../lib/utils/constants"
 
-const CONTENT_TYPE_ID = "blogPost"
-const CONTENT_TYPE = "Blog"
+const CONTENT_TYPE_ID = CONTENT_TYPE_IDS.blog
+const CONTENT_TYPE = CONTENT_TYPES.blog
 
 export interface BlogPostPreviewComponentProps {
   entryId: string

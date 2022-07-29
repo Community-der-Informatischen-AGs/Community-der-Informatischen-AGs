@@ -2,8 +2,9 @@ import { StandardPageTemplate } from "../components"
 import { KEYWORDS, LINKS } from "../lib/utils/constants"
 import { ContactForm } from "../components/contact_form_component/contact_form_component"
 import Link from "next/link"
+import { NextPage } from "next"
 
-const Anmeldung = () => {
+const Anmeldung: NextPage = () => {
   return (
     <StandardPageTemplate
       heading={"Anmeldung"}
@@ -66,7 +67,7 @@ const Anmeldung = () => {
         </article>
       </StandardPageTemplate.section>
       <StandardPageTemplate.section>
-        <h2>Anmeldung</h2>
+        <h2>Anmeldeformular</h2>
         <ContactForm />
       </StandardPageTemplate.section>
     </StandardPageTemplate>

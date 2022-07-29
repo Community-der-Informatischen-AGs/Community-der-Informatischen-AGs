@@ -578,7 +578,7 @@ const ContactSection = () => {
   )
 }
 
-const Home: NextPage = (props: any) => {
+const Home: NextPage = () => {
   useEffect(() => {
     AOS.init({
       anchorPlacement: "top-bottom",

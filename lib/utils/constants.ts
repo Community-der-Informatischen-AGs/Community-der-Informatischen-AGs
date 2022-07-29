@@ -34,3 +34,9 @@ export const CONTACT_FORM = {
   schoolMail: "schoolMail",
   message: "message"
 }
+
+export const CONTENT_TYPES = {
+  school: "AG / Schule",
+  project: "Projekt",
+  blog: "Blog"
+}

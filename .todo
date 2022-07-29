@@ -2,6 +2,10 @@
 TODO for Project Jugend-Entwickelt-Digital
 ==========================================
 
+[TODO_NOW] implement POSTS and fix Post-Preview Components
+
+
+
 [TODO_High] fix identity in general -> use objects or animals
 
 [TODO_High] use Next Images EVERYWHERE
@@ -20,8 +24,14 @@ TODO for Project Jugend-Entwickelt-Digital
 [/TODO]
 
 
+[TODO_Medium] send all of the contact information via emailing service
+
 [TODO_Medium] use cards instead of special components for post previews
 
 [TODO_Medium] implement localization
 
 [TODO_Medium] use Webp Format if still needed
+
+[TODO_Low] implement console for navigation
+
+[TODO_Low] reconsider use of SSR Method

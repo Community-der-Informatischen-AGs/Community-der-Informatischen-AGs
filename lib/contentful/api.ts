@@ -1,4 +1,3 @@
-import internal from "stream"
 
 export namespace Contentful {
   const CONTENTFUL_GRAPH_QL_API: string =

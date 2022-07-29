@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import { CONTENT_TYPE_IDS } from "../../../lib/contentful/constants"
+import { CONTENT_TYPES } from "../../../lib/utils/constants"
 import { ImageData } from "../../../lib/utils/types"
 import {
   PostPreviewComponent,
@@ -6,8 +8,8 @@ import {
 } from "../post_preview_component"
 import styles from "./school_preview_component.module.scss"
 
-const CONTENT_TYPE_ID = "schoolEntry"
-const CONTENT_TYPE = "School"
+const CONTENT_TYPE_ID = CONTENT_TYPE_IDS.school
+const CONTENT_TYPE = CONTENT_TYPES.school
 
 export interface SchoolPreviewComponentProps {
   entryId: string
