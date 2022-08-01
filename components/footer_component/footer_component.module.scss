@@ -14,16 +14,17 @@
 
   border-top: $border;
 
-  display: grid;
-  grid-template-areas:
-    ". . ."
-    "cr cr cr";
-
-  row-gap: 100px;
 
   a {transition: color 0.2s ease;}
   a:hover {
     color: white;
+  }
+
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 100px;
+    margin-bottom: $sectionGap * 2;
   }
 
   section {
@@ -64,42 +65,8 @@
 
 } 
 
-@media screen and (max-width: 1200px) {
-
-  .footer {
-    grid-template-areas:
-      ". ."
-      "social social"
-      "cr cr";
-    
-    .socialMediaSection {
-      grid-area: social;
-    }
-
-  }
-
-}
 @media screen and (max-width: 950px) {
   .footer {
     padding: 50px 5%;
-  }
-}
-@media screen and (max-width: 800px) {
-  .footer {
-
-    .contactSection {
-      grid-area: contact;
-    }
-    .socialMediaSection {
-      grid-area: social;
-    }
-    .linksSection {
-      grid-area: ags;
-    }
-    grid-template-areas:
-      "contact"
-      "ags"
-      "social"
-      "cr";
   }
 }
