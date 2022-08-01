@@ -52,7 +52,13 @@ export const Header = () => {
       <section className={styles.content}>
         <Navigation />
         <Search />
-        <Select
+      </section>
+    </header>
+  )
+
+  /*
+  TODO: maybe implement localization
+          <Select
           options={[
             {
               key: "DE",
@@ -69,7 +75,5 @@ export const Header = () => {
             console.log(selectedValue)
           }}
         />
-      </section>
-    </header>
-  )
+  */
 }

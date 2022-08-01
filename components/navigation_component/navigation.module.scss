@@ -16,7 +16,7 @@ $subLinksPadding: 20px;
     @include centeredFlex();
     position: absolute;
     top: calc(50% - 20px); // becuase the logo is 40px large
-    right: 20px;
+    right: 50px;
     z-index: 9999;
 
     &:after {
@@ -100,6 +100,12 @@ $subLinksPadding: 20px;
   .navigation {
     height: 100%;
 
+    & > ul > li > a {
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    
+
     ul {
       z-index: 999;
       position: absolute;
@@ -119,10 +125,6 @@ $subLinksPadding: 20px;
       li {
         height: fit-content;
         flex-direction: column;
-
-        a:only-child {
-          font-weight: 900;
-        }
         a::after {
           bottom: -1px;
         }
@@ -155,5 +157,6 @@ $subLinksPadding: 20px;
   .navigation .menuButton,
   .navigation .menuButton > * {
     display: block;
+    margin-right: 0;
   }
 }
