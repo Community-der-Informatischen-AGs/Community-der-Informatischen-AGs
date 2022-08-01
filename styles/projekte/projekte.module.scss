@@ -1,0 +1,7 @@
+@import "./../module";
+
+.status {
+  @include centeredFlex();
+  justify-content: start;
+  gap: 10px;
+}

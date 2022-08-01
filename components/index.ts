@@ -7,3 +7,4 @@ export * from "./search_component";
 export * from "./preview_post_component";
 export * from "./standard_page_template_component";
 export * from "./post_page_template_component";
+export * from "./optional"

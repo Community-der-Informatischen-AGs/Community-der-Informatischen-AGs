@@ -62,7 +62,6 @@ const Anmeldung: NextPage = () => {
               An deiner Schule gibt es eine Gruppe von
               mindestens <b>3</b>
             </li>
-            <li></li>
           </ul>
         </article>
       </StandardPageTemplate.section>

@@ -26,6 +26,7 @@
       justify-content: stretch;
 
       li {
+        margin-left: 0;
         flex: 1;
 
         & > * {

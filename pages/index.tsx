@@ -7,8 +7,8 @@ import styles from "../styles/home/home.module.scss"
 
 import { Contentful } from "../lib/contentful/api"
 
-import TypeIt from "typeit-react"
 import cn from "classnames"
+import TypeIt from "typeit-react"
 
 import {
   Carousel,
@@ -131,7 +131,7 @@ const LandingSection = () => {
               waitUntilVisible: true,
               loop: true,
             }}
-            getBeforeInit={(instance) => {
+            getBeforeInit={(instance: any) => {
               const targets = [
                 "<span style='color: #82AADF'>&ltVSCodeHocker/&gt</span>",
                 "<span style='color: #BC6778'>&ltDBMSNutzer/&gt</span>",
@@ -165,30 +165,6 @@ const LandingSection = () => {
 }
 
 const ConceptSection = () => {
-  const conceptCode = `
-
-  function breadth_first_search = (start, end) => {
-
-    const frontier = new Queue([start]);
-
-    while (!frontier.isEmpty()) {
-
-      let currentNode = frontier.dequeue();
-
-      for (let neighboringNode of currentNode.neighbors()) {
-        if (neighboringNode === end) {
-          return "foo";
-        } else {
-          frontier.enqueue(neighboringNode);
-        }
-      }
-
-    }
-
-  }
-
-  `
-
   const schoolIds = useEntryIds(
     `
     schoolEntryCollection(limit: 3) {
@@ -207,22 +183,7 @@ const ConceptSection = () => {
         styles.conceptSection,
         globalStyles.standardPaddingSection
       )}
-      data-aos="fade"
     >
-      {" "}
-      <code
-        lang="javascript"
-        className={cn(
-          styles.decorationCode,
-          globalStyles.preserve,
-          globalStyles.background,
-          globalStyles.decorationCode
-        )}
-      >
-        {" "}
-        {/* This is decoration*/}
-        {conceptCode}
-      </code>
       <h3
         className={styles.standardSectionInvisibleHeading}
       >
@@ -248,6 +209,7 @@ const ConceptSection = () => {
       </h2>
       {/* !improve picture by adding images of schools to it */}
       <section className={styles.conceptCarouselSection}>
+        <h3>Mitglieder-AGs</h3>
         <Carousel
           initialSelectedIndex={0}
           uniqueClassName={styles.conceptImageCarousel}
@@ -338,7 +300,6 @@ const PostSection = () => {
         styles.postSection,
         globalStyles.standardPaddingSection
       )}
-      data-aos="fade"
     >
       <h3
         className={styles.standardSectionInvisibleHeading}
@@ -433,7 +394,7 @@ const PhilosophySection = () => {
       <h3
         className={styles.standardSectionInvisibleHeading}
       >
-        Was fördern wir?
+        Was bieten wir?
       </h3>
       <h2>
         <TypeIt
@@ -442,39 +403,11 @@ const PhilosophySection = () => {
             waitUntilVisible: true,
           }}
         >
-          Eine Umgebung für
+          Eine fördernde{" "}
+          <JSXElementComponent color="blue">
+            Umgebung
+          </JSXElementComponent>
         </TypeIt>
-        <br></br>
-        <TypeIt
-          options={{
-            startDelay: 1200,
-            speed: 50,
-            waitUntilVisible: true,
-            loop: true,
-          }}
-          getBeforeInit={(instance) => {
-            const words = [
-              "Weiterbildung",
-              "Verbesserung",
-              "Vernetzung",
-            ]
-            const targets = [
-              " <span style='color: #82AADF'>&ltWeiterbildung/&gt</span>",
-              " <span style='color: #BC6778'>&ltVerbesserung/&gt</span>",
-              " <span style='color: #C792EA'>&ltVernetzung/&gt</span>",
-            ]
-
-            for (let i = 0; i < targets.length; i++) {
-              instance
-                .type(targets[i])
-                .pause(750)
-                .delete(words[i].length + 4)
-                .pause(500)
-            }
-
-            return instance
-          }}
-        />
       </h2>
       <article>
         <p>
@@ -541,7 +474,6 @@ const ContactSection = () => {
         styles.contactSection,
         globalStyles.standardPaddingSection
       )}
-      data-aos="fade"
     >
       <h3
         className={styles.standardSectionInvisibleHeading}

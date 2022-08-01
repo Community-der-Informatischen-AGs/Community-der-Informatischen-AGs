@@ -14,3 +14,10 @@ export const CONTENT_TYPE_ID_TO_ROUTE: {
   [CONTENT_TYPE_IDS.school]: LINKS.schulen
 }
 
+export const CONTENTFUL_IMAGE_QUERY = `{
+  title
+  width
+  height
+  url
+}
+` 

@@ -27,7 +27,12 @@ export const StandardPageTemplate = (
       </Head>
       <Header />
       <main className={styles.main}>
-        <section className={styles.headingSection}>
+        <section
+          className={cn(
+            styles.headingSection,
+            globalStyles.headingSection
+          )}
+        >
           <h1 className={globalStyles.heading}>
             {p.titleSentence.map(
               (word: string, index: number) => {
@@ -44,18 +49,6 @@ export const StandardPageTemplate = (
               }
             )}
           </h1>
-          {p.image != null ? (
-            <div className={styles.imageContainer}>
-              <Image
-                className={styles.image}
-                width={p.image.width}
-                height={p.image.height}
-                alt={p.image.title}
-                src={p.image.url}
-                layout="fill"
-              />
-            </div>
-          ) : null}
           {p.codeSnippet != null ? (
             <code
               className={cn(
@@ -69,6 +62,18 @@ export const StandardPageTemplate = (
             </code>
           ) : null}
         </section>
+        {p.image != null ? (
+          <section className={globalStyles.imageContainer}>
+            <Image
+              className={styles.image}
+              width={p.image.width}
+              height={p.image.height}
+              alt={p.image.title}
+              src={p.image.url}
+              layout="fill"
+            />
+          </section>
+        ) : null}
 
         {p.children}
       </main>

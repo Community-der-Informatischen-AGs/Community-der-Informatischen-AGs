@@ -110,7 +110,9 @@ export const ProjectPostPreviewComponent = (
             weight="fill"
             size={20}
           />
-          {postProps.finished ? "finished" : "ongoing"}
+          {postProps.finished
+            ? "Beendet"
+            : "In Bearbeitung"}
         </div>
       </div>
     </PostPreviewComponent>

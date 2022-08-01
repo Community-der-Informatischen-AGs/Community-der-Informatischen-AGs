@@ -1,0 +1,34 @@
+@import "./../../styles/constants";
+
+section.headingSection {
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  gap: 100px;
+
+  h1 {
+    max-width: 60%;
+    display: flex;
+    flex-direction: column;
+
+    .postType {
+      opacity: 0.6;
+    }
+
+  }
+
+}
+
+
+.mainContentSection {
+  h1, h2, h3, h4, h5, h6 {
+    margin: $sectionGap 0;
+  }
+}
+
+section.section {
+  margin-bottom: $sectionGap * 2;
+}

@@ -36,9 +36,7 @@ const lazyLoad = async (
     entryId: props.entryId,
     entryQuery: `
       title
-      author {
-        title
-      }
+      author
       optionalTitleMediaCollection (limit: 1) {
         items {
           title,
@@ -71,7 +69,7 @@ const lazyLoad = async (
   const publishedAt = new Date(
     responseJsonData.sys.publishedAt
   ).toLocaleDateString()
-  const author = responseJsonData.author.title
+  const author = responseJsonData.author
   const image =
     responseJsonData.optionalTitleMediaCollection.items[0]
 
