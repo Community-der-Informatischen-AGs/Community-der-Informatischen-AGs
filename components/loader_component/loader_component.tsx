@@ -6,6 +6,7 @@ const LOADER_COUNT = 3
 export const Loader = () => {
   const loaders = []
   const refs: React.MutableRefObject<HTMLDivElement>[] = []
+  /*
   for (let i = 0; i < LOADER_COUNT; i++) {
     const ref = useRef<HTMLDivElement>(null!)
     loaders.push(
@@ -34,4 +35,6 @@ export const Loader = () => {
       <div className={styles.loader}>{loaders}</div>
     </div>
   )
+  */
+  return <div></div>
 }

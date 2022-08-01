@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 
 import type { NextPage } from "next"
 import AOS from "aos"
@@ -34,7 +34,7 @@ const useEntryIds = (
   query: string,
   entryCollection: string
 ) => {
-  const getEntryIds = async () => {
+  const getEntryIds = useCallback(async () => {
     const queryResponse = await fetch(
       "/api/contentful/query",
       {
@@ -53,7 +53,7 @@ const useEntryIds = (
         entryCollection
       )
     )
-  }
+  }, [query, entryCollection])
 
   const [entryIds, setEntryIds] = useState([])
 
