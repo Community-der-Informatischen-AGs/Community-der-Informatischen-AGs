@@ -20,6 +20,11 @@ body {
   contain: paint; // !!!! THIS IS IT!!!!
 }
 
+#nprogress .bar {
+  background: white !important;
+  height: 3px !important;
+}
+
 :root {
   --ti-cursor-color: black;
   --ti-cursor-margin-left: 0.2rem;

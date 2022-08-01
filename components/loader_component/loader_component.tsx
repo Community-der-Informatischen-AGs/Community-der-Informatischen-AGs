@@ -1,12 +1,30 @@
-import React, { useEffect, useRef } from "react"
-import styles from "./loader_component.module.scss"
+//import styles from "./loader_component.module.scss"
 
-const LOADER_COUNT = 3
+import Router from "next/router"
+import NProgress from "nprogress"
+import "nprogress/nprogress.css"
 
+NProgress.configure({
+  minimum: 0.3,
+  easing: "ease",
+  speed: 500,
+  showSpinner: false,
+})
+
+Router.events.on("routeChangeStart", () =>
+  NProgress.start()
+)
+Router.events.on("routeChangeComplete", () =>
+  NProgress.done()
+)
+Router.events.on("routeChangeError", () => NProgress.done())
 export const Loader = () => {
+  return null
+}
+
+/*
   const loaders = []
   const refs: React.MutableRefObject<HTMLDivElement>[] = []
-  /*
   for (let i = 0; i < LOADER_COUNT; i++) {
     const ref = useRef<HTMLDivElement>(null!)
     loaders.push(
@@ -35,6 +53,5 @@ export const Loader = () => {
       <div className={styles.loader}>{loaders}</div>
     </div>
   )
-  */
   return <div></div>
-}
+  */
