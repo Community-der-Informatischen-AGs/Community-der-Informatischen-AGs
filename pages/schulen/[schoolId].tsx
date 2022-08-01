@@ -82,28 +82,31 @@ const SchoolPage: NextPage<SchoolPageProps> = (
         <Summary
           title="Auf einem Blick:"
           summaryPoints={[
-            <>
+            <div key={1}>
               <p>Ansprechpartner: </p>
               <Link href={p.contactPerson.sys.id}>
                 {p.contactPerson.title}
               </Link>
-            </>,
-            <Optional condition={p.agWebsite != null}>
+            </div>,
+            <Optional
+              key={2}
+              condition={p.agWebsite != null}
+            >
               <p>AG-Webseite: </p>
               <a href={p.agWebsite}>{p.agWebsite}</a>
             </Optional>,
-            <>
+            <div key={3}>
               <p>Schul-Webseite: </p>
               <a href={p.schoolWebsite}>
                 {p.schoolWebsite}
               </a>
-            </>,
-            <>
+            </div>,
+            <div key={4}>
               <p>Email: </p>
               <a href={"mailto:" + p.contactEmail}>
                 {p.contactEmail}
               </a>
-            </>,
+            </div>,
           ]}
         />
       }

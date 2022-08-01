@@ -19,7 +19,6 @@ import {
   ContactForm,
   Footer,
   Header,
-  JSXElementComponent,
   ProjectPostPreviewComponent,
   SchoolPreviewComponent,
 } from "../components"
@@ -60,7 +59,7 @@ const useEntryIds = (
 
   useEffect(() => {
     getEntryIds()
-  }, [null])
+  }, [getEntryIds])
 
   return entryIds
 }

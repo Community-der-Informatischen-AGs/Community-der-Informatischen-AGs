@@ -27,7 +27,7 @@ export const Loader = () => {
     window.addEventListener("load", assignAnimations)
     return () =>
       window.removeEventListener("load", assignAnimations)
-  }, [])
+  }, [assignAnimations])
 
   return (
     <div className={styles.loaderWrapper}>

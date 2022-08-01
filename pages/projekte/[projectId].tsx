@@ -77,7 +77,7 @@ const ProjectPage: NextPage<ProjectPageProps> = (
         <Summary
           title="Auf einem Blick:"
           summaryPoints={[
-            <div className={styles.status}>
+            <div key={1} className={styles.status}>
               {" "}
               {p.finished ? "Beendet" : "In Bearbeitung"}
               <Circle
@@ -86,7 +86,7 @@ const ProjectPage: NextPage<ProjectPageProps> = (
                 size={15}
               />
             </div>,
-            <>
+            <div key={2}>
               Arbeitsgruppe:{" "}
               {p.assignedSchool != null ? (
                 <Link
@@ -101,13 +101,11 @@ const ProjectPage: NextPage<ProjectPageProps> = (
               ) : (
                 "gesamte Gemeinschaft"
               )}
-            </>,
-            <>
-              <p>
-                Zuletzt Aktualisiert:{" "}
-                {updatedAt.toLocaleDateString()}
-              </p>
-            </>,
+            </div>,
+            <p key={3}>
+              Zuletzt Aktualisiert:{" "}
+              {updatedAt.toLocaleDateString()}
+            </p>,
           ]}
         />
       }

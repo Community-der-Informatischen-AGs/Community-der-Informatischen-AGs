@@ -72,12 +72,12 @@ const BlogPage: NextPage<BlogPageProps> = (
         <Summary
           title="Auf einem Blick:"
           summaryPoints={[
-            <p>Autor: {p.author}</p>,
-            <p>
+            <p key={1}>Autor: {p.author}</p>,
+            <p key={2}>
               Veröffentlicht:{" "}
               {firstPublishedAt.toLocaleDateString()}
             </p>,
-            <p>
+            <p key={3}>
               Aktualisiert: {updatedAt.toLocaleDateString()}
             </p>,
           ]}

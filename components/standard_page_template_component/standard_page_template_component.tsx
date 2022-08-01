@@ -38,6 +38,7 @@ export const StandardPageTemplate = (
               (word: string, index: number) => {
                 return (
                   <span
+                    key={index}
                     style={{
                       opacity:
                         index == p.titleIndex ? 1 : 0.1,
