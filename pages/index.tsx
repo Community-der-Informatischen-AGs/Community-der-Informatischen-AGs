@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react"
+
 import type { NextPage } from "next"
 import AOS from "aos"
 import "aos/dist/aos.css"
@@ -11,18 +13,17 @@ import cn from "classnames"
 import TypeIt from "typeit-react"
 
 import {
+  BlogPostPreviewComponent,
+  CardComponent,
   Carousel,
+  ContactForm,
+  Footer,
   Header,
   JSXElementComponent,
+  ProjectPostPreviewComponent,
+  SchoolPreviewComponent,
 } from "../components"
-import { BlogPostPreviewComponent } from "../components/preview_post_component/preview_blog_post_component"
-import { useEffect, useState } from "react"
-import { SchoolPreviewComponent } from "../components/preview_post_component/preview_school_component"
-import { ProjectPostPreviewComponent } from "../components/preview_post_component/preview_project_post_component/project_post_preview_component"
-import { CardComponent } from "../components/card_component"
 import { KEYWORDS, LINKS } from "../lib/utils/constants"
-import { Footer } from "../components/footer_component/footer_component"
-import { ContactForm } from "../components/contact_form_component/contact_form_component"
 
 // TODO: add social media icons on the side of the landing-section
 // TODO: Fotos von unterschiedlichen Schulen mit Adrian oder selber machne

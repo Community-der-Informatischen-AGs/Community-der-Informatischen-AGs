@@ -1,7 +1,5 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { NextPage } from "next"
-import Link from "next/link"
-import { Circle } from "phosphor-react"
 import { PostPageTemplateComponent } from "../../components"
 import { Summary } from "../../components/summary_component"
 import { Contentful } from "../../lib/contentful/api"
@@ -12,7 +10,6 @@ import {
 import {
   CONTENT_TYPES,
   KEYWORDS,
-  LINKS,
 } from "../../lib/utils/constants"
 import { ImageData } from "../../lib/utils/types"
 

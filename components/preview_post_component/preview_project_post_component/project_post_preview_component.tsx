@@ -1,7 +1,4 @@
-import {
-  BLOCKS,
-  Document,
-} from "@contentful/rich-text-types"
+import { Document } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styles from "./project_post_preview_component.module.scss"
 import React, { useEffect, useState } from "react"

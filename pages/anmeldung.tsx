@@ -1,6 +1,8 @@
-import { StandardPageTemplate } from "../components"
+import {
+  StandardPageTemplate,
+  ContactForm,
+} from "../components"
 import { KEYWORDS, LINKS } from "../lib/utils/constants"
-import { ContactForm } from "../components/contact_form_component/contact_form_component"
 import Link from "next/link"
 import { NextPage } from "next"
 
