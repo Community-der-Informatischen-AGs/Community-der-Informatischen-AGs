@@ -1,8 +1,12 @@
-import { Document } from "@contentful/rich-text-types"
+import {
+  BLOCKS,
+  Document,
+} from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styles from "./project_post_preview_component.module.scss"
 import React, { useEffect, useState } from "react"
 import {
+  ABBREVIATION_RENDER_OPTIONS,
   PostPreviewComponent,
   processImageData,
 } from "../post_preview_component"
@@ -96,7 +100,10 @@ export const ProjectPostPreviewComponent = (
       contentType={CONTENT_TYPE}
       contentTypeId={CONTENT_TYPE_ID}
       title={postProps.title}
-      body={documentToReactComponents(postProps.body)}
+      body={documentToReactComponents(
+        postProps.body,
+        ABBREVIATION_RENDER_OPTIONS
+      )}
       image={postProps.image}
       className={styles.projectPostPreviewComponent}
       imageSectionClassName={styles.previewImage}

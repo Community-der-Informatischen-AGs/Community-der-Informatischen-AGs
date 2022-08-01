@@ -7,6 +7,9 @@ import styles from "./post_preview_component.module.scss"
 import { CONTENT_TYPE_ID_TO_ROUTE } from "../../lib/contentful/constants"
 import { ImageData } from "../../lib/utils/types"
 
+import cn from "classnames"
+import { BLOCKS } from "@contentful/rich-text-types"
+
 export interface PostPreviewComponentProps {
   entryId: string
   contentType: string
@@ -32,6 +35,17 @@ export const processImageData = (image: any) => {
   }
 
   return undefined
+}
+
+export const ABBREVIATION_RENDER_OPTIONS = {
+  renderNode: {
+    [BLOCKS.DOCUMENT]: (node: any) => {
+      return node.content.map((node: any) => {
+        if (node.content.length != 0)
+          return <p>{node.content[0].value}</p>
+      })
+    },
+  },
 }
 
 // TODO: add common placeholder images etc.
@@ -72,7 +86,12 @@ export const PostPreviewComponent = (
           />
         </section>
       ) : null}
-      <section className={props.textSectionClassName}>
+      <section
+        className={cn(
+          props.textSectionClassName,
+          styles.textSection
+        )}
+      >
         <span
           style={{
             display: "block",
@@ -91,7 +110,7 @@ export const PostPreviewComponent = (
             ({props.contentType})
           </p>
         </span>
-        {props.children}
+        <section>{props.children}</section>
         <article>{props.body}</article>
       </section>
     </div>

@@ -181,6 +181,7 @@ const ConceptSection = () => {
     <section
       className={cn(
         styles.conceptSection,
+        styles.standardSection,
         globalStyles.standardPaddingSection
       )}
     >
@@ -298,6 +299,7 @@ const PostSection = () => {
     <section
       className={cn(
         styles.postSection,
+        styles.standardSection,
         globalStyles.standardPaddingSection
       )}
     >
@@ -336,7 +338,6 @@ const PostSection = () => {
         </p>
         <b>Sieh dir unser Engagement in den Posts an!</b>
       </article>
-      {/* zwei carousels mit blog post teasers und project post teasers */}
       <h3 className={styles.projectHeading}>
         Project Posts
       </h3>
@@ -344,7 +345,7 @@ const PostSection = () => {
         <Carousel
           uniqueClassName={styles.projectCarousel}
           initialSelectedIndex={0}
-          rotationCycleDuration={4000}
+          rotationCycleDuration={10000}
           heightInPixels={700}
           width={100}
           unit={"%"}
@@ -364,7 +365,7 @@ const PostSection = () => {
         <Carousel
           uniqueClassName={styles.blogCarousel}
           initialSelectedIndex={0}
-          rotationCycleDuration={4000}
+          rotationCycleDuration={10000}
           heightInPixels={700}
           width={100}
           unit={"%"}
@@ -388,6 +389,7 @@ const PhilosophySection = () => {
     <section
       className={cn(
         styles.philosophySection,
+        styles.standardSection,
         globalStyles.standardPaddingSection
       )}
     >
@@ -471,6 +473,7 @@ const ContactSection = () => {
   return (
     <section
       className={cn(
+        styles.standardSection,
         styles.contactSection,
         globalStyles.standardPaddingSection
       )}

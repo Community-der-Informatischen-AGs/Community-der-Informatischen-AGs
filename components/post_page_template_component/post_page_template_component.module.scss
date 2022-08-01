@@ -25,10 +25,11 @@ section.headingSection {
 
 .mainContentSection {
   h1, h2, h3, h4, h5, h6 {
-    margin: $sectionGap 0;
+    margin-bottom: $sectionGap;
   }
 }
 
+// this is the section-subcomponent 
 section.section {
-  margin-bottom: $sectionGap * 2;
+  padding: 100px 20%;
 }

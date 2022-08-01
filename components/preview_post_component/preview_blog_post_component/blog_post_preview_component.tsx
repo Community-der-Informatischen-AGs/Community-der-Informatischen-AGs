@@ -5,6 +5,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styles from "./blog_post_preview_component.module.scss"
 import React, { useEffect, useState } from "react"
 import {
+  ABBREVIATION_RENDER_OPTIONS,
   PostPreviewComponent,
   processImageData,
 } from "../post_preview_component"
@@ -100,7 +101,10 @@ export const BlogPostPreviewComponent = (
       contentType={CONTENT_TYPE}
       contentTypeId={CONTENT_TYPE_ID}
       title={postProps.title}
-      body={documentToReactComponents(postProps.body)}
+      body={documentToReactComponents(
+        postProps.body,
+        ABBREVIATION_RENDER_OPTIONS
+      )}
       image={postProps.image}
       className={styles.blogPostPreviewComponent}
       imageSectionClassName={styles.previewImage}

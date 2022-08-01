@@ -88,8 +88,8 @@ export const StandardPageTemplateSection = (
   return (
     <section
       className={cn(
-        styles.section,
-        globalStyles.standardPaddingSection
+        globalStyles.standardPaddingSection,
+        styles.section
       )}
     >
       {p.children}

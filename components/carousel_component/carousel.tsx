@@ -20,8 +20,6 @@ interface CarouselProps {
 const carouselSelectorSize = 20
 
 export const Carousel = (props: CarouselProps) => {
-
-  
   const [scrollIndex, setScrollIndex] = useState(0)
   const maxIndex = props.children.length
   const carouselRef = useRef<HTMLDivElement>(null)
