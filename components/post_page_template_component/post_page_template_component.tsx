@@ -1,12 +1,6 @@
 import Head from "next/head"
 import Image from "next/image"
-import {
-  ComponentProps,
-  CSSProperties,
-  PropsWithChildren,
-  ReactNode,
-  StyleHTMLAttributes,
-} from "react"
+import { CSSProperties, ReactNode } from "react"
 import { KEYWORDS } from "../../lib/utils/constants"
 import { ImageData } from "../../lib/utils/types"
 import { Footer } from "../footer_component/footer_component"
@@ -16,7 +10,6 @@ import cn from "classnames"
 
 import styles from "./post_page_template_component.module.scss"
 import globalStyles from "./../../styles/globals.module.scss"
-import { HtmlProps } from "next/dist/shared/lib/html-context"
 
 interface PostPageTemplateComponentProps {
   postType: string

@@ -198,20 +198,15 @@ const ConceptSection = () => {
             waitUntilVisible: true,
           }}
         >
-          Eine Vernetzung von
-          <JSXElementComponent
-            color={"yellow"}
-            style={{
-              display: "block",
-            }}
-          >
-            SoftwareAGs
-          </JSXElementComponent>
+          Eine Vernetzung von{" "}
+          <span className={styles.importantHeading}>
+            Software AGs.
+          </span>
         </TypeIt>
       </h2>
       {/* !improve picture by adding images of schools to it */}
       <section className={styles.conceptCarouselSection}>
-        <h3>Mitglieder-AGs</h3>
+        <h4>Mitglieder-AGs</h4>
         <Carousel
           initialSelectedIndex={0}
           uniqueClassName={styles.conceptImageCarousel}
@@ -316,15 +311,10 @@ const PostSection = () => {
             waitUntilVisible: true,
           }}
         >
-          Entdecke unser
-          <JSXElementComponent
-            color="green"
-            style={{
-              display: "block",
-            }}
-          >
-            Engagement
-          </JSXElementComponent>
+          Entdecke unser{" "}
+          <span className={styles.importantHeading}>
+            Engagement.
+          </span>
         </TypeIt>
       </h2>
       <article>
@@ -339,10 +329,10 @@ const PostSection = () => {
         </p>
         <b>Sieh dir unser Engagement in den Posts an!</b>
       </article>
-      <h3 className={styles.projectHeading}>
-        Project Posts
-      </h3>
       <section className={styles.projectsSection}>
+        <h3 className={styles.projectHeading}>
+          Project Posts
+        </h3>
         <Carousel
           uniqueClassName={styles.projectCarousel}
           initialSelectedIndex={0}
@@ -361,8 +351,8 @@ const PostSection = () => {
           })}
         </Carousel>
       </section>
-      <h3 className={styles.blogHeading}>Blog Posts</h3>
       <section className={styles.blogSection}>
+        <h3 className={styles.blogHeading}>Blog Posts</h3>
         <Carousel
           uniqueClassName={styles.blogCarousel}
           initialSelectedIndex={0}
@@ -407,9 +397,9 @@ const PhilosophySection = () => {
           }}
         >
           Eine fördernde{" "}
-          <JSXElementComponent color="blue">
-            Umgebung
-          </JSXElementComponent>
+          <span className={styles.importantHeading}>
+            Umgebung.
+          </span>
         </TypeIt>
       </h2>
       <article>
@@ -492,10 +482,9 @@ const ContactSection = () => {
           }}
         >
           Jetzt{" "}
-          <JSXElementComponent color="purple">
-            Teilnehmen
-          </JSXElementComponent>
-          !
+          <span className={styles.importantHeading}>
+            Teilnehmen.
+          </span>
         </TypeIt>
       </h2>
       <article>

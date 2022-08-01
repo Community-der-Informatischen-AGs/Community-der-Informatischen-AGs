@@ -46,6 +46,29 @@ const ProjectPage: NextPage<ProjectPageProps> = (
 
   return (
     <PostPageTemplateComponent
+      codeSnippet={`
+        Future<void> invincibilityFrames() async {
+          Future.delayed(const Duration(seconds: 1), () {
+            _currentlyInvincible = false;
+          });
+        }
+      
+        void useExcalibur() {
+          _canUseExcalibur = false;
+          Future.delayed(const Duration(seconds: Excalibur.useDelayInSeconds)).then((value) => _canUseExcalibur = true);
+        }
+      
+        @override
+        void processHit(int dHealth) {
+      
+          if (!_currentlyInvincible) {
+            _currentlyInvincible = true;
+            invincibilityFrames();
+            updateHealth(-dHealth);
+          }
+      
+        }
+      `}
       postType={POST_TYPE}
       title={p.title}
       metaDescription={`Ein Projekt-Eintrag der ${KEYWORDS.nameAbbreviation} über das Projekt ${p.title}`}

@@ -52,6 +52,28 @@ const SchoolPage: NextPage<SchoolPageProps> = (
 
   return (
     <PostPageTemplateComponent
+      codeSnippet={`
+        def change(xc, yc):
+          global turn
+          global player_all
+          if turn == "player" and not said:
+              for grid in Grid_blocks:
+                  if grid.state == "none" and grid.xcor() - 25 < xc < grid.xcor() + 25 and grid.ycor() - 25 < yc < grid.ycor() + 25:
+                      grid.shape(os.path.expanduser("sprites/Player-Block.gif"))
+                      grid.state = "player"
+
+                      for route in zip(player_all, all_blocks):
+                          if grid in route[1]:
+                              route[0].append(grid)
+
+                      player_grids.append(grid)
+                      player_all = (
+                          player_col1, player_col2, player_col3, player_row1, player_row2, player_row3, player_dia1,
+                          player_dia2)
+
+                      turn = "AI"
+                      win_check()
+        `}
       postType={POST_TYPE}
       title={p.title}
       metaDescription={`Ein Schul- / AG-Eintrag der ${KEYWORDS.nameAbbreviation} über die Schule ${p.title}`}

@@ -105,6 +105,12 @@ button.unimportantButton {
     margin: 10px 0;
   }
 }
+@media screen and (max-width: 900px) {
+  .standardPaddingSection {
+    padding-right: 100px;
+    padding-left: 100px;
+  }
+}
 @media screen and (max-width: 600px) {
   .standardPaddingSection {
     padding-right: 10%;

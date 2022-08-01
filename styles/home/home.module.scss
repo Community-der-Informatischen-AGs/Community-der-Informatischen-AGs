@@ -1,6 +1,24 @@
 @import "./../_constants";
 @import "./../module";
 
+
+span.importantHeading {
+  position: relative;
+  width: fit-content;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40%;
+    height: 1px;
+    background-color: whitesmoke;
+    opacity: 0.3;
+  }
+}
+
 .standardSectionInvisibleHeading {
   position: absolute;
   top: 0;
@@ -149,7 +167,7 @@ section.conceptSection {
   display: grid;
   grid-template-rows: fit-content fit-content fit-content;
   grid-template-columns: 1fr 1fr;
-  row-gap: 50px;
+  row-gap: $sectionGap * 2;
   column-gap: 10%;
 
   align-items: center;
@@ -159,7 +177,7 @@ section.conceptSection {
     grid-column: 2 / 3;
     position: relative;
 
-    h3 {
+    h4 {
       margin-bottom: $sectionGap;
     }
     .conceptImageCarousel {
@@ -175,7 +193,7 @@ section.conceptSection {
   }
 
   .textSection {
-    align-self: center;
+    align-self: flex-start;
     grid-row: 2 / 2;
     grid-column: 1 / 1;
 
@@ -245,7 +263,7 @@ section.postSection {
   grid-template-rows: repeat(5, fit-content);
   grid-template-columns: repeat(2, fit-content);
   column-gap: 5vw;
-  row-gap: $sectionGap;
+  row-gap: $sectionGap * 2;
   padding: unset 5vw;
 
   border-right: none;
@@ -276,10 +294,13 @@ section.postSection {
   .projectsSection, .blogSection {
     width: 100%;
     height: fit-content;
+    h3 {
+      margin-bottom: $sectionGap;
+    }
   }
 
   .projectsSection {
-    grid-row: 4;
+    grid-row: 3;
     grid-column: 1 / 1;
 
     .projectCarousel {
@@ -289,7 +310,7 @@ section.postSection {
 
   }
   .blogSection {
-    grid-row: 4;
+    grid-row: 3;
     grid-column: 2 / 2;
 
     .blogCarousel {
@@ -357,7 +378,7 @@ section.philosophySection {
   margin: auto;
   @include centeredFlex();
   flex-direction: column;
-  gap: 50px;
+  gap: $sectionGap * 2;
 
   > h2, > article {
     width: 80%;
@@ -447,6 +468,10 @@ section.contactSection {
   @include centeredFlex();
   flex-direction: column;
   gap: $sectionGap;
+
+  h2 {
+    margin-bottom: $sectionGap;
+  }
 
   > * {
     width: 60%;

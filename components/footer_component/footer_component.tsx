@@ -30,9 +30,17 @@ export const Footer = () => {
       </section>
       <section className={styles.linksSection}>
         <h6>Arbeitsgemeinschaften</h6>
-        <a href={LINKS.annette}>{KEYWORDS.annette}</a>
-        <a href={LINKS.schloss}>{KEYWORDS.schloss}</a>
-        <a href={LINKS.kobi}>{KEYWORDS.kobi}</a>
+        <ul>
+          <li>
+            <a href={LINKS.annette}>{KEYWORDS.annette}</a>
+          </li>
+          <li>
+            <a href={LINKS.schloss}>{KEYWORDS.schloss}</a>
+          </li>
+          <li>
+            <a href={LINKS.kobi}>{KEYWORDS.kobi}</a>
+          </li>
+        </ul>
       </section>
       <section className={styles.socialMediaSection}>
         <h6>Social Media</h6>

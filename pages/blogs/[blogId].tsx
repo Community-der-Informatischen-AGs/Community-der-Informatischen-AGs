@@ -48,6 +48,22 @@ const BlogPage: NextPage<BlogPageProps> = (
 
   return (
     <PostPageTemplateComponent
+      codeSnippet={`
+      def TimerMove():
+      global timer, elixir, progress_timer, progress_target, timer_ready, fight_choice, mode, turn, dealt_damage, hit_targets, first_atk
+
+      # the timer tells itself when to inform the game to make a new target depending on the variable target_speed
+      if fight_choice == "Hurt":
+          if timer_ready:
+              progress_timer += 1
+          if progress_timer > target_speed and progress_target < target_amount:
+              target = Entities(os.path.expanduser("sprites/Attack_Target.gif"),
+                                "white", random.randint(215, 565), random.randint(-77, 375), 1)
+              targets.append(target)
+              progress_timer = 0
+              progress_target += 1
+
+      `}
       postType={POST_TYPE}
       title={p.title}
       metaDescription={`Ein Blog-Eintrag der ${KEYWORDS.nameAbbreviation} über ${p.title}`}
@@ -77,9 +93,10 @@ const BlogPage: NextPage<BlogPageProps> = (
         >
           <h2>Downloads</h2>
           <section className={styles.downloads}>
-            {downloads.map((download) => {
+            {downloads.map((download, index) => {
               return (
                 <button
+                  key={index}
                   onClick={() =>
                     (window.location.href = download.url)
                   }
