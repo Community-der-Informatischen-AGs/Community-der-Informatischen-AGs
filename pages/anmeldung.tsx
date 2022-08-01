@@ -47,13 +47,6 @@ const Anmeldung: NextPage = () => {
       <StandardPageTemplate.section>
         <h2>Details zur Anmeldung</h2>
         <article>
-          <b>
-            Genauere Informationen zur Anmeldung und auch
-            Teilnahme bei unserer Community findet ihr{" "}
-            <Link href={`/${LINKS.informationen}`}>
-              hier
-            </Link>
-          </b>
           <p>Zusammengefasst gilt jedoch Folgendes:</p>
           <ul>
             <li>
