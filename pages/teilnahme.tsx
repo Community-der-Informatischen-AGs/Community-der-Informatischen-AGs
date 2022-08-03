@@ -2,14 +2,13 @@ import {
   StandardPageTemplate,
   ContactForm,
 } from "../components"
-import { KEYWORDS, LINKS } from "../lib/utils/constants"
-import Link from "next/link"
+import { KEYWORDS } from "../lib/utils/constants"
 import { NextPage } from "next"
 
-const Anmeldung: NextPage = () => {
+const Teilnahme: NextPage = () => {
   return (
     <StandardPageTemplate
-      heading={"Anmeldung"}
+      heading={"Teilnahme"}
       image={{
         url: "/assets/images/home/philosophy3.jpg",
         width: 3456,
@@ -18,7 +17,7 @@ const Anmeldung: NextPage = () => {
       }}
       titleSentence={[
         "Die",
-        "Anmeldung",
+        "Teilnahme",
         "bei der",
         "C.D.I.A.",
       ]}
@@ -26,21 +25,27 @@ const Anmeldung: NextPage = () => {
       metaDescription={`Auf dieser Seite meldest Du dich für die Teilnahme beim Programm des ${KEYWORDS.nameSeparate} an`}
       codeSnippet={`
   
-      def foo(bar, leftBar, rightBar, x):
-        while leftBar <= rightBar:
-    
-            foobar = leftBar + (rightBar - leftBar) // 2
-    
-            if array[foobar] == x:
-                return foobar
-    
-            elif array[foobar] < x:
-              leftBar = foobar + 1
-    
-            else:
-              rightBar = foobar - 1
-    
-        return "could not be found"
+      if (formatList.length != replaceList.length) {
+        console.log("%c util, l. 31: formatList length not equal to replaceList length", 
+                    "color: red");
+        return;
+      } else {
+
+          // replaces all ~tag~ with its contents
+          for (let index=0; index<formatList.length; index++) {
+              let formatString = "...";
+
+              let replaceString = replaceList[index];
+
+              domTemplate = domTemplate.replace(
+                  new RegExp(formatString, "g"), 
+                  replaceString
+              );
+          }
+
+          return domTemplate;
+
+      }
     
       `}
     >
@@ -68,4 +73,4 @@ const Anmeldung: NextPage = () => {
   )
 }
 
-export default Anmeldung
+export default Teilnahme

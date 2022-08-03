@@ -425,7 +425,7 @@ const PhilosophySection = () => {
           text="Arbeite mit anderen Gleichgesinnten zusammen und stärke deine Teamfähigkeiten"
           imageSource="assets/images/home/philosophy1.jpg"
           imageAlt="Kooperationsbild"
-          link={`${LINKS.philosophie}#kooperation`}
+          link={`${LINKS.about}#kooperation`}
         />
         <CardComponent
           className={styles.card}
@@ -433,7 +433,7 @@ const PhilosophySection = () => {
           text="Bilde dich weiter. Zusammen in einer Gruppe kann man sich gegenseitig Tipps geben und etwas beibringen"
           imageSource="assets/images/home/philosophy2.jpg"
           imageAlt="Verbesserungsbild"
-          link={`${LINKS.philosophie}#verbesserung`}
+          link={`${LINKS.about}#verbesserung`}
         />
         <CardComponent
           className={styles.card}
@@ -441,7 +441,7 @@ const PhilosophySection = () => {
           text="Lerne Glechgesinnte kennen und erweitere deinen Horizont."
           imageSource="assets/images/home/philosophy3.jpg"
           imageAlt="Vernetzungsbild"
-          link={`${LINKS.philosophie}#vernetzung`}
+          link={`${LINKS.about}#vernetzung`}
         />
         <CardComponent
           className={styles.card}
@@ -449,7 +449,7 @@ const PhilosophySection = () => {
           text="Jeder lernt mit der eigenen Geschwindigkeit. Hierfür setzt sich JED aktiv ein."
           imageSource="assets/images/home/philosophy4.jpg"
           imageAlt="Tempobild"
-          link={`${LINKS.philosophie}#tempo`}
+          link={`${LINKS.about}#tempo`}
         />
       </section>
       <section className={styles.buttonSection}>
