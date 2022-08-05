@@ -5,3 +5,7 @@ export interface ImageData {
   width: number
   title: string
 }
+
+export type StyleSheet = {
+  readonly [key: string]: string;
+}

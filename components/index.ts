@@ -3,6 +3,7 @@ export * from "./carousel_component";
 export * from "./contact_form_component";
 export * from "./footer_component";
 export * from "./header_component";
+export * from "./image_wrapper_component";
 export * from "./jsx_element_component";
 export * from "./loader_component";
 export * from "./navigation_component";

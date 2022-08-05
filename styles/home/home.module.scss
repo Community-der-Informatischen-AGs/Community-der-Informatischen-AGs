@@ -19,6 +19,13 @@ span.importantHeading {
   }
 }
 
+.standardSection {
+  
+  h2 {
+    margin-bottom: $sectionGap;
+  }
+}
+
 .standardSectionInvisibleHeading {
   position: absolute;
   top: 0;
@@ -28,6 +35,7 @@ span.importantHeading {
 
   word-spacing: 100vw;
   font-size: 8rem;
+
 }
 
 // * using section.landingSection to increase specificity for priority
@@ -164,18 +172,12 @@ section.conceptSection {
   position: relative;
   padding-bottom: 200px;
 
-  display: grid;
-  grid-template-rows: fit-content fit-content fit-content;
-  grid-template-columns: 1fr 1fr;
-  row-gap: $sectionGap * 2;
-  column-gap: 10%;
-
-  align-items: center;
+  @include centeredFlex();
+  gap: $sectionGap * 2;
 
   .conceptCarouselSection {
-    grid-row: 2 / 2;
-    grid-column: 2 / 3;
     position: relative;
+    width: 60%;
 
     h4 {
       margin-bottom: $sectionGap;
@@ -187,15 +189,9 @@ section.conceptSection {
     }
 
   }
-  h2 {
-    grid-row: 1 / 1;
-    grid-column: 1 / 3;
-  }
 
   .textSection {
-    align-self: flex-start;
-    grid-row: 2 / 2;
-    grid-column: 1 / 1;
+    height: fit-content;
 
     .buttonSection button {
       margin: 50px 0;
@@ -259,37 +255,22 @@ section.postSection {
   position: relative;
   
   width: 100%;
-  display: grid;
-  grid-template-rows: repeat(5, fit-content);
-  grid-template-columns: repeat(2, fit-content);
-  column-gap: 5vw;
-  row-gap: $sectionGap * 2;
+  display: flex;
   padding: unset 5vw;
+  gap: $sectionGap * 2;
 
-  border-right: none;
-
-  h2 {
-    grid-column: 1 / 3;
+  .textSection {
+    height: fit-content;
+    position: sticky;
+    top: 200px;
   }
-  > article {
-    grid-column: 1 / 3;
-    grid-row: 2;
+
+  .carouselSection {
     width: 100%;
+    @include centeredFlex();
+    flex-direction: column;
+    gap: $sectionGap * 2;
   }
-  > b {
-    grid-column: 1 / 3;
-    grid-row: 3;
-  }
-
-  .decoration {
-    opacity: 0.1;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 30%;
-    height: 50%;
-  }
-
 
   .projectsSection, .blogSection {
     width: 100%;
@@ -299,25 +280,12 @@ section.postSection {
     }
   }
 
-  .projectsSection {
-    grid-row: 3;
-    grid-column: 1 / 1;
 
-    .projectCarousel {
-      width: 100%;
-      height: 100%;
-    }
-
+  .projectCarousel, .blogCarousel {
+    width: 100%;
+    height: 100%;
   }
-  .blogSection {
-    grid-row: 3;
-    grid-column: 2 / 2;
 
-    .blogCarousel {
-      width: 100%;
-      height: 100%;
-    }
-  } 
 
 }
 @media screen and (max-width: 1200px) {
@@ -372,54 +340,30 @@ section.postSection {
 
 /// philosophy section:
 
-section.philosophySection {
+section.offerSection {
 
   width: 100%;
   margin: auto;
+  margin-bottom: 100px;
   @include centeredFlex();
   flex-direction: column;
-  gap: $sectionGap * 2;
 
   > h2, > article {
     width: 80%;
   }
 
   .cardSection {
-    margin: 100px 0;
-    display: grid;
-    grid-template-rows: repeat(2, fit-content);
-    grid-template-columns: repeat(2, fit-content);
-    gap: 100px;
-  
+    @include centeredFlex();
+    justify-content: center;
+    gap: $sectionGap;
+    flex-wrap: wrap;
+    margin-block: $sectionGap * 2;
+
     .card {
       text-align: center;
       box-shadow: $boxShadow;
       position: relative;
       z-index: 2;
-      width: 600px;
-      height: 600px;
-    
-  
-      &:nth-child(1) {
-        justify-self:end;
-        grid-row: 1;
-        grid-column: 1;
-      }
-      &:nth-child(2) {
-        justify-self:start;
-        grid-row: 1;
-        grid-column: 2;
-      }
-      &:nth-child(3) {
-        justify-self:end;
-        grid-row: 2;
-        grid-column: 1;
-      }
-      &:nth-child(4) {
-        justify-self:start;
-        grid-row: 2;
-        grid-column: 2;
-      }
   
     }
   }
@@ -430,7 +374,7 @@ section.philosophySection {
 
 }
 @media screen and (max-width: 1700px) {
-  section.philosophySection {
+  section.offerSection {
     
     article {
       width: 80%;
@@ -446,14 +390,14 @@ section.philosophySection {
   }
 }
 @media screen and (max-width: 1420px) {
-  section.philosophySection .cardSection {
+  section.offerSection .cardSection {
     @include centeredFlex();
     flex-direction: column;
     gap: 50px;
   }
 }
 @media screen and (max-width: 700px) {
-  section.philosophySection {
+  section.offerSection {
 
     > h2, > article {
       width: 100%;
@@ -466,22 +410,29 @@ section.contactSection {
 
   width: 100%;
   @include centeredFlex();
-  flex-direction: column;
-  gap: $sectionGap;
+  gap: $sectionGap * 2;
 
-  h2 {
-    margin-bottom: $sectionGap;
+  .contentSection {  
+    
+    h2 {
+      width: 100%;
+    }
+
+    width: 100%;
+    @include centeredFlex();
+    flex-direction: column;
+    align-items: flex-start;
+
+    button {
+      margin-top: $sectionGap;
+    }
+
   }
 
-  > * {
-    width: 60%;
-  }
-  form {
-    margin: 50px auto;
-  }
-
-  button {
-    margin: auto;
+  .imageWrapper {
+    width: 100%;
+    height: 500px;
+    border-radius: $standardBorderRadius  /2;
   }
 
 }
