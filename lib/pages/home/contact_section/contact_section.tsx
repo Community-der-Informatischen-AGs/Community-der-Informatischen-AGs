@@ -1,24 +1,24 @@
 import cn from "classnames"
 import TypeIt from "typeit-react"
-import {
-  ContactForm,
-  ImageWrapper,
-} from "../../../components"
+import { ImageWrapper } from "../../../../components"
 
-import globalStyles from "./../../../styles/globals.module.scss"
-import styles from "./../../../styles/home/home.module.scss"
+import globalStyles from "./../../../../styles/globals.module.scss"
+import homeStyles from "./../../../../styles/home/home.module.scss"
+import styles from "./contact_section.module.scss"
 
 export const ContactSection = () => {
   return (
     <section
       className={cn(
-        styles.standardSection,
+        homeStyles.standardSection,
         styles.contactSection,
         globalStyles.standardPaddingSection
       )}
     >
       <h3
-        className={styles.standardSectionInvisibleHeading}
+        className={
+          homeStyles.standardSectionInvisibleHeading
+        }
       >
         Anmeldung
       </h3>
@@ -49,13 +49,19 @@ export const ContactSection = () => {
           Werde Teil einer vielfältigen Gesellschaft von
           digitalen Entwicklern.
         </p>
-        <button>Zur Teilnahme!</button>
-        <button className={globalStyles.unimportantButton}>
-          Ansprechpartner und Kontakt
-        </button>
-        <button className={globalStyles.unimportantButton}>
-          AG-Verzeichnis
-        </button>
+        <section className={styles.buttonSection}>
+          <button>Zur Teilnahme!</button>
+          <button
+            className={globalStyles.unimportantButton}
+          >
+            Ansprechpartner und Kontakt
+          </button>
+          <button
+            className={globalStyles.unimportantButton}
+          >
+            AG-Verzeichnis
+          </button>
+        </section>
       </section>
     </section>
   )

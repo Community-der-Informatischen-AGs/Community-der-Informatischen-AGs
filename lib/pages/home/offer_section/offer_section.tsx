@@ -1,23 +1,26 @@
 import cn from "classnames"
 import TypeIt from "typeit-react"
-import { CardComponent } from "../../../components"
-import { KEYWORDS, LINKS } from "../../utils/constants"
+import { CardComponent } from "../../../../components"
+import { KEYWORDS, LINKS } from "../../../utils/constants"
 
-import globalStyles from "./../../../styles/globals.module.scss"
-import styles from "./../../../styles/home/home.module.scss"
-import cardStyles from "./../../../styles/home/card_component.module.scss"
+import globalStyles from "./../../../../styles/globals.module.scss"
+import homeStyles from "./../../../../styles/home/home.module.scss"
+import styles from "./offer_section.module.scss"
+import cardStyles from "./../../../../styles/home/card_component.module.scss"
 
 export const OfferSection = () => {
   return (
     <section
       className={cn(
         styles.offerSection,
-        styles.standardSection,
+        homeStyles.standardSection,
         globalStyles.standardPaddingSection
       )}
     >
       <h3
-        className={styles.standardSectionInvisibleHeading}
+        className={
+          homeStyles.standardSectionInvisibleHeading
+        }
       >
         Was bieten wir?
       </h3>
@@ -29,7 +32,7 @@ export const OfferSection = () => {
           }}
         >
           Eine fördernde{" "}
-          <span className={styles.importantHeading}>
+          <span className={homeStyles.importantHeading}>
             Umgebung.
           </span>
         </TypeIt>

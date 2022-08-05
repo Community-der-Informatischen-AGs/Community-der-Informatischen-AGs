@@ -4,11 +4,14 @@ import TypeIt from "typeit-react"
 import {
   Carousel,
   SchoolPreviewComponent,
-} from "../../../components"
-import { KEYWORDS } from "../../utils/constants"
-import globalStyles from "./../../../styles/globals.module.scss"
-import styles from "./../../../styles/home/home.module.scss"
-import { useEntryIds } from "./util"
+} from "./../../../../components"
+import { KEYWORDS } from "../../../utils/constants"
+
+import globalStyles from "./../../../../styles/globals.module.scss"
+import homeStyles from "./../../../../styles/home/home.module.scss"
+import styles from "./concept_section.module.scss"
+
+import { useEntryIds } from "../util"
 
 export const ConceptSection = () => {
   const schoolIds = useEntryIds(
@@ -27,12 +30,14 @@ export const ConceptSection = () => {
     <section
       className={cn(
         styles.conceptSection,
-        styles.standardSection,
+        homeStyles.standardSection,
         globalStyles.standardPaddingSection
       )}
     >
       <h3
-        className={styles.standardSectionInvisibleHeading}
+        className={
+          homeStyles.standardSectionInvisibleHeading
+        }
       >
         Was sind wir?
       </h3>
@@ -43,7 +48,7 @@ export const ConceptSection = () => {
           initialSelectedIndex={0}
           uniqueClassName={styles.conceptImageCarousel}
           rotationCycleDuration={5000}
-          heightInPixels={650}
+          heightInPixels={500}
           width={100}
           unit="%"
         >

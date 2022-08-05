@@ -1,15 +1,17 @@
 import cn from "classnames"
-import { useEntryIds } from "./util"
+import { useEntryIds } from "../util"
 
-import globalStyles from "./../../../styles/globals.module.scss"
-import styles from "./../../../styles/home/home.module.scss"
+import globalStyles from "./../../../../styles/globals.module.scss"
+import homeStyles from "./../../../../styles/home/home.module.scss"
+import styles from "./post_section.module.scss"
+
 import TypeIt from "typeit-react"
-import { KEYWORDS } from "../../utils/constants"
+import { KEYWORDS } from "../../../utils/constants"
 import {
   BlogPostPreviewComponent,
   Carousel,
   ProjectPostPreviewComponent,
-} from "../../../components"
+} from "../../../../components"
 
 export const PostSection = () => {
   const projectPostIds = useEntryIds(
@@ -40,15 +42,18 @@ export const PostSection = () => {
     <section
       className={cn(
         styles.postSection,
-        styles.standardSection,
+        homeStyles.standardSection,
         globalStyles.standardPaddingSection
       )}
     >
       <h3
-        className={styles.standardSectionInvisibleHeading}
+        className={
+          homeStyles.standardSectionInvisibleHeading
+        }
       >
         Was machen wir?
       </h3>
+
       <section className={styles.textSection}>
         <h2>
           <TypeIt
@@ -72,6 +77,7 @@ export const PostSection = () => {
           <b>Sieh dir unser Engagement in den Posts an!</b>
         </article>
       </section>
+
       <section className={styles.carouselSection}>
         <section className={styles.projectsSection}>
           <h3 className={styles.projectHeading}>

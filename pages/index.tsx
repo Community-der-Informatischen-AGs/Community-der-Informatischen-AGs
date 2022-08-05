@@ -15,7 +15,6 @@ import {
   ConceptSection,
   ContactSection,
   OfferSection,
-  PhilosophySection,
   PostSection,
 } from "../lib/pages/home"
 import { KEYWORDS } from "../lib/utils/constants"
