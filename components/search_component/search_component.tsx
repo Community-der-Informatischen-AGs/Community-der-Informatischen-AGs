@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { useRouter } from "next/router"
 import {
   LinkSimpleHorizontal,
   LinkSimpleHorizontalBreak,
@@ -9,14 +10,14 @@ import {
   FormEvent,
   useCallback,
   useEffect,
-  useRef,
   useState,
 } from "react"
+import { CONTENT_TYPE_ID_TO_ROUTE } from "../../lib/contentful/constants"
+import { LINKS } from "../../lib/utils/constants"
 
-import styles from "./search.module.scss"
+import styles from "./search_component.module.scss"
 
 export const Search = () => {
-  const reservedInvalidId = ""
   const [searchInputValue, setSearchInputValue] =
     useState("")
   const [searchActive, setSearchActive] = useState(false)
@@ -24,8 +25,10 @@ export const Search = () => {
     {
       title: string
       entryId: string
+      entryType: string
     }[]
   >([])
+  const router = useRouter()
 
   useEffect(() => {
     const timeOutId = setTimeout(async () => {
@@ -49,24 +52,21 @@ export const Search = () => {
       const status = searchResults.status
 
       if (status != 200) {
-        setSearchResults([
-          {
-            title: "search failed, please try again",
-            entryId: reservedInvalidId,
-          },
-        ])
+        setSearchResults([])
+        return
       }
 
       const jsonResults = await searchResults.json()
 
       const temporarySearchResults = []
       for (let result of jsonResults) {
-        console.log(result)
-
-        const title = result.title
-        const entryId = result.sys.id
+        const entryResult = result[0] // ?? idk why
+        const entryType = result.entryType
+        const title = entryResult.title
+        const entryId = entryResult.sys.id
 
         temporarySearchResults.push({
+          entryType: entryType,
           title: title,
           entryId: entryId,
         })
@@ -77,10 +77,15 @@ export const Search = () => {
     return () => clearTimeout(timeOutId)
   }, [searchInputValue])
 
-  async function searchSubmit(e: FormEvent) {
-    e.preventDefault()
+  function redirectToSearchPage() {
+    router.push(`${LINKS.search}?s=${searchInputValue}`)
+  }
 
-    // TODO: render a page with all of the posts.
+  async function searchSubmit(e: FormEvent) {
+    console.log(searchInputValue)
+    //redirectToSearchPage()
+    e.preventDefault()
+    return false
   }
 
   const handleBlur = useCallback((e: any) => {
@@ -98,13 +103,10 @@ export const Search = () => {
       <div className={styles.miniSearch}>
         <MagnifyingGlass
           size={25}
-          onClick={() => {
-            // TODO: send the user to the search site.
-          }}
+          onClick={redirectToSearchPage}
         />
       </div>
       <form
-        action="POST"
         onSubmit={(e) => searchSubmit(e)}
         onFocus={() => setSearchActive(true)}
         onBlur={handleBlur}
@@ -165,11 +167,16 @@ export const Search = () => {
               </li>
             ) : (
               searchResults.map((pair) => {
-                // TODO: implement entry system where the type of entry is protrayed.
                 return (
                   <li key={pair.entryId}>
                     <div className={styles.linkTextWrapper}>
-                      <Link href={"/" + pair.entryId}>
+                      <Link
+                        href={`${
+                          CONTENT_TYPE_ID_TO_ROUTE[
+                            pair.entryType
+                          ]
+                        }/${pair.entryId}`}
+                      >
                         {pair.title}
                       </Link>
                     </div>
@@ -185,7 +192,7 @@ export const Search = () => {
             {searchResults.length != 0 ? (
               <li>
                 <Link
-                  href="/search"
+                  href={`${LINKS.search}?s=${searchInputValue}`}
                   className={styles.viewMore}
                 >
                   View more

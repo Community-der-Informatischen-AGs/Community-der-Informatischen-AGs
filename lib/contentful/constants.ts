@@ -6,6 +6,9 @@ export const CONTENT_TYPE_IDS = {
   blog: "blogPost",
   school: "schoolEntry",
 }
+export const CONTENT_TYPE_COLLECTION_IDS = (id: string) => {
+  return `${id}Collection`
+}
 
 export const CONTENT_TYPE_ID_TO_ROUTE: {
   [key: string]: string

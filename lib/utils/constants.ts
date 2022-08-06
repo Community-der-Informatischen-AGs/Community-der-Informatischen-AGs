@@ -18,9 +18,10 @@ export const LINKS = {
   blogs: "/blogs",
   kontakt: "/kontakt",
   impressum: "/impressum",
+  search: "/search",
   annette: "https://www.entwicklung.annettegymnasium.de",
   kobi: "https://www.entwicklung.kobi-gymnasium.de",
-  schloss: "https://www.entwicklung.schloss-gymnasium.de"
+  schloss: "https://www.entwicklung.schloss-gymnasium.de",
 }
 
 

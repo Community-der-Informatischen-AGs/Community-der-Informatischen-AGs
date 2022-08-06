@@ -33,7 +33,8 @@ section.contactSection {
   .imageWrapper {
     width: 100%;
     height: 500px;
-    border-radius: $standardBorderRadius  /2;
+    border-radius: $standardBorderRadius / 2;
+    box-shadow: $boxShadow;
   }
 
 }
