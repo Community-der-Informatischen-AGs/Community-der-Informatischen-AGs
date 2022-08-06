@@ -50,7 +50,8 @@ const LandingSection = () => {
     <section
       className={cn(
         globalStyles.standardPaddingSection,
-        styles.landingSection
+        styles.landingSection,
+        globalStyles.headingSection
       )}
     >
       <code
@@ -94,7 +95,7 @@ const LandingSection = () => {
             }}
             getBeforeInit={(instance: any) => {
               const targets = [
-                "<span style='color: #82AADF'>&ltVSCodeHocker/&gt</span>",
+                "<span style='color: #82AADF'>&ltVSCodeer/&gt</span>",
                 "<span style='color: #BC6778'>&ltDBMSNutzer/&gt</span>",
                 "<span style='color: #C792EA'>&ltDoksLeser/&gt</span>",
               ]

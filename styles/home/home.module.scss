@@ -1,4 +1,4 @@
-@import "./../_constants";
+@import "./../constants";
 @import "./../module";
 
 
@@ -40,11 +40,9 @@ span.importantHeading {
 
 // * using section.landingSection to increase specificity for priority
 section.landingSection {
-  padding: 100px 200px;
   padding-bottom: 200px;
   width: 100%;
   min-height: 700px;
-  margin-top: 100px;
   margin-bottom: 200px;
 
   &:before {
@@ -78,6 +76,8 @@ section.landingSection {
 
     position: relative;
     z-index: 1;
+    @include wordBreak();
+    
 
     .seeThrough {
       opacity: 0.1;
@@ -112,29 +112,11 @@ section.landingSection {
   section.landingSection {
     flex-direction: column;
     gap: 100px;
-
-    padding: 100px 15%;
+    padding-bottom: 100px;
 
     code {
       left: 0;
       top: 300px;
     }
-  }
-}
-@media screen and (max-width: 600px) {
-  section.landingSection {
-    padding: 200px 10% 100px 10%;
-
-    .heading {
-      font-size: $h1fontSize;
-    }
-  }
-}
-@media screen and (max-width: 500px) {
-  // hardcoded height for typed content so as to prevent overflow and subsequent content shift
-  section.landingSection .contentSection h3 {
-    $line-height: 1.3;
-    line-height: $line-height;
-    height: $h3fontSize * $line-height * 5;
   }
 }
