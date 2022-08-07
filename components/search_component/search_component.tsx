@@ -6,12 +6,7 @@ import {
   MagnifyingGlass,
   X,
 } from "phosphor-react"
-import {
-  FormEvent,
-  useCallback,
-  useEffect,
-  useState,
-} from "react"
+import { useCallback, useEffect, useState } from "react"
 import { CONTENT_TYPE_ID_TO_ROUTE } from "../../lib/contentful/constants"
 import { LINKS } from "../../lib/utils/constants"
 
@@ -30,9 +25,10 @@ export const Search = () => {
   >([])
   const router = useRouter()
 
-  useEffect(() => {
+  const searchFunction = () => {
     const timeOutId = setTimeout(async () => {
       if (searchInputValue.length < 2) {
+        setSearchResults([])
         return false
       }
 
@@ -72,20 +68,15 @@ export const Search = () => {
         })
       }
       setSearchResults(temporarySearchResults)
-    })
+    }, 200)
 
     return () => clearTimeout(timeOutId)
-  }, [searchInputValue])
+  }
+
+  useEffect(searchFunction, [searchInputValue])
 
   function redirectToSearchPage() {
     router.push(`${LINKS.search}?s=${searchInputValue}`)
-  }
-
-  async function searchSubmit(e: FormEvent) {
-    console.log(searchInputValue)
-    //redirectToSearchPage()
-    e.preventDefault()
-    return false
   }
 
   const handleBlur = useCallback((e: any) => {
@@ -107,17 +98,24 @@ export const Search = () => {
         />
       </div>
       <form
-        onSubmit={(e) => searchSubmit(e)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            redirectToSearchPage()
+          }
+        }}
+        onSubmit={(e) => {
+          e.preventDefault()
+        }}
         onFocus={() => setSearchActive(true)}
         onBlur={handleBlur}
       >
         <input
           value={searchInputValue}
-          onChange={(e) =>
+          onChange={(e) => {
+            e.preventDefault()
             setSearchInputValue(e.target.value)
-          }
+          }}
           className={styles.searchInput}
-          type="search"
           placeholder="Suchen..."
           minLength={2}
         />{" "}
@@ -141,7 +139,7 @@ export const Search = () => {
         </button>
         <button
           className={styles.searchButton}
-          onClick={(e) => searchSubmit(e)}
+          onClick={(e) => redirectToSearchPage()}
         >
           <MagnifyingGlass
             alt="confirm search query"
