@@ -17,8 +17,7 @@ export const StandardPageTemplate = (
     <>
       <Head>
         <title>
-          {KEYWORDS.nameSeparate} -{" "}
-          {p.titleSentence[p.titleIndex]}
+          {KEYWORDS.nameSeparate} - {p.heading}
         </title>
         <meta
           name="description"
@@ -104,7 +103,7 @@ interface StandardPageTemplateProps {
   heading: string
   titleSentence: string[]
   titleIndex: number
-  image: ImageData
+  image?: ImageData
   metaDescription: string
   children?: JSX.Element | JSX.Element[]
   codeSnippet?: string

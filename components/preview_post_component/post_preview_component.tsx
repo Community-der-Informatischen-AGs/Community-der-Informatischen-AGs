@@ -5,23 +5,27 @@ import { HandPointing } from "phosphor-react"
 
 import styles from "./post_preview_component.module.scss"
 import { CONTENT_TYPE_ID_TO_ROUTE } from "../../lib/contentful/constants"
-import { ImageData } from "../../lib/utils/types"
+import {
+  HasOptionalImage,
+  HasOptionalStyleSheet,
+  SCSSStyleSheet,
+} from "../../lib/utils/types"
 
 import cn from "classnames"
 import { BLOCKS } from "@contentful/rich-text-types"
+import { processOptStyleSheet } from "../../lib/utils/functions"
 
-export interface PostPreviewComponentProps {
+export interface PostPreviewComponentProps
+  extends HasOptionalImage,
+    HasOptionalStyleSheet {
   entryId: string
   contentType: string
   contentTypeId: string
   title: string
-  image?: ImageData
   children?: ReactNode[] | ReactNode
   body?: ReactNode
   className?: string
-  imageSectionClassName?: string
-  textSectionClassName?: string
-  indicatorSectionClassName?: string
+  baseStyles: SCSSStyleSheet
 }
 
 export const processImageData = (image: any) => {
@@ -50,45 +54,47 @@ export const ABBREVIATION_RENDER_OPTIONS = {
 
 // TODO: add common placeholder images etc.
 export const PostPreviewComponent = (
-  props: PostPreviewComponentProps
+  p: PostPreviewComponentProps
 ) => {
   const router = useRouter()
+
+  const optStylesheet = processOptStyleSheet(p.optStyles)
 
   return (
     <div
       style={{
         cursor: "pointer",
       }}
-      className={props.className + " " + styles.postPreview}
+      className={cn(p.className, styles.postPreview)}
       onClick={() => {
-        // this should work...
         router.push(
-          `/${
-            CONTENT_TYPE_ID_TO_ROUTE[props.contentTypeId]
-          }/${props.entryId}`
+          `/${CONTENT_TYPE_ID_TO_ROUTE[p.contentTypeId]}/${
+            p.entryId
+          }`
         )
       }}
     >
-      {props.image ? (
+      {p.image ? (
         <section
-          className={
-            props.imageSectionClassName +
-            " " +
+          className={cn(
+            p.baseStyles.imageSection,
+            optStylesheet.imageSection,
             styles.imageSection
-          }
+          )}
         >
           <Image
-            src={props.image.url}
-            width={props.image.width}
-            height={props.image.height}
-            alt={props.image.title}
+            src={p.image.url}
+            width={p.image.width}
+            height={p.image.height}
+            alt={p.image.title}
             layout="fill"
           />
         </section>
       ) : null}
       <section
         className={cn(
-          props.textSectionClassName,
+          p.baseStyles.textSection,
+          optStylesheet.textSection,
           styles.textSection
         )}
       >
@@ -97,9 +103,7 @@ export const PostPreviewComponent = (
             display: "block",
           }}
         >
-          <h3 style={{ display: "inline" }}>
-            {props.title}
-          </h3>
+          <h3 style={{ display: "inline" }}>{p.title}</h3>
           <p
             style={{
               display: "inline",
@@ -107,11 +111,11 @@ export const PostPreviewComponent = (
             }}
           >
             {" "}
-            ({props.contentType})
+            ({p.contentType})
           </p>
         </span>
-        <section>{props.children}</section>
-        <article>{props.body}</article>
+        <section>{p.children}</section>
+        <article>{p.body}</article>
       </section>
     </div>
   )

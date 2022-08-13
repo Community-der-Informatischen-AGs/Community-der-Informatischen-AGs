@@ -3,6 +3,7 @@ import { useEntryIds } from "../util"
 
 import globalStyles from "./../../../../styles/globals.module.scss"
 import homeStyles from "./../../../../styles/home/home.module.scss"
+import postPreviewStyles from "./../../../../styles/home/post_preview_component.module.scss"
 import styles from "./post_section.module.scss"
 
 import TypeIt from "typeit-react"
@@ -94,6 +95,7 @@ export const PostSection = () => {
             {projectPostIds.map((id) => {
               return (
                 <ProjectPostPreviewComponent
+                  optStyles={postPreviewStyles}
                   key={id}
                   entryId={id}
                 />
@@ -114,6 +116,7 @@ export const PostSection = () => {
             {blogPostIds.map((id) => {
               return (
                 <BlogPostPreviewComponent
+                  optStyles={postPreviewStyles}
                   key={id}
                   entryId={id}
                 />

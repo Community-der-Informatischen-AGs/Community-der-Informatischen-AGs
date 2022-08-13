@@ -1,27 +1,28 @@
 import { useRouter } from "next/router"
-import { StyleSheet } from "../../lib/utils/types"
+import {
+  HasOptionalImage,
+  HasOptionalStyleSheet,
+  SCSSStyleSheet,
+} from "../../lib/utils/types"
 import styles from "./card_component.module.scss"
 
 import cn from "classnames"
+import { processOptStyleSheet } from "../../lib/utils/functions"
 
 // TODO: use Next Images
-interface CardComponentProps {
+interface CardComponentProps extends HasOptionalStyleSheet {
   imageSource: string
   imageAlt: string
   title: string
   text: string
   link: string
   className?: string
-  styleSheet?: StyleSheet
 }
 
 export const CardComponent = (p: CardComponentProps) => {
   const router = useRouter()
 
-  let stylesheet: StyleSheet = {}
-  if (p.styleSheet != null) {
-    stylesheet = p.styleSheet
-  }
+  const stylesheet = processOptStyleSheet(p.optStyles)
 
   return (
     <div

@@ -20,6 +20,8 @@
 
     background-color: $backgroundColor;
     position: relative;
+    border: $border;
+    display: inline-flex;
 
     .searchInput {
       background-color: transparent;
@@ -95,17 +97,8 @@
   }
 }
 
-@media screen and (max-width: 430px) {
-  .searchSection form {
-    display: none;
-  }
+@media screen and (max-width: $searchFieldDisplayThreshold) {
   .searchSection {
-    width: 50px;
-
-    .miniSearch {
-      display: block;
-      width: 25px;
-      height: 25px;
-    }
+    display: none;
   }
 }

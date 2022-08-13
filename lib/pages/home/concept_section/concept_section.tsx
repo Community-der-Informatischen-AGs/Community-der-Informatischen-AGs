@@ -9,6 +9,7 @@ import { KEYWORDS } from "../../../utils/constants"
 
 import globalStyles from "./../../../../styles/globals.module.scss"
 import homeStyles from "./../../../../styles/home/home.module.scss"
+import postPreviewStyles from "./../../../../styles/home/post_preview_component.module.scss"
 import styles from "./concept_section.module.scss"
 
 import { useEntryIds } from "../util"
@@ -55,6 +56,7 @@ export const ConceptSection = () => {
           {schoolIds.map((entryId) => {
             return (
               <SchoolPreviewComponent
+                optStyles={postPreviewStyles}
                 key={entryId}
                 entryId={entryId}
               />

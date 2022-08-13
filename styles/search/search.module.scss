@@ -1,0 +1,34 @@
+@import "./../module";
+@import "./../constants";
+
+.headingSection {
+  h1 {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin-bottom: 80px;
+    @include wordBreak();
+  }
+
+}
+
+
+section.resultsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+
+
+  .nothing {
+    @include centeredFlex();
+    flex-direction: column;
+    gap: $sectionGap;
+  }
+}
+
+.navigationSection {
+  @include centeredFlex();
+  justify-content: center;
+  gap: $sectionGap;
+  margin-block: $sectionGap;
+}

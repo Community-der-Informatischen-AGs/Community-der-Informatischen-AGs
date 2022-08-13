@@ -51,7 +51,7 @@ export const OfferSection = () => {
       </article>
       <section className={styles.cardSection}>
         <CardComponent
-          styleSheet={cardStyles}
+          optStyles={cardStyles}
           className={styles.card}
           title="Kooperation"
           text="Arbeite mit anderen Gleichgesinnten zusammen und stärke deine Teamfähigkeiten"
@@ -60,7 +60,7 @@ export const OfferSection = () => {
           link={`${LINKS.about}#kooperation`}
         />
         <CardComponent
-          styleSheet={cardStyles}
+          optStyles={cardStyles}
           className={styles.card}
           title="Verbesserung"
           text="Bilde dich weiter. Zusammen in einer Gruppe kann man sich gegenseitig Tipps geben und etwas beibringen"
@@ -69,7 +69,7 @@ export const OfferSection = () => {
           link={`${LINKS.about}#verbesserung`}
         />
         <CardComponent
-          styleSheet={cardStyles}
+          optStyles={cardStyles}
           className={styles.card}
           title="Vernetzung"
           text="Lerne Glechgesinnte kennen und erweitere deinen Horizont."
@@ -91,7 +91,7 @@ export const OfferSection = () => {
       </article>
       <section className={styles.cardSection}>
         <CardComponent
-          styleSheet={cardStyles}
+          optStyles={cardStyles}
           className={styles.card}
           title="Eigentempo"
           text="Jeder lernt im eigenen Tempo. Kein Druck. Kein Stress."
@@ -100,7 +100,7 @@ export const OfferSection = () => {
           link={`${LINKS.about}#kooperation`}
         />
         <CardComponent
-          styleSheet={cardStyles}
+          optStyles={cardStyles}
           className={styles.card}
           title="Neutralität"
           text="Unsere Gemeinschaft hält sich fern von starker Politik. Kein Drama."
@@ -109,7 +109,7 @@ export const OfferSection = () => {
           link={`${LINKS.about}#verbesserung`}
         />
         <CardComponent
-          styleSheet={cardStyles}
+          optStyles={cardStyles}
           className={styles.card}
           title="Respekt und Vertrauen"
           text="Engagement und Fähigkeiten der Mitglieder werden respektiert. Nur konstruktive Kritik."

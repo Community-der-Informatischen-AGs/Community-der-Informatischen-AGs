@@ -2,13 +2,14 @@ import { BLOCKS } from "@contentful/rich-text-types"
 import { LINKS } from "../utils/constants"
 
 export const CONTENT_TYPE_IDS = {
-  project: "projectPost",
   blog: "blogPost",
+  project: "projectPost",
   school: "schoolEntry",
 }
-export const CONTENT_TYPE_COLLECTION_IDS = (id: string) => {
-  return `${id}Collection`
-}
+
+export const CONTENT_TYPE_COLLECTION_IDS = Object.fromEntries(Object.entries(CONTENT_TYPE_IDS).map((value) => {
+  return [value[0], `${value[1]}Collection`];
+}));
 
 export const CONTENT_TYPE_ID_TO_ROUTE: {
   [key: string]: string

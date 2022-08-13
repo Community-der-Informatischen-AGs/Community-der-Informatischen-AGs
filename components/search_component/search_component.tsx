@@ -1,3 +1,4 @@
+import cn from "classnames"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import {
@@ -9,10 +10,23 @@ import {
 import { useCallback, useEffect, useState } from "react"
 import { CONTENT_TYPE_ID_TO_ROUTE } from "../../lib/contentful/constants"
 import { LINKS } from "../../lib/utils/constants"
+import {
+  HasOptionalStyleSheet,
+  SCSSStyleSheet,
+} from "../../lib/utils/types"
 
 import styles from "./search_component.module.scss"
 
-export const Search = () => {
+// TODO: implement alternative stylesheets
+
+interface SearchComponentProps
+  extends HasOptionalStyleSheet {
+  onSearch?: () => void
+}
+
+export const SearchComponent = (
+  p: SearchComponentProps
+) => {
   const [searchInputValue, setSearchInputValue] =
     useState("")
   const [searchActive, setSearchActive] = useState(false)
@@ -35,7 +49,7 @@ export const Search = () => {
       // fetching from nextjs api to get data from contentful
 
       const searchResults = await fetch(
-        "/api/contentful/search",
+        "/api/contentful/searchPreview",
         {
           method: "POST",
           body: JSON.stringify({
@@ -75,6 +89,10 @@ export const Search = () => {
 
   useEffect(searchFunction, [searchInputValue])
 
+  function confirmSearch() {
+    if (p.onSearch) p.onSearch()
+    redirectToSearchPage()
+  }
   function redirectToSearchPage() {
     router.push(`${LINKS.search}?s=${searchInputValue}`)
   }
@@ -89,18 +107,22 @@ export const Search = () => {
     })
   }, [])
 
+  let stylesheet: SCSSStyleSheet = {}
+  if (p.optStyles != null) {
+    stylesheet = p.optStyles
+  }
+
   return (
-    <section className={styles.searchSection}>
-      <div className={styles.miniSearch}>
-        <MagnifyingGlass
-          size={25}
-          onClick={redirectToSearchPage}
-        />
-      </div>
+    <section
+      className={cn(
+        styles.searchSection,
+        stylesheet.searchSection
+      )}
+    >
       <form
         onKeyDown={(e) => {
           if (e.key === "Enter") {
-            redirectToSearchPage()
+            confirmSearch()
           }
         }}
         onSubmit={(e) => {
@@ -115,13 +137,16 @@ export const Search = () => {
             e.preventDefault()
             setSearchInputValue(e.target.value)
           }}
-          className={styles.searchInput}
+          className={cn(
+            styles.searchInput,
+            stylesheet.searchInput
+          )}
           placeholder="Suchen..."
           minLength={2}
         />{" "}
         {/* !! Minlength von 2, da contentful search nur mit min. 2 Zeiche funktioniert */}
         <button
-          className={styles.xButton}
+          className={cn(styles.xButton, stylesheet.xButton)}
           onClick={() => {
             setSearchInputValue("")
           }}
@@ -138,8 +163,11 @@ export const Search = () => {
           />
         </button>
         <button
-          className={styles.searchButton}
-          onClick={(e) => redirectToSearchPage()}
+          className={cn(
+            styles.searchButton,
+            stylesheet.searchButton
+          )}
+          onClick={confirmSearch}
         >
           <MagnifyingGlass
             alt="confirm search query"
@@ -149,7 +177,10 @@ export const Search = () => {
           />
         </button>
         <section
-          className={styles.resultsSection}
+          className={cn(
+            styles.resultsSection,
+            stylesheet.resultsSection
+          )}
           style={{
             display: searchActive ? "block" : "none",
           }}
@@ -165,13 +196,17 @@ export const Search = () => {
               </li>
             ) : (
               searchResults.map((pair) => {
+                console.log(pair)
                 return (
                   <li key={pair.entryId}>
                     <div className={styles.linkTextWrapper}>
                       <Link
                         href={`${
                           CONTENT_TYPE_ID_TO_ROUTE[
-                            pair.entryType
+                            pair.entryType.replace(
+                              "Collection",
+                              ""
+                            )
                           ]
                         }/${pair.entryId}`}
                       >

@@ -31,21 +31,19 @@ export default async function handler(
 
     // Intention:
     // get the total of all queryable entries and deduct values untill
-    const entryCollectionTypeOrderToQueryLimit: {
+    const entryCollectionTypeIdToQueryLimit: {
       [key: string]: number
-    } = {
-      [CONTENT_TYPE_IDS.school]: 0,
-      [CONTENT_TYPE_IDS.project]: 0,
-      [CONTENT_TYPE_IDS.blog]: 0,
-    }
+    } = Object.fromEntries(Object.values(CONTENT_TYPE_COLLECTION_IDS).map((collectionId) => {
+      return [collectionId, 0];
+    }))
 
 
     const entryCollectionTypeOrderToQueryLimitKeys =
-      Object.keys(entryCollectionTypeOrderToQueryLimit)
+      Object.keys(entryCollectionTypeIdToQueryLimit)
 
     // gettting maximum queryable total with limit
     for (let key of entryCollectionTypeOrderToQueryLimitKeys) {
-      const keyCollectionString = CONTENT_TYPE_COLLECTION_IDS(key);
+      const keyCollectionString = key;
       const queryResult = await Contentful.fetchGraphQL(
         `
           ${keyCollectionString}(
@@ -61,22 +59,21 @@ export default async function handler(
 
       const resultCount = queryResult.data[keyCollectionString].total
       // setting the maximum amount of results first
-      entryCollectionTypeOrderToQueryLimit[key] =
+      entryCollectionTypeIdToQueryLimit[key] =
         resultCount
     }
 
-
     let currentResultSum = Object.values(
-      entryCollectionTypeOrderToQueryLimit
+      entryCollectionTypeIdToQueryLimit
     ).reduce((a, b) => a + b)
     let keyIndex = 0
     while (currentResultSum > 5) {
       let key =
         entryCollectionTypeOrderToQueryLimitKeys[keyIndex]
 
-      if (entryCollectionTypeOrderToQueryLimit[key] > 1) {
-        entryCollectionTypeOrderToQueryLimit[key] =
-          entryCollectionTypeOrderToQueryLimit[key] - 1
+      if (entryCollectionTypeIdToQueryLimit[key] > 1) {
+        entryCollectionTypeIdToQueryLimit[key] =
+          entryCollectionTypeIdToQueryLimit[key] - 1
       }
       keyIndex++
     }
@@ -87,7 +84,7 @@ export default async function handler(
 
     for (let key of entryCollectionTypeOrderToQueryLimitKeys) {
       const limit =
-        entryCollectionTypeOrderToQueryLimit[key]
+        entryCollectionTypeIdToQueryLimit[key]
 
       if (limit <= 0) {
         continue
@@ -95,8 +92,8 @@ export default async function handler(
 
       const queryResult =
         await Contentful.getAllOfEntryCollection(
-          key + "Collection",
-          entryCollectionTypeOrderToQueryLimit[key],
+          key,
+          entryCollectionTypeIdToQueryLimit[key],
           `
           title
           sys {
@@ -109,11 +106,9 @@ export default async function handler(
           searchLocale
         )
 
-        console.log(queryResult);
-
       response.push({
         entryType: key,
-        ...queryResult.data[CONTENT_TYPE_COLLECTION_IDS(key)].items
+        ...queryResult.data[key].items
       })
     }
 

@@ -1,11 +1,23 @@
+@import "./../../styles/constants";
+
 .postPreview {
+  width: 100%;
+  height: fit-content;
+  overflow-y: hidden;
+
+  position: relative;
+  background-color: whitesmoke;
+  border-radius: $standardBorderRadius / 2;
 
   .imageSection img {
-
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
 
+  .textSection {
+    color: $darkFontColor;
+    overflow-y: hidden;
   }
 
 }

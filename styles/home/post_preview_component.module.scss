@@ -1,0 +1,32 @@
+@import "./../constants";
+@import "./../module";
+
+section.imageSection {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+section.textSection {
+  position: relative;
+  z-index: 2;
+  padding: 30px 40px;
+  background-color: whitesmoke;
+  color: $darkFontColor;
+
+  max-height: 50%;
+  height: fit-content;
+
+  overflow-y: hidden;
+
+  .status {
+    @include centeredFlex();
+    justify-content: start;
+    gap: 10px;
+  }
+
+  article {
+    opacity: 0.8;
+  }
+
+}

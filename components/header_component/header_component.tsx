@@ -1,7 +1,8 @@
 import styles from "./header_component.module.scss"
 import { useRouter } from "next/router"
 import { MutableRefObject, useEffect, useRef } from "react"
-import { Navigation, Select, Search } from ".."
+import { Navigation, Select, SearchComponent } from ".."
+import { MagnifyingGlass } from "phosphor-react"
 
 function useWindowScrollEvent(
   headerRef: MutableRefObject<HTMLElement>
@@ -33,7 +34,11 @@ function useWindowScrollEvent(
   }, [headerRef])
 }
 
-export const Header = () => {
+interface HeaderProps {
+  onSearch?: () => void
+}
+
+export const Header = (p: HeaderProps) => {
   const router = useRouter()
 
   const headerRef = useRef<HTMLElement>(null!)
@@ -51,7 +56,14 @@ export const Header = () => {
 
       <section className={styles.content}>
         <Navigation />
-        <Search />
+        <div className={styles.miniSearch}>
+          <MagnifyingGlass
+            alt="confirm search query"
+            size={25}
+            color="white"
+          />
+        </div>
+        <SearchComponent onSearch={p.onSearch} />
       </section>
     </header>
   )

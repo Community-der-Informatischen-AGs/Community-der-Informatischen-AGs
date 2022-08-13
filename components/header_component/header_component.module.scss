@@ -73,3 +73,13 @@
     padding: 0 120px 0 15px;
   }
 }
+
+
+.miniSearch {
+  display: none;
+}
+@media screen and (max-width: $searchFieldDisplayThreshold) {
+  .miniSearch {
+    display: block;
+  }
+}

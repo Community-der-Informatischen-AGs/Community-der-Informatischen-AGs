@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react"
-import { CONTENT_TYPE_IDS } from "../../../lib/contentful/constants"
+import {
+  CONTENTFUL_IMAGE_QUERY,
+  CONTENT_TYPE_IDS,
+} from "../../../lib/contentful/constants"
 import { CONTENT_TYPES } from "../../../lib/utils/constants"
-import { ImageData } from "../../../lib/utils/types"
+import { processOptStyleSheet } from "../../../lib/utils/functions"
+import {
+  HasOptionalStyleSheet,
+  ImageData,
+} from "../../../lib/utils/types"
 import {
   PostPreviewComponent,
   processImageData,
@@ -11,7 +18,8 @@ import styles from "./school_preview_component.module.scss"
 const CONTENT_TYPE_ID = CONTENT_TYPE_IDS.school
 const CONTENT_TYPE = CONTENT_TYPES.school
 
-export interface SchoolPreviewComponentProps {
+export interface SchoolPreviewComponentProps
+  extends HasOptionalStyleSheet {
   entryId: string
 }
 
@@ -24,19 +32,12 @@ export interface ContentfulSchoolPostPreviewProps {
 const lazyLoad = async (
   props: SchoolPreviewComponentProps
 ) => {
-  console.log("lazy load content now")
-
   const bodyJson = {
     entryType: CONTENT_TYPE_ID,
     entryId: props.entryId,
     entryQuery: `
       title
-      picture {
-        height
-        width
-        url
-        title
-      }
+      picture ${CONTENTFUL_IMAGE_QUERY}
       agWebsite
     `,
   }
@@ -63,26 +64,28 @@ const lazyLoad = async (
 }
 
 export const SchoolPreviewComponent = (
-  props: SchoolPreviewComponentProps
+  p: SchoolPreviewComponentProps
 ) => {
   const [postProps, setPostProps] =
     useState<ContentfulSchoolPostPreviewProps>(null!)
   // lazy-loading post data
 
   useEffect(() => {
-    lazyLoad(props).then((props) => setPostProps(props))
-  }, [props])
+    lazyLoad(p).then((props) => setPostProps(props))
+  }, [p])
+
+  const stylesheet = processOptStyleSheet(p.optStyles)
 
   return postProps == null ? null : (
     <PostPreviewComponent
-      entryId={props.entryId}
+      entryId={p.entryId}
       contentType={CONTENT_TYPE}
       contentTypeId={CONTENT_TYPE_ID}
       title={postProps.title}
       image={postProps.image}
       className={styles.schoolPreviewComponent}
-      imageSectionClassName={styles.previewImage}
-      textSectionClassName={styles.previewText}
+      baseStyles={styles}
+      optStyles={stylesheet}
     >
       <a href={postProps.agWebsite}>
         {postProps.agWebsite}

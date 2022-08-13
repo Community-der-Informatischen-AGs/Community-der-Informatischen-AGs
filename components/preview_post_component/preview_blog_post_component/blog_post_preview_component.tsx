@@ -9,14 +9,23 @@ import {
   PostPreviewComponent,
   processImageData,
 } from "../post_preview_component"
-import { ImageData } from "../../../lib/utils/types"
-import { CONTENT_TYPE_IDS } from "../../../lib/contentful/constants"
+import {
+  HasOptionalStyleSheet,
+  ImageData,
+} from "../../../lib/utils/types"
+import {
+  CONTENTFUL_IMAGE_QUERY,
+  CONTENT_TYPE_IDS,
+} from "../../../lib/contentful/constants"
 import { CONTENT_TYPES } from "../../../lib/utils/constants"
+import { processOptStyleSheet } from "../../../lib/utils/functions"
+import cn from "classnames"
 
 const CONTENT_TYPE_ID = CONTENT_TYPE_IDS.blog
 const CONTENT_TYPE = CONTENT_TYPES.blog
 
-export interface BlogPostPreviewComponentProps {
+export interface BlogPostPreviewComponentProps
+  extends HasOptionalStyleSheet {
   entryId: string
 }
 
@@ -39,12 +48,7 @@ const lazyLoad = async (
       title
       author
       optionalTitleMediaCollection (limit: 1) {
-        items {
-          title,
-          url,
-          height,
-          width,
-        } 
+        items ${CONTENTFUL_IMAGE_QUERY}
       }
       body {
         json
@@ -85,19 +89,21 @@ const lazyLoad = async (
 }
 
 export const BlogPostPreviewComponent = (
-  props: BlogPostPreviewComponentProps
+  p: BlogPostPreviewComponentProps
 ) => {
   const [postProps, setPostProps] =
     useState<ContentfulBlogPostPreviewProps>(null!)
   // lazy-loading post data
 
   useEffect(() => {
-    lazyLoad(props).then((props) => setPostProps(props))
-  }, [props])
+    lazyLoad(p).then((props) => setPostProps(props))
+  }, [p])
+
+  const optStylesheet = processOptStyleSheet(p.optStyles)
 
   return postProps == null ? null : (
     <PostPreviewComponent
-      entryId={props.entryId}
+      entryId={p.entryId}
       contentType={CONTENT_TYPE}
       contentTypeId={CONTENT_TYPE_ID}
       title={postProps.title}
@@ -107,8 +113,8 @@ export const BlogPostPreviewComponent = (
       )}
       image={postProps.image}
       className={styles.blogPostPreviewComponent}
-      imageSectionClassName={styles.previewImage}
-      textSectionClassName={styles.previewText}
+      baseStyles={styles}
+      optStyles={optStylesheet}
     >
       <p>
         Published by {postProps.author} on{" "}
