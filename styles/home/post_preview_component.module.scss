@@ -11,13 +11,9 @@ section.textSection {
   position: relative;
   z-index: 2;
   padding: 30px 40px;
-  background-color: whitesmoke;
-  color: $darkFontColor;
 
   max-height: 50%;
   height: fit-content;
-
-  overflow-y: hidden;
 
   .status {
     @include centeredFlex();

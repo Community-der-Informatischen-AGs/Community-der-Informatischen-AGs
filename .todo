@@ -2,29 +2,12 @@
 TODO for Project Jugend-Entwickelt-Digital
 ==========================================
 
-[TODO_NOW] fix Post-Preview Components
-
-[TODO] fix components and reusability
-[TODO] fix index page
-
 
 [TODO_High] fix identity in general -> use objects or animals
 
 [TODO_High] use Next Images EVERYWHERE
 
-[TODO_High] improve SEO with Google Lighthouse and other...
-
 [TODO_High] take good pictures with Adrian
-
-[TODO_High] improve responsiveness:
-
-- smaller fonts at another snapping point
-- smaller paddings around carousel elements etc.
-- dynamic content-shifting due to typed text...
-- whole index page in general
-
-[/TODO]
-
 
 [TODO_Medium] send all of the contact information via emailing service
 
