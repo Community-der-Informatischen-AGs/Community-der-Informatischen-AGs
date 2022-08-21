@@ -25,10 +25,3 @@ section.resultsSection {
     gap: $sectionGap;
   }
 }
-
-.navigationSection {
-  @include centeredFlex();
-  justify-content: center;
-  gap: $sectionGap;
-  margin-block: $sectionGap;
-}

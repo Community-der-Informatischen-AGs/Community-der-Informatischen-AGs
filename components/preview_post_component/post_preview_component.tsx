@@ -68,7 +68,7 @@ export const PostPreviewComponent = (
       className={cn(p.className, styles.postPreview)}
       onClick={() => {
         router.push(
-          `/${CONTENT_TYPE_ID_TO_ROUTE[p.contentTypeId]}/${
+          `${CONTENT_TYPE_ID_TO_ROUTE[p.contentTypeId]}/${
             p.entryId
           }`
         )

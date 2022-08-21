@@ -1,5 +1,5 @@
 import cn from "classnames"
-import { useEntryIds } from "../util"
+import { useEntryIds } from "../../../contentful/util"
 
 import globalStyles from "./../../../../styles/globals.module.scss"
 import homeStyles from "./../../../../styles/home/home.module.scss"
@@ -13,15 +13,14 @@ import {
   Carousel,
   ProjectPostPreviewComponent,
 } from "../../../../components"
+import { CONTENTFUL_ID_QUERY } from "../../../contentful/constants"
 
 export const PostSection = () => {
   const projectPostIds = useEntryIds(
     `
     projectPostCollection(limit: 3) {
       items {
-        sys {
-          id
-        }
+        ${CONTENTFUL_ID_QUERY}
       }
     }`,
     "projectPostCollection"

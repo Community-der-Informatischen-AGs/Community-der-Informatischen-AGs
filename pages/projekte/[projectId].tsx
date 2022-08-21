@@ -6,6 +6,7 @@ import { PostPageTemplateComponent } from "../../components"
 import { Summary } from "../../components/summary_component"
 import { Contentful } from "../../lib/contentful/api"
 import {
+  CONTENTFUL_ID_QUERY,
   CONTENTFUL_IMAGE_QUERY,
   CONTENT_TYPE_IDS,
 } from "../../lib/contentful/constants"
@@ -133,9 +134,7 @@ export async function getServerSideProps(context: any) {
     }
     assignedSchool {
       title
-      sys {
-        id
-      }
+      ${CONTENTFUL_ID_QUERY}
     }
     finished  
     sys {

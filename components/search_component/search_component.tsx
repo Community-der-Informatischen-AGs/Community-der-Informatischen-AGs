@@ -196,7 +196,6 @@ export const SearchComponent = (
               </li>
             ) : (
               searchResults.map((pair) => {
-                console.log(pair)
                 return (
                   <li key={pair.entryId}>
                     <div className={styles.linkTextWrapper}>

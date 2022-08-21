@@ -7,9 +7,10 @@ export const CONTENT_TYPE_IDS = {
   school: "schoolEntry",
 }
 
-export const CONTENT_TYPE_COLLECTION_IDS = Object.fromEntries(Object.entries(CONTENT_TYPE_IDS).map((value) => {
+export const COLLECTION_TYPE_IDS = Object.fromEntries(Object.entries(CONTENT_TYPE_IDS).map((value) => {
   return [value[0], `${value[1]}Collection`];
 }));
+
 
 export const CONTENT_TYPE_ID_TO_ROUTE: {
   [key: string]: string
@@ -25,4 +26,10 @@ export const CONTENTFUL_IMAGE_QUERY = `{
   height
   url
 }
+`
+
+export const CONTENTFUL_ID_QUERY = `
+  sys {
+    id
+  }
 `

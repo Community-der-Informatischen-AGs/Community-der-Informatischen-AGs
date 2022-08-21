@@ -1,0 +1,9 @@
+@import "./../../styles/constants";
+@import "./../../styles/module";
+
+.navigationSection {
+  @include centeredFlex();
+  justify-content: center;
+  gap: $sectionGap;
+  margin-block: $sectionGap;
+}
