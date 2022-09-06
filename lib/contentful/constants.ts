@@ -1,14 +1,28 @@
-import { LINKS } from "../utils/constants";
+import { BLOCKS } from "@contentful/rich-text-types"
+import { LINKS } from "../utils/constants"
 
-export const PROJECT_CONTENT_TYPE_ID = "projectPost";
-export const BLOG_CONTENT_TYPE_ID = "blogPost";
-export const SCHOOL_CONTENT_TYPE_ID = "schoolEntry";
+export const CONTENT_TYPE_IDS = {
+  blog: "blogPost",
+  project: "projectPost",
+  school: "schoolEntry",
+}
+
+export const CONTENT_TYPE_COLLECTION_IDS = Object.fromEntries(Object.entries(CONTENT_TYPE_IDS).map((value) => {
+  return [value[0], `${value[1]}Collection`];
+}));
 
 export const CONTENT_TYPE_ID_TO_ROUTE: {
   [key: string]: string
 } = {
-  [PROJECT_CONTENT_TYPE_ID]: LINKS.projekte,
-  [BLOG_CONTENT_TYPE_ID]: LINKS.blogs,
-  [SCHOOL_CONTENT_TYPE_ID]: LINKS.schulen
+  [CONTENT_TYPE_IDS.project]: LINKS.projekte,
+  [CONTENT_TYPE_IDS.blog]: LINKS.blogs,
+  [CONTENT_TYPE_IDS.school]: LINKS.schulen,
 }
 
+export const CONTENTFUL_IMAGE_QUERY = `{
+  title
+  width
+  height
+  url
+}
+`

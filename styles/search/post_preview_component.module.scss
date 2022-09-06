@@ -1,0 +1,36 @@
+section.textSection {
+  width: 60%;
+  height: 400px !important;
+  padding: 40px;
+}
+section.imageSection {
+  width: 30%;
+  height: 100%;
+  position: absolute;
+  right: 5%;
+}
+
+
+@media screen and (max-width: 1400px) {
+
+  $imageHeight: 200px;
+
+  section.textSection {
+    $padding: 40px;
+    overflow-x: none;
+    box-sizing: content-box;
+    padding: $padding;
+    position: relative;
+    width: calc(100% - $padding * 2);
+    height: auto !important;
+    max-height: 400px;
+    padding-top: $imageHeight + 40px;
+  }
+
+  section.imageSection {
+    width: 100%;
+    right: 0;
+    height: $imageHeight;
+  }
+
+}

@@ -1,0 +1,10 @@
+.downloadsSection {
+  width: 100%;
+
+  .downloads {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+  } 
+}

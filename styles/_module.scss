@@ -9,3 +9,8 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+@mixin wordBreak() {
+  word-break:normal;
+  hyphens: auto;
+}

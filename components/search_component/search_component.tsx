@@ -1,22 +1,32 @@
+import cn from "classnames"
 import Link from "next/link"
+import { useRouter } from "next/router"
 import {
   LinkSimpleHorizontal,
   LinkSimpleHorizontalBreak,
   MagnifyingGlass,
   X,
 } from "phosphor-react"
+import { useCallback, useEffect, useState } from "react"
+import { CONTENT_TYPE_ID_TO_ROUTE } from "../../lib/contentful/constants"
+import { LINKS } from "../../lib/utils/constants"
 import {
-  FormEvent,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react"
+  HasOptionalStyleSheet,
+  SCSSStyleSheet,
+} from "../../lib/utils/types"
 
-import styles from "./search.module.scss"
+import styles from "./search_component.module.scss"
 
-export const Search = () => {
-  const reservedInvalidId = ""
+// TODO: implement alternative stylesheets
+
+interface SearchComponentProps
+  extends HasOptionalStyleSheet {
+  onSearch?: () => void
+}
+
+export const SearchComponent = (
+  p: SearchComponentProps
+) => {
   const [searchInputValue, setSearchInputValue] =
     useState("")
   const [searchActive, setSearchActive] = useState(false)
@@ -24,19 +34,22 @@ export const Search = () => {
     {
       title: string
       entryId: string
+      entryType: string
     }[]
   >([])
+  const router = useRouter()
 
-  useEffect(() => {
+  const searchFunction = () => {
     const timeOutId = setTimeout(async () => {
       if (searchInputValue.length < 2) {
+        setSearchResults([])
         return false
       }
 
       // fetching from nextjs api to get data from contentful
 
       const searchResults = await fetch(
-        "/api/contentful/search",
+        "/api/contentful/searchPreview",
         {
           method: "POST",
           body: JSON.stringify({
@@ -49,38 +62,39 @@ export const Search = () => {
       const status = searchResults.status
 
       if (status != 200) {
-        setSearchResults([
-          {
-            title: "search failed, please try again",
-            entryId: reservedInvalidId,
-          },
-        ])
+        setSearchResults([])
+        return
       }
 
       const jsonResults = await searchResults.json()
 
       const temporarySearchResults = []
       for (let result of jsonResults) {
-        console.log(result)
-
-        const title = result.title
-        const entryId = result.sys.id
+        const entryResult = result[0] // ?? idk why
+        const entryType = result.entryType
+        const title = entryResult.title
+        const entryId = entryResult.sys.id
 
         temporarySearchResults.push({
+          entryType: entryType,
           title: title,
           entryId: entryId,
         })
       }
       setSearchResults(temporarySearchResults)
-    })
+    }, 200)
 
     return () => clearTimeout(timeOutId)
-  }, [searchInputValue])
+  }
 
-  async function searchSubmit(e: FormEvent) {
-    e.preventDefault()
+  useEffect(searchFunction, [searchInputValue])
 
-    // TODO: render a page with all of the posts.
+  function confirmSearch() {
+    if (p.onSearch) p.onSearch()
+    redirectToSearchPage()
+  }
+  function redirectToSearchPage() {
+    router.push(`${LINKS.search}?s=${searchInputValue}`)
   }
 
   const handleBlur = useCallback((e: any) => {
@@ -93,35 +107,46 @@ export const Search = () => {
     })
   }, [])
 
+  let stylesheet: SCSSStyleSheet = {}
+  if (p.optStyles != null) {
+    stylesheet = p.optStyles
+  }
+
   return (
-    <section className={styles.searchSection}>
-      <div className={styles.miniSearch}>
-        <MagnifyingGlass
-          size={25}
-          onClick={() => {
-            // TODO: send the user to the search site.
-          }}
-        />
-      </div>
+    <section
+      className={cn(
+        styles.searchSection,
+        stylesheet.searchSection
+      )}
+    >
       <form
-        action="POST"
-        onSubmit={(e) => searchSubmit(e)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            confirmSearch()
+          }
+        }}
+        onSubmit={(e) => {
+          e.preventDefault()
+        }}
         onFocus={() => setSearchActive(true)}
         onBlur={handleBlur}
       >
         <input
           value={searchInputValue}
-          onChange={(e) =>
+          onChange={(e) => {
+            e.preventDefault()
             setSearchInputValue(e.target.value)
-          }
-          className={styles.searchInput}
-          type="search"
+          }}
+          className={cn(
+            styles.searchInput,
+            stylesheet.searchInput
+          )}
           placeholder="Suchen..."
           minLength={2}
         />{" "}
         {/* !! Minlength von 2, da contentful search nur mit min. 2 Zeiche funktioniert */}
         <button
-          className={styles.xButton}
+          className={cn(styles.xButton, stylesheet.xButton)}
           onClick={() => {
             setSearchInputValue("")
           }}
@@ -138,8 +163,11 @@ export const Search = () => {
           />
         </button>
         <button
-          className={styles.searchButton}
-          onClick={(e) => searchSubmit(e)}
+          className={cn(
+            styles.searchButton,
+            stylesheet.searchButton
+          )}
+          onClick={confirmSearch}
         >
           <MagnifyingGlass
             alt="confirm search query"
@@ -149,7 +177,10 @@ export const Search = () => {
           />
         </button>
         <section
-          className={styles.resultsSection}
+          className={cn(
+            styles.resultsSection,
+            stylesheet.resultsSection
+          )}
           style={{
             display: searchActive ? "block" : "none",
           }}
@@ -165,11 +196,20 @@ export const Search = () => {
               </li>
             ) : (
               searchResults.map((pair) => {
-                // TODO: implement entry system where the type of entry is protrayed.
+                console.log(pair)
                 return (
                   <li key={pair.entryId}>
                     <div className={styles.linkTextWrapper}>
-                      <Link href={"/" + pair.entryId}>
+                      <Link
+                        href={`${
+                          CONTENT_TYPE_ID_TO_ROUTE[
+                            pair.entryType.replace(
+                              "Collection",
+                              ""
+                            )
+                          ]
+                        }/${pair.entryId}`}
+                      >
                         {pair.title}
                       </Link>
                     </div>
@@ -185,7 +225,7 @@ export const Search = () => {
             {searchResults.length != 0 ? (
               <li>
                 <Link
-                  href="/search"
+                  href={`${LINKS.search}?s=${searchInputValue}`}
                   className={styles.viewMore}
                 >
                   View more

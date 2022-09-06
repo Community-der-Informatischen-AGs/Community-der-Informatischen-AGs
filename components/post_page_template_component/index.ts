@@ -1,0 +1,1 @@
+export * from "./post_page_template_component"

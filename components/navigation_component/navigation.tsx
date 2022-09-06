@@ -30,38 +30,11 @@ export const Navigation = () => {
         }}
       >
         <li>
-          <Link href={"#"}>Mitmachen</Link>
-          <ul className={styles.subLinks}>
-            <li>
-              <Link href={LINKS.anmeldung}>Anmeldung</Link>
-            </li>
-            <li>
-              <Link href={LINKS.informationen}>
-                Informationen
-              </Link>
-            </li>
-            <li>
-              <Link href={LINKS.kooperation}>
-                Kooperation
-              </Link>
-            </li>
-          </ul>
+          <Link href={LINKS.mitmachen}>Mitmachen</Link>
         </li>{" "}
         {/* Contact form for applications */}
         <li>
-          <Link href={"#"}>Über Uns</Link>
-          <ul className={styles.subLinks}>
-            <li>
-              <Link href={LINKS.generelleInformationen}>
-                Generelles
-              </Link>
-            </li>
-            <li>
-              <Link href={LINKS.philosophie}>
-                Philosophie
-              </Link>
-            </li>
-          </ul>
+          <Link href={LINKS.about}>Über Uns</Link>
         </li>{" "}
         {/* only information about the concept, abstract, with personal message from me */}
         <li>
@@ -74,7 +47,7 @@ export const Navigation = () => {
             </li>
             <li>
               <Link href={LINKS.ansprechpartner}>
-                Ansprechpartner
+                Ansprechpartner und Kontakt
               </Link>
             </li>
           </ul>

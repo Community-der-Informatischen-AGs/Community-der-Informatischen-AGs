@@ -16,7 +16,7 @@ $subLinksPadding: 20px;
     @include centeredFlex();
     position: absolute;
     top: calc(50% - 20px); // becuase the logo is 40px large
-    right: 20px;
+    right: 50px;
     z-index: 9999;
 
     &:after {
@@ -89,6 +89,8 @@ $subLinksPadding: 20px;
         transition: transform 0.4s ease, opacity 0.4s ease;
         opacity: 0;
         transform: translateY(-100%);
+        border-bottom-left-radius: $standardBorderRadius / 2;
+        border-bottom-right-radius: $standardBorderRadius / 2;
       }
     }
   }
@@ -97,6 +99,12 @@ $subLinksPadding: 20px;
 @media screen and (max-width: 1200px) {
   .navigation {
     height: 100%;
+
+    & > ul > li > a {
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    
 
     ul {
       z-index: 999;
@@ -117,10 +125,6 @@ $subLinksPadding: 20px;
       li {
         height: fit-content;
         flex-direction: column;
-
-        a:only-child {
-          font-weight: 900;
-        }
         a::after {
           bottom: -1px;
         }
@@ -153,5 +157,18 @@ $subLinksPadding: 20px;
   .navigation .menuButton,
   .navigation .menuButton > * {
     display: block;
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .navigation {
+    padding: 0;
+    text-align: center;
+
+    ul {
+      padding: 100px 5%;
+    }
+
   }
 }

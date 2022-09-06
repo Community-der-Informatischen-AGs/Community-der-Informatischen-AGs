@@ -1,0 +1,42 @@
+@import "./../../../../styles/constants";
+@import "./../../../../styles/module";
+
+
+section.offerSection {
+
+  width: 100%;
+  margin: auto;
+  margin-bottom: 100px;
+  padding-inline: 10%;
+  @include centeredFlex();
+  flex-direction: column;
+
+  > h2, > article {
+    width: 80%;
+  }
+
+  .cardSection {
+    @include centeredFlex();
+    justify-content: center;
+    gap: $sectionGap;
+    flex-wrap: wrap;
+    margin-block: $sectionGap * 2;
+
+    .card {
+      text-align: center;
+      box-shadow: $boxShadow;
+      position: relative;
+      z-index: 2;
+    }
+  }
+
+  .buttonSection button {
+    margin: auto;
+  }
+
+}
+@media screen and (max-width: 625px) {
+  section.offerSection h2, section.offerSection article {
+    width: 100%;
+  } 
+}

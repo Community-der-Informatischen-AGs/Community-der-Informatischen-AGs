@@ -1,26 +1,37 @@
-import { Document } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import styles from "./project_post_preview_component.module.scss"
-import React, { useEffect, useState } from "react"
+import { Document } from "@contentful/rich-text-types"
+import { Circle } from "phosphor-react"
+import { useEffect, useState } from "react"
 import {
+  CONTENTFUL_IMAGE_QUERY,
+  CONTENT_TYPE_IDS,
+} from "../../../lib/contentful/constants"
+import { CONTENT_TYPES } from "../../../lib/utils/constants"
+import { processOptStyleSheet } from "../../../lib/utils/functions"
+import {
+  HasOptionalImage,
+  HasOptionalStyleSheet,
+} from "../../../lib/utils/types"
+import {
+  ABBREVIATION_RENDER_OPTIONS,
   PostPreviewComponent,
   processImageData,
 } from "../post_preview_component"
-import { Circle } from "phosphor-react"
-import { ImageData } from "../../../lib/utils/types"
+import styles from "./project_post_preview_component.module.scss"
 
-const CONTENT_TYPE_ID = "projectPost"
-const CONTENT_TYPE = "Project"
+const CONTENT_TYPE_ID = CONTENT_TYPE_IDS.project
+const CONTENT_TYPE = CONTENT_TYPES.project
 
-export interface ProjectPostPreviewComponentProps {
+export interface ProjectPostPreviewComponentProps
+  extends HasOptionalStyleSheet {
   entryId: string
 }
 
-export interface ContentfulProjectPostPreviewProps {
+export interface ContentfulProjectPostPreviewProps
+  extends HasOptionalImage {
   contentType: string
   title: string
   body: Document
-  image?: ImageData
   finished: boolean
   school: string
 }
@@ -34,12 +45,7 @@ const lazyLoad = async (
     entryQuery: `
       title
       optionalTitleMediaCollection (limit: 1) {
-        items {
-          title,
-          width,
-          height,
-          url
-        }
+        items ${CONTENTFUL_IMAGE_QUERY}
       }
       body {
         json
@@ -78,27 +84,32 @@ const lazyLoad = async (
 }
 
 export const ProjectPostPreviewComponent = (
-  props: ProjectPostPreviewComponentProps
+  p: ProjectPostPreviewComponentProps
 ) => {
   const [postProps, setPostProps] =
     useState<ContentfulProjectPostPreviewProps>(null!)
   // lazy-loading post data
 
   useEffect(() => {
-    lazyLoad(props).then((props) => setPostProps(props))
-  }, [props])
+    lazyLoad(p).then((props) => setPostProps(props))
+  }, [p])
+
+  const optStylesheet = processOptStyleSheet(p.optStyles)
 
   return postProps == null ? null : (
     <PostPreviewComponent
-      entryId={props.entryId}
+      entryId={p.entryId}
       contentType={CONTENT_TYPE}
       contentTypeId={CONTENT_TYPE_ID}
       title={postProps.title}
-      body={documentToReactComponents(postProps.body)}
+      body={documentToReactComponents(
+        postProps.body,
+        ABBREVIATION_RENDER_OPTIONS
+      )}
       image={postProps.image}
       className={styles.projectPostPreviewComponent}
-      imageSectionClassName={styles.previewImage}
-      textSectionClassName={styles.previewText}
+      baseStyles={styles}
+      optStyles={optStylesheet}
     >
       <div>
         <p>Project by {postProps.school}</p>
@@ -108,7 +119,9 @@ export const ProjectPostPreviewComponent = (
             weight="fill"
             size={20}
           />
-          {postProps.finished ? "finished" : "ongoing"}
+          {postProps.finished
+            ? "Beendet"
+            : "In Bearbeitung"}
         </div>
       </div>
     </PostPreviewComponent>

@@ -1,33 +1,21 @@
 import { CSSProperties, ReactNode } from "react"
-
-type JSXElementComponentColor =
-  | "blue"
-  | "red"
-  | "purple"
-  | "yellow"
-  | "green"
+import styles from "./jsx_element_component.module.scss"
 
 interface JSXElementComponentProps {
-  color: JSXElementComponentColor
+  color: string
   children: ReactNode
   style?: CSSProperties
-}
-
-const COLORTERM_TO_CSS_COLOR = {
-  blue: "#82AADF",
-  red: "#BC6778",
-  purple: "#C792EA",
-  yellow: "#FFCB6B",
-  green: "#95DC8D",
 }
 
 export const JSXElementComponent = (
   props: JSXElementComponentProps
 ) => {
   const styling = props.style ?? {}
-  styling.color = COLORTERM_TO_CSS_COLOR[props.color]
 
   return (
-    <span style={styling}>{`<${props.children}/>`}</span>
+    <span
+      style={styling}
+      className={styles[props.color]}
+    >{`<${props.children}/>`}</span>
   )
 }

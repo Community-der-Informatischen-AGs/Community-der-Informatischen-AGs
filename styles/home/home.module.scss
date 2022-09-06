@@ -1,27 +1,53 @@
-@import "./../_constants";
+@import "./../constants";
 @import "./../module";
 
+
+span.importantHeading {
+  position: relative;
+  width: fit-content;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40%;
+    height: 1px;
+    background-color: whitesmoke;
+    opacity: 0.3;
+  }
+}
+
+.standardSection {
+  
+  h2 {
+    margin-bottom: $sectionGap;
+  }
+}
 
 .standardSectionInvisibleHeading {
   position: absolute;
   top: 0;
-  left: 50px;
+  right: 100px;
   opacity: 0.07;
+  text-align: right;
 
   word-spacing: 100vw;
   font-size: 8rem;
+
 }
 
 // * using section.landingSection to increase specificity for priority
 section.landingSection {
-  background-color: transparent;
-  padding: 100px 200px;
   padding-bottom: 200px;
   width: 100%;
   min-height: 700px;
-  margin-top: 100px;
-  border: none;
-  box-shadow: none;
+  margin-bottom: 200px;
+
+  &:before {
+    display: none;
+  }
 
   display: flex;
   align-items: flex-start;
@@ -50,6 +76,8 @@ section.landingSection {
 
     position: relative;
     z-index: 1;
+    @include wordBreak();
+    
 
     .seeThrough {
       opacity: 0.1;
@@ -80,12 +108,11 @@ section.landingSection {
   }
 }
 
-@media screen and (max-width: 1165px) {
+@media screen and (max-width: 1400px) {
   section.landingSection {
     flex-direction: column;
     gap: 100px;
-
-    padding: 100px 15%;
+    padding-bottom: 100px;
 
     code {
       left: 0;
@@ -93,394 +120,3 @@ section.landingSection {
     }
   }
 }
-@media screen and (max-width: 600px) {
-  section.landingSection {
-    padding: 200px 10% 100px 10%;
-
-    .heading {
-      font-size: $h1fontSize;
-    }
-  }
-}
-@media screen and (max-width: 500px) {
-  // hardcoded height for typed content so as to prevent overflow and subsequent content shift
-  section.landingSection .contentSection h3 {
-    $line-height: 1.3;
-    line-height: $line-height;
-    height: $h3fontSize * $line-height * 5;
-  }
-}
-
-section.landingCarouselSection {
-  position: relative;
-  z-index: 2;
-  width: 100vw;
-  height: 500px;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  border-right: none;
-  border-left: none;
-}
-
-.line {
-  display: block;
-  position: absolute;
-  width: 1px;
-  height: 100%;
-  background-color: white;
-  opacity: 0.1;
-  left: 33%;
-}
-
-section.conceptSection {
-  z-index: 1;
-  color: white;
-  border-left: none;
-
-  position: relative;
-  margin-right: 100px;
-  padding-bottom: 200px;
-
-  display: grid;
-  grid-template-rows: fit-content fit-content fit-content;
-  grid-template-columns: 1fr 1fr;
-  row-gap: 50px;
-  column-gap: 10%;
-
-  align-items: center;
-
-  .conceptCarouselSection {
-    grid-row: 2 / 2;
-    grid-column: 2 / 3;
-    position: relative;
-
-    .conceptGraphWrapper {
-      position: absolute;
-      bottom: -25%;
-      left: -25%;
-      opacity: 0.5;
-      z-index: 0;
-    }
-
-    .conceptImageCarousel {
-      width: 100%;
-      height: 100%;
-      position: relative;
-    }
-
-  }
-
-  .decorationCode {
-    right: 0px;
-    top: 0px;
-  }
-
-  h2 {
-    width: fit-content;
-    grid-row: 1 / 1;
-    grid-column: 1 / 3;
-  }
-
-  .textSection {
-    align-self: start;
-    grid-row: 2 / 2;
-    grid-column: 1 / 1;
-
-    p {
-      opacity: 0.8;
-    }
-
-    .buttonSection button {
-      margin: 50px 0;
-    }
-  }
-}
-@media screen and (max-width: 1600px) {
-
-  section.conceptSection {
-    grid-template-rows: repeat(4, fit-content);
-    grid-template-columns: 1fr;
-    row-gap: 150px;
-    column-gap: 0;
-
-    .conceptCarouselSection {
-      grid-row: 2 / 2;
-      grid-column: 1 / 1;
-
-    }
-
-    .textSection {
-      grid-row: 3 / 3;
-      grid-column: 1 / 1;
-    }
-
-  }
-}
-@media screen and (max-width: 1200px) {
-  section.conceptSection .conceptGraphWrapper {
-    left: 25%;
-    top: -25%;
-    bottom: initial;
-    right: 25%;
-  }
-}
-@media screen and (max-width: 980px) {
-  section.conceptSection {
-    grid-template-rows: repeat(3, fit-content);
-    grid-template-columns: 1fr;
-    margin-right: 0px;
-    border-right: none;
-
-    .decorationCode {
-      top: initial;
-      bottom: 0;
-    }
-
-    .conceptImage {
-      grid-row: 2 / 2;
-      grid-column: 1 / 1;
-    }
-
-    .textSection {
-      grid-row: 3 / 3;
-      grid-column: 1 / 1;
-    }
-  }
-}
-
-section.postSection {
-
-  $left-margin: 100px;
-  position: relative;
-  width: calc(100% - #{$left-margin});
-  display: grid;
-  grid-template-rows: repeat(5, fit-content);
-  grid-template-columns: repeat(2, fit-content);
-  column-gap: 5vw;
-  row-gap: $sectionGap;
-  padding: 100px 5vw;
-
-  margin-left: $left-margin;
-  border-right: none;
-
-  h2 {
-    grid-column: 1 / 3;
-  }
-  > article {
-    justify-self: left;
-    grid-column: 1 / 3;
-    grid-row: 2;
-    width: 40%;
-  }
-  > b {
-    grid-column: 1 / 3;
-    grid-row: 3;
-  }
-
-  .decoration {
-    opacity: 0.1;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 30%;
-    height: 50%;
-  }
-
-
-  .projectsSection, .blogSection {
-    width: 100%;
-    height: fit-content;
-  }
-
-  .projectsSection {
-    grid-row: 4;
-    grid-column: 1 / 1;
-
-    .projectCarousel {
-      width: 100%;
-      height: 100%;
-    }
-
-  }
-  .blogSection {
-    grid-row: 4;
-    grid-column: 2 / 2;
-
-    .blogCarousel {
-      width: 100%;
-      height: 100%;
-    }
-  } 
-
-}
-@media screen and (max-width: 1200px) {
-  section.postSection {
-    grid-template-columns: fit-content;
-    grid-template-rows: repeat(5, fit-content);
-
-    h2 {
-      grid-column: 1;
-      grid-row: 1;
-    }
-    > p {
-      justify-self: right;
-      grid-column: 1;
-      grid-row: 2;
-      width: 100%;
-    }
-    > h5 {
-      grid-column: 1;
-      grid-row: 3;
-    }
-  
-
-    .projectsSection {
-      grid-row: 4;
-      grid-column: 1;
-    }
-    .projectHeading {
-      grid-row: 5;
-      grid-column: 1;
-    }
-
-    .blogSection {
-      grid-row: 6;
-      grid-column: 1;
-    }
-    .blogHeading {
-      grid-row: 7;
-      grid-column: 1;
-    }
-
-  }
-
-}
-@media screen and (max-width: 980px) {
-  section.postSection {
-    width: 100%;
-    margin-left: 0;
-    border-left: 0;
-  }
-}
-
-/// philosophy section:
-
-section.philosophySection {
-
-  width: 90%;
-  margin: auto;
-  @include centeredFlex();
-  flex-direction: column;
-  gap: 50px;
-
-  > h2, p {
-    text-align: center;
-  }
-  article {
-    width: 50%;
-    margin: auto;
-  }
-
-  .cardSection {
-    margin: 100px 0;
-    display: grid;
-    grid-template-rows: repeat(2, fit-content);
-    grid-template-columns: repeat(2, fit-content);
-    gap: 100px;
-  
-    .card {
-      text-align: center;
-      box-shadow: $boxShadow;
-      position: relative;
-      z-index: 2;
-      width: 600px;
-      height: 600px;
-    
-  
-      &:nth-child(1) {
-        justify-self:end;
-        grid-row: 1;
-        grid-column: 1;
-      }
-      &:nth-child(2) {
-        justify-self:start;
-        grid-row: 1;
-        grid-column: 2;
-      }
-      &:nth-child(3) {
-        justify-self:end;
-        grid-row: 2;
-        grid-column: 1;
-      }
-      &:nth-child(4) {
-        justify-self:start;
-        grid-row: 2;
-        grid-column: 2;
-      }
-  
-    }
-  }
-
-  .buttonSection button {
-    margin: auto;
-  }
-
-}
-@media screen and (max-width: 1700px) {
-  section.philosophySection {
-    
-    article {
-      width: 80%;
-    }
-
-    border-right: none;
-    border-left: none;
-    width: 100%;
-
-    .cardSection {
-      gap: 20px;
-    }
-  }
-}
-@media screen and (max-width: 1420px) {
-  section.philosophySection .cardSection {
-    @include centeredFlex();
-    flex-direction: column;
-    gap: 50px;
-  }
-}
-@media screen and (max-width: 700px) {
-  section.philosophySection article {
-    width: 95%;
-  }
-}
-
-section.contactSection {
-
-  width: 100%;
-  @include centeredFlex();
-  flex-direction: column;
-  gap: $sectionGap;
-
-  > h2, > article {
-    text-align: center;
-  }
-
-  form {
-    margin: 50px auto;
-    width: 60%;
-  }
-
-  button {
-    margin: auto;
-  }
-
-}
-@media screen and (max-width: 1000px) {
-  section.contactSection form {
-    width: 100%;
-  }
-} 

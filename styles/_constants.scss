@@ -1,4 +1,4 @@
-// design system
+// sizes 1
 $h1fontSize: 3.5rem;
 $h2fontSize: 3rem;
 $h3fontSize: 2.5rem;
@@ -6,14 +6,34 @@ $h4fontSize: 2rem;
 $h5fontSize: 1.5rem;
 $h6fontSize: 1.3rem;
 
+// sizes 2
+$smallerh1fontSize: 2.7rem;
+$smallerh2fontSize: 2.3rem;
+$smallerh3fontSize: 2rem;
+$smallerh4fontSize: 1.6rem;
+$smallerh5fontSize: 1.3rem;
+$smallerh6fontSize: 1rem;
+
+
 $backgroundColor: #263238;
 $darkerBackgroundColor: #222b30;
 $darkFontColor: rgb(50, 50, 50);
-$boxShadow: 0 70px 150px rgba(0, 0, 0, 0.5);
+$boxShadow: 0 50px 100px rgba(0, 0, 0, 0.4);
 $border: 1px solid rgba(255, 255, 255, 0.1);
 
 $headerHeight: 100px;
 
-$standardBorderRadius: 10px;
+$standardBorderRadius: 5px;
 
 $sectionGap: 50px;
+
+$standardPadding: 100px;
+
+$searchFieldDisplayThreshold: 430px;
+
+// coding colors
+$codingBlue: #82AADF;
+$codingRed: #BC6778;
+$codingPurple: #C792EA;
+$codingYellow: #FFCB6B;
+$codingGreen: #95DC8D;

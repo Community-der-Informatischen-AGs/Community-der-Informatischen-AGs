@@ -1,4 +1,5 @@
-@import "./_constants";
+@import "./constants";
+@import "./module";
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&family=Roboto+Flex:opsz,wght@8..144,300&family=Source+Code+Pro:wght@300&display=swap");
 
 #__next,
@@ -18,6 +19,11 @@ body {
 
 #__next {
   contain: paint; // !!!! THIS IS IT!!!!
+}
+
+#nprogress .bar {
+  background: white !important;
+  height: 3px !important;
 }
 
 :root {
@@ -42,29 +48,28 @@ h6 {
   font-weight: 800;
 }
 
-h1 {
-  font-size: $h1fontSize;
+h1 { font-size: $h1fontSize; }
+h2 { font-size: $h2fontSize; }
+h3 { font-size: $h3fontSize; }
+h4 { font-size: $h4fontSize; }
+h5 { font-size: $h5fontSize; }
+h6 { font-size: $h6fontSize; }
+
+@media screen and (max-width: 540px) {
+  h1 { font-size: $smallerh1fontSize; }
+  h2 { font-size: $smallerh2fontSize; }
+  h3 { font-size: $smallerh3fontSize; }
+  h4 { font-size: $smallerh4fontSize; }
+  h5 { font-size: $smallerh5fontSize; }
+  h6 { font-size: $smallerh6fontSize; }
 }
-h2 {
-  font-size: $h2fontSize;
-}
-h3 {
-  font-size: $h3fontSize;
-}
-h4 {
-  font-size: $h4fontSize;
-}
-h5 {
-  font-size: $h5fontSize;
-}
-h6 {
-  font-size: $h6fontSize;
-}
+
 
 p,
 q,
 blockquote,
 a {
+  @include wordBreak();
   /* this is the standard font for all blog content, etc. */
   font-family: "Roboto Flex", sans-serif;
   line-height: 1.5;
@@ -73,6 +78,11 @@ a {
 
 a {
   color: grey;
+  // TODO: replace with link icon from phosphor
+  &:after {
+    content: " (link)"
+  }
+  opacity: 1;
   text-decoration: none;
 }
 
@@ -88,19 +98,24 @@ ol,
 ul {
   margin: 0;
   padding: 0;
+  list-style-type: ">  ";
+  li {
+    margin-left: 15px;
+  }
 }
 
 button {
   border-radius: $standardBorderRadius / 2;
-  border: $border;
   padding: 20px 40px;
   display: block;
   box-shadow: 0 20px 100px rgba(0, 0, 0, 0.4);
   font-size: 1rem;
   font-weight: 600;
+  border: none;
 
   position: relative;
   transition: transform 0.2s ease;
+  cursor: pointer;
 
   &:after {
     content: "";
@@ -118,7 +133,6 @@ button {
   }
 
   &:hover {
-    cursor: pointer;
 
     &:after {
       height: 100%;
@@ -132,6 +146,15 @@ button {
 
   &:active {
     transform: translateY(2px);
+  }
+}
+button:disabled {
+  opacity: 0.7;
+  cursor:default;
+  box-shadow: none;;
+
+  &:after {
+    display: none;
   }
 }
 

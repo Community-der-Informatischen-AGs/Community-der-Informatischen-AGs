@@ -1,7 +1,8 @@
 import styles from "./header_component.module.scss"
 import { useRouter } from "next/router"
 import { MutableRefObject, useEffect, useRef } from "react"
-import { Navigation, Select, Search } from ".."
+import { Navigation, Select, SearchComponent } from ".."
+import { MagnifyingGlass } from "phosphor-react"
 
 function useWindowScrollEvent(
   headerRef: MutableRefObject<HTMLElement>
@@ -11,15 +12,11 @@ function useWindowScrollEvent(
       try {
         if (window.scrollY != 0) {
           const element = headerRef.current
-          element.style.backgroundColor = "#222b30"
-          element.style.borderBottom =
-            "1px solid rgba(255, 255, 255, 0.1)"
+          element.classList.add(styles.headerActive)
         }
         if (window.scrollY == 0) {
           const element = headerRef.current
-          element.style.backgroundColor = "transparent"
-          element.style.borderBottom =
-            "1px solid transparent"
+          element.classList.remove(styles.headerActive)
         }
       } catch (e) {
         console.log("scrolling error -> " + e)
@@ -37,7 +34,11 @@ function useWindowScrollEvent(
   }, [headerRef])
 }
 
-export const Header = () => {
+interface HeaderProps {
+  onSearch?: () => void
+}
+
+export const Header = (p: HeaderProps) => {
   const router = useRouter()
 
   const headerRef = useRef<HTMLElement>(null!)
@@ -55,8 +56,21 @@ export const Header = () => {
 
       <section className={styles.content}>
         <Navigation />
-        <Search />
-        <Select
+        <div className={styles.miniSearch}>
+          <MagnifyingGlass
+            alt="confirm search query"
+            size={25}
+            color="white"
+          />
+        </div>
+        <SearchComponent onSearch={p.onSearch} />
+      </section>
+    </header>
+  )
+
+  /*
+  TODO: maybe implement localization
+          <Select
           options={[
             {
               key: "DE",
@@ -73,7 +87,5 @@ export const Header = () => {
             console.log(selectedValue)
           }}
         />
-      </section>
-    </header>
-  )
+  */
 }

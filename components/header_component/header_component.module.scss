@@ -5,6 +5,13 @@
 .header .content,
 .header .content nav > ul {
   @include centeredFlex();
+  li {
+    margin-left: 0;
+  }
+
+}
+.header a {
+  opacity: 1;
 }
 
 .header {
@@ -14,7 +21,7 @@
   position: sticky;
   top: 0;
   right: 0;
-  padding: 0 50px;
+  padding: 0 75px;
   z-index: 99;
 
   background-color: transparent;
@@ -47,6 +54,11 @@
   }
 }
 
+.headerActive {
+  background-color: $darkerBackgroundColor;
+  border-bottom: $border;
+}
+
 @media screen and (max-width: 1340px) {
   .header {
     padding: 0 100px 0 15px;
@@ -58,6 +70,16 @@
     gap: 15px;
   }
   .header {
-    padding: 0 80px 0 15px;
+    padding: 0 120px 0 15px;
+  }
+}
+
+
+.miniSearch {
+  display: none;
+}
+@media screen and (max-width: $searchFieldDisplayThreshold) {
+  .miniSearch {
+    display: block;
   }
 }

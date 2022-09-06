@@ -1,0 +1,7 @@
+@import "./../../styles/constants";
+
+@media screen and (max-width: $searchFieldDisplayThreshold) {   
+  section.searchSection {
+    display: none;
+  }
+}

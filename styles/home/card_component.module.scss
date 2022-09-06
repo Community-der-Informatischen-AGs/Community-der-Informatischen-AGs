@@ -1,0 +1,29 @@
+@import "./../../styles/constants";
+
+// index specific styling for card components
+.cardComponent {
+  width: 400px;
+
+  img {
+    height: 200px;
+  }
+
+  .textSection {
+    padding-block: 30px;
+    padding-inline: 20px;
+    height: 200px;
+  }
+
+}
+
+@media screen and (max-width: 450px) {
+  .cardComponent {
+    width: 100%;
+    img {
+      height: 150px;
+    }
+    .textSection {
+      height: fit-content;
+    }
+  }
+}

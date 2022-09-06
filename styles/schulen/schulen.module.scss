@@ -1,0 +1,21 @@
+@import "./../constants";
+
+.location {
+  width: 100%;
+ 
+  h2 {
+    margin-bottom: $sectionGap
+  }
+
+  .imageContainer {
+    cursor: pointer;
+    width: 80%;
+    border-radius: $standardBorderRadius / 2;
+    box-shadow: $boxShadow;
+    overflow: hidden;
+    
+    object-fit: cover;
+    object-position: center;
+  }
+
+}

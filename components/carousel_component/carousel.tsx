@@ -20,8 +20,6 @@ interface CarouselProps {
 const carouselSelectorSize = 20
 
 export const Carousel = (props: CarouselProps) => {
-
-  
   const [scrollIndex, setScrollIndex] = useState(0)
   const maxIndex = props.children.length
   const carouselRef = useRef<HTMLDivElement>(null)
@@ -33,6 +31,7 @@ export const Carousel = (props: CarouselProps) => {
     width: props.width + props.unit,
   }
 
+  ///* Begin repeating scrolling functionality
   const scrollToIndex = (index: number) => {
     const nextElement = document.getElementById(
       props.uniqueClassName + index
@@ -67,6 +66,28 @@ export const Carousel = (props: CarouselProps) => {
       clearInterval(intervalId)
     }
   })
+
+  ///* End repeating scrolling functionality
+
+  ///* Begin window resize functionality
+
+  let resizeTimeout: NodeJS.Timeout
+  const resizeFunction = () => {
+    // will resize the carousel and position it correctly every 500ms after resizing
+    clearTimeout(resizeTimeout)
+    resizeTimeout = setTimeout(
+      () => scrollToIndex(scrollIndex),
+      200
+    )
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", resizeFunction)
+    return () =>
+      window.removeEventListener("resize", resizeFunction)
+  })
+
+  ///* End window resize functionality
 
   return (
     <div

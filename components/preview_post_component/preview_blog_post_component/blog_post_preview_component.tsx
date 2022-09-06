@@ -5,15 +5,27 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styles from "./blog_post_preview_component.module.scss"
 import React, { useEffect, useState } from "react"
 import {
+  ABBREVIATION_RENDER_OPTIONS,
   PostPreviewComponent,
   processImageData,
 } from "../post_preview_component"
-import { ImageData } from "../../../lib/utils/types"
+import {
+  HasOptionalStyleSheet,
+  ImageData,
+} from "../../../lib/utils/types"
+import {
+  CONTENTFUL_IMAGE_QUERY,
+  CONTENT_TYPE_IDS,
+} from "../../../lib/contentful/constants"
+import { CONTENT_TYPES } from "../../../lib/utils/constants"
+import { processOptStyleSheet } from "../../../lib/utils/functions"
+import cn from "classnames"
 
-const CONTENT_TYPE_ID = "blogPost"
-const CONTENT_TYPE = "Blog"
+const CONTENT_TYPE_ID = CONTENT_TYPE_IDS.blog
+const CONTENT_TYPE = CONTENT_TYPES.blog
 
-export interface BlogPostPreviewComponentProps {
+export interface BlogPostPreviewComponentProps
+  extends HasOptionalStyleSheet {
   entryId: string
 }
 
@@ -34,16 +46,9 @@ const lazyLoad = async (
     entryId: props.entryId,
     entryQuery: `
       title
-      author {
-        title
-      }
+      author
       optionalTitleMediaCollection (limit: 1) {
-        items {
-          title,
-          url,
-          height,
-          width,
-        } 
+        items ${CONTENTFUL_IMAGE_QUERY}
       }
       body {
         json
@@ -69,7 +74,7 @@ const lazyLoad = async (
   const publishedAt = new Date(
     responseJsonData.sys.publishedAt
   ).toLocaleDateString()
-  const author = responseJsonData.author.title
+  const author = responseJsonData.author
   const image =
     responseJsonData.optionalTitleMediaCollection.items[0]
 
@@ -84,27 +89,32 @@ const lazyLoad = async (
 }
 
 export const BlogPostPreviewComponent = (
-  props: BlogPostPreviewComponentProps
+  p: BlogPostPreviewComponentProps
 ) => {
   const [postProps, setPostProps] =
     useState<ContentfulBlogPostPreviewProps>(null!)
   // lazy-loading post data
 
   useEffect(() => {
-    lazyLoad(props).then((props) => setPostProps(props))
-  }, [props])
+    lazyLoad(p).then((props) => setPostProps(props))
+  }, [p])
+
+  const optStylesheet = processOptStyleSheet(p.optStyles)
 
   return postProps == null ? null : (
     <PostPreviewComponent
-      entryId={props.entryId}
+      entryId={p.entryId}
       contentType={CONTENT_TYPE}
       contentTypeId={CONTENT_TYPE_ID}
       title={postProps.title}
-      body={documentToReactComponents(postProps.body)}
+      body={documentToReactComponents(
+        postProps.body,
+        ABBREVIATION_RENDER_OPTIONS
+      )}
       image={postProps.image}
       className={styles.blogPostPreviewComponent}
-      imageSectionClassName={styles.previewImage}
-      textSectionClassName={styles.previewText}
+      baseStyles={styles}
+      optStyles={optStylesheet}
     >
       <p>
         Published by {postProps.author} on{" "}
