@@ -4,8 +4,7 @@
 .contentfulCollection {
   display: flex;
   flex-direction: column;
-  gap: 100px;
-
+  gap: 50px;
 
   .nothing {
     @include centeredFlex();

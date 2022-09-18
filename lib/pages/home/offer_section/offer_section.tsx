@@ -31,10 +31,7 @@ export const OfferSection = () => {
             waitUntilVisible: true,
           }}
         >
-          Eine fördernde{" "}
-          <span className={homeStyles.importantHeading}>
-            Umgebung.
-          </span>
+          Eine fördernde Umgebung.
         </TypeIt>
       </h2>
       <article>

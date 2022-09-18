@@ -2,16 +2,10 @@
 @import "./../../styles/constants";
 
 
+
 section.headingSection {
 
   position: relative;
-
-  h1 {
-    @include centeredFlex();
-    flex-direction: column;
-    width: fit-content;
-    align-items: flex-start;
-  }
 
   code.code {
     position: absolute;
@@ -20,11 +14,28 @@ section.headingSection {
     font-size: 1.3rem;
   }
 
+  margin-top: 100px;
+  padding-inline: $standardTemplateSidePadding;
+  padding-block: 100px;
+}
 
+.imageContainer {
+  margin-bottom: 200px;
+  height: 500px;
 }
 
 // this is the subcomponent of standard_page_template_component
 section.section {
+
+  
+  &:before {
+    width: 100%;
+  }
+
+  padding-inline: 30px;
+  padding-top: 50px;
+  margin-inline: $standardTemplateSidePadding;
+  margin-bottom: 100px;
 
   h2 {
     margin-bottom: $sectionGap;
@@ -33,4 +44,25 @@ section.section {
 
 }
 
- 
+@media screen and (max-width: 800px) {
+  section.headingSection {
+    padding-inline: $standardTemplateSidePaddingSmall;
+  }
+  section.section {
+    margin-inline: $standardTemplateSidePaddingSmall;
+  }
+} 
+
+@media screen and (max-width: 500px) {
+  section.headingSection {
+    padding-inline: $standardTemplateSidePaddingSmaller;
+    margin-top: 0;
+  }
+  .imageContainer {
+    height: 300px;
+  }
+  section.section {
+    margin-inline: $standardTemplateSidePaddingSmaller;
+    padding-inline: 0;
+  }
+} 

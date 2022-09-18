@@ -21,32 +21,44 @@ export const useEntryIds = (
   entryCollection: string,
   deps?: DependencyList
 ) => {
-  const getEntryIds = useCallback(async () => {
-    const queryResponse = await fetch(
-      "/api/contentful/query",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          query: query,
-        }),
-      }
-    )
+  const depsAsArray = deps as Array<any>
 
-    const jsonQueryResponse = await queryResponse.json()
-
-    setEntryIds(
-      Contentful.getIdsFromQueryData(
-        jsonQueryResponse,
-        entryCollection
+  const getEntryIds = useCallback(
+    async () => {
+      const queryResponse = await fetch(
+        "/api/contentful/query",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            query: query,
+          }),
+        }
       )
-    )
-  }, [query, entryCollection, ...(deps as Array<any>)])
+
+      const jsonQueryResponse = await queryResponse.json()
+
+      setEntryIds(
+        Contentful.getIdsFromQueryData(
+          jsonQueryResponse,
+          entryCollection
+        )
+      )
+    },
+    depsAsArray == undefined
+      ? [query, entryCollection]
+      : [query, entryCollection, ...depsAsArray]
+  )
 
   const [entryIds, setEntryIds] = useState<string[]>([])
 
-  useEffect(() => {
-    getEntryIds()
-  }, [getEntryIds, ...(deps as Array<any>), query])
+  useEffect(
+    () => {
+      getEntryIds()
+    },
+    depsAsArray == undefined
+      ? [getEntryIds, query]
+      : [getEntryIds, query, ...depsAsArray]
+  )
 
   return entryIds
 }
