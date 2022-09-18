@@ -16,14 +16,20 @@ section.headingSection {
 
   }
 
+  article {
+    margin-top: 50px;
+  }
+
   .code {
     position: absolute;
     top: 0;
     right: 0;
     font-size: 1.3rem;
   }
+  
   padding-inline: $standardTemplateSidePadding;
   padding-block: 100px;
+
 }
 
 @media screen and (max-width: 1100px) {
@@ -54,5 +60,18 @@ section.section {
 @media screen and (max-width: 1100px) {
   section.section {
     padding: 100px 0;
+  }
+}
+@media screen and (max-width: 800px) {
+  .mainContentSection, section.headingSection {
+    padding-inline: $standardTemplateSidePaddingSmall;
+  }
+  section.section {
+    padding: 30px 0;
+  }
+}
+@media screen and (max-width: 400px) {
+  .mainContentSection, section.headingSection {
+    padding-inline: $standardTemplateSidePaddingSmaller;
   }
 }

@@ -3,7 +3,6 @@ import {
   Envelope,
   GithubLogo,
   InstagramLogo,
-  LinkSimple,
   YoutubeLogo,
 } from "phosphor-react"
 import { KEYWORDS, LINKS } from "../../lib/utils/constants"
@@ -17,15 +16,14 @@ export const Footer = () => {
           <h6>Kontakt</h6>
           <div className={styles.email}>
             <Envelope size={32} weight="thin" />
-            <Link
-              href={
-                "mailto:jugend-entwickelt-software@gmail.com"
-              }
-            >
-              jugend-entwickelt-software@gmail.com
+            <Link href={`mailto:${LINKS.email}`}>
+              {LINKS.email}
             </Link>
           </div>
-          <b>Hauptstandort:</b>
+          <b>
+            "Hauptstandort" (Obwohl es eigentlich kein
+            Standort gibt):
+          </b>
           <p>Brucknerstraße 19, 40593 Düsseldorf</p>
           <p>Annette-von-Droste-Hülshoff-Gymnasium</p>
         </section>
@@ -74,9 +72,12 @@ export const Footer = () => {
           </div>
         </section>
         <section>
-          <h6>Attribution</h6>
-          <p>Website made by Rui Zhang</p>
-          <p>Fotos by Arian Allenstein</p>
+          <h6>Verweise</h6>
+          <p>
+            Webseite von{" "}
+            <a href={LINKS.ruizhang}>Rui Zhang</a>
+          </p>
+          <p>Fotos von Arian Allenstein</p>
         </section>
       </main>
       <h5 className={styles.copyright}>
