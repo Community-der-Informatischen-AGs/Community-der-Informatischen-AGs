@@ -14,14 +14,24 @@
     height: 200px;
   }
 
+  .imageSection {
+    height: 200px;
+    img {
+      height: 200px; 
+    }
+  } 
+
 }
 
 @media screen and (max-width: 450px) {
   .cardComponent {
     width: 100%;
-    img {
+    .imageSection {
       height: 150px;
-    }
+      img {
+        height: 150px; 
+      }
+    } 
     .textSection {
       height: fit-content;
     }
