@@ -21,8 +21,8 @@ export const Footer = () => {
             </Link>
           </div>
           <b>
-            "Hauptstandort" (Obwohl es eigentlich kein
-            Standort gibt):
+            {'"'}Hauptstandort{'"'} (Obwohl es eigentlich
+            kein Standort gibt):
           </b>
           <p>Brucknerstraße 19, 40593 Düsseldorf</p>
           <p>Annette-von-Droste-Hülshoff-Gymnasium</p>

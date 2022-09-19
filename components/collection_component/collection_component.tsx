@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react"
+import { useState } from "react"
 import {
   COLLECTION_TYPE_IDS,
   CONTENTFUL_ID_QUERY,
@@ -7,9 +7,9 @@ import {
   getPreviewPost,
   useEntryIds,
 } from "../../lib/contentful/util"
-import styles from "./collection_component.module.scss"
-import postStyles from "./../../styles/collection_page/post_preview_component.module.scss"
 import { CollectionNavigation } from "../collection_navigation_component"
+import postStyles from "./../../styles/collection_page/post_preview_component.module.scss"
+import styles from "./collection_component.module.scss"
 
 interface ContentfulCollectionProps {
   collectionId: string // a value from "COLLECTION_TYPE_IDS"
@@ -21,15 +21,6 @@ const collectionMax = 10
 export const ContentfulCollection = (
   p: ContentfulCollectionProps
 ) => {
-  if (
-    !Object.values(COLLECTION_TYPE_IDS).includes(
-      p.collectionId
-    )
-  ) {
-    console.log("error") // this is great error logging, I know.
-    return <div />
-  }
-
   const skipState = useState<number>(0)
   const [skipAmount, setSkipAmount] = skipState
 
@@ -42,6 +33,15 @@ export const ContentfulCollection = (
     p.collectionId,
     [skipAmount]
   )
+
+  if (
+    !Object.values(COLLECTION_TYPE_IDS).includes(
+      p.collectionId
+    )
+  ) {
+    console.log("error") // this is great error logging, I know.
+    return <div />
+  }
 
   return (
     <section className={styles.contentfulCollection}>
