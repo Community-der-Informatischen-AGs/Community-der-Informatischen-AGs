@@ -117,7 +117,7 @@ export const BlogPostPreviewComponent = (
       optStyles={optStylesheet}
     >
       <p>
-        Published by {postProps.author} on{" "}
+        Veröffentlicht von {postProps.author} am{" "}
         {postProps.publishedAt}
       </p>
     </PostPreviewComponent>

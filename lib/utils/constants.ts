@@ -6,7 +6,7 @@ export const KEYWORDS = {
   nameAbbreviation: "C.D.I.A.",
   annette: "Annette-Software-Entwicklung",
   schloss: "Schloß-Software-Entwicklung",
-  kobi: "Kobi-Software-Entwicklung"
+  kobi: "Kobi-Software-Entwicklung",
 }
 
 export const LINKS = {
@@ -22,6 +22,8 @@ export const LINKS = {
   annette: "https://www.entwicklung.annettegymnasium.de",
   kobi: "https://www.entwicklung.kobi-gymnasium.de",
   schloss: "https://www.entwicklung.schloss-gymnasium.de",
+  email: "root@community-inf-ag.de",
+  ruizhang: "https://website-totallyinformatik.vercel.app"
 }
 
 

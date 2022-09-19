@@ -9,6 +9,7 @@ import {
 import { Summary } from "../../components/summary_component"
 import { Contentful } from "../../lib/contentful/api"
 import {
+  CONTENTFUL_ID_QUERY,
   CONTENTFUL_IMAGE_QUERY,
   CONTENT_TYPE_IDS,
 } from "../../lib/contentful/constants"
@@ -82,29 +83,37 @@ const SchoolPage: NextPage<SchoolPageProps> = (
           title="Auf einem Blick:"
           summaryPoints={[
             <div key={1}>
-              <p>Ansprechpartner: </p>
-              <Link href={p.contactPerson.sys.id}>
-                {p.contactPerson.title}
-              </Link>
+              <p>
+                Ansprechpartner:{" "}
+                <Link href={p.contactPerson.sys.id}>
+                  {p.contactPerson.title}
+                </Link>
+              </p>
             </div>,
             <Optional
               key={2}
               condition={p.agWebsite != null}
             >
-              <p>AG-Webseite: </p>
-              <a href={p.agWebsite}>{p.agWebsite}</a>
+              <p>
+                AG-Webseite:{" "}
+                <a href={p.agWebsite}>{p.agWebsite}</a>
+              </p>
             </Optional>,
             <div key={3}>
-              <p>Schul-Webseite: </p>
-              <a href={p.schoolWebsite}>
-                {p.schoolWebsite}
-              </a>
+              <p>
+                Schul-Webseite:{" "}
+                <a href={p.schoolWebsite}>
+                  {p.schoolWebsite}
+                </a>
+              </p>
             </div>,
             <div key={4}>
-              <p>Email: </p>
-              <a href={"mailto:" + p.contactEmail}>
-                {p.contactEmail}
-              </a>
+              <p>
+                Email:{" "}
+                <a href={"mailto:" + p.contactEmail}>
+                  {p.contactEmail}
+                </a>
+              </p>
             </div>,
           ]}
         />
@@ -159,9 +168,7 @@ export async function getServerSideProps(context: any) {
       googleMapsPicture ${CONTENTFUL_IMAGE_QUERY}
       contactPerson {
         title
-        sys {
-          id
-        }
+        ${CONTENTFUL_ID_QUERY}
       }
       contactEmail
       schoolWebsite

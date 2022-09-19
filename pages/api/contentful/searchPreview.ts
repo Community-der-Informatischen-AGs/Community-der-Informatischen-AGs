@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next"
 import { Contentful } from "../../../lib/contentful/api"
-import { CONTENT_TYPE_COLLECTION_IDS, CONTENT_TYPE_IDS } from "../../../lib/contentful/constants"
+import { COLLECTION_TYPE_IDS, CONTENTFUL_ID_QUERY, CONTENT_TYPE_IDS } from "../../../lib/contentful/constants"
 
 
 export default async function handler(
@@ -33,7 +33,7 @@ export default async function handler(
     // get the total of all queryable entries and deduct values untill
     const entryCollectionTypeIdToQueryLimit: {
       [key: string]: number
-    } = Object.fromEntries(Object.values(CONTENT_TYPE_COLLECTION_IDS).map((collectionId) => {
+    } = Object.fromEntries(Object.values(COLLECTION_TYPE_IDS).map((collectionId) => {
       return [collectionId, 0];
     }))
 
@@ -96,9 +96,7 @@ export default async function handler(
           entryCollectionTypeIdToQueryLimit[key],
           `
           title
-          sys {
-            id
-          }
+          ${CONTENTFUL_ID_QUERY}
         `,
           searchFilter,
           searchOrder,

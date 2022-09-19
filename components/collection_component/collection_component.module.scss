@@ -1,0 +1,14 @@
+@import "./../../styles/constants";
+@import "./../../styles/module";
+
+.contentfulCollection {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+
+  .nothing {
+    @include centeredFlex();
+    flex-direction: column;
+    gap: $sectionGap;
+  }
+}

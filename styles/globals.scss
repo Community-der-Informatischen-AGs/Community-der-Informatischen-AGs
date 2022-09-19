@@ -68,12 +68,12 @@ h6 { font-size: $h6fontSize; }
 p,
 q,
 blockquote,
-a {
+a, li {
   @include wordBreak();
   /* this is the standard font for all blog content, etc. */
   font-family: "Roboto Flex", sans-serif;
   line-height: 1.5;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 a {
@@ -100,7 +100,7 @@ ul {
   padding: 0;
   list-style-type: ">  ";
   li {
-    margin-left: 15px;
+    margin-left: 25px;
   }
 }
 

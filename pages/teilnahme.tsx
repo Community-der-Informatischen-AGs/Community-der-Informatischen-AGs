@@ -19,7 +19,7 @@ const Teilnahme: NextPage = () => {
         "Die",
         "Teilnahme",
         "bei der",
-        "C.D.I.A.",
+        "Community",
       ]}
       titleIndex={1}
       metaDescription={`Auf dieser Seite meldest Du dich für die Teilnahme beim Programm des ${KEYWORDS.nameSeparate} an`}
@@ -51,19 +51,68 @@ const Teilnahme: NextPage = () => {
     >
       <StandardPageTemplate.section>
         <h2>Details zur Anmeldung</h2>
-        <article>
-          <p>Zusammengefasst gilt jedoch Folgendes:</p>
-          <ul>
-            <li>
-              Du bist Schüler / Schülerin an einer Schule in
-              NRW
-            </li>
-            <li>
-              An deiner Schule gibt es eine Gruppe von
-              mindestens <b>3</b>
-            </li>
-          </ul>
-        </article>
+        <p>
+          Bei der Community nehmen wir folgende Mitglieder /
+          AGs:
+        </p>
+        <br />
+        <p>1. Entweder:</p>
+        <ol>
+          <li>
+            Du bist Schüler in der Oberstufe (EF - Q2) in
+            Nordrhein-Westfalen
+          </li>
+          <li>
+            Du hast an deiner Schule ca. 5 Schüler gefunden,
+            die ähnlich an dem Projekt interessiert sind und
+            gerne eine AG an eurer Schule starten möchten
+          </li>
+        </ol>
+        <br />
+        <p>2. Oder:</p>
+        <ol>
+          <li>
+            Du bist der Leiter einer informatischen AG an
+            deiner Schule
+          </li>
+          <li>
+            Deine AG besteht aus mindestens um die 5
+            Mitglieder
+          </li>
+          <li>
+            Die AG ist für Schüler in den Jahrgangsstufen EF
+            - Q2 gemeint
+          </li>
+        </ol>
+        <br />
+        <p>
+          Im <u>1. Fall</u> bitten wir euch dazu, bei der
+          Anmeldung die{" "}
+          <b>Namen, Discord Usernames und Stufen</b> aller
+          Interessenten anzugeben
+        </p>
+        <br />
+        <p>
+          Im <u>2. Fall</u> bitten wir euch dazu, den{" "}
+          <b>
+            Namen eurer AG, das genaue informatische Thema
+          </b>{" "}
+          (Sei es Software-Entwicklung, Datenstrukturen und
+          Algorithmen, etc.){" "}
+          <b>
+            sowie die Mitglieder und deren Namen und Stufen
+            sowie Discord Usernames
+          </b>
+          anzugeben.
+        </p>
+        <br />
+        <p>Es gilt jedoch:</p>
+        <h5>
+          Ein Versuch ist es immer wert, auch wenn ihr die
+          Bedingungen nicht erfüllt, könnt ihr eure
+          individuellen Situation und Wünsche beschreiben.
+          Wir versuchen, etwas draus zu machen.
+        </h5>
       </StandardPageTemplate.section>
       <StandardPageTemplate.section>
         <h2>Anmeldeformular</h2>

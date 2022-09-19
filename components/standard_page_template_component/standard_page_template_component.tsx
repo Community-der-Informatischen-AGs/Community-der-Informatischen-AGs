@@ -1,14 +1,14 @@
 import Head from "next/head"
 import Image from "next/image"
-import { PropsWithChildren, ReactNode } from "react"
+import { PropsWithChildren } from "react"
 import { KEYWORDS } from "../../lib/utils/constants"
 import { Footer } from "../footer_component/footer_component"
 import { Header } from "../header_component"
 
-import styles from "./standard_page_template_component.module.scss"
-import globalStyles from "./../../styles/globals.module.scss"
 import cn from "classnames"
 import { ImageData } from "../../lib/utils/types"
+import globalStyles from "./../../styles/globals.module.scss"
+import styles from "./standard_page_template_component.module.scss"
 
 export const StandardPageTemplate = (
   p: StandardPageTemplateProps
@@ -40,10 +40,10 @@ export const StandardPageTemplate = (
                     key={index}
                     style={{
                       opacity:
-                        index == p.titleIndex ? 1 : 0.1,
+                        index == p.titleIndex ? 1 : 0.2,
                     }}
                   >
-                    {word}
+                    {word}{" "}
                   </span>
                 )
               }
@@ -63,7 +63,12 @@ export const StandardPageTemplate = (
           ) : null}
         </section>
         {p.image != null ? (
-          <section className={globalStyles.imageContainer}>
+          <section
+            className={cn(
+              globalStyles.imageContainer,
+              styles.imageContainer
+            )}
+          >
             <Image
               className={styles.image}
               width={p.image.width}

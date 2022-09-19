@@ -37,12 +37,7 @@ export const PostPageTemplateComponent = (
       </Head>
       <Header />
       <main>
-        <section
-          className={cn(
-            styles.headingSection,
-            globalStyles.headingSection
-          )}
-        >
+        <section className={styles.headingSection}>
           <h1>
             <span>{p.title} </span>
             <span className={styles.postType}>
@@ -80,12 +75,7 @@ export const PostPageTemplateComponent = (
             </section>
           ) : null
         }
-        <section
-          className={cn(
-            globalStyles.standardPaddingSection,
-            styles.mainContentSection
-          )}
-        >
+        <section className={cn(styles.mainContentSection)}>
           {p.children}
         </section>
       </main>

@@ -2,6 +2,7 @@
 @import "./../constants";
 
 .headingSection {
+
   h1 {
     display: flex;
     flex-direction: column;
@@ -24,11 +25,4 @@ section.resultsSection {
     flex-direction: column;
     gap: $sectionGap;
   }
-}
-
-.navigationSection {
-  @include centeredFlex();
-  justify-content: center;
-  gap: $sectionGap;
-  margin-block: $sectionGap;
 }

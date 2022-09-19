@@ -12,20 +12,21 @@ import homeStyles from "./../../../../styles/home/home.module.scss"
 import postPreviewStyles from "./../../../../styles/home/post_preview_component.module.scss"
 import styles from "./concept_section.module.scss"
 
-import { useEntryIds } from "../util"
+import { useEntryIds } from "../../../contentful/util"
+import { CONTENTFUL_ID_QUERY } from "../../../contentful/constants"
 
 export const ConceptSection = () => {
   const schoolIds = useEntryIds(
     `
     schoolEntryCollection(limit: 3) {
       items {
-        sys {	
-          id
-        } 
+        ${CONTENTFUL_ID_QUERY}
       }
     }`,
     "schoolEntryCollection"
   )
+
+  console.log("bruh")
 
   return (
     <section

@@ -9,23 +9,22 @@ import {
   useState,
 } from "react"
 import {
-  BlogPostPreviewComponent,
   Footer,
   Header,
-  ProjectPostPreviewComponent,
-  SchoolPreviewComponent,
   SearchComponent,
+  CollectionNavigation,
 } from "../components"
 import {
-  CONTENT_TYPE_COLLECTION_IDS,
-  CONTENT_TYPE_IDS,
+  COLLECTION_TYPE_IDS,
+  CONTENTFUL_ID_QUERY,
 } from "../lib/contentful/constants"
 import { KEYWORDS } from "../lib/utils/constants"
 
+import { getPreviewPost } from "../lib/contentful/util"
 import globalStyles from "./../styles/globals.module.scss"
+import postStyles from "./../styles/collection_page/post_preview_component.module.scss"
 import styles from "./../styles/search/search.module.scss"
 import searchStyles from "./../styles/search/search_component.module.scss"
-import postStyles from "./../styles/search/post_preview_component.module.scss"
 
 const validateQuery = (searchValue: string) => {
   return (
@@ -40,41 +39,6 @@ const validateQuery = (searchValue: string) => {
 interface SearchResult {
   contentTypeId: string
   id: string
-}
-
-const previewPostFromData = (
-  data: SearchResult,
-  key: any
-) => {
-  switch (data.contentTypeId) {
-    case CONTENT_TYPE_IDS.project:
-      return (
-        <ProjectPostPreviewComponent
-          entryId={data.id}
-          key={key}
-          optStyles={postStyles}
-        />
-      )
-    case CONTENT_TYPE_IDS.blog:
-      return (
-        <BlogPostPreviewComponent
-          entryId={data.id}
-          key={key}
-          optStyles={postStyles}
-        />
-      )
-    case CONTENT_TYPE_IDS.school:
-      return (
-        <SchoolPreviewComponent
-          entryId={data.id}
-          key={key}
-          optStyles={postStyles}
-        />
-      )
-    default:
-      console.log("error, invalid content type id")
-      return <div></div>
-  }
 }
 
 // the amount of post previews per type.
@@ -106,7 +70,7 @@ const Search: NextPage<ParsedUrlQuery> = (
   useEffect(() => {
     const results: SearchResult[] = []
 
-    Object.values(CONTENT_TYPE_COLLECTION_IDS).forEach(
+    Object.values(COLLECTION_TYPE_IDS).forEach(
       (contentTypeCollectionId: string) => {
         const response = fetch(
           "/api/contentful/collection",
@@ -116,9 +80,7 @@ const Search: NextPage<ParsedUrlQuery> = (
               collectionType: contentTypeCollectionId,
               limit: pagePostTypeTotal,
               itemQuery: `
-              sys {
-                id
-              }
+              ${CONTENTFUL_ID_QUERY}
             `,
               filter: `
             OR: [
@@ -207,23 +169,30 @@ const Search: NextPage<ParsedUrlQuery> = (
             styles.resultsSection
           )}
         >
-          <SearchNavigation
+          <CollectionNavigation
             skipState={skipState}
             currentDataLength={resultPreviewData.length}
+            total={pagePostTypeTotal}
           />
           {resultPreviewData.length == 0 ? (
             <h1 className={styles.nothing}>
-              <span>nothing.</span>
+              <span>nichts.</span>
               <span>¯\_(ツ)_/¯</span>
             </h1>
           ) : (
             resultPreviewData.map((result, index) => {
-              return previewPostFromData(result, index)
+              return getPreviewPost(
+                postStyles,
+                result.contentTypeId,
+                result.id,
+                index
+              )
             })
           )}
-          <SearchNavigation
+          <CollectionNavigation
             skipState={skipState}
             currentDataLength={resultPreviewData.length}
+            total={pagePostTypeTotal}
           />
         </section>
       </main>
@@ -231,43 +200,6 @@ const Search: NextPage<ParsedUrlQuery> = (
     </>
   )
 }
-
-interface SearchNavigationProps {
-  skipState: [number, Dispatch<SetStateAction<number>>]
-  // the amount of entries currently shown on the page
-  currentDataLength: number
-}
-const SearchNavigation = (p: SearchNavigationProps) => {
-  const [currentSkipAmount, setCurrentSkipAmount] =
-    p.skipState
-
-  return (
-    <section className={styles.navigationSection}>
-      <button
-        disabled={currentSkipAmount < pagePostTypeTotal}
-        onClick={() => {
-          if (currentSkipAmount >= pagePostTypeTotal)
-            setCurrentSkipAmount(
-              currentSkipAmount - pagePostTypeTotal
-            )
-        }}
-      >
-        {"<"}
-      </button>
-      <button
-        disabled={p.currentDataLength == 0}
-        onClick={() => {
-          setCurrentSkipAmount(
-            currentSkipAmount + pagePostTypeTotal
-          )
-        }}
-      >
-        {">"}
-      </button>
-    </section>
-  )
-}
-
 Search.getInitialProps = async ({ query }) => {
   return { ...query }
 }
