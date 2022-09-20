@@ -44,7 +44,6 @@ export const PostPageTemplateComponent = (
               <b>({p.postType})</b>
             </span>
           </h1>
-          <article>{p.additionalInformation}</article>
           {p.codeSnippet != null ? (
             <code
               className={cn(
@@ -76,7 +75,10 @@ export const PostPageTemplateComponent = (
           ) : null
         }
         <section className={cn(styles.mainContentSection)}>
-          {p.children}
+          <main>{p.children}</main>
+          <aside>
+            <article>{p.additionalInformation}</article>
+          </aside>
         </section>
       </main>
       <Footer />
