@@ -14,6 +14,7 @@ import {
   ImageData,
   SCSSStyleSheet,
 } from "../../lib/utils/types"
+import { ImageComponent } from "../image_component"
 import { Optional } from "../optional"
 import { processImageData } from "../preview_post_component"
 
@@ -22,6 +23,7 @@ import styles from "./contact_person_component.module.scss"
 interface ContactPersonProps {
   id: string
   stylesheet?: SCSSStyleSheet
+  className?: string
 }
 
 interface ContactPersonAttributes {
@@ -102,9 +104,15 @@ export const ContactPerson = (p: ContactPersonProps) => {
     <div
       className={cn(
         stylesheet.contactPerson,
-        styles.contactPerson
+        styles.contactPerson,
+        p.className
       )}
     >
+      <ImageComponent
+        image={personAttributes.image}
+        stylesheet={stylesheet}
+        layout="responsive"
+      />
       <h3 className={stylesheet.name}>
         {personAttributes.title}
       </h3>
@@ -115,6 +123,12 @@ export const ContactPerson = (p: ContactPersonProps) => {
       </article>
       <section className={stylesheet.links}>
         <ul>
+          <li>
+            Email der AG:{" "}
+            <a href={`mailto:${personAttributes.agEmail}`}>
+              {personAttributes.agEmail}
+            </a>
+          </li>
           {personAttributes.links != undefined
             ? Object.entries(personAttributes.links).map(
                 (entry, index) => {
