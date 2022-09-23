@@ -5,6 +5,7 @@ export const CONTENT_TYPE_IDS = {
   blog: "blogPost",
   project: "projectPost",
   school: "schoolEntry",
+  person: "contactPerson"
 }
 
 export const COLLECTION_TYPE_IDS = Object.fromEntries(Object.entries(CONTENT_TYPE_IDS).map((value) => {
@@ -18,6 +19,10 @@ export const CONTENT_TYPE_ID_TO_ROUTE: {
   [CONTENT_TYPE_IDS.project]: LINKS.projekte,
   [CONTENT_TYPE_IDS.blog]: LINKS.blogs,
   [CONTENT_TYPE_IDS.school]: LINKS.schulen,
+}
+
+export const CONTACT_PERSON_ROLE = {
+  agManagement: "AG-Management"
 }
 
 export const CONTENTFUL_IMAGE_QUERY = `{

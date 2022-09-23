@@ -16,6 +16,7 @@ import {
 import {
   CONTENT_TYPES,
   KEYWORDS,
+  LINKS,
 } from "../../lib/utils/constants"
 import { ImageData } from "../../lib/utils/types"
 
@@ -85,7 +86,7 @@ const SchoolPage: NextPage<SchoolPageProps> = (
             <div key={1}>
               <p>
                 Ansprechpartner:{" "}
-                <Link href={p.contactPerson.sys.id}>
+                <Link href={`${LINKS.ansprechpartner}`}>
                   {p.contactPerson.title}
                 </Link>
               </p>

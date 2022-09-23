@@ -5,6 +5,8 @@ import {
 import { KEYWORDS } from "../lib/utils/constants"
 import { NextPage } from "next"
 
+import styles from "./../styles/teilnahme/teilnahme.module.scss"
+
 const Teilnahme: NextPage = () => {
   return (
     <StandardPageTemplate
@@ -19,7 +21,7 @@ const Teilnahme: NextPage = () => {
         "Die",
         "Teilnahme",
         "bei der",
-        "Community",
+        "Gemeinschaft",
       ]}
       titleIndex={1}
       metaDescription={`Auf dieser Seite meldest Du dich für die Teilnahme beim Programm des ${KEYWORDS.nameSeparate} an`}
@@ -57,7 +59,7 @@ const Teilnahme: NextPage = () => {
         </p>
         <br />
         <p>1. Entweder:</p>
-        <ol>
+        <ol className={styles.list}>
           <li>
             Du bist Schüler in der Oberstufe (EF - Q2) in
             Nordrhein-Westfalen
@@ -70,7 +72,7 @@ const Teilnahme: NextPage = () => {
         </ol>
         <br />
         <p>2. Oder:</p>
-        <ol>
+        <ol className={styles.list}>
           <li>
             Du bist der Leiter einer informatischen AG an
             deiner Schule

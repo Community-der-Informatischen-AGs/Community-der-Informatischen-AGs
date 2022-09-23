@@ -1,0 +1,67 @@
+@import "./../constants";
+@import "./../module";
+
+.contactGrid {
+    
+  display: grid;
+  width: fit-content;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  column-gap: 30px;
+
+  .email {
+    @include centeredFlex();
+    justify-content: flex-start;
+    gap: 5px;
+  }
+
+}
+
+.contactPerson {
+  display: grid;
+
+  grid-template-columns: 30% calc(70% - 50px);
+  column-gap: 50px;
+
+  &:not(:has(.imageContainer)) {
+    .name, .links, .body {
+      grid-column: 1/ 3;
+    }
+  }
+
+  .links > ul > li > a {
+    @include wordBreak(); // ? why no work
+  }
+
+  .imageContainer {
+    width: 100%;
+    height: 100%;
+    grid-row: 1  / 4;
+    grid-column: 1;
+  }
+}
+.contactPersonWithMargin {
+  margin-block: 50px;
+}
+
+@media screen and (max-width: 1250px) {
+  .contactPerson {
+    display: block;
+    .imageContainer {
+      margin: 0 0 50px 50px;
+      float: right;
+      width: 30%;
+    }
+  }
+
+  .contactGrid {
+    display: block;
+  }
+ 
+}
+@media screen and (max-width: 600px) {
+  .contactPerson .imageContainer {
+    width: 40%;
+    margin: 0 0 30px 30px;
+  }
+}

@@ -52,8 +52,12 @@ export const OfferSection = () => {
           className={styles.card}
           title="Kooperation"
           text="Arbeite mit anderen Gleichgesinnten zusammen und stärke deine Teamfähigkeiten"
-          imageSource="assets/images/home/philosophy1.jpg"
-          imageAlt="Kooperationsbild"
+          image={{
+            title: "Kooperationsbild",
+            width: 6336,
+            height: 9504,
+            url: "/assets/images/home/philosophy1.jpg",
+          }}
           link={`${LINKS.about}#kooperation`}
         />
         <CardComponent
@@ -61,8 +65,12 @@ export const OfferSection = () => {
           className={styles.card}
           title="Verbesserung"
           text="Bilde dich weiter. Zusammen in einer Gruppe kann man sich gegenseitig Tipps geben und etwas beibringen"
-          imageSource="assets/images/home/philosophy2.jpg"
-          imageAlt="Verbesserungsbild"
+          image={{
+            title: "Verbesserungsbild",
+            width: 4608,
+            height: 3072,
+            url: "/assets/images/home/philosophy2.jpg",
+          }}
           link={`${LINKS.about}#verbesserung`}
         />
         <CardComponent
@@ -70,8 +78,12 @@ export const OfferSection = () => {
           className={styles.card}
           title="Vernetzung"
           text="Lerne Glechgesinnte kennen und erweitere deinen Horizont."
-          imageSource="assets/images/home/philosophy3.jpg"
-          imageAlt="Vernetzungsbild"
+          image={{
+            title: "Vernetzungsbild",
+            width: 3456,
+            height: 2304,
+            url: "/assets/images/home/philosophy3.jpg",
+          }}
           link={`${LINKS.about}#vernetzung`}
         />
       </section>
@@ -92,8 +104,12 @@ export const OfferSection = () => {
           className={styles.card}
           title="Eigentempo"
           text="Jeder lernt im eigenen Tempo. Kein Druck. Kein Stress."
-          imageSource="assets/images/home/testimage1.jpg"
-          imageAlt="Kooperationsbild"
+          image={{
+            title: "Bild zum Eigentempo",
+            width: 3840,
+            height: 5760,
+            url: "/assets/images/home/testimage1.jpg",
+          }}
           link={`${LINKS.about}#kooperation`}
         />
         <CardComponent
@@ -101,8 +117,12 @@ export const OfferSection = () => {
           className={styles.card}
           title="Neutralität"
           text="Unsere Gemeinschaft hält sich fern von starker Politik. Kein Drama."
-          imageSource="assets/images/home/testimage2.jpg"
-          imageAlt="Verbesserungsbild"
+          image={{
+            title: "Neutralitätsbild",
+            width: 6000,
+            height: 4000,
+            url: "/assets/images/home/testimage2.jpg",
+          }}
           link={`${LINKS.about}#verbesserung`}
         />
         <CardComponent
@@ -110,8 +130,12 @@ export const OfferSection = () => {
           className={styles.card}
           title="Respekt und Vertrauen"
           text="Engagement und Fähigkeiten der Mitglieder werden respektiert. Nur konstruktive Kritik."
-          imageSource="assets/images/home/testimage3.jpg"
-          imageAlt="Vernetzungsbild"
+          image={{
+            title: "Bild zu Respekt und Vertrauen",
+            width: 3099,
+            height: 5099,
+            url: "/assets/images/home/testimage3.jpg",
+          }}
           link={`${LINKS.about}#vernetzung`}
         />
       </section>
