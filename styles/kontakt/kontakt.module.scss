@@ -1,0 +1,18 @@
+@import "./../constants";
+@import "./../module";
+
+.contactGrid {
+    
+  display: grid;
+  width: fit-content;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  column-gap: 30px;
+
+  .email {
+    @include centeredFlex();
+    justify-content: flex-start;
+    gap: 5px;
+  }
+
+}

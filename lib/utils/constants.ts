@@ -1,4 +1,6 @@
-
+export const RESERVED = {
+  ruizhangid: "6DuieBgQ67iZPDO2GWNSor"
+}
 
 export const KEYWORDS = {
   nameSeparate: "Community d. Informatischen AGs",
@@ -9,19 +11,16 @@ export const KEYWORDS = {
   kobi: "Kobi-Software-Entwicklung",
 }
 
+// TODO: some links are redundant and can be loaded via contentful (footer)
 export const LINKS = {
   mitmachen: "/teilnahme",
   about: "/about",
   schulen: "/schulen",
-  ansprechpartner: "/ansprechpartner",
+  ansprechpartner: "/kontakt",
   projekte: "/projekte",
   blogs: "/blogs",
-  kontakt: "/kontakt",
   impressum: "/impressum",
   search: "/search",
-  annette: "https://www.entwicklung.annettegymnasium.de",
-  kobi: "https://www.entwicklung.kobi-gymnasium.de",
-  schloss: "https://www.entwicklung.schloss-gymnasium.de",
   email: "root@community-inf-ag.de",
   ruizhang: "https://website-totallyinformatik.vercel.app"
 }

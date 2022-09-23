@@ -21,7 +21,7 @@ const Teilnahme: NextPage = () => {
         "Die",
         "Teilnahme",
         "bei der",
-        "Community",
+        "Gemeinschaft",
       ]}
       titleIndex={1}
       metaDescription={`Auf dieser Seite meldest Du dich für die Teilnahme beim Programm des ${KEYWORDS.nameSeparate} an`}
