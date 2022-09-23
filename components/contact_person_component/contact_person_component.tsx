@@ -1,21 +1,15 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import cn from "classnames"
-import {
-  useEffect,
-  useState,
-  useSyncExternalStore,
-} from "react"
+import { useEffect, useState } from "react"
 import {
   CONTENTFUL_IMAGE_QUERY,
   CONTENT_TYPE_IDS,
 } from "../../lib/contentful/constants"
-import { CONTENT_TYPES } from "../../lib/utils/constants"
 import {
   ImageData,
   SCSSStyleSheet,
 } from "../../lib/utils/types"
 import { ImageComponent } from "../image_component"
-import { Optional } from "../optional"
 import { processImageData } from "../preview_post_component"
 
 import styles from "./contact_person_component.module.scss"
@@ -105,23 +99,29 @@ export const ContactPerson = (p: ContactPersonProps) => {
       className={cn(
         stylesheet.contactPerson,
         styles.contactPerson,
-        p.className
+        p.className,
+        personAttributes.title == ""
+          ? styles.unloaded
+          : styles.loaded
       )}
     >
       <ImageComponent
+        className={styles.image}
         image={personAttributes.image}
         stylesheet={stylesheet}
         layout="responsive"
       />
-      <h3 className={stylesheet.name}>
+      <h3 className={cn(stylesheet.name, styles.name)}>
         {personAttributes.title}
       </h3>
-      <article className={stylesheet.body}>
+      <article className={cn(stylesheet.body, styles.body)}>
         {documentToReactComponents(
           personAttributes.body?.json
         )}
       </article>
-      <section className={stylesheet.links}>
+      <section
+        className={cn(stylesheet.links, styles.links)}
+      >
         <ul>
           <li>
             Email der AG:{" "}

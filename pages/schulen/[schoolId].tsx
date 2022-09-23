@@ -86,9 +86,7 @@ const SchoolPage: NextPage<SchoolPageProps> = (
             <div key={1}>
               <p>
                 Ansprechpartner:{" "}
-                <Link
-                  href={`${LINKS.ansprechpartner}#${p.contactPerson.sys.id}`}
-                >
+                <Link href={`${LINKS.ansprechpartner}`}>
                   {p.contactPerson.title}
                 </Link>
               </p>
