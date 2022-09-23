@@ -117,15 +117,18 @@ const Kontakt: NextPage<KontaktProps> = (
       </StandardPageTemplate.section>
       <StandardPageTemplate.section>
         <h2>AG-Management</h2>
-        {p.managementContactPeople.map((contactPerson) => {
-          return (
-            <ContactPerson
-              id={contactPerson.sys.id}
-              stylesheet={styles}
-              className={styles.contactPersonWithMargin}
-            />
-          )
-        })}
+        {p.managementContactPeople.map(
+          (contactPerson, index) => {
+            return (
+              <ContactPerson
+                key={index}
+                id={contactPerson.sys.id}
+                stylesheet={styles}
+                className={styles.contactPersonWithMargin}
+              />
+            )
+          }
+        )}
       </StandardPageTemplate.section>
     </StandardPageTemplate>
   )
