@@ -13,7 +13,7 @@ export default function Document() {
         <meta charSet="utf-8" />
         <link
           rel="icon"
-          href="/assets/svgs/jugend_entwickelt_digital_v_1_0_white.svg"
+          href="/assets/svgs/cdia_v_1_0_white.svg"
         />
         <meta
           name="viewport"
