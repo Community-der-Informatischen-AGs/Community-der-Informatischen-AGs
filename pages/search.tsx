@@ -13,6 +13,8 @@ import {
   Header,
   SearchComponent,
   CollectionNavigation,
+  StandardPageTemplate,
+  ContentfulCollection,
 } from "../components"
 import {
   COLLECTION_TYPE_IDS,
@@ -118,85 +120,51 @@ const Search: NextPage<ParsedUrlQuery> = (
 
   return (
     <>
-      <Head>
-        <title>
-          {KEYWORDS.nameSeparate} - {heading}
-        </title>
-        <meta
-          name="description"
-          content="Die Such Seite der CDIA"
-        />
-      </Head>
-      <Header
-        onSearch={() => {
+      <StandardPageTemplate
+        heading="Suche"
+        titleSentence={titleSentence}
+        titleIndex={titleIndex}
+        metaDescription="Die Such Seite der CDIA"
+        headerOnSearch={() => {
           setCurrentSkipAmount(0)
         }}
-      />
-      <main>
-        <section
-          className={cn(
-            styles.headingSection,
-            globalStyles.headingSection
-          )}
-        >
-          <h1>
-            {titleSentence.map(
-              (word: string, index: number) => {
-                return (
-                  <span
-                    key={index}
-                    style={{
-                      opacity:
-                        index == titleIndex ? 1 : 0.1,
-                    }}
-                  >
-                    {word}
-                  </span>
-                )
-              }
-            )}
-          </h1>
+      >
+        <StandardPageTemplate.section>
           <SearchComponent
             optStyles={searchStyles}
             onSearch={() => {
               setCurrentSkipAmount(0)
             }}
           />
-        </section>
-        <section
-          className={cn(
-            globalStyles.standardPaddingSection,
-            styles.resultsSection
-          )}
-        >
-          <CollectionNavigation
-            skipState={skipState}
-            currentDataLength={resultPreviewData.length}
-            total={pagePostTypeTotal}
-          />
-          {resultPreviewData.length == 0 ? (
-            <h1 className={styles.nothing}>
-              <span>nichts.</span>
-              <span>¯\_(ツ)_/¯</span>
-            </h1>
-          ) : (
-            resultPreviewData.map((result, index) => {
-              return getPreviewPost(
-                postStyles,
-                result.contentTypeId,
-                result.id,
-                index
-              )
-            })
-          )}
-          <CollectionNavigation
-            skipState={skipState}
-            currentDataLength={resultPreviewData.length}
-            total={pagePostTypeTotal}
-          />
-        </section>
-      </main>
-      <Footer />
+          <section className={cn(styles.resultsSection)}>
+            <CollectionNavigation
+              skipState={skipState}
+              currentDataLength={resultPreviewData.length}
+              total={pagePostTypeTotal}
+            />
+            {resultPreviewData.length == 0 ? (
+              <h1 className={styles.nothing}>
+                <span>nichts.</span>
+                <span>¯\_(ツ)_/¯</span>
+              </h1>
+            ) : (
+              resultPreviewData.map((result, index) => {
+                return getPreviewPost(
+                  postStyles,
+                  result.contentTypeId,
+                  result.id,
+                  index
+                )
+              })
+            )}
+            <CollectionNavigation
+              skipState={skipState}
+              currentDataLength={resultPreviewData.length}
+              total={pagePostTypeTotal}
+            />
+          </section>
+        </StandardPageTemplate.section>
+      </StandardPageTemplate>
     </>
   )
 }

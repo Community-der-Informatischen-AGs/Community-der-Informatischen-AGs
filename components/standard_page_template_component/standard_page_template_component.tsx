@@ -24,7 +24,11 @@ export const StandardPageTemplate = (
           content={p.metaDescription}
         />
       </Head>
-      <Header />
+      <Header
+        onSearch={() => {
+          if (p.headerOnSearch) p.headerOnSearch()
+        }}
+      />
       <main className={styles.main}>
         <section
           className={cn(
@@ -112,4 +116,5 @@ interface StandardPageTemplateProps {
   metaDescription: string
   children?: JSX.Element | JSX.Element[]
   codeSnippet?: string
+  headerOnSearch?: () => any
 }

@@ -222,13 +222,13 @@ export const SearchComponent = (
               })
             )}
             {searchResults.length != 0 ? (
-              <li>
-                <Link
-                  href={`${LINKS.search}?s=${searchInputValue}`}
-                  className={styles.viewMore}
-                >
-                  View more
-                </Link>
+              <li
+                className={styles.viewMore}
+                onClick={() => {
+                  confirmSearch()
+                }}
+              >
+                View more
                 <LinkSimpleHorizontalBreak
                   size={17}
                   color="white"
