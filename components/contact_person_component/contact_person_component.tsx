@@ -72,8 +72,6 @@ const lazyLoad = async (id: string) => {
 }
 
 export const ContactPerson = (p: ContactPersonProps) => {
-  // TODO: Lazy load, but make sure to fill in with loader beforehand less it looks trash
-
   const [personAttributes, setPersonAttributes] =
     useState<ContactPersonAttributes>(
       {} as ContactPersonAttributes

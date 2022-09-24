@@ -45,7 +45,7 @@ section.headingSection {
 
   width: 100%;
   h1, h2, h3, h4, h5, h6 {
-    margin-bottom: $sectionGap;
+    margin-bottom: $sectionGap / 2;
   }
   padding-block: 150px;
   padding-inline: $standardTemplateSidePadding;

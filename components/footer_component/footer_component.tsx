@@ -49,8 +49,7 @@ export const Footer = () => {
             />
             <GithubLogo
               onClick={() => {
-                window.location.href =
-                  "https://www.github.com/"
+                window.location.href = LINKS.github
               }}
               size={40}
               weight="thin"

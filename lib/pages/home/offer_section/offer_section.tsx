@@ -58,7 +58,6 @@ export const OfferSection = () => {
             height: 9504,
             url: "/assets/images/home/philosophy1.jpg",
           }}
-          link={`${LINKS.about}#kooperation`}
         />
         <CardComponent
           optStyles={cardStyles}
@@ -71,7 +70,6 @@ export const OfferSection = () => {
             height: 3072,
             url: "/assets/images/home/philosophy2.jpg",
           }}
-          link={`${LINKS.about}#verbesserung`}
         />
         <CardComponent
           optStyles={cardStyles}
@@ -84,7 +82,6 @@ export const OfferSection = () => {
             height: 2304,
             url: "/assets/images/home/philosophy3.jpg",
           }}
-          link={`${LINKS.about}#vernetzung`}
         />
       </section>
       <article>
@@ -110,7 +107,6 @@ export const OfferSection = () => {
             height: 5760,
             url: "/assets/images/home/testimage1.jpg",
           }}
-          link={`${LINKS.about}#kooperation`}
         />
         <CardComponent
           optStyles={cardStyles}
@@ -123,7 +119,6 @@ export const OfferSection = () => {
             height: 4000,
             url: "/assets/images/home/testimage2.jpg",
           }}
-          link={`${LINKS.about}#verbesserung`}
         />
         <CardComponent
           optStyles={cardStyles}
@@ -136,7 +131,6 @@ export const OfferSection = () => {
             height: 5099,
             url: "/assets/images/home/testimage3.jpg",
           }}
-          link={`${LINKS.about}#vernetzung`}
         />
       </section>
       <section className={styles.buttonSection}>

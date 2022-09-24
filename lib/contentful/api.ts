@@ -102,7 +102,7 @@ export namespace Contentful {
     const data = queryResponse.data[collectionName].items;
     return data.map((v: any) => {
       return v.sys.id;
-    });
+    }) as string[];
   }
 
   

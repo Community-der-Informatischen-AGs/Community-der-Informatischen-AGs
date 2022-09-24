@@ -38,10 +38,16 @@ section.section {
   margin-inline: $standardTemplateSidePadding;
   margin-bottom: 100px;
 
-  h2 {
-    margin-bottom: $sectionGap;
+  > h2 {
+    margin-bottom: $sectionGap / 1.5; // no margin-top, because there is padding at the top
+  }
+  > h3, h4, h5, h6 {
+    margin-bottom: $sectionGap / 2;
   }
 
+  > section {
+    margin-top: $sectionGap;
+  }
 
 }
 

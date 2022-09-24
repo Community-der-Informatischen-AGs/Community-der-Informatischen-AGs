@@ -10,6 +10,17 @@ import { ImageData } from "../../lib/utils/types"
 import globalStyles from "./../../styles/globals.module.scss"
 import styles from "./standard_page_template_component.module.scss"
 
+interface StandardPageTemplateProps {
+  heading: string
+  titleSentence: string[]
+  titleIndex: number
+  image?: ImageData
+  metaDescription: string
+  children?: JSX.Element | JSX.Element[]
+  codeSnippet?: string
+  headerOnSearch?: () => any
+}
+
 export const StandardPageTemplate = (
   p: StandardPageTemplateProps
 ) => {
@@ -92,13 +103,18 @@ export const StandardPageTemplate = (
 }
 
 export const StandardPageTemplateSection = (
-  p: PropsWithChildren
+  p: PropsWithChildren<{
+    id?: string
+    className?: string
+  }>
 ) => {
   return (
     <section
+      id={p.id}
       className={cn(
         globalStyles.standardPaddingSection,
-        styles.section
+        styles.section,
+        p.className
       )}
     >
       {p.children}
@@ -107,14 +123,3 @@ export const StandardPageTemplateSection = (
 }
 
 StandardPageTemplate.section = StandardPageTemplateSection
-
-interface StandardPageTemplateProps {
-  heading: string
-  titleSentence: string[]
-  titleIndex: number
-  image?: ImageData
-  metaDescription: string
-  children?: JSX.Element | JSX.Element[]
-  codeSnippet?: string
-  headerOnSearch?: () => any
-}

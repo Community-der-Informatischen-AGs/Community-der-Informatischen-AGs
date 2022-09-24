@@ -1,10 +1,11 @@
+import { NextPage } from "next"
 import {
-  StandardPageTemplate,
   ContactForm,
+  StandardPageTemplate,
 } from "../components"
 import { KEYWORDS } from "../lib/utils/constants"
-import { NextPage } from "next"
 
+import { User, UsersThree } from "phosphor-react"
 import styles from "./../styles/teilnahme/teilnahme.module.scss"
 
 const Teilnahme: NextPage = () => {
@@ -55,37 +56,49 @@ const Teilnahme: NextPage = () => {
         <h2>Details zur Anmeldung</h2>
         <p>
           Bei der Community nehmen wir folgende Mitglieder /
-          AGs:
+          AGs auf:
         </p>
         <br />
-        <p>1. Entweder:</p>
-        <ol className={styles.list}>
-          <li>
-            Du bist Schüler in der Oberstufe (EF - Q2) in
-            Nordrhein-Westfalen
-          </li>
-          <li>
-            Du hast an deiner Schule ca. 5 Schüler gefunden,
-            die ähnlich an dem Projekt interessiert sind und
-            gerne eine AG an eurer Schule starten möchten
-          </li>
-        </ol>
-        <br />
-        <p>2. Oder:</p>
-        <ol className={styles.list}>
-          <li>
-            Du bist der Leiter einer informatischen AG an
-            deiner Schule
-          </li>
-          <li>
-            Deine AG besteht aus mindestens um die 5
-            Mitglieder
-          </li>
-          <li>
-            Die AG ist für Schüler in den Jahrgangsstufen EF
-            - Q2 gemeint
-          </li>
-        </ol>
+        <section className={styles.bedingungen}>
+          <section>
+            <article>
+              <h3>1. Individuelle Personen:</h3>
+              <ol className={styles.list}>
+                <li>
+                  Du bist Schüler in der Oberstufe (EF - Q2)
+                  in Nordrhein-Westfalen
+                </li>
+                <li>
+                  Du hast an deiner Schule ca. 5 Schüler
+                  gefunden, die ähnlich an dem Projekt
+                  interessiert sind und gerne eine AG an
+                  eurer Schule starten möchten
+                </li>
+              </ol>
+            </article>
+            <User className={styles.icon} />
+          </section>
+          <section>
+            <article>
+              <h3>2. Bestehende AGs:</h3>
+              <ol className={styles.list}>
+                <li>
+                  Du bist der Leiter einer informatischen AG
+                  an deiner Schule
+                </li>
+                <li>
+                  Deine AG besteht aus mindestens um die 5
+                  Mitglieder
+                </li>
+                <li>
+                  Die AG ist für Schüler in den
+                  Jahrgangsstufen EF - Q2 gemeint
+                </li>
+              </ol>
+            </article>
+            <UsersThree className={styles.icon} />
+          </section>
+        </section>
         <br />
         <p>
           Im <u>1. Fall</u> bitten wir euch dazu, bei der

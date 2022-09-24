@@ -1,5 +1,4 @@
 import cn from "classnames"
-import { useEntryIds } from "../../../contentful/util"
 
 import globalStyles from "./../../../../styles/globals.module.scss"
 import homeStyles from "./../../../../styles/home/home.module.scss"
@@ -7,37 +6,17 @@ import postPreviewStyles from "./../../../../styles/home/post_preview_component.
 import styles from "./post_section.module.scss"
 
 import TypeIt from "typeit-react"
-import { KEYWORDS } from "../../../utils/constants"
 import {
   BlogPostPreviewComponent,
   Carousel,
   ProjectPostPreviewComponent,
 } from "../../../../components"
-import { CONTENTFUL_ID_QUERY } from "../../../contentful/constants"
+import { KEYWORDS } from "../../../utils/constants"
 
-export const PostSection = () => {
-  const projectPostIds = useEntryIds(
-    `
-    projectPostCollection(limit: 3) {
-      items {
-        ${CONTENTFUL_ID_QUERY}
-      }
-    }`,
-    "projectPostCollection"
-  )
-  const blogPostIds = useEntryIds(
-    `
-    blogPostCollection(limit: 3) {
-      items {
-        sys {
-          id
-        }
-      }
-    }
-    `,
-    "blogPostCollection"
-  )
-
+export const PostSection = (p: {
+  blogIds: string[]
+  projectIds: string[]
+}) => {
   return (
     <section
       className={cn(
@@ -91,7 +70,7 @@ export const PostSection = () => {
             width={100}
             unit={"%"}
           >
-            {projectPostIds.map((id) => {
+            {p.projectIds.map((id) => {
               return (
                 <ProjectPostPreviewComponent
                   optStyles={postPreviewStyles}
@@ -112,7 +91,7 @@ export const PostSection = () => {
             width={100}
             unit={"%"}
           >
-            {blogPostIds.map((id) => {
+            {p.blogIds.map((id) => {
               return (
                 <BlogPostPreviewComponent
                   optStyles={postPreviewStyles}

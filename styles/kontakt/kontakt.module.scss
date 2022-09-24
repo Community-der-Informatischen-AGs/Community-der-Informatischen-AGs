@@ -23,14 +23,16 @@
   grid-template-columns: 30% calc(70% - 50px);
   column-gap: 50px;
 
-  &:not(:has(.imageContainer)) {
-    .name, .links, .body {
-      grid-column: 1/ 3;
-    }
+  .name, .links, .body {
+    grid-column: 1 / 3;
   }
 
   .links > ul > li > a {
     @include wordBreak(); // ? why no work
+  }
+
+  .imageContainer ~ * {
+    grid-column: 2 / 3;
   }
 
   .imageContainer {

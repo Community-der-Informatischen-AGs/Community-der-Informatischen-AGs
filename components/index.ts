@@ -18,3 +18,4 @@ export * from "./search_component";
 export * from "./select_component";
 export * from "./standard_page_template_component";
 export * from "./summary_component";
+export * from "./tab_view_component";

@@ -1,20 +1,11 @@
 import cn from "classnames"
 import { NextPage } from "next"
-import Head from "next/head"
 import { ParsedUrlQuery } from "querystring"
+import { useEffect, useState } from "react"
 import {
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useState,
-} from "react"
-import {
-  Footer,
-  Header,
-  SearchComponent,
   CollectionNavigation,
+  SearchComponent,
   StandardPageTemplate,
-  ContentfulCollection,
 } from "../components"
 import {
   COLLECTION_TYPE_IDS,
@@ -23,7 +14,6 @@ import {
 import { KEYWORDS } from "../lib/utils/constants"
 
 import { getPreviewPost } from "../lib/contentful/util"
-import globalStyles from "./../styles/globals.module.scss"
 import postStyles from "./../styles/collection_page/post_preview_component.module.scss"
 import styles from "./../styles/search/search.module.scss"
 import searchStyles from "./../styles/search/search_component.module.scss"
@@ -121,7 +111,7 @@ const Search: NextPage<ParsedUrlQuery> = (
   return (
     <>
       <StandardPageTemplate
-        heading="Suche"
+        heading={heading}
         titleSentence={titleSentence}
         titleIndex={titleIndex}
         metaDescription="Die Such Seite der CDIA"

@@ -26,9 +26,7 @@ export const ContentfulCollection = (
 
   const entryIds = useEntryIds(
     `${p.collectionId}(limit: ${collectionMax}, skip: ${skipAmount}) {
-      items {
-        ${CONTENTFUL_ID_QUERY}
-      }
+      items {${CONTENTFUL_ID_QUERY}}
     }`,
     p.collectionId,
     [skipAmount]

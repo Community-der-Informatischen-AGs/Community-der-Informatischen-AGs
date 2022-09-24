@@ -1,8 +1,8 @@
-import styles from "./header_component.module.scss"
 import { useRouter } from "next/router"
-import { MutableRefObject, useEffect, useRef } from "react"
-import { Navigation, Select, SearchComponent } from ".."
 import { MagnifyingGlass } from "phosphor-react"
+import { MutableRefObject, useEffect, useRef } from "react"
+import { Navigation, SearchComponent } from ".."
+import styles from "./header_component.module.scss"
 
 function useWindowScrollEvent(
   headerRef: MutableRefObject<HTMLElement>

@@ -1,31 +1,20 @@
 import "aos/dist/aos.css"
 import cn from "classnames"
 import TypeIt from "typeit-react"
+import { KEYWORDS } from "../../../utils/constants"
 import {
   Carousel,
   SchoolPreviewComponent,
 } from "./../../../../components"
-import { KEYWORDS } from "../../../utils/constants"
 
 import globalStyles from "./../../../../styles/globals.module.scss"
 import homeStyles from "./../../../../styles/home/home.module.scss"
 import postPreviewStyles from "./../../../../styles/home/post_preview_component.module.scss"
 import styles from "./concept_section.module.scss"
 
-import { useEntryIds } from "../../../contentful/util"
-import { CONTENTFUL_ID_QUERY } from "../../../contentful/constants"
-
-export const ConceptSection = () => {
-  const schoolIds = useEntryIds(
-    `
-    schoolEntryCollection(limit: 3) {
-      items {
-        ${CONTENTFUL_ID_QUERY}
-      }
-    }`,
-    "schoolEntryCollection"
-  )
-
+export const ConceptSection = (p: {
+  schoolIds: string[]
+}) => {
   console.log("bruh")
 
   return (
@@ -54,7 +43,7 @@ export const ConceptSection = () => {
           width={100}
           unit="%"
         >
-          {schoolIds.map((entryId) => {
+          {p.schoolIds.map((entryId) => {
             return (
               <SchoolPreviewComponent
                 optStyles={postPreviewStyles}

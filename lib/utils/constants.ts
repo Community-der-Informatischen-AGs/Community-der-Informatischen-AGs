@@ -15,6 +15,10 @@ export const KEYWORDS = {
 export const LINKS = {
   mitmachen: "/teilnahme",
   about: "/about",
+  beginnings: "anfaenge",
+  konzept: "konzept",
+  philosophie: "philosophie",
+  vorgehen: "vorgehen",
   schulen: "/schulen",
   ansprechpartner: "/kontakt",
   projekte: "/projekte",
@@ -22,9 +26,9 @@ export const LINKS = {
   impressum: "/impressum",
   search: "/search",
   email: "root@community-inf-ag.de",
+  github: "https://github.com/Community-der-Informatischen-AGs",
   ruizhang: "https://website-totallyinformatik.vercel.app"
 }
-
 
 export const CONTACT_FORM = {
   name: "name",

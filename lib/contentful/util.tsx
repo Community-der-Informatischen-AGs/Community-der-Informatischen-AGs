@@ -13,6 +13,7 @@ import { SCSSStyleSheet } from "../utils/types"
 import { Contentful } from "./api"
 import {
   COLLECTION_TYPE_IDS,
+  CONTENTFUL_ID_QUERY,
   CONTENT_TYPE_IDS,
 } from "./constants"
 
@@ -61,6 +62,28 @@ export const useEntryIds = (
   )
 
   return entryIds
+}
+
+export const getStaticPathsOfPostType = async (
+  collectionType: string,
+  slug: string
+) => {
+  const response =
+    await Contentful.fetchGraphQL(`${collectionType} {
+    items {${CONTENTFUL_ID_QUERY}}
+  }`)
+
+  const paths = Contentful.getIdsFromQueryData(
+    response,
+    collectionType
+  ).map((id) => {
+    return { params: { [slug]: id } }
+  })
+
+  return {
+    paths: paths,
+    fallback: false,
+  }
 }
 
 export const getPreviewPost = (

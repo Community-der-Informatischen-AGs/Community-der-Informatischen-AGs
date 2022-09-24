@@ -4,11 +4,10 @@ import {
   ImageData,
 } from "../../lib/utils/types"
 import styles from "./card_component.module.scss"
-import globalStyles from "./../../styles/globals.module.scss"
 
 import cn from "classnames"
-import { processOptStyleSheet } from "../../lib/utils/functions"
 import Image from "next/image"
+import { processOptStyleSheet } from "../../lib/utils/functions"
 
 // TODO: use Next Images
 interface CardComponentProps extends HasOptionalStyleSheet {

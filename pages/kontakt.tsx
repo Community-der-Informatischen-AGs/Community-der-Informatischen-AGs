@@ -134,7 +134,7 @@ const Kontakt: NextPage<KontaktProps> = (
   )
 }
 
-export async function getServerSideProps(context: any) {
+export async function getStaticProps(context: any) {
   const response = await Contentful.fetchGraphQL(
     `
     ${COLLECTION_TYPE_IDS.school}{
@@ -146,9 +146,7 @@ export async function getServerSideProps(context: any) {
     ${COLLECTION_TYPE_IDS.person}(where: {
       role: "${CONTACT_PERSON_ROLE.agManagement}"
     }) {
-      items {
-        ${CONTENTFUL_ID_QUERY}
-      }
+      items { ${CONTENTFUL_ID_QUERY} }
     }
     `
   )

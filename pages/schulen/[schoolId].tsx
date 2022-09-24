@@ -9,10 +9,12 @@ import {
 import { Summary } from "../../components/summary_component"
 import { Contentful } from "../../lib/contentful/api"
 import {
+  COLLECTION_TYPE_IDS,
   CONTENTFUL_ID_QUERY,
   CONTENTFUL_IMAGE_QUERY,
   CONTENT_TYPE_IDS,
 } from "../../lib/contentful/constants"
+import { getStaticPathsOfPostType } from "../../lib/contentful/util"
 import {
   CONTENT_TYPES,
   KEYWORDS,
@@ -152,7 +154,14 @@ const SchoolPage: NextPage<SchoolPageProps> = (
   )
 }
 
-export async function getServerSideProps(context: any) {
+export async function getStaticPaths() {
+  return await getStaticPathsOfPostType(
+    COLLECTION_TYPE_IDS.school,
+    "schoolId"
+  )
+}
+
+export async function getStaticProps(context: any) {
   const { schoolId } = context.params
 
   const response = await Contentful.getSingleEntry(

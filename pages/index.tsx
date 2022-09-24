@@ -17,7 +17,15 @@ import {
   OfferSection,
   PostSection,
 } from "../lib/pages/home"
-import { KEYWORDS } from "../lib/utils/constants"
+import {
+  CONTENT_TYPES,
+  KEYWORDS,
+} from "../lib/utils/constants"
+import { Contentful } from "../lib/contentful/api"
+import {
+  COLLECTION_TYPE_IDS,
+  CONTENTFUL_ID_QUERY,
+} from "../lib/contentful/constants"
 
 // TODO: add social media icons on the side of the landing-section
 // TODO: Fotos von unterschiedlichen Schulen mit Adrian oder selber machne
@@ -126,7 +134,13 @@ const LandingSection = () => {
   )
 }
 
-const Home: NextPage = () => {
+interface HomeProps {
+  schoolIds: string[]
+  blogIds: string[]
+  projectIds: string[]
+}
+
+const Home: NextPage<HomeProps> = (p: HomeProps) => {
   useEffect(() => {
     AOS.init({
       anchorPlacement: "top-bottom",
@@ -149,14 +163,53 @@ const Home: NextPage = () => {
       <main>
         <LandingSection />
 
-        <ConceptSection />
+        <ConceptSection schoolIds={p.schoolIds} />
         <OfferSection />
-        <PostSection />
+        <PostSection
+          blogIds={p.blogIds}
+          projectIds={p.projectIds}
+        />
         <ContactSection />
       </main>
       <Footer />
     </>
   )
+}
+
+export async function getStaticProps() {
+  const query = `
+  ${COLLECTION_TYPE_IDS.school} {
+    items {${CONTENTFUL_ID_QUERY}}
+  }
+  ${COLLECTION_TYPE_IDS.blog}(limit: 3) {
+    items{${CONTENTFUL_ID_QUERY}}
+  }
+  ${COLLECTION_TYPE_IDS.project}(limit: 3) {
+    items {${CONTENTFUL_ID_QUERY}}
+  }
+`
+  console.log(query)
+
+  const response = await Contentful.fetchGraphQL(query)
+
+  console.log(response)
+
+  return {
+    props: {
+      schoolIds: Contentful.getIdsFromQueryData(
+        response,
+        COLLECTION_TYPE_IDS.school
+      ),
+      blogIds: Contentful.getIdsFromQueryData(
+        response,
+        COLLECTION_TYPE_IDS.blog
+      ),
+      projectIds: Contentful.getIdsFromQueryData(
+        response,
+        COLLECTION_TYPE_IDS.project
+      ),
+    },
+  }
 }
 
 export default Home

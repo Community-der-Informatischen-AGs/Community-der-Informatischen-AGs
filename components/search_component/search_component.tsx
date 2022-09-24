@@ -192,7 +192,7 @@ export const SearchComponent = (
                   opacity: 0.7,
                 }}
               >
-                nix.
+                "nix".
               </li>
             ) : (
               searchResults.map((pair) => {
@@ -221,21 +221,6 @@ export const SearchComponent = (
                 )
               })
             )}
-            {searchResults.length != 0 ? (
-              <li
-                className={styles.viewMore}
-                onClick={() => {
-                  confirmSearch()
-                }}
-              >
-                View more
-                <LinkSimpleHorizontalBreak
-                  size={17}
-                  color="white"
-                  opacity={0.7}
-                />
-              </li>
-            ) : null}
           </ol>
         </section>
       </form>
