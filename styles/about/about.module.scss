@@ -1,0 +1,24 @@
+@import "./../constants";
+@import "./../module";
+
+.tabBar {
+
+  @include centeredFlex();
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0 10px 20px 10px;
+  border-bottom: $border;
+  width: fit-content;
+
+  .tabIcon {
+    @include centeredFlex();
+    justify-content: flex-start;
+    gap: 10px;
+    > h6.tabLabel {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+}

@@ -1,0 +1,22 @@
+.tabs {
+  .tabWrapper {
+    cursor: pointer;
+  }
+  .invisibleTabIcon {
+    opacity: 0.2;
+  }
+}
+
+.tabContents {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  .tabContentWrapper {
+    grid-row: 1;
+    grid-column: 1;
+  }
+  .invisibleTab {
+    visibility: hidden; // ! wow
+    display: block;
+  }
+}

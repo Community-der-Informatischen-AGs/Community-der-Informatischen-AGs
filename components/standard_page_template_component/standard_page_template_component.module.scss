@@ -17,6 +17,7 @@ section.headingSection {
   margin-top: 100px;
   padding-inline: $standardTemplateSidePadding;
   padding-block: 100px;
+
 }
 
 .imageContainer {
@@ -61,9 +62,15 @@ section.section {
 } 
 
 @media screen and (max-width: 500px) {
+
   section.headingSection {
     padding-inline: $standardTemplateSidePaddingSmaller;
     margin-top: 0;
+
+    h1 {
+      @include wordBreak();
+    }
+
   }
   .imageContainer {
     height: 300px;
@@ -73,3 +80,11 @@ section.section {
     padding-inline: 0;
   }
 } 
+
+@media screen and (max-width: 300px) {
+  section.section {
+    h1, h2, h3, h4, h5, h6, p {
+      @include wordBreak();
+    }
+  }
+}

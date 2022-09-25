@@ -76,7 +76,7 @@ const Teilnahme: NextPage = () => {
                 </li>
               </ol>
             </article>
-            <User className={styles.icon} />
+            <User className={styles.icon} weight="thin" />
           </section>
           <section>
             <article>
@@ -96,7 +96,10 @@ const Teilnahme: NextPage = () => {
                 </li>
               </ol>
             </article>
-            <UsersThree className={styles.icon} />
+            <UsersThree
+              className={styles.icon}
+              weight="thin"
+            />
           </section>
         </section>
         <br />

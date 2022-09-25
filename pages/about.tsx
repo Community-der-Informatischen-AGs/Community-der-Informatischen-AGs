@@ -2,14 +2,41 @@ import { NextPage } from "next"
 import Link from "next/link"
 import {
   Backpack,
+  Clock,
+  HandPalm,
+  Handshake,
   House,
   Notebook,
   UsersFour,
 } from "phosphor-react"
-import { StandardPageTemplate } from "../components"
+import { useState } from "react"
+import {
+  StandardPageTemplate,
+  TabBar,
+  TabContents,
+  TabViewContext,
+} from "../components"
 import { KEYWORDS, LINKS } from "../lib/utils/constants"
 
+import styles from "./../styles/about/about.module.scss"
+
+const TabIcon = (p: {
+  icon: JSX.Element
+  text: string
+}) => {
+  return (
+    <div className={styles.tabIcon}>
+      {p.icon}
+      <h6 className={styles.tabLabel}>{p.text}</h6>
+    </div>
+  )
+}
+
 const About: NextPage = () => {
+  const [conceptTabIndex, setConceptTabIndex] = useState(0)
+  const [philosophyTabIndex, setPhilosophyTabIndex] =
+    useState(0)
+
   return (
     <StandardPageTemplate
       heading="Über uns"
@@ -59,9 +86,8 @@ const About: NextPage = () => {
           Projekte und kooperieren auch miteinander.
         </p>
         <p>
-          <House /> Die hauptsächliche Arbeit geschieht
-          zuhause; online auf einem Discord Server.{" "}
-          <House />
+          Die hauptsächliche Arbeit geschieht zuhause;
+          online auf einem Discord Server.{" "}
         </p>
         <p>
           Wir setzen uns das Ziel, eine Umgebung für junge
@@ -70,59 +96,103 @@ const About: NextPage = () => {
           Horizonten erweitern können.
         </p>
         <b>Zusammen schafft man einfach mehr.</b>
-        <section>
-          <Backpack />
-          <UsersFour />
-          <Notebook />
-        </section>
-
-        <section>
-          <h3>Software AGs an Schulen</h3>
-          <p>
-            Die {KEYWORDS.nameSeparate} hilft bei der
-            Gründung und Leitung von Software AGs an
-            diversen Schulen mit. Sie unterstützt die AGs
-            mit Rat, vorschläge und freiwillige Programme.
-          </p>
-          <p>
-            Wir nehmen außerdem auch schon bestehende AGs an
-            Schulen auf.
-          </p>
-          <p>
-            Genauere Informationen:{" "}
-            <Link href={LINKS.mitmachen}>
-              Auf der Seite "Mitmachen"
-            </Link>
-          </p>
-          <p>
-            Die Schul-AGs halten wöchentliche online
-            Sitzungen auf unserem Discord Server. Sie
-            entscheiden unter sich, welche Projekte
-            bearbeitet werden und programmieren zusammen.
-          </p>
-        </section>
-        <section>
-          <h3>Zwischenschulische Kooperation</h3>
-          <p>
-            Zwischen den Schulen gibt es auch
-            Kooperationsmöglichkeiten
-          </p>
-        </section>
-        <section>
-          <h3>Bildungsangebote; Von SuS, Für SuS</h3>
-        </section>
+        <TabViewContext.Provider
+          value={{
+            tabIndex: conceptTabIndex,
+            setTabIndex: (index: number) =>
+              setConceptTabIndex(index),
+          }}
+        >
+          <TabBar className={styles.tabBar}>
+            <TabIcon
+              icon={<Backpack size={32} weight="thin" />}
+              text="AGs"
+            />
+            <TabIcon
+              icon={<UsersFour size={32} weight="thin" />}
+              text="Kooperation"
+            />
+            <TabIcon
+              icon={<Notebook size={32} weight="thin" />}
+              text="Bildung"
+            />
+          </TabBar>
+          <TabContents>
+            <section>
+              <h3>Software AGs an Schulen</h3>
+              <p>
+                Die {KEYWORDS.nameSeparate} hilft bei der
+                Gründung und Leitung von Software AGs an
+                diversen Schulen mit. Sie unterstützt die
+                AGs mit Rat, vorschläge und freiwillige
+                Programme.
+              </p>
+              <p>
+                Wir nehmen außerdem auch schon bestehende
+                AGs an Schulen auf.
+              </p>
+              <p>
+                Genauere Informationen:{" "}
+                <Link href={LINKS.mitmachen}>
+                  Auf der Seite "Mitmachen"
+                </Link>
+              </p>
+              <p>
+                Die Schul-AGs halten wöchentliche online
+                Sitzungen auf unserem Discord Server. Sie
+                entscheiden unter sich, welche Projekte
+                bearbeitet werden und programmieren
+                zusammen.
+              </p>
+            </section>
+            <section>
+              <h3>Kooperation zwischen Schulen</h3>
+              <p>
+                Zwischen den Schulen gibt es auch
+                Kooperationsmöglichkeiten
+              </p>
+            </section>
+            <section>
+              <h3>Bildungsangebote; Von SuS, Für SuS</h3>
+            </section>
+          </TabContents>
+        </TabViewContext.Provider>
       </StandardPageTemplate.section>
       <StandardPageTemplate.section id={LINKS.philosophie}>
         <h2>Die Philosophie der Community</h2>
-        <section>
-          <h3>Das eigene Tempo</h3>
-        </section>
-        <section>
-          <h3>Neutralität und Objektivität</h3>
-        </section>
-        <section>
-          <h3>Respekt und Vertrauen</h3>
-        </section>
+        <TabViewContext.Provider
+          value={{
+            tabIndex: philosophyTabIndex,
+            setTabIndex: (index: number) =>
+              setPhilosophyTabIndex(index),
+          }}
+        >
+          <TabBar className={styles.tabBar}>
+            <TabIcon
+              icon={<Clock size={32} weight="thin" />}
+              text="Tempo"
+            />
+            <TabIcon
+              icon={<HandPalm size={32} weight="thin" />}
+              text="Neutralität"
+            />
+            <TabIcon
+              icon={<Handshake size={32} weight="thin" />}
+              text="Vertrauen"
+            />
+          </TabBar>
+          <TabContents>
+            <section>
+              <h3>Das eigene Tempo</h3>
+            </section>
+            <section>
+              <h3>Neutralität und Objektivität</h3>
+            </section>
+            <section>
+              <h3>Respekt und Vertrauen</h3>
+            </section>
+          </TabContents>
+        </TabViewContext.Provider>
       </StandardPageTemplate.section>
     </StandardPageTemplate>
   )
