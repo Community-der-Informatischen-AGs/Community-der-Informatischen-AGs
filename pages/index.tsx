@@ -10,22 +10,25 @@ import styles from "../styles/home/home.module.scss"
 import cn from "classnames"
 import TypeIt from "typeit-react"
 
-import { Footer, Header } from "../components"
+import { LinkSimple } from "phosphor-react"
+import {
+  ButtonComponent,
+  Footer,
+  Header,
+  LinkButton,
+} from "../components"
+import { Contentful } from "../lib/contentful/api"
+import {
+  COLLECTION_TYPE_IDS,
+  CONTENTFUL_ID_QUERY,
+} from "../lib/contentful/constants"
 import {
   ConceptSection,
   ContactSection,
   OfferSection,
   PostSection,
 } from "../lib/pages/home"
-import {
-  CONTENT_TYPES,
-  KEYWORDS,
-} from "../lib/utils/constants"
-import { Contentful } from "../lib/contentful/api"
-import {
-  COLLECTION_TYPE_IDS,
-  CONTENTFUL_ID_QUERY,
-} from "../lib/contentful/constants"
+import { KEYWORDS, LINKS } from "../lib/utils/constants"
 
 // TODO: add social media icons on the side of the landing-section
 // TODO: Fotos von unterschiedlichen Schulen mit Adrian oder selber machne
@@ -122,12 +125,12 @@ const LandingSection = () => {
         </h3>
 
         <section className={styles.buttonSection}>
-          <button>Teilnehmen</button>
-          <button
-            className={globalStyles.unimportantButton}
-          >
+          <LinkButton link={LINKS.mitmachen} weight="high">
+            Teilnehmen
+          </LinkButton>
+          <LinkButton link={LINKS.about} weight="low">
             Mehr Infos
-          </button>
+          </LinkButton>
         </section>
       </section>
     </section>

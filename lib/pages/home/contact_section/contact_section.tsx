@@ -1,6 +1,10 @@
 import cn from "classnames"
 import TypeIt from "typeit-react"
-import { ImageWrapper } from "../../../../components"
+import {
+  ImageWrapper,
+  LinkButton,
+} from "../../../../components"
+import { LINKS } from "../../../utils/constants"
 
 import globalStyles from "./../../../../styles/globals.module.scss"
 import homeStyles from "./../../../../styles/home/home.module.scss"
@@ -50,17 +54,21 @@ export const ContactSection = () => {
           digitalen Entwicklern.
         </p>
         <section className={styles.buttonSection}>
-          <button>Zur Teilnahme!</button>
-          <button
-            className={globalStyles.unimportantButton}
+          <LinkButton
+            weight="high"
+            link={`${LINKS.mitmachen}#${LINKS.anmeldeFormular}`}
+          >
+            Zur Teilnahme!
+          </LinkButton>
+          <LinkButton
+            weight="low"
+            link={LINKS.ansprechpartner}
           >
             Ansprechpartner und Kontakt
-          </button>
-          <button
-            className={globalStyles.unimportantButton}
-          >
+          </LinkButton>
+          <LinkButton weight="low" link={LINKS.schulen}>
             AG-Verzeichnis
-          </button>
+          </LinkButton>
         </section>
       </section>
     </section>

@@ -3,7 +3,7 @@ import {
   ContactForm,
   StandardPageTemplate,
 } from "../components"
-import { KEYWORDS } from "../lib/utils/constants"
+import { KEYWORDS, LINKS } from "../lib/utils/constants"
 
 import { User, UsersThree } from "phosphor-react"
 import styles from "./../styles/teilnahme/teilnahme.module.scss"
@@ -52,7 +52,9 @@ const Teilnahme: NextPage = () => {
     
       `}
     >
-      <StandardPageTemplate.section>
+      <StandardPageTemplate.section
+        id={LINKS.teilnahmeInfos}
+      >
         <h2>Details zur Anmeldung</h2>
         <p>
           Bei der Community nehmen wir folgende Mitglieder /
@@ -132,7 +134,9 @@ const Teilnahme: NextPage = () => {
           Wir versuchen, etwas draus zu machen.
         </h5>
       </StandardPageTemplate.section>
-      <StandardPageTemplate.section>
+      <StandardPageTemplate.section
+        id={LINKS.anmeldeFormular}
+      >
         <h2>Anmeldeformular</h2>
         <ContactForm />
       </StandardPageTemplate.section>

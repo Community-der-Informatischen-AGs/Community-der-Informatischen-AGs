@@ -11,6 +11,9 @@ $subLinksPadding: 20px;
   .menuButton {
     margin: 0;
     padding: 0;
+    outline: none;
+    border: $border;
+    border-radius: $standardBorderRadius / 2;
     box-shadow: none;
     background-color: transparent;
     @include centeredFlex();

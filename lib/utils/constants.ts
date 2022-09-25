@@ -14,11 +14,11 @@ export const KEYWORDS = {
 // TODO: some links are redundant and can be loaded via contentful (footer)
 export const LINKS = {
   mitmachen: "/teilnahme",
+  teilnahmeInfos: "teilnahmeInfos",
+  anmeldeFormular: "anmelden",
   about: "/about",
-  beginnings: "anfaenge",
   konzept: "konzept",
   philosophie: "philosophie",
-  vorgehen: "vorgehen",
   schulen: "/schulen",
   ansprechpartner: "/kontakt",
   projekte: "/projekte",

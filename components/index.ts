@@ -1,3 +1,4 @@
+export * from "./button_component";
 export * from "./card_component";
 export * from "./carousel_component";
 export * from "./collection_component";

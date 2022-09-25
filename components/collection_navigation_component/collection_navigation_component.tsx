@@ -1,5 +1,6 @@
 import styles from "./collection_navigation_component.module.scss"
 import { Dispatch, SetStateAction } from "react"
+import { ButtonComponent } from "../button_component"
 
 interface SearchNavigationProps {
   skipState: [number, Dispatch<SetStateAction<number>>]
@@ -15,7 +16,9 @@ export const CollectionNavigation = (
 
   return (
     <section className={styles.navigationSection}>
-      <button
+      <ButtonComponent
+        title="Vorherige Seite"
+        weight="high"
         disabled={currentSkipAmount < p.total}
         onClick={() => {
           if (currentSkipAmount >= p.total)
@@ -25,15 +28,17 @@ export const CollectionNavigation = (
         }}
       >
         {"<"}
-      </button>
-      <button
+      </ButtonComponent>
+      <ButtonComponent
+        title="Nächste Seite"
+        weight="high"
         disabled={p.currentDataLength == 0}
         onClick={() => {
           setCurrentSkipAmount(currentSkipAmount + p.total)
         }}
       >
         {">"}
-      </button>
+      </ButtonComponent>
     </section>
   )
 }

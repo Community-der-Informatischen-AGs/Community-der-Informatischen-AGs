@@ -30,9 +30,11 @@ section.offerSection {
     }
   }
 
-  .buttonSection button {
-    margin: auto;
-  }
+  .buttonSection {
+    margin-top: $sectionGap;
+    display: flex;
+    gap: 50px;
+  } 
 
 }
 @media screen and (max-width: 625px) {

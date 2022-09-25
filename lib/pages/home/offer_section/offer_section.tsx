@@ -1,6 +1,9 @@
 import cn from "classnames"
 import TypeIt from "typeit-react"
-import { CardComponent } from "../../../../components"
+import {
+  CardComponent,
+  LinkButton,
+} from "../../../../components"
 import { KEYWORDS, LINKS } from "../../../utils/constants"
 
 import globalStyles from "./../../../../styles/globals.module.scss"
@@ -134,9 +137,18 @@ export const OfferSection = () => {
         />
       </section>
       <section className={styles.buttonSection}>
-        <button className={globalStyles.unimportantButton}>
-          Mehr über das Konzept
-        </button>
+        <LinkButton
+          weight="low"
+          link={`${LINKS.about}#${LINKS.konzept}`}
+        >
+          Das Konzept
+        </LinkButton>
+        <LinkButton
+          weight="low"
+          link={`${LINKS.about}#${LINKS.philosophie}`}
+        >
+          Die Philosophie
+        </LinkButton>
       </section>
     </section>
   )

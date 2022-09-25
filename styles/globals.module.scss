@@ -46,14 +46,6 @@ section.headingSection {
   font-size: 4.5rem;
 }
 
-button.unimportantButton {
-  box-shadow: none;
-  background-color: transparent;
-  color: white;
-  border-radius: $standardBorderRadius / 2;
-  border: $border;
-}
-
 .background {
   user-select: none;
 }

@@ -1,9 +1,10 @@
 import "aos/dist/aos.css"
 import cn from "classnames"
 import TypeIt from "typeit-react"
-import { KEYWORDS } from "../../../utils/constants"
+import { KEYWORDS, LINKS } from "../../../utils/constants"
 import {
   Carousel,
+  LinkButton,
   SchoolPreviewComponent,
 } from "./../../../../components"
 
@@ -81,12 +82,18 @@ export const ConceptSection = (p: {
         </article>
 
         <section className={styles.buttonSection}>
-          <button>Anmeldung</button>
-          <button
-            className={globalStyles.unimportantButton}
+          <LinkButton
+            weight="high"
+            link={`${LINKS.mitmachen}#${LINKS.anmeldeFormular}`}
           >
-            Mehr über das Konzept
-          </button>
+            Anmeldung
+          </LinkButton>
+          <LinkButton
+            weight="low"
+            link={`${LINKS.about}#${LINKS.konzept}`}
+          >
+            Mehr Informationen
+          </LinkButton>
         </section>
       </section>
     </section>

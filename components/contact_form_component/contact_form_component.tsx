@@ -4,6 +4,8 @@ import styles from "./contact_form_component.module.scss"
 // For more help visit https://formspr.ee/react-help
 import React, { FormEvent, useRef, useState } from "react"
 import { CONTACT_FORM } from "../../lib/utils/constants"
+import { ButtonComponent } from "../button_component"
+import { PaperPlaneRight } from "phosphor-react"
 
 const useFormSubmission = (
   formRef: React.RefObject<HTMLFormElement>
@@ -131,7 +133,13 @@ export const ContactForm = () => {
         name={CONTACT_FORM.message}
       />
 
-      <button type="submit">Anmeldung einreichen</button>
+      <ButtonComponent
+        weight="high"
+        icon={<PaperPlaneRight />}
+        type="submit"
+      >
+        Anmeldung einreichen
+      </ButtonComponent>
 
       <p>{statusMessage}</p>
     </form>
