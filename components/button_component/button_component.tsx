@@ -43,7 +43,7 @@ export const LinkButton = (
       weight={p.weight}
       disabled={p.disabled}
       title={p.title}
-      onClick={() => {
+      onClick={(e) => {
         window.location.href = p.link
       }}
     >
