@@ -6,7 +6,6 @@ import {
   FlagCheckered,
   HandPalm,
   Handshake,
-  House,
   Notebook,
   UsersFour,
 } from "phosphor-react"
