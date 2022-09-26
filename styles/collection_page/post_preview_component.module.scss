@@ -31,6 +31,7 @@ section.imageSection {
     width: 100%;
     right: 0;
     height: $imageHeight;
+    z-index: 1;
   }
 
 }
