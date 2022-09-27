@@ -1,3 +1,4 @@
+import cn from "classnames"
 import { LinkSimple } from "phosphor-react"
 import React, { ButtonHTMLAttributes } from "react"
 import styles from "./button_component.module.scss"
@@ -15,7 +16,7 @@ export const ButtonComponent = (
 ) => {
   return (
     <button
-      className={styles.button}
+      className={cn(styles.button, p.className)}
       data-weight={p.weight}
       onClick={p.onClick}
       disabled={p.disabled}

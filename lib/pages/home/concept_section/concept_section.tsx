@@ -47,7 +47,7 @@ export const ConceptSection = (p: {
           {p.schoolIds.map((entryId) => {
             return (
               <SchoolPreviewComponent
-                optStyles={postPreviewStyles}
+                stylesheet={postPreviewStyles}
                 key={entryId}
                 entryId={entryId}
               />

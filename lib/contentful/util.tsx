@@ -99,7 +99,7 @@ export const getPreviewPost = (
         <ProjectPostPreviewComponent
           entryId={id}
           key={key}
-          optStyles={postStyles}
+          stylesheet={postStyles}
         />
       )
     case CONTENT_TYPE_IDS.blog:
@@ -108,7 +108,7 @@ export const getPreviewPost = (
         <BlogPostPreviewComponent
           entryId={id}
           key={key}
-          optStyles={postStyles}
+          stylesheet={postStyles}
         />
       )
     case CONTENT_TYPE_IDS.school:
@@ -117,7 +117,7 @@ export const getPreviewPost = (
         <SchoolPreviewComponent
           entryId={id}
           key={key}
-          optStyles={postStyles}
+          stylesheet={postStyles}
         />
       )
     default:

@@ -73,7 +73,7 @@ export const PostSection = (p: {
             {p.projectIds.map((id) => {
               return (
                 <ProjectPostPreviewComponent
-                  optStyles={postPreviewStyles}
+                  stylesheet={postPreviewStyles}
                   key={id}
                   entryId={id}
                 />
@@ -94,7 +94,7 @@ export const PostSection = (p: {
             {p.blogIds.map((id) => {
               return (
                 <BlogPostPreviewComponent
-                  optStyles={postPreviewStyles}
+                  stylesheet={postPreviewStyles}
                   key={id}
                   entryId={id}
                 />

@@ -33,3 +33,33 @@
   margin-bottom: $sectionGap;
 
 }
+
+.participationForm {
+
+  $gap: 50px;
+  display: grid;
+  
+  grid-template-columns: calc(50% - #{$gap}) calc(50% - #{$gap});
+  grid-template-areas: 
+    "participant email"
+    "school schoolMail"
+    "message message"
+    "submit .";
+  column-gap: $gap;
+
+  .name { grid-area: participant }
+  .email { grid-area: email }
+  .school { grid-area: school }
+  .schoolMail { grid-area: schoolMail }
+  .message { grid-area: message }
+  .submit { grid-area: submit }
+
+}
+
+@media screen and (max-width: 1000px) {
+
+  .participationForm {
+    display: block;
+  }
+
+}

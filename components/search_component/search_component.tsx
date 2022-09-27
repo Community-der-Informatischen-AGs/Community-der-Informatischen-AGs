@@ -107,11 +107,7 @@ export const SearchComponent = (
     })
   }, [])
 
-  let stylesheet: SCSSStyleSheet = {}
-  if (p.optStyles != null) {
-    stylesheet = p.optStyles
-  }
-
+  let stylesheet = p.stylesheet ?? {}
   return (
     <section
       className={cn(

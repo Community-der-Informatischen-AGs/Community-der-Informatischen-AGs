@@ -7,7 +7,6 @@ import {
   CONTENT_TYPE_IDS,
 } from "../../../lib/contentful/constants"
 import { CONTENT_TYPES } from "../../../lib/utils/constants"
-import { processOptStyleSheet } from "../../../lib/utils/functions"
 import {
   HasOptionalImage,
   HasOptionalStyleSheet,
@@ -94,7 +93,7 @@ export const ProjectPostPreviewComponent = (
     lazyLoad(p).then((props) => setPostProps(props))
   }, [p])
 
-  const optStylesheet = processOptStyleSheet(p.optStyles)
+  const optStylesheet = p.stylesheet ?? {}
 
   return postProps == null ? null : (
     <PostPreviewComponent
@@ -109,7 +108,7 @@ export const ProjectPostPreviewComponent = (
       image={postProps.image}
       className={styles.projectPostPreviewComponent}
       baseStyles={styles}
-      optStyles={optStylesheet}
+      stylesheet={optStylesheet}
     >
       <div>
         <p>Project by {postProps.school}</p>

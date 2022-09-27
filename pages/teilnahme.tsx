@@ -1,6 +1,6 @@
 import { NextPage } from "next"
 import {
-  ContactForm,
+  ParticipationForm,
   StandardPageTemplate,
 } from "../components"
 import { KEYWORDS, LINKS } from "../lib/utils/constants"
@@ -138,7 +138,7 @@ const Teilnahme: NextPage = () => {
         id={LINKS.anmeldeFormular}
       >
         <h2>Anmeldeformular</h2>
-        <ContactForm />
+        <ParticipationForm stylesheet={styles} />
       </StandardPageTemplate.section>
     </StandardPageTemplate>
   )

@@ -13,7 +13,6 @@ import {
 
 import cn from "classnames"
 import { BLOCKS } from "@contentful/rich-text-types"
-import { processOptStyleSheet } from "../../lib/utils/functions"
 
 export interface PostPreviewComponentProps
   extends HasOptionalImage,
@@ -58,7 +57,7 @@ export const PostPreviewComponent = (
 ) => {
   const router = useRouter()
 
-  const optStylesheet = processOptStyleSheet(p.optStyles)
+  const optStylesheet = p.stylesheet ?? {}
 
   return (
     <div

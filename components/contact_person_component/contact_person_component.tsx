@@ -6,6 +6,7 @@ import {
   CONTENT_TYPE_IDS,
 } from "../../lib/contentful/constants"
 import {
+  HasOptionalStyleSheet,
   ImageData,
   SCSSStyleSheet,
 } from "../../lib/utils/types"
@@ -14,9 +15,8 @@ import { processImageData } from "../preview_post_component"
 
 import styles from "./contact_person_component.module.scss"
 
-interface ContactPersonProps {
+interface ContactPersonProps extends HasOptionalStyleSheet {
   id: string
-  stylesheet?: SCSSStyleSheet
   className?: string
 }
 
@@ -87,10 +87,7 @@ export const ContactPerson = (p: ContactPersonProps) => {
     })
   }, [p.id])
 
-  let stylesheet = p.stylesheet
-  if (stylesheet == undefined) {
-    stylesheet = {}
-  }
+  let stylesheet = p.stylesheet ?? {}
 
   return (
     <div

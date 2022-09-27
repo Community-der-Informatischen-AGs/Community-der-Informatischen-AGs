@@ -17,5 +17,5 @@ export type SCSSStyleSheet = {
 
 // extend this interface to include optional stylesheets, changing the style
 export interface HasOptionalStyleSheet {
-  optStyles?: SCSSStyleSheet
+  stylesheet?: SCSSStyleSheet
 }

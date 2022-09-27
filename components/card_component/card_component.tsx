@@ -7,7 +7,6 @@ import styles from "./card_component.module.scss"
 
 import cn from "classnames"
 import Image from "next/image"
-import { processOptStyleSheet } from "../../lib/utils/functions"
 
 // TODO: use Next Images
 interface CardComponentProps extends HasOptionalStyleSheet {
@@ -21,7 +20,7 @@ interface CardComponentProps extends HasOptionalStyleSheet {
 export const CardComponent = (p: CardComponentProps) => {
   const router = useRouter()
 
-  const stylesheet = processOptStyleSheet(p.optStyles)
+  const stylesheet = p.stylesheet ?? {}
 
   return (
     <div

@@ -1,6 +1,9 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { NextPage } from "next"
-import { PostPageTemplateComponent } from "../../components"
+import {
+  LinkButton,
+  PostPageTemplateComponent,
+} from "../../components"
 import { Summary } from "../../components/summary_component"
 import { Contentful } from "../../lib/contentful/api"
 import {
@@ -97,14 +100,13 @@ const BlogPage: NextPage<BlogPageProps> = (
           <section className={styles.downloads}>
             {downloads.map((download, index) => {
               return (
-                <button
+                <LinkButton
                   key={index}
-                  onClick={() =>
-                    (window.location.href = download.url)
-                  }
+                  link={download.url}
+                  weight="high"
                 >
                   {download.fileName}
-                </button>
+                </LinkButton>
               )
             })}
           </section>

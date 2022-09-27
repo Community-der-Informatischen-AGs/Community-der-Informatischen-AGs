@@ -121,7 +121,7 @@ const Search: NextPage<ParsedUrlQuery> = (
       >
         <StandardPageTemplate.section>
           <SearchComponent
-            optStyles={searchStyles}
+            stylesheet={searchStyles}
             onSearch={() => {
               setCurrentSkipAmount(0)
             }}

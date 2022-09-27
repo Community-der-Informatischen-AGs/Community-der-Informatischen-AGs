@@ -18,8 +18,6 @@ import {
   CONTENT_TYPE_IDS,
 } from "../../../lib/contentful/constants"
 import { CONTENT_TYPES } from "../../../lib/utils/constants"
-import { processOptStyleSheet } from "../../../lib/utils/functions"
-import cn from "classnames"
 
 const CONTENT_TYPE_ID = CONTENT_TYPE_IDS.blog
 const CONTENT_TYPE = CONTENT_TYPES.blog
@@ -99,7 +97,7 @@ export const BlogPostPreviewComponent = (
     lazyLoad(p).then((props) => setPostProps(props))
   }, [p])
 
-  const optStylesheet = processOptStyleSheet(p.optStyles)
+  const optStylesheet = p.stylesheet ?? {}
 
   return postProps == null ? null : (
     <PostPreviewComponent
@@ -114,7 +112,7 @@ export const BlogPostPreviewComponent = (
       image={postProps.image}
       className={styles.blogPostPreviewComponent}
       baseStyles={styles}
-      optStyles={optStylesheet}
+      stylesheet={optStylesheet}
     >
       <p>
         Veröffentlicht von {postProps.author} am{" "}

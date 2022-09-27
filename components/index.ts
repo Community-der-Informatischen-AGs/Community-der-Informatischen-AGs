@@ -3,7 +3,7 @@ export * from "./card_component";
 export * from "./carousel_component";
 export * from "./collection_component";
 export * from "./collection_navigation_component";
-export * from "./contact_form_component";
+export * from "./participation_form_component";
 export * from "./contact_person_component";
 export * from "./footer_component";
 export * from "./header_component";
