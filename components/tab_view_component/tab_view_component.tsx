@@ -7,13 +7,13 @@ interface TabProps {
   children: JSX.Element[]
 }
 
-interface TabViewContext {
+interface TabViewContextProps {
   setTabIndex: (index: number) => void
   tabIndex: number
 }
 
 export const TabViewContext =
-  React.createContext<TabViewContext>({
+  React.createContext<TabViewContextProps>({
     setTabIndex: (number) => {},
     tabIndex: 0,
   })

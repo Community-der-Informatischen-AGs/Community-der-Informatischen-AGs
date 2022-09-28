@@ -14,7 +14,7 @@ import {
   StandardPageTemplate,
   TabBar,
   TabContents,
-  TabViewContext,
+  TabViewContextProps,
 } from "../components"
 import { KEYWORDS, LINKS } from "../lib/utils/constants"
 
