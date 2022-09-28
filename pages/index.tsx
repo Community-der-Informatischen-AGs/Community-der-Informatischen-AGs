@@ -179,7 +179,7 @@ const Home: NextPage<HomeProps> = (p: HomeProps) => {
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps(context: any) {
   const query = `
   ${COLLECTION_TYPE_IDS.school} {
     items {${CONTENTFUL_ID_QUERY}}

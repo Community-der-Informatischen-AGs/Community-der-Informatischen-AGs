@@ -77,11 +77,11 @@ export const getStaticPathsOfPostType = async (
     response,
     collectionType
   ).map((id) => {
-    return { params: { [slug]: id } }
+    return { params: { id: id } }
   })
 
   return {
-    paths: paths,
+    paths,
     fallback: false,
   }
 }
