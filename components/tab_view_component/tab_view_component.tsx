@@ -54,6 +54,7 @@ export const TabBar = (p: TabProps) => {
       {p.children.map((element, index) => {
         return (
           <div
+            key={index}
             className={cn(
               styles.tabWrapper,
               context.tabIndex == index
@@ -80,6 +81,7 @@ export const TabContents = (p: TabProps) => {
       {p.children.map((element, index) => {
         return (
           <div
+            key={index}
             className={cn(
               styles.tabContentWrapper,
               index == context.tabIndex

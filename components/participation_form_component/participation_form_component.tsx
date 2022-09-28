@@ -3,7 +3,10 @@ import styles from "./participation_form_component.module.scss"
 // Make sure to run npm install @formspree/react
 // For more help visit https://formspr.ee/react-help
 import React, { FormEvent, useRef, useState } from "react"
-import { CONTACT_FORM } from "../../lib/utils/constants"
+import {
+  CONTACT_FORM,
+  LINKS,
+} from "../../lib/utils/constants"
 import { ButtonComponent } from "../button_component"
 import { PaperPlaneRight } from "phosphor-react"
 import { HasOptionalStyleSheet } from "../../lib/utils/types"
@@ -40,8 +43,6 @@ const useFormSubmission = (
         `#${CONTACT_FORM.message}`
       )!
 
-    // TODO: send to api endpoint
-
     const formData = {
       [CONTACT_FORM.name]: nameInput.value,
       [CONTACT_FORM.email]: emailInput.value,
@@ -55,18 +56,22 @@ const useFormSubmission = (
       body: JSON.stringify(formData),
     })
 
+    const json = await response.json()
+
     switch (response.status) {
       case 200:
+        setStatusMessage("Email abgeschickt!")
+        console.log(json.message)
         break
       case 400:
+        setStatusMessage(json.message)
         break
       case 500:
+        setStatusMessage(
+          `Serverseitiger Fehler. Bitte versuche später nochmal oder schreibe die Anmeldung und diesen Fehler an ${LINKS.email}`
+        )
         break
-      default:
     }
-
-    // * this works.
-    //setStatusMessage("bullshit")
   }
 
   return [statusMessage, submit]
@@ -161,7 +166,7 @@ export const ParticipationForm = (
         Anmeldung einreichen
       </ButtonComponent>
 
-      <p>{statusMessage}</p>
+      <p className={stylesheet.status}>{statusMessage}</p>
     </form>
   )
 }

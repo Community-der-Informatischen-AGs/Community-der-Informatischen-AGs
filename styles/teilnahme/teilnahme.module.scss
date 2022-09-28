@@ -44,7 +44,7 @@
     "participant email"
     "school schoolMail"
     "message message"
-    "submit .";
+    "submit status";
   column-gap: $gap;
 
   .name { grid-area: participant }
@@ -53,6 +53,11 @@
   .schoolMail { grid-area: schoolMail }
   .message { grid-area: message }
   .submit { grid-area: submit }
+  .status { 
+    grid-area: status;
+    align-self: center;
+    justify-self: center;
+  }
 
 }
 
