@@ -188,7 +188,7 @@ export const SearchComponent = (
                   opacity: 0.7,
                 }}
               >
-                "nix".
+                {'"'}nix{'"'}.
               </li>
             ) : (
               searchResults.map((pair) => {

@@ -144,7 +144,7 @@ const About: NextPage = () => {
               <p>
                 Genauere Informationen:{" "}
                 <Link href={LINKS.mitmachen}>
-                  Auf der Seite "Mitmachen"
+                  Auf der Seite {'"'}Mitmachen{'"'}
                 </Link>
               </p>
               <p>
@@ -187,8 +187,8 @@ const About: NextPage = () => {
               </p>
               <p>
                 So bieten wir beispielsweise
-                Programmier-Bootcamps nach dem "Von SuS für
-                SuS"-Prinzip.
+                Programmier-Bootcamps nach dem {'"'}Von SuS
+                für SuS{'"'}-Prinzip.
               </p>
               <p>
                 Geplant sind auch Hackathons und diverse
