@@ -345,4 +345,5 @@ const About: NextPage = () => {
     </StandardPageTemplate>
   )
 }
+
 export default About
