@@ -10,7 +10,7 @@ import styles from "./image_component.module.scss"
 
 interface ImageComponentProps
   extends HasOptionalStyleSheet {
-  onClick: (e: any) => {}
+  onClick?: (e: any) => {}
   image?: ImageData
   className?: string
   layout:
