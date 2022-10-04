@@ -14,8 +14,9 @@ import cn from "classnames"
 
 const useFormSubmission = (
   formRef: React.RefObject<HTMLFormElement>
-): [string, (e: FormEvent) => Promise<void>] => {
+): [string, string, (e: FormEvent) => Promise<void>] => {
   const [statusMessage, setStatusMessage] = useState("")
+  const [statusColor, setStatusColor] = useState("white")
 
   const submit = async (e: FormEvent) => {
     e.preventDefault()
@@ -61,12 +62,14 @@ const useFormSubmission = (
     switch (response.status) {
       case 200:
         setStatusMessage("Email abgeschickt!")
-        console.log(json.message)
+        setStatusColor("green")
         break
       case 400:
         setStatusMessage(json.message)
+        setStatusColor("indianred")
         break
       case 500:
+        setStatusColor("indianred")
         setStatusMessage(
           `Serverseitiger Fehler. Bitte versuche später nochmal oder schreibe die Anmeldung und diesen Fehler an ${LINKS.email}`
         )
@@ -74,7 +77,7 @@ const useFormSubmission = (
     }
   }
 
-  return [statusMessage, submit]
+  return [statusMessage, statusColor, submit]
 }
 
 export const ParticipationForm = (
@@ -82,7 +85,8 @@ export const ParticipationForm = (
 ) => {
   const formRef = useRef<HTMLFormElement>(null!)
 
-  const [statusMessage, submit] = useFormSubmission(formRef)
+  const [statusMessage, statusColor, submit] =
+    useFormSubmission(formRef)
 
   let stylesheet = p.stylesheet ?? {} // !! this is how you can quickly create a working stylesheet
 
@@ -135,7 +139,7 @@ export const ParticipationForm = (
 
       <section className={stylesheet.schoolMail}>
         <label htmlFor={CONTACT_FORM.schoolMail}>
-          Email der Schule
+          Email der Schule / Email deiner AG
         </label>
         <input
           placeholder="annettegymnasium@mail.com"
@@ -152,7 +156,7 @@ export const ParticipationForm = (
         </label>
         <textarea
           id={CONTACT_FORM.message}
-          placeholder="Weitere Gedanken, Fragen, Unklarheiten, Anmerkungen..."
+          placeholder="Weitere Gedanken, Fragen, Unklarheiten, Anmerkungen, Angaben..."
           name={CONTACT_FORM.message}
         />
       </section>
@@ -166,7 +170,12 @@ export const ParticipationForm = (
         Anmeldung einreichen
       </ButtonComponent>
 
-      <p className={stylesheet.status}>{statusMessage}</p>
+      <p
+        className={stylesheet.status}
+        style={{ color: statusColor }}
+      >
+        {statusMessage}
+      </p>
     </form>
   )
 }

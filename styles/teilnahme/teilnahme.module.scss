@@ -40,19 +40,24 @@
   display: grid;
   
   grid-template-columns: calc(50% - #{$gap}) calc(50% - #{$gap});
+
   grid-template-areas: 
     "participant email"
     "school schoolMail"
     "message message"
-    "submit status";
+    "submitbutton status";
   column-gap: $gap;
+  row-gap: 10px;
 
   .name { grid-area: participant }
   .email { grid-area: email }
   .school { grid-area: school }
   .schoolMail { grid-area: schoolMail }
   .message { grid-area: message }
-  .submit { grid-area: submit }
+  .submit { 
+    grid-area: submitbutton; 
+    top: 0;
+  }
   .status { 
     grid-area: status;
     align-self: center;

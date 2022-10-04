@@ -122,7 +122,7 @@ const Teilnahme: NextPage = () => {
           <b>
             sowie die Mitglieder und deren Namen und Stufen
             sowie Discord Usernames
-          </b>
+          </b>{" "}
           anzugeben.
         </p>
         <br />

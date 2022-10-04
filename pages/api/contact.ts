@@ -1,24 +1,26 @@
 import { validate } from "isemail";
-import type { NextApiRequest, NextApiResponse } from "next"
+import type { NextApiRequest, NextApiResponse } from "next";
 import { CONTACT_FORM, KEYWORDS, LINKS } from "../../lib/utils/constants";
 
-import NodeMailer from "nodemailer";
-import { env } from "process";
-import SendmailTransport from "nodemailer/lib/sendmail-transport";
-
-const unsafeCharacters = "*:{}[]<>!^°_;|&$´`"; 
-
+/*
 function safeformat(unformated: string) {
 
   for (const unsafeCharacter of unsafeCharacters) {
-    unformated.replaceAll(unsafeCharacter, " ");
+    unformated.replace(new RegExp(unsafeCharacter, "g"), " ")
   }
-
+    
+  console.log(unformated)
   return unformated;
 
 }
+*/
 
 async function sendMail (req: NextApiRequest, res: NextApiResponse) {
+
+  console.log("=============")
+  console.log("sending email!")
+  console.log("=============")
+
   const body = JSON.parse(req.body);
 
   const name = body[CONTACT_FORM.name];
@@ -31,53 +33,38 @@ async function sendMail (req: NextApiRequest, res: NextApiResponse) {
 
   // validating emails
 
-  if (!validate(email) || !validate(schoolMail)) res.status(400).json({ "message": "Fehlhafte Emailangaben. Bitte überprüfe die angegebene Emails." });
-
-  // validating other inputs:
-
-  const formatedName = safeformat(name);
-  const formatedSchool = safeformat(school);
-  const formatedMessage = safeformat(message);
-
-  // now just send all of that data via emailing service
-  // https://nodemailer.com/about/
+  if (!validate(email) || !validate(schoolMail)) {
+    res.status(400).json({ "message": "Fehlhafte Emailangaben. Bitte überprüfe die angegebene Emails." });
+    return false;
+  }
 
 
-  const transporter = NodeMailer.createTransport({
-    host: "smtp.ionos.com",
-    port: 587,
-    secure: true,
-    auth: {
-      // TODO: configure USER and PASS in env.local
-      user: process.env.SECRET_IONOS_USER,
-      pass: process.env.SECRET_IONOS_PASS
-    }
-  })  
+  const sgMail = require("@sendgrid/mail")
+  sgMail.setApiKey(process.env.SECRET_SENDGRID_API_KEY)
 
-  const info = await transporter.sendMail({
-    from: `"${formatedName}" <${email}>`, // sender address
-    to: LINKS.email, // list of receivers
-    subject: `Antragstellung Teilnahme ${KEYWORDS.nameAbbreviation}`, // Subject line
+  const emailInfo = {
+    to: LINKS.email,
+    from: LINKS.email,
+    subject: `Antragstellung Teilnahme ${KEYWORDS.nameAbbreviation}`,
     text: `
----
-
-Name des Antragstellers - ${formatedName}
+====
+Name des Antragstellers - ${name}
 
 Email des Antragstellers - ${email}
 
-Name der betroffenen Schule - ${formatedSchool}
+Name der betroffenen Schule - ${school}
 
 Email der betroffenen Schule - ${schoolMail}
+====
 
----
+${message}
 
-${formatedMessage}
+        `
+  }
 
----
-    `, // plain text body
-  });
+  const response = await sgMail.send(emailInfo)
 
-  return info.response;
+  return response;
 }
 
 export default async function handler(
@@ -87,11 +74,13 @@ export default async function handler(
 
   if (req.method != "POST") res.status(400).json({ "message": "invalid api method" });
   
-
-  sendMail(req, res).catch((e) => {
-    res.status(500)
-  }).then((response) => {
-    res.status(200).json({message: response})
-  })
-
+  try {
+    const response = await sendMail(req, res)
+    console.log("it should have worked")
+    res.status(200).json({"message": response})
+  } catch (e) {
+    console.log(e)
+    res.status(500).json({"message": "something went wrong..."})
+  }
+  
 }
