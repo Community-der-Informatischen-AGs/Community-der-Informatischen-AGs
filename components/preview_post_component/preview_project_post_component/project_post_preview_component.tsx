@@ -67,7 +67,8 @@ const lazyLoad = async (
     .data.projectPost
   const title = responseJsonData.title
   const bodyDocument = responseJsonData.body.json
-  const school = responseJsonData.assignedSchool.title
+  const school = responseJsonData.assignedSchool
+  const schoolName = school?.title
   const finished = responseJsonData.finished
   const image =
     responseJsonData.optionalTitleMediaCollection.items[0]
@@ -77,7 +78,7 @@ const lazyLoad = async (
     title: title,
     body: bodyDocument,
     image: processImageData(image),
-    school: school,
+    school: schoolName,
     finished: finished,
   }
 }
@@ -111,7 +112,9 @@ export const ProjectPostPreviewComponent = (
       stylesheet={optStylesheet}
     >
       <div>
-        <p>Project by {postProps.school}</p>
+        {postProps.school != undefined ? (
+          <p>Projekt von {postProps.school}</p>
+        ) : null}
         <div className={styles.status}>
           <Circle
             color={postProps.finished ? "green" : "orange"}

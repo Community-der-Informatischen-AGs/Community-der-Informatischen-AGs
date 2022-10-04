@@ -3,19 +3,10 @@ TODO for Project Jugend-Entwickelt-Digital
 ==========================================
 
 [TODO_High]
-PUT GET ENTRY IDS INTO BUILD-TIME SSR!
-YOU HAVE TO REBUILD EVERYTIME YOU CREATE A NEW SITE TO GENERATE SITEMAP ANYWAYS:
--> BUT ONLY IF TOTAL API REQUESTS PROVE TO BE WAY TOO HIGH (see env.local for link)
-
-[TODO_High]
 404 Page
 
 [TODO_High] take good pictures with Arian
 
 [TODO_Medium] send all of the contact information via emailing service
 
-[TODO_Medium] use cards instead of special components for post previews
-
 [TODO_Low] implement console for navigation
-
-[TODO_Low] reconsider use of SSR Method

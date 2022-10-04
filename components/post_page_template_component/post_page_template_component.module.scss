@@ -51,10 +51,15 @@ section.headingSection {
   padding-block: 150px;
   padding-inline: $standardTemplateSidePadding;
 
+  $asideSize: 20%;
+  main {
+    width: calc(100% - #{$asideSize});
+  }
+
   aside {
     height: 100%;
     position: relative;
-    width: 300px;
+    width: $asideSize;
     
     height: fit-content;
     position: sticky;
@@ -90,6 +95,10 @@ section.section {
     flex-direction: column-reverse;
     aside {
       position: static;
+      width: 100%;
+    }
+    main {
+      width: 100%;
     }
   }
 }
