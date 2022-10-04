@@ -144,7 +144,7 @@ const About: NextPage = () => {
               <p>
                 Genauere Informationen:{" "}
                 <Link href={LINKS.mitmachen}>
-                  Auf der Seite {'"'}Mitmachen{'"'}
+                  {'Auf der Seite "Mitmachen"'}
                 </Link>
               </p>
               <p>

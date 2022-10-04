@@ -1,8 +1,8 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { NextPage } from "next"
-import Image from "next/image"
 import Link from "next/link"
 import {
+  ImageComponent,
   Optional,
   PostPageTemplateComponent,
 } from "../../components"
@@ -132,22 +132,20 @@ const SchoolPage: NextPage<SchoolPageProps> = (
           className={styles.location}
         >
           <h2>Standort</h2>
-          <a href={p.googleMapsLink}>{p.address}</a>
-          <div
-            className={styles.imageContainer}
-            onClick={() => {
-              window.location.href = p.googleMapsLink
+          <ImageComponent
+            stylesheet={styles}
+            onClick={() =>
+              (window.location.href = p.googleMapsLink)
+            }
+            image={{
+              width: p.googleMapsPicture.width,
+              height: p.googleMapsPicture.height,
+              title: p.googleMapsPicture.title,
+              url: p.googleMapsPicture.url,
             }}
-          >
-            <Image
-              className={styles.image}
-              width={p.googleMapsPicture.width}
-              height={p.googleMapsPicture.height}
-              alt={p.googleMapsPicture.title}
-              src={p.googleMapsPicture.url}
-              layout="responsive"
-            />
-          </div>
+            layout="responsive"
+          />
+          <a href={p.googleMapsLink}>{p.address}</a>
         </PostPageTemplateComponent.section>
       ) : null}
     </PostPageTemplateComponent>

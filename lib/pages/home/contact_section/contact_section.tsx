@@ -1,7 +1,7 @@
 import cn from "classnames"
 import TypeIt from "typeit-react"
 import {
-  ImageWrapper,
+  ImageComponent,
   LinkButton,
 } from "../../../../components"
 import { LINKS } from "../../../utils/constants"
@@ -26,14 +26,15 @@ export const ContactSection = () => {
       >
         Anmeldung
       </h3>
-      <ImageWrapper
-        className={styles.imageWrapper}
+      <ImageComponent
+        stylesheet={styles}
         image={{
           url: "/assets/images/home/philosophy3.jpg",
           width: 3456,
           height: 2304,
           title: "Bild von Partizipation",
         }}
+        layout="responsive"
       />
       <section className={styles.contentSection}>
         <h2>

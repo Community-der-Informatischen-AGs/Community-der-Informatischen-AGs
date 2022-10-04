@@ -35,7 +35,9 @@ interface KontaktProps {
 const contactPair = (contactModule: ContactModule) => {
   return (
     <>
-      <h6>{contactModule.title}</h6>
+      <h6 className={styles.title}>
+        {contactModule.title}
+      </h6>
       <p className={styles.email}>
         <Envelope />
         <a href={`mailto:${contactModule.contactEmail}`}>
@@ -95,13 +97,10 @@ const Kontakt: NextPage<KontaktProps> = (
       <StandardPageTemplate.section>
         <h2>Direkter Kontakt und Links</h2>
         <div className={styles.contactGrid}>
-          <h6>Gemeinschaft:</h6>
-          <p className={styles.email}>
-            <Envelope />
-            <a href={`mailto:${LINKS.email}`}>
-              {LINKS.email}
-            </a>
-          </p>
+          {contactPair({
+            title: "Gemeinschaft",
+            contactEmail: LINKS.email,
+          })}
 
           {p.contactEmails.map((contactModule) => {
             return contactPair(contactModule)
@@ -109,7 +108,7 @@ const Kontakt: NextPage<KontaktProps> = (
         </div>
       </StandardPageTemplate.section>
       <StandardPageTemplate.section>
-        <h2>Gemeinschafts-Leiter:</h2>
+        <h2>Gemeinschafts-Leiter</h2>
         <ContactPerson
           id={RESERVED.ruizhangid}
           stylesheet={styles}

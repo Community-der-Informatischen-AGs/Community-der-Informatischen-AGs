@@ -1,5 +1,6 @@
 import cn from "classnames"
 import Image from "next/image"
+import { HTMLProps } from "react"
 import {
   HasOptionalStyleSheet,
   ImageData,
@@ -9,6 +10,7 @@ import styles from "./image_component.module.scss"
 
 interface ImageComponentProps
   extends HasOptionalStyleSheet {
+  onClick: (e: any) => {}
   image?: ImageData
   className?: string
   layout:
@@ -31,6 +33,9 @@ export const ImageComponent = (p: ImageComponentProps) => {
         stylesheet.imageContainer,
         p.className
       )}
+      onClick={(e) => {
+        if (p.onClick != undefined) p.onClick(e)
+      }}
     >
       <Image
         className={styles.image}

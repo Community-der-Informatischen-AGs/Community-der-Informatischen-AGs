@@ -128,10 +128,10 @@ export const ContactPerson = (p: ContactPersonProps) => {
             ? Object.entries(personAttributes.links).map(
                 (entry, index) => {
                   return (
-                    <li key={index}>
-                      {entry[0]}
-                      {": "}
-                      <a href={entry[1]}>{entry[1]}</a>
+                    <li>
+                      <a key={index} href={entry[1]}>
+                        {entry[0]}
+                      </a>
                     </li>
                   )
                 }
