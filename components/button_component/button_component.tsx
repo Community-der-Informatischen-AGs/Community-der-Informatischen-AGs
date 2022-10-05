@@ -16,14 +16,14 @@ export const ButtonComponent = (
 ) => {
   return (
     <button
-      className={cn(styles.button, p.className)}
+      className={cn(p.className, styles.button)}
       data-weight={p.weight}
       onClick={p.onClick}
       disabled={p.disabled}
       title={p.title}
       type={p.type}
     >
-      {p.children}
+      <div>{p.children}</div>
       {p.icon}
     </button>
   )

@@ -5,7 +5,7 @@ export const RESERVED = {
 export const KEYWORDS = {
   nameSeparate: "Community d. Informatischen AGs",
   nameConnected: "Community-der-Informatischen-AGs",
-  nameAbbreviation: "C.d.i.A.",
+  nameAbbreviation: "C.d.I.A.",
   annette: "Annette-Software-Entwicklung",
   schloss: "Schloß-Software-Entwicklung",
   kobi: "Kobi-Software-Entwicklung",

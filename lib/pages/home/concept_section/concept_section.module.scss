@@ -3,7 +3,6 @@
 
 section.conceptSection {
   z-index: 1;
-  color: white;
   border-left: none;
   width: 100%;
 
@@ -24,6 +23,9 @@ section.conceptSection {
       width: 100%;
       height: 100%;
       position: relative;
+      a {
+        color: black;
+      }
     }
 
   }

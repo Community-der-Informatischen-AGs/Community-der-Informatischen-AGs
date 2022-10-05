@@ -2,7 +2,7 @@ import { useEffect } from "react"
 
 import AOS from "aos"
 import "aos/dist/aos.css"
-import type { NextPage } from "next"
+import type { NextPage, NextPageContext } from "next"
 import Head from "next/head"
 import globalStyles from "../styles/globals.module.scss"
 import styles from "../styles/home/home.module.scss"
@@ -23,6 +23,9 @@ import {
   OfferSection,
   PostSection,
 } from "./../lib/pages/home"
+import { ArrowDown, CaretDown } from "phosphor-react"
+import { ParsedUrlQuery } from "querystring"
+import { useRouter } from "next/router"
 
 // TODO: add social media icons on the side of the landing-section
 // TODO: Fotos von unterschiedlichen Schulen mit Adrian oder selber machne
@@ -135,6 +138,7 @@ interface HomeProps {
   schoolIds: string[]
   blogIds: string[]
   projectIds: string[]
+  animation: ParsedUrlQuery
 }
 
 const Home: NextPage<HomeProps> = (p: HomeProps) => {
@@ -143,6 +147,9 @@ const Home: NextPage<HomeProps> = (p: HomeProps) => {
       anchorPlacement: "top-bottom",
     })
   }, [])
+
+  const router = useRouter()
+  console.log(router.query.animation)
 
   return (
     <>
@@ -158,6 +165,22 @@ const Home: NextPage<HomeProps> = (p: HomeProps) => {
       </Head>
       <Header />
       <main>
+        <section
+          className={cn(
+            styles.scrollIndicator,
+            router.query.animation != "false" &&
+              styles.activeScrollIndicator
+          )}
+        >
+          <article className={styles.container}>
+            <h3>Scrollable</h3>
+            <CaretDown
+              color="black"
+              size={100}
+              className={styles.arrow}
+            />
+          </article>
+        </section>
         <LandingSection />
 
         <ConceptSection schoolIds={p.schoolIds} />

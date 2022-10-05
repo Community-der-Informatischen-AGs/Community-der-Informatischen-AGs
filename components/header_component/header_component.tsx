@@ -50,7 +50,9 @@ export const Header = (p: HeaderProps) => {
       <i
         className={styles.logo}
         onClick={() =>
-          router.push("/", undefined, { shallow: true })
+          router.push("/?animation=false", "/", {
+            shallow: true,
+          })
         }
       ></i>
 

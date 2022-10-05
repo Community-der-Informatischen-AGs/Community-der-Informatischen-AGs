@@ -17,6 +17,7 @@ import { getPreviewPost } from "../lib/contentful/util"
 import postStyles from "./../styles/collection_page/post_preview_component.module.scss"
 import styles from "./../styles/search/search.module.scss"
 import searchStyles from "./../styles/search/search_component.module.scss"
+import { useRouter } from "next/router"
 
 const validateQuery = (searchValue: string) => {
   return (
@@ -26,7 +27,7 @@ const validateQuery = (searchValue: string) => {
   )
 }
 
-// TODO: fix preview styling
+// TODO: fix bug where too many > 5 posts are showing
 
 interface SearchResult {
   contentTypeId: string
@@ -35,12 +36,12 @@ interface SearchResult {
 
 // the amount of post previews per type.
 // 5 -> max. 5 project posts + 5 blog posts + 5 school entries per post
-const pagePostTypeTotal = 5
+const PAGE_POST_TYPE_TOTAL = 5
 
-const Search: NextPage<ParsedUrlQuery> = (
-  p: ParsedUrlQuery
-) => {
-  const query = p.s as string
+const Search: NextPage = () => {
+  const router = useRouter()
+  let query = router.query.s as string
+  if (query === undefined) query = ""
 
   let heading = `CDIA - Suche - ${query}`
   let titleSentence = ["Suchergebnisse für", `"${query}"`]
@@ -70,7 +71,7 @@ const Search: NextPage<ParsedUrlQuery> = (
             method: "POST",
             body: JSON.stringify({
               collectionType: contentTypeCollectionId,
-              limit: pagePostTypeTotal,
+              limit: PAGE_POST_TYPE_TOTAL,
               itemQuery: `
               ${CONTENTFUL_ID_QUERY}
             `,
@@ -130,7 +131,7 @@ const Search: NextPage<ParsedUrlQuery> = (
             <CollectionNavigation
               skipState={skipState}
               currentDataLength={resultPreviewData.length}
-              total={pagePostTypeTotal}
+              total={PAGE_POST_TYPE_TOTAL}
             />
             {resultPreviewData.length == 0 ? (
               <h1 className={styles.nothing}>
@@ -150,16 +151,13 @@ const Search: NextPage<ParsedUrlQuery> = (
             <CollectionNavigation
               skipState={skipState}
               currentDataLength={resultPreviewData.length}
-              total={pagePostTypeTotal}
+              total={PAGE_POST_TYPE_TOTAL}
             />
           </section>
         </StandardPageTemplate.section>
       </StandardPageTemplate>
     </>
   )
-}
-Search.getInitialProps = async ({ query }) => {
-  return { ...query }
 }
 
 export default Search

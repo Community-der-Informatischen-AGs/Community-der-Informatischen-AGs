@@ -9,6 +9,8 @@ import { KEYWORDS, LINKS } from "../../lib/utils/constants"
 import styles from "./footer_component.module.scss"
 
 export const Footer = () => {
+  const currentYear = new Date().getFullYear()
+
   return (
     <footer className={styles.footer}>
       <main>
@@ -21,8 +23,7 @@ export const Footer = () => {
             </Link>
           </div>
           <b>
-            {'"'}Hauptstandort{'"'} (Obwohl es eigentlich
-            kein Standort gibt):
+            <u>Inoffizieller</u> Standort:
           </b>
           <p>Brucknerstraße 19, 40593 Düsseldorf</p>
           <p>Annette-von-Droste-Hülshoff-Gymnasium</p>
@@ -60,13 +61,18 @@ export const Footer = () => {
           <h6>Verweise</h6>
           <p>
             Webseite von{" "}
-            <a href={LINKS.ruizhang}>Rui Zhang</a>
+            <a href={LINKS.ruizhang}>
+              Rui Zhang (TotallyInformatik)
+            </a>
           </p>
-          <p>Fotos von Arian Allenstein</p>
         </section>
       </main>
       <h5 className={styles.copyright}>
-        © 2022 {KEYWORDS.nameConnected}
+        ©{" "}
+        {currentYear == 2022
+          ? "2022"
+          : `2022 - ${currentYear}`}{" "}
+        {KEYWORDS.nameConnected}
       </h5>
     </footer>
   )

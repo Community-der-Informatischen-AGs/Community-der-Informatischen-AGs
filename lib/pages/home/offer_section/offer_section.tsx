@@ -106,9 +106,9 @@ export const OfferSection = () => {
           text="Jeder lernt im eigenen Tempo. Kein Druck. Kein Stress."
           image={{
             title: "Bild zum Eigentempo",
-            width: 3840,
-            height: 5760,
-            url: "/assets/images/home/testimage1.jpg",
+            width: 2439,
+            height: 3248,
+            url: "/assets/images/home/philosophy4.jpg",
           }}
         />
         <CardComponent

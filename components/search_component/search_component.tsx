@@ -94,7 +94,10 @@ export const SearchComponent = (
     redirectToSearchPage()
   }
   function redirectToSearchPage() {
-    router.push(`${LINKS.search}?s=${searchInputValue}`)
+    router.push(
+      `${LINKS.search}?s=${searchInputValue}`,
+      LINKS.search
+    )
   }
 
   const handleBlur = useCallback((e: any) => {

@@ -1,5 +1,5 @@
 import cn from "classnames"
-import Image from "next/image"
+import Image, { ImageProps } from "next/image"
 import { HTMLProps } from "react"
 import {
   HasOptionalStyleSheet,
@@ -9,16 +9,11 @@ import {
 import styles from "./image_component.module.scss"
 
 interface ImageComponentProps
-  extends HasOptionalStyleSheet {
+  extends HasOptionalStyleSheet,
+    ImageProps {
   onClick?: (e: any) => {}
   image?: ImageData
   className?: string
-  layout:
-    | "fixed"
-    | "fill"
-    | "intrinsic"
-    | "responsive"
-    | "raw"
 }
 
 export const ImageComponent = (p: ImageComponentProps) => {
@@ -42,8 +37,8 @@ export const ImageComponent = (p: ImageComponentProps) => {
         width={p.image.width}
         height={p.image.height}
         alt={p.image.title}
+        {...p}
         src={p.image.url}
-        layout={p.layout}
       />
     </section>
   )

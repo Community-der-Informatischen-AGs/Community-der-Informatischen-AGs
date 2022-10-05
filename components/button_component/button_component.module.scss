@@ -21,6 +21,7 @@
     border-radius: $standardBorderRadius / 2;
     display: block;
     position: absolute;
+    z-index: 0;
     background-color: $backgroundColor;
     mix-blend-mode: difference;
     width: 100%;
@@ -65,4 +66,8 @@
   color: white;
   border-radius: $standardBorderRadius / 2;
   border: $border;
+  &::after {
+    background-color: transparent;
+  }
+
 }

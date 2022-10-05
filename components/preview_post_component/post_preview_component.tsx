@@ -87,6 +87,7 @@ export const PostPreviewComponent = (
             height={p.image.height}
             alt={p.image.title}
             layout="fill"
+            objectFit="cover"
           />
         </section>
       ) : null}
