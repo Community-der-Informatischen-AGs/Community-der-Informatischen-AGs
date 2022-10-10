@@ -33,3 +33,10 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# Sitemap file
+sitemap.xml
+sitemap-0.xml
+
+# Robots.txt
+robots.txt
