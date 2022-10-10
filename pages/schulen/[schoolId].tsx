@@ -131,6 +131,7 @@ const SchoolPage: NextPage<SchoolPageProps> = (
         >
           <h2>Standort</h2>
           <ImageComponent
+            src=""
             stylesheet={styles}
             onClick={() =>
               (window.location.href = p.googleMapsLink)
