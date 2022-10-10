@@ -14,12 +14,6 @@
 
   border-top: $border;
 
-
-  a {transition: color 0.2s ease;}
-  a:hover {
-    color: white;
-  }
-
   main {
     display: flex;
     flex-wrap: wrap;

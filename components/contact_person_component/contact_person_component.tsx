@@ -105,6 +105,7 @@ export const ContactPerson = (p: ContactPersonProps) => {
         image={personAttributes.image}
         stylesheet={stylesheet}
         layout="responsive"
+        src=""
       />
       <h3 className={cn(stylesheet.name, styles.name)}>
         {personAttributes.title}

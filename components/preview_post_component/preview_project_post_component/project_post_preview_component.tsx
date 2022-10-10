@@ -102,10 +102,12 @@ export const ProjectPostPreviewComponent = (
       contentType={CONTENT_TYPE}
       contentTypeId={CONTENT_TYPE_ID}
       title={postProps.title}
-      body={documentToReactComponents(
-        postProps.body,
-        ABBREVIATION_RENDER_OPTIONS
-      )}
+      body={
+        documentToReactComponents(
+          postProps.body,
+          ABBREVIATION_RENDER_OPTIONS
+        ) ?? "Kein Inhalt"
+      }
       image={postProps.image}
       className={styles.projectPostPreviewComponent}
       baseStyles={styles}

@@ -1,5 +1,6 @@
 import {
   DependencyList,
+  ReactNode,
   useCallback,
   useEffect,
   useState,
@@ -124,4 +125,15 @@ export const getPreviewPost = (
       console.log("error, invalid content type id")
       return <div></div>
   }
+}
+
+// at most 70 words for the preview content
+const maxSummarySize = 50
+export const summarizeContent = (content: ReactNode) => {
+  let contentAsString = content?.toString() ?? ""
+  contentAsString = contentAsString.replace(/,/g, "")
+
+  return contentAsString
+    .split(/\s/, maxSummarySize)
+    .join(" ")
 }

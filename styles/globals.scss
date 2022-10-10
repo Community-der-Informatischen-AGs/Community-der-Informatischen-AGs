@@ -30,6 +30,9 @@ body {
   --ti-cursor-color: black;
   --ti-cursor-margin-left: 0.2rem;
 }
+::selection {
+  background-color: rgba(200, 200, 200, 0.3)
+}
 
 * {
   font-family: "Manrope", -apple-system, BlinkMacSystemFont,
@@ -79,10 +82,24 @@ a, li {
 a {
   color: rgb(255, 255, 255);
   opacity: 0.5;
-  transition: opacity 0.2s ease;
-  // TODO: replace with link icon from phosphor
+  transition: opacity 0.2s ease, left 0.2s ease;
+  position: relative;
+  left: -1rem;
+  &:before {
+    content: "# ";
+    position: relative;
+    opacity: 0;
+    left: 10px;
+    transition: opacity 0.2s ease, left 0.2s ease;
+  }
   &:hover, &:focus {
-    opacity: 1;
+    opacity: 0.8;
+    left: 0;
+    &:before {
+      opacity: 1;
+      left: 0;
+    }
+
   }
 
   text-decoration: none;

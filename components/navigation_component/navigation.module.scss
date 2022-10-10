@@ -47,6 +47,7 @@ $subLinksPadding: 20px;
         text-decoration: none;
         cursor: pointer;
         position: relative;
+        left: 0;
 
         &:before { content: ""}
         &:after {

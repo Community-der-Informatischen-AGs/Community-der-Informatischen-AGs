@@ -57,23 +57,17 @@ export const PostPageTemplateComponent = (
             </code>
           ) : null}
         </section>
-        {
-          // TODO: make this an image gallery with flex-snap whatever
-          // TODO: make all images clickable
-          p.image != null ? (
-            <section
-              className={globalStyles.imageContainer}
-            >
-              <Image
-                width={p.image.width}
-                height={p.image.height}
-                src={p.image.url}
-                alt={p.image.title}
-                layout="fill"
-              />
-            </section>
-          ) : null
-        }
+        {p.image != null ? (
+          <section className={globalStyles.imageContainer}>
+            <Image
+              width={p.image.width}
+              height={p.image.height}
+              src={p.image.url}
+              alt={p.image.title}
+              layout="fill"
+            />
+          </section>
+        ) : null}
         <section className={cn(styles.mainContentSection)}>
           <main>{p.children}</main>
           <aside>

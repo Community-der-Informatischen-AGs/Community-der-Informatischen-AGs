@@ -19,8 +19,6 @@
     overflow: hidden;
     img {
       height: 200px; 
-      border-top-left-radius: $standardBorderRadius / 2;
-      border-top-right-radius: $standardBorderRadius / 2;
       width: 100%;
       object-fit: cover;
     }

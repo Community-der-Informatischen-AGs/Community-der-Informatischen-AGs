@@ -17,8 +17,6 @@ import {
 
 import styles from "./search_component.module.scss"
 
-// TODO: implement alternative stylesheets
-
 interface SearchComponentProps
   extends HasOptionalStyleSheet {
   onSearch?: () => void
@@ -54,7 +52,7 @@ export const SearchComponent = (
           method: "POST",
           body: JSON.stringify({
             searchInput: searchInputValue,
-            locale: "de", // TODO: implement localization
+            locale: "de",
           }),
         }
       )
@@ -94,7 +92,10 @@ export const SearchComponent = (
     redirectToSearchPage()
   }
   function redirectToSearchPage() {
-    router.push(`${LINKS.search}?s=${searchInputValue}`)
+    router.push(
+      `${LINKS.search}?s=${searchInputValue}`,
+      LINKS.search
+    )
   }
 
   const handleBlur = useCallback((e: any) => {

@@ -29,12 +29,15 @@ export const ContactSection = () => {
       <ImageComponent
         stylesheet={styles}
         image={{
-          url: "/assets/images/home/philosophy3.jpg",
-          width: 3456,
-          height: 2304,
-          title: "Bild von Partizipation",
+          url: "/assets/images/home/teilnahme.jpg",
+          width: 5304,
+          height: 7952,
+          title:
+            "Bild von Teilnahme und Zusammenarbeit in der Programmierung",
         }}
-        layout="responsive"
+        layout="fill"
+        objectFit="cover"
+        src=""
       />
       <section className={styles.contentSection}>
         <h2>
@@ -64,10 +67,15 @@ export const ContactSection = () => {
           <LinkButton
             weight="low"
             link={LINKS.ansprechpartner}
+            className={styles.lowButton}
           >
             Ansprechpartner und Kontakt
           </LinkButton>
-          <LinkButton weight="low" link={LINKS.schulen}>
+          <LinkButton
+            weight="low"
+            link={LINKS.schulen}
+            className={styles.lowButton}
+          >
             AG-Verzeichnis
           </LinkButton>
         </section>

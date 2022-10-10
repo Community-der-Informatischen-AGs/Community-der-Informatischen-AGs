@@ -13,10 +13,11 @@ const Teilnahme: NextPage = () => {
     <StandardPageTemplate
       heading={"Teilnahme"}
       image={{
-        url: "/assets/images/home/philosophy3.jpg",
-        width: 3456,
-        height: 2304,
-        title: "image",
+        url: "/assets/images/home/teilnahme.jpg",
+        width: 5304,
+        height: 7952,
+        title:
+          "Bild von Teilnahme und Zusammenarbeit in der Programmierung",
       }}
       titleSentence={[
         "Die",

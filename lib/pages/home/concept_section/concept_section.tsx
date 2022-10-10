@@ -16,8 +16,6 @@ import styles from "./concept_section.module.scss"
 export const ConceptSection = (p: {
   schoolIds: string[]
 }) => {
-  console.log("bruh")
-
   return (
     <section
       className={cn(

@@ -1,7 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document"
 
-// TODO: Google verification and seo stuff
-
 export default function Document() {
   return (
     <Html lang="de">
