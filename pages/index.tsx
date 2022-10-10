@@ -2,7 +2,7 @@ import { useEffect } from "react"
 
 import AOS from "aos"
 import "aos/dist/aos.css"
-import type { NextPage, NextPageContext } from "next"
+import type { NextPage } from "next"
 import Head from "next/head"
 import globalStyles from "../styles/globals.module.scss"
 import styles from "../styles/home/home.module.scss"
@@ -10,6 +10,9 @@ import styles from "../styles/home/home.module.scss"
 import cn from "classnames"
 import TypeIt from "typeit-react"
 
+import { useRouter } from "next/router"
+import { CaretDown } from "phosphor-react"
+import { ParsedUrlQuery } from "querystring"
 import { Footer, Header, LinkButton } from "../components"
 import { Contentful } from "../lib/contentful/api"
 import {
@@ -23,13 +26,9 @@ import {
   OfferSection,
   PostSection,
 } from "./../lib/pages/home"
-import { ArrowDown, CaretDown } from "phosphor-react"
-import { ParsedUrlQuery } from "querystring"
-import { useRouter } from "next/router"
 
 // TODO: add social media icons on the side of the landing-section
 // TODO: Fotos von unterschiedlichen Schulen mit Adrian oder selber machne
-// TODO: add code snippets
 
 // ! https://www.npmjs.com/package/@contentful/rich-text-react-renderer for rendering rich text
 

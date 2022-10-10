@@ -55,10 +55,10 @@ const Kontakt: NextPage<KontaktProps> = (
     <StandardPageTemplate
       heading={"Ansprechpartner und Kontakt"}
       image={{
-        url: "/assets/images/home/philosophy3.jpg",
+        url: "/assets/images/contact.jpg",
         width: 3456,
         height: 2304,
-        title: "image",
+        title: "Bild von Briefumschlägen",
       }}
       titleSentence={[
         "Ansprechpartner,",

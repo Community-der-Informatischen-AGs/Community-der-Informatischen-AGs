@@ -71,7 +71,7 @@ export const Header = (p: HeaderProps) => {
   )
 
   /*
-  TODO: maybe implement localization
+  *: maybe implement localization
           <Select
           options={[
             {
@@ -85,7 +85,6 @@ export const Header = (p: HeaderProps) => {
           ]}
           initialSelectedIndex={0}
           onSelect={(selectedValue: string) => {
-            // TODO: change localization and implement localization
             console.log(selectedValue)
           }}
         />

@@ -74,7 +74,7 @@ const About: NextPage = () => {
         url: "/assets/images/home/philosophy3.jpg",
         width: 3456,
         height: 2304,
-        title: "image",
+        title: "Foto von Vernetzungen",
       }}
     >
       <StandardPageTemplate.section id={LINKS.konzept}>

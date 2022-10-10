@@ -11,7 +11,6 @@ export const KEYWORDS = {
   kobi: "Kobi-Software-Entwicklung",
 }
 
-// TODO: some links are redundant and can be loaded via contentful (footer)
 export const LINKS = {
   mitmachen: "/teilnahme",
   teilnahmeInfos: "teilnahmeInfos",

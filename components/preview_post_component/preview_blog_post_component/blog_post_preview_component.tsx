@@ -1,7 +1,6 @@
 import { Document } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
-// TODO: import other stylesheets for different looks on different pages
 import styles from "./blog_post_preview_component.module.scss"
 import React, { useEffect, useState } from "react"
 import {
@@ -68,7 +67,6 @@ const lazyLoad = async (
     .data.blogPost
   const title = responseJsonData.title
   const bodyDocument = responseJsonData.body.json
-  // TODO: add locales!
   const publishedAt = new Date(
     responseJsonData.sys.publishedAt
   ).toLocaleDateString()
@@ -105,10 +103,12 @@ export const BlogPostPreviewComponent = (
       contentType={CONTENT_TYPE}
       contentTypeId={CONTENT_TYPE_ID}
       title={postProps.title}
-      body={documentToReactComponents(
-        postProps.body,
-        ABBREVIATION_RENDER_OPTIONS
-      )}
+      body={
+        documentToReactComponents(
+          postProps.body,
+          ABBREVIATION_RENDER_OPTIONS
+        ) ?? "Kein Inhalt"
+      }
       image={postProps.image}
       className={styles.blogPostPreviewComponent}
       baseStyles={styles}

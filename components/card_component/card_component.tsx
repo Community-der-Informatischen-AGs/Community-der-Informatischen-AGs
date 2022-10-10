@@ -8,7 +8,6 @@ import styles from "./card_component.module.scss"
 import cn from "classnames"
 import Image from "next/image"
 
-// TODO: use Next Images
 interface CardComponentProps extends HasOptionalStyleSheet {
   image: ImageData
   title: string

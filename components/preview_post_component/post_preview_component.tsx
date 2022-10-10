@@ -13,6 +13,7 @@ import {
 
 import cn from "classnames"
 import { BLOCKS } from "@contentful/rich-text-types"
+import { summarizeContent } from "../../lib/contentful/util"
 
 export interface PostPreviewComponentProps
   extends HasOptionalImage,
@@ -45,7 +46,7 @@ export const ABBREVIATION_RENDER_OPTIONS = {
     [BLOCKS.DOCUMENT]: (node: any) => {
       return node.content.map((node: any) => {
         if (node.content.length != 0)
-          return <p>{node.content[0].value}</p>
+          return `${node.content[0].value} `
       })
     },
   },
@@ -115,7 +116,7 @@ export const PostPreviewComponent = (
           </p>
         </span>
         <section>{p.children}</section>
-        <article>{p.body}</article>
+        <article>{summarizeContent(p.body)}</article>
       </section>
     </div>
   )

@@ -51,8 +51,6 @@ interface SchoolPageProps {
 const SchoolPage: NextPage<SchoolPageProps> = (
   p: SchoolPageProps
 ) => {
-  // TODO: change map to image and link to google maps. (primitive type of shit)
-
   return (
     <PostPageTemplateComponent
       codeSnippet={`
