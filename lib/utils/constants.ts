@@ -18,7 +18,7 @@ export const LINKS = {
   about: "/about",
   konzept: "konzept",
   philosophie: "philosophie",
-  schulen: "/schulen",
+  schulen: "/ags",
   ansprechpartner: "/kontakt",
   projekte: "/projekte",
   blogs: "/blogs",
