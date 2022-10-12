@@ -21,6 +21,15 @@ export const CONTENT_TYPE_ID_TO_ROUTE: {
   [CONTENT_TYPE_IDS.school]: LINKS.schulen,
 }
 
+export const COLLECTION_TYPE_ID_TO_ROUTE: {
+  [key: string]: string
+} = {
+  [COLLECTION_TYPE_IDS.project]: LINKS.projekte,
+  [COLLECTION_TYPE_IDS.blog]: LINKS.blogs,
+  [COLLECTION_TYPE_IDS.school]: LINKS.schulen,
+}
+
+
 export const CONTACT_PERSON_ROLE = {
   agManagement: "AG-Management"
 }
