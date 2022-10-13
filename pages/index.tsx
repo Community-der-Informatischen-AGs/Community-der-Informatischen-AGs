@@ -147,9 +147,6 @@ const Home: NextPage<HomeProps> = (p: HomeProps) => {
     })
   }, [])
 
-  const router = useRouter()
-  console.log(router.query.animation)
-
   return (
     <>
       <Head>
@@ -164,22 +161,6 @@ const Home: NextPage<HomeProps> = (p: HomeProps) => {
       </Head>
       <Header />
       <main>
-        <section
-          className={cn(
-            styles.scrollIndicator,
-            router.query.animation != "false" &&
-              styles.activeScrollIndicator
-          )}
-        >
-          <article className={styles.container}>
-            <h3>Scrollable</h3>
-            <CaretDown
-              color="black"
-              size={100}
-              className={styles.arrow}
-            />
-          </article>
-        </section>
         <LandingSection />
 
         <ConceptSection schoolIds={p.schoolIds} />
