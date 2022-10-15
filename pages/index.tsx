@@ -79,7 +79,7 @@ const LandingSection = () => {
         className={cn(globalStyles.heading, styles.heading)}
       >
         <span className={styles.seeThrough}>Die</span>
-        <span>Community d.</span>
+        <span>Community der</span>
         <span>Informatischen AGs</span>
         <span className={styles.seeThrough}>
           Entwickelt
@@ -151,12 +151,11 @@ const Home: NextPage<HomeProps> = (p: HomeProps) => {
     <>
       <Head>
         <title>
-          {KEYWORDS.nameSeparate} - Eine Gemeinschaft für
-          junge Softwareentwickler
+          {KEYWORDS.nameSeparate}
         </title>
         <meta
           name="description"
-          content={`Die Webseite des ${KEYWORDS.nameConnected}-Projekts: Eine Gemeinschaft für junge Softwareentwickler zwischen 15 und 20 Jahren.`}
+          content={`Die Webseite der ${KEYWORDS.nameConnected}: Eine Gemeinschaft für junge Softwareentwickler zwischen 15 und 20 Jahren.`}
         />
       </Head>
       <Header />

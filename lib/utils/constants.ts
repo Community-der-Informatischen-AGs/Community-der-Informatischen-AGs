@@ -3,7 +3,7 @@ export const RESERVED = {
 }
 
 export const KEYWORDS = {
-  nameSeparate: "Community d. Informatischen AGs",
+  nameSeparate: "Community der Informatischen Arbeitsgemeinschaften",
   nameConnected: "Community-der-Informatischen-AGs",
   nameAbbreviation: "C.d.I.A.",
   annette: "Annette-Software-Entwicklung",
