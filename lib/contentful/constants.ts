@@ -31,6 +31,8 @@ export const COLLECTION_TYPE_ID_TO_ROUTE: {
 
 
 export const CONTACT_PERSON_ROLE = {
+  leitung: "Leitung",
+  entwicklung: "Entwicklung",
   agManagement: "AG-Management"
 }
 

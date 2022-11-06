@@ -1,5 +1,6 @@
 import { NextPage } from "next"
 import { Envelope } from "phosphor-react"
+import { ReactNode } from "react"
 import {
   ContactPerson,
   StandardPageTemplate,
@@ -25,10 +26,11 @@ interface ContactModule {
 
 interface KontaktProps {
   contactEmails: ContactModule[]
-  managementContactPeople: {
+  contactPeople: {
     sys: {
       id: string
     }
+    role: string
   }[]
 }
 
@@ -51,6 +53,26 @@ const contactPair = (contactModule: ContactModule) => {
 const Kontakt: NextPage<KontaktProps> = (
   p: KontaktProps
 ) => {
+  
+   const contactPeopleMap: {
+    [key: string]: ReactNode[]
+  } = {
+    [CONTACT_PERSON_ROLE.leitung]: [],
+    [CONTACT_PERSON_ROLE.agManagement]: [],
+    [CONTACT_PERSON_ROLE.entwicklung]: [],
+  }
+  p.contactPeople.forEach((contactPerson, index) => {
+    const role = contactPerson.role
+    contactPeopleMap[role].push(
+      <ContactPerson
+        key={index}
+        id={contactPerson.sys.id}
+        stylesheet={styles}
+        className={styles.contactPersonWithMargin}
+      />
+    )
+  })
+
   return (
     <StandardPageTemplate
       heading={"Ansprechpartner und Kontakt"}
@@ -107,29 +129,22 @@ const Kontakt: NextPage<KontaktProps> = (
           })}
         </div>
       </StandardPageTemplate.section>
-      <StandardPageTemplate.section>
-        <h2>Gemeinschafts-Leiter</h2>
-        <ContactPerson
-          id={RESERVED.ruizhangid}
-          stylesheet={styles}
-        />
-      </StandardPageTemplate.section>
-      <StandardPageTemplate.section>
-        <h2>AG-Management</h2>
-        {p.managementContactPeople.map(
-          (contactPerson, index) => {
-            return (
-              <ContactPerson
-                key={index}
-                id={contactPerson.sys.id}
-                stylesheet={styles}
-                className={styles.contactPersonWithMargin}
-              />
-            )
-          }
-        )}
-      </StandardPageTemplate.section>
+      <>
+        {
+          Object.entries(contactPeopleMap).map(
+            (entry, index) => {
+              return (
+                <StandardPageTemplate.section key={index}>
+                  <h2>{entry[0]}</h2>
+                  { entry[1] }
+                </StandardPageTemplate.section>
+              )
+            }
+          )
+        }
+      </>
     </StandardPageTemplate>
+      
   )
 }
 
@@ -142,10 +157,11 @@ export async function getStaticProps(context: any) {
         contactEmail
       }
     }
-    ${COLLECTION_TYPE_IDS.person}(where: {
-      role: "${CONTACT_PERSON_ROLE.agManagement}"
-    }) {
-      items { ${CONTENTFUL_ID_QUERY} }
+    ${COLLECTION_TYPE_IDS.person}{
+      items {
+        role
+        ${CONTENTFUL_ID_QUERY} 
+      }
     }
     `
   )
@@ -155,7 +171,7 @@ export async function getStaticProps(context: any) {
       contactEmails: [
         ...response.data[COLLECTION_TYPE_IDS.school].items,
       ],
-      managementContactPeople: [
+      contactPeople: [
         ...response.data[COLLECTION_TYPE_IDS.person].items,
       ],
     },

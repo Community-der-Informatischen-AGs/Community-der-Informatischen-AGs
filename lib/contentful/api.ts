@@ -99,6 +99,7 @@ export namespace Contentful {
     queryResponse: any,
     collectionName: string
   ) {
+    console.log(queryResponse)
     const data = queryResponse.data[collectionName].items;
     return data.map((v: any) => {
       return v.sys.id;
