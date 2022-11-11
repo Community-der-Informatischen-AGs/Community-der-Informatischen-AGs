@@ -53,6 +53,9 @@ section.headingSection {
 
   $asideSize: 20%;
   main {
+    p {
+      margin-bottom: $sectionGap / 3;
+    }
     width: calc(100% - #{$asideSize});
   }
 

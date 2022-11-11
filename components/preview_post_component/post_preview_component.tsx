@@ -1,7 +1,6 @@
 import { useRouter } from "next/router"
 import Image from "next/image"
 import { ReactNode } from "react"
-import { HandPointing } from "phosphor-react"
 
 import styles from "./post_preview_component.module.scss"
 import { CONTENT_TYPE_ID_TO_ROUTE } from "../../lib/contentful/constants"
@@ -14,6 +13,8 @@ import {
 import cn from "classnames"
 import { BLOCKS } from "@contentful/rich-text-types"
 import { summarizeContent } from "../../lib/contentful/util"
+
+// TODO: use Server Components
 
 export interface PostPreviewComponentProps
   extends HasOptionalImage,

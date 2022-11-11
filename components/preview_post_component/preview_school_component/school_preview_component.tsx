@@ -86,8 +86,8 @@ export const SchoolPreviewComponent = (
       baseStyles={styles}
       stylesheet={stylesheet}
     >
-      <a href={postProps.agWebsite}>
-        {postProps.agWebsite}
+      <a href={postProps.agWebsite ?? "#"}>
+        {postProps.agWebsite ?? "Keine Webseite"}
       </a>
     </PostPreviewComponent>
   )
