@@ -120,7 +120,7 @@ export const ContactPerson = (p: ContactPersonProps) => {
       >
         <ul>
           <li>
-            Email der AG:{" "}
+            Zugehörige E-Mail:{" "}
             <a href={`mailto:${personAttributes.agEmail}`}>
               {personAttributes.agEmail}
             </a>
