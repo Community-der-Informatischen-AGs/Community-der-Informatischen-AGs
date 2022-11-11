@@ -18,6 +18,9 @@ interface ContentfulCollectionProps {
 // the maximum amount of posts shown per page
 const collectionMax = 10
 
+// TODO: use NextJS Server Components
+
+
 export const ContentfulCollection = (
   p: ContentfulCollectionProps
 ) => {

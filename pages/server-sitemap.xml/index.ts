@@ -15,10 +15,6 @@ export async function getServerSideProps(ctx: any) {
 
   for (const collectionId of Object.values(COLLECTION_TYPE_IDS)) {
     
-    console.log("===")
-    console.log(collectionId)
-    console.log("===")
-    
     if (collectionId == COLLECTION_TYPE_IDS.person) continue
 
     const response = await Contentful.fetchGraphQL(`
