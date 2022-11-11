@@ -51,6 +51,42 @@ interface SchoolPageProps {
 const SchoolPage: NextPage<SchoolPageProps> = (
   p: SchoolPageProps
 ) => {
+  const summaryPoints = [
+    <div key={1}>
+      <p>
+        Ansprechpartner:{" "}
+        <Link href={`${LINKS.ansprechpartner}`}>
+          {p.contactPerson.title}
+        </Link>
+      </p>
+    </div>,
+    <div key={2}>
+      <p>
+        Schul-Webseite:{" "}
+        <a href={p.schoolWebsite}>{p.schoolWebsite}</a>
+      </p>
+    </div>,
+    <div key={3}>
+      <p>
+        Email:{" "}
+        <a href={"mailto:" + p.contactEmail}>
+          {p.contactEmail}
+        </a>
+      </p>
+    </div>,
+  ]
+
+  if (p.agWebsite != null) {
+    summaryPoints.push(
+      <div key={4}>
+        <p>
+          AG-Webseite:{" "}
+          <a href={p.agWebsite}>{p.agWebsite}</a>
+        </p>
+      </div>
+    )
+  }
+
   return (
     <PostPageTemplateComponent
       codeSnippet={`
@@ -82,41 +118,7 @@ const SchoolPage: NextPage<SchoolPageProps> = (
       additionalInformation={
         <Summary
           title="Auf einem Blick:"
-          summaryPoints={[
-            <div key={1}>
-              <p>
-                Ansprechpartner:{" "}
-                <Link href={`${LINKS.ansprechpartner}`}>
-                  {p.contactPerson.title}
-                </Link>
-              </p>
-            </div>,
-            <Optional
-              key={2}
-              condition={p.agWebsite != null}
-            >
-              <p>
-                AG-Webseite:{" "}
-                <a href={p.agWebsite}>{p.agWebsite}</a>
-              </p>
-            </Optional>,
-            <div key={3}>
-              <p>
-                Schul-Webseite:{" "}
-                <a href={p.schoolWebsite}>
-                  {p.schoolWebsite}
-                </a>
-              </p>
-            </div>,
-            <div key={4}>
-              <p>
-                Email:{" "}
-                <a href={"mailto:" + p.contactEmail}>
-                  {p.contactEmail}
-                </a>
-              </p>
-            </div>,
-          ]}
+          summaryPoints={summaryPoints}
         />
       }
     >
