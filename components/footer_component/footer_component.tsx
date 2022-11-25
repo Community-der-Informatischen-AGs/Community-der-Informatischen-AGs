@@ -22,6 +22,12 @@ export const Footer = () => {
               {LINKS.email}
             </Link>
           </div>
+          <div className={styles.email}>
+            <Envelope size={32} weight="thin" />
+            <Link href={`mailto:${LINKS.email}`}>
+              {LINKS.email}
+            </Link>
+          </div>
           <b>
             <u>Inoffizieller</u> Standort:
           </b>
