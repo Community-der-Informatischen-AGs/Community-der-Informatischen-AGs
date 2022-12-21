@@ -24,5 +24,6 @@ section.resultsSection {
     @include centeredFlex();
     flex-direction: column;
     gap: $sectionGap;
+    text-align: center;
   }
 }

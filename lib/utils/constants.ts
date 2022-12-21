@@ -1,7 +1,3 @@
-export const RESERVED = {
-  ruizhangid: "6DuieBgQ67iZPDO2GWNSor"
-}
-
 export const KEYWORDS = {
   nameSeparate: "Community der Informatischen Arbeitsgemeinschaften",
   nameConnected: "Community-der-Informatischen-AGs",
@@ -25,6 +21,8 @@ export const LINKS = {
   impressum: "/impressum",
   search: "/search",
   email: "root@community-inf-ag.de",
+  beratungslehrer: "Nicolas Welling, Annette-von-Droste-Hülshoff-Gymnasium",
+  beratungsemail: "nicolas.welling@schule.duesseldorf.de",
   github: "https://github.com/Community-der-Informatischen-AGs",
   ruizhang: "https://website-totallyinformatik.vercel.app"
 }
