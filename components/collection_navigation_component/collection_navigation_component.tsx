@@ -6,7 +6,7 @@ interface SearchNavigationProps {
   skipState: [number, Dispatch<SetStateAction<number>>]
   // the amount of entries currently shown on the page
   currentDataLength: number
-  total: number
+  collectionTotal: number
 }
 export const CollectionNavigation = (
   p: SearchNavigationProps
@@ -19,11 +19,11 @@ export const CollectionNavigation = (
       <ButtonComponent
         title="Vorherige Seite"
         weight="high"
-        disabled={currentSkipAmount < p.total}
+        disabled={currentSkipAmount < p.collectionTotal}
         onClick={() => {
-          if (currentSkipAmount >= p.total)
+          if (currentSkipAmount >= p.collectionTotal)
             setCurrentSkipAmount(
-              currentSkipAmount - p.total
+              currentSkipAmount - p.collectionTotal
             )
         }}
       >
@@ -34,7 +34,9 @@ export const CollectionNavigation = (
         weight="high"
         disabled={p.currentDataLength == 0}
         onClick={() => {
-          setCurrentSkipAmount(currentSkipAmount + p.total)
+          setCurrentSkipAmount(
+            currentSkipAmount + p.collectionTotal
+          )
         }}
       >
         {">"}

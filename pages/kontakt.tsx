@@ -11,11 +11,7 @@ import {
   CONTACT_PERSON_ROLE,
   CONTENTFUL_ID_QUERY,
 } from "../lib/contentful/constants"
-import {
-  KEYWORDS,
-  LINKS,
-  RESERVED,
-} from "../lib/utils/constants"
+import { KEYWORDS, LINKS } from "../lib/utils/constants"
 
 import styles from "./../styles/kontakt/kontakt.module.scss"
 
@@ -53,8 +49,7 @@ const contactPair = (contactModule: ContactModule) => {
 const Kontakt: NextPage<KontaktProps> = (
   p: KontaktProps
 ) => {
-  
-   const contactPeopleMap: {
+  const contactPeopleMap: {
     [key: string]: ReactNode[]
   } = {
     [CONTACT_PERSON_ROLE.leitung]: [],
@@ -123,6 +118,10 @@ const Kontakt: NextPage<KontaktProps> = (
             title: "Gemeinschaft",
             contactEmail: LINKS.email,
           })}
+          {contactPair({
+            title: "Beratungslehrer",
+            contactEmail: LINKS.beratungsemail,
+          })}
 
           {p.contactEmails.map((contactModule) => {
             return contactPair(contactModule)
@@ -130,21 +129,18 @@ const Kontakt: NextPage<KontaktProps> = (
         </div>
       </StandardPageTemplate.section>
       <>
-        {
-          Object.entries(contactPeopleMap).map(
-            (entry, index) => {
-              return (
-                <StandardPageTemplate.section key={index}>
-                  <h2>{entry[0]}</h2>
-                  { entry[1] }
-                </StandardPageTemplate.section>
-              )
-            }
-          )
-        }
+        {Object.entries(contactPeopleMap).map(
+          (entry, index) => {
+            return (
+              <StandardPageTemplate.section key={index}>
+                <h2>{entry[0]}</h2>
+                {entry[1]}
+              </StandardPageTemplate.section>
+            )
+          }
+        )}
       </>
     </StandardPageTemplate>
-      
   )
 }
 

@@ -3,6 +3,7 @@ import {
   Envelope,
   GithubLogo,
   InstagramLogo,
+  User,
   YoutubeLogo,
 } from "phosphor-react"
 import { KEYWORDS, LINKS } from "../../lib/utils/constants"
@@ -22,11 +23,14 @@ export const Footer = () => {
               {LINKS.email}
             </Link>
           </div>
-          <b>
-            <u>Inoffizieller</u> Standort:
-          </b>
-          <p>Brucknerstraße 19, 40593 Düsseldorf</p>
-          <p>Annette-von-Droste-Hülshoff-Gymnasium</p>
+          <h6>Beratende Lehrkraft:</h6>
+          <p>{LINKS.beratungslehrer}</p>
+          <div className={styles.email}>
+            <User size={32} weight="thin" />
+            <Link href={`mailto:${LINKS.beratungsemail}`}>
+              {LINKS.beratungsemail}
+            </Link>
+          </div>
         </section>
         <section className={styles.socialMediaSection}>
           <h6>Social Media</h6>
@@ -60,9 +64,15 @@ export const Footer = () => {
         <section>
           <h6>Verweise</h6>
           <p>
-            Webseite von{" "}
+            Webseite von:{" "}
             <a href={LINKS.ruizhang}>
               Rui Zhang (TotallyInformatik)
+            </a>
+          </p>
+          <p>
+            Unterstützung und Wartung:{" "}
+            <a href="mailto:nicostender@duck.com">
+              Nico Stender
             </a>
           </p>
         </section>

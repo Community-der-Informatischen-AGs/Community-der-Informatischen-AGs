@@ -46,7 +46,10 @@ const Search: NextPage = () => {
   let heading = `CDIA - Suche - ${query}`
   let titleSentence = ["Suchergebnisse für", `"${query}"`]
   let titleIndex = 1
-  if (!validateQuery(query)) {
+
+  const queryIsValid = validateQuery(query)
+
+  if (!queryIsValid) {
     heading = `CDIA - Suche`
     titleSentence = [KEYWORDS.nameSeparate, "Suche"]
   }
@@ -57,56 +60,60 @@ const Search: NextPage = () => {
   // tells the code how many posts to skip when querying the data
   const skipState = useState(0)
 
+  console.log("rerendering")
+
   const [currentSkipAmount, setCurrentSkipAmount] =
     skipState
   // querying data for posts
   useEffect(() => {
-    const results: SearchResult[] = []
+    if (queryIsValid) {
+      const results: SearchResult[] = []
 
-    Object.values(COLLECTION_TYPE_IDS).forEach(
-      (contentTypeCollectionId: string) => {
-        const response = fetch(
-          "/api/contentful/collection",
-          {
-            method: "POST",
-            body: JSON.stringify({
-              collectionType: contentTypeCollectionId,
-              limit: PAGE_POST_TYPE_TOTAL,
-              itemQuery: `
-              ${CONTENTFUL_ID_QUERY}
-            `,
-              filter: `
-            OR: [
-              { title_contains: "${query}" }
-              { body_contains: "${query}" }
+      Object.values(COLLECTION_TYPE_IDS).forEach(
+        (contentTypeCollectionId: string) => {
+          const response = fetch(
+            "/api/contentful/collection",
+            {
+              method: "POST",
+              body: JSON.stringify({
+                collectionType: contentTypeCollectionId,
+                limit: PAGE_POST_TYPE_TOTAL,
+                itemQuery: `
+                    ${CONTENTFUL_ID_QUERY}
+                  `,
+                filter: `
+                OR: [
+                  { title_contains: "${query}" }
+                  { body_contains: "${query}" }
+                ]
+                `,
+                skip: currentSkipAmount,
+              }),
+            }
+          )
+
+          response.then(async (response) => {
+            const data = (await response.json()).data[
+              contentTypeCollectionId
             ]
-            `,
-              skip: currentSkipAmount,
-            }),
-          }
-        )
+            const items = data.items
 
-        response.then(async (response) => {
-          const data = (await response.json()).data[
-            contentTypeCollectionId
-          ]
-          const items = data.items
+            for (const item of items) {
+              results.push({
+                contentTypeId:
+                  contentTypeCollectionId.replace(
+                    "Collection",
+                    ""
+                  ),
+                id: item.sys.id,
+              })
+            }
 
-          for (const item of items) {
-            results.push({
-              contentTypeId:
-                contentTypeCollectionId.replace(
-                  "Collection",
-                  ""
-                ),
-              id: item.sys.id,
-            })
-          }
-
-          setResultPreviewData([...results])
-        })
-      }
-    )
+            setResultPreviewData([...results])
+          })
+        }
+      )
+    }
   }, [query, currentSkipAmount])
 
   return (
@@ -131,12 +138,15 @@ const Search: NextPage = () => {
             <CollectionNavigation
               skipState={skipState}
               currentDataLength={resultPreviewData.length}
-              total={PAGE_POST_TYPE_TOTAL}
+              collectionTotal={PAGE_POST_TYPE_TOTAL * 3}
             />
             {resultPreviewData.length == 0 ? (
               <h1 className={styles.nothing}>
-                <span>nichts.</span>
-                <span>¯\_(ツ)_/¯</span>
+                <span>
+                  Leider wurde nichts mit ihrer Eingabe
+                  gefunden.
+                </span>
+                <span>Bruh.</span>
               </h1>
             ) : (
               resultPreviewData.map((result, index) => {
@@ -151,7 +161,7 @@ const Search: NextPage = () => {
             <CollectionNavigation
               skipState={skipState}
               currentDataLength={resultPreviewData.length}
-              total={PAGE_POST_TYPE_TOTAL}
+              collectionTotal={PAGE_POST_TYPE_TOTAL * 3}
             />
           </section>
         </StandardPageTemplate.section>

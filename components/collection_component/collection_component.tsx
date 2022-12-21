@@ -20,7 +20,6 @@ const collectionMax = 10
 
 // TODO: use NextJS Server Components
 
-
 export const ContentfulCollection = (
   p: ContentfulCollectionProps
 ) => {
@@ -49,12 +48,12 @@ export const ContentfulCollection = (
       <CollectionNavigation
         skipState={skipState}
         currentDataLength={entryIds.length}
-        total={collectionMax}
+        collectionTotal={collectionMax}
       />
       {entryIds.length == 0 ? (
         <h1 className={styles.nothing}>
-          <span>nichts.</span>
-          <span>¯\_(ツ)_/¯</span>
+          <span>Hier gibt{"'"}s leider nichts mehr.</span>
+          <span>Aber vielleicht in den Backrooms?...</span>
         </h1>
       ) : (
         entryIds.map((entryId, index) => {
@@ -69,7 +68,7 @@ export const ContentfulCollection = (
       <CollectionNavigation
         skipState={skipState}
         currentDataLength={entryIds.length}
-        total={collectionMax}
+        collectionTotal={collectionMax}
       />
     </section>
   )
