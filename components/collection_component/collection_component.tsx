@@ -52,7 +52,7 @@ export const ContentfulCollection = (
       />
       {entryIds.length == 0 ? (
         <h1 className={styles.nothing}>
-          <span>Hier gibt's leider nichts mehr.</span>
+          <span>Hier gibt{"'"}s leider nichts mehr.</span>
           <span>Aber vielleicht in den Backrooms?...</span>
         </h1>
       ) : (

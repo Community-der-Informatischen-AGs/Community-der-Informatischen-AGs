@@ -65,8 +65,8 @@ const Search: NextPage = () => {
   const [currentSkipAmount, setCurrentSkipAmount] =
     skipState
   // querying data for posts
-  if (queryIsValid) {
-    useEffect(() => {
+  useEffect(() => {
+    if (queryIsValid) {
       const results: SearchResult[] = []
 
       Object.values(COLLECTION_TYPE_IDS).forEach(
@@ -79,14 +79,14 @@ const Search: NextPage = () => {
                 collectionType: contentTypeCollectionId,
                 limit: PAGE_POST_TYPE_TOTAL,
                 itemQuery: `
-                  ${CONTENTFUL_ID_QUERY}
-                `,
+                    ${CONTENTFUL_ID_QUERY}
+                  `,
                 filter: `
-              OR: [
-                { title_contains: "${query}" }
-                { body_contains: "${query}" }
-              ]
-              `,
+                OR: [
+                  { title_contains: "${query}" }
+                  { body_contains: "${query}" }
+                ]
+                `,
                 skip: currentSkipAmount,
               }),
             }
@@ -113,8 +113,8 @@ const Search: NextPage = () => {
           })
         }
       )
-    }, [query, currentSkipAmount])
-  }
+    }
+  }, [query, currentSkipAmount])
 
   return (
     <>
