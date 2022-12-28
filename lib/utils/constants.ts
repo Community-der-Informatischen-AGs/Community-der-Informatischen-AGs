@@ -23,6 +23,7 @@ export const LINKS = {
   email: "root@community-inf-ag.de",
   beratungslehrer: "Nicolas Welling, Annette-von-Droste-Hülshoff-Gymnasium",
   beratungsemail: "nicolas.welling@schule.duesseldorf.de",
+  youtube: "https://www.youtube.com/channel/UCCvZDmevquWRl4TnFjKNbpA",
   github: "https://github.com/Community-der-Informatischen-AGs",
   ruizhang: "https://website-totallyinformatik.vercel.app"
 }
