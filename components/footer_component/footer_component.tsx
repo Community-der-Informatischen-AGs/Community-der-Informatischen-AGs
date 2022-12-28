@@ -46,8 +46,7 @@ export const Footer = () => {
             />
             <YoutubeLogo
               onClick={() => {
-                window.location.href =
-                  "https://www.youtube.com/"
+                window.location.href = LINKS.youtube
               }}
               size={40}
               weight="thin"
