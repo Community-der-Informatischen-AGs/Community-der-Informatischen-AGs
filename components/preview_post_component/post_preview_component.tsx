@@ -85,8 +85,6 @@ export const PostPreviewComponent = (
         >
           <Image
             src={p.image.url}
-            width={p.image.width}
-            height={p.image.height}
             alt={p.image.title}
             layout="fill"
             objectFit="cover"

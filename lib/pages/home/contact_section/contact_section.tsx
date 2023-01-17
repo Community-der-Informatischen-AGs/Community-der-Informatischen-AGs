@@ -30,8 +30,6 @@ export const ContactSection = () => {
         stylesheet={styles}
         image={{
           url: "/assets/images/home/teilnahme.jpg",
-          width: 5304,
-          height: 7952,
           title:
             "Bild von Teilnahme und Zusammenarbeit in der Programmierung",
         }}

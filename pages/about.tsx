@@ -72,8 +72,6 @@ const About: NextPage = () => {
         }`}
       image={{
         url: "/assets/images/home/philosophy3.jpg",
-        width: 3456,
-        height: 2304,
         title: "Foto von Vernetzungen",
       }}
     >

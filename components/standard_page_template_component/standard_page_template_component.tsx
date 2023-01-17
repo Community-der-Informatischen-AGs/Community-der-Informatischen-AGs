@@ -86,8 +86,6 @@ export const StandardPageTemplate = (
           >
             <Image
               className={styles.image}
-              width={p.image.width}
-              height={p.image.height}
               alt={p.image.title}
               src={p.image.url}
               layout="fill"
