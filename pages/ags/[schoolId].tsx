@@ -144,6 +144,7 @@ const SchoolPage: NextPage<SchoolPageProps> = (
               title: p.googleMapsPicture.title,
               url: p.googleMapsPicture.url,
             }}
+            alt={p.googleMapsPicture.title}
             layout="responsive"
           />
           <a href={p.googleMapsLink}>{p.address}</a>

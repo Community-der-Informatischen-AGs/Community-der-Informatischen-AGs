@@ -36,6 +36,7 @@ export const ContactSection = () => {
         layout="fill"
         objectFit="cover"
         src=""
+        alt="Bild von Teilnahme und Zusammenarbeit in der Programmierung"
       />
       <section className={styles.contentSection}>
         <h2>

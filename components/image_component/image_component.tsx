@@ -36,7 +36,7 @@ export const ImageComponent = (p: ImageComponentProps) => {
         className={styles.image}
         width={p.image.width}
         height={p.image.height}
-        alt={p.image.title}
+        //alt={p.image.title}
         {...p}
         src={p.image.url}
       />
