@@ -60,8 +60,6 @@ export const PostPageTemplateComponent = (
         {p.image != null ? (
           <section className={globalStyles.imageContainer}>
             <Image
-              width={p.image.width}
-              height={p.image.height}
               src={p.image.url}
               alt={p.image.title}
               layout="fill"
