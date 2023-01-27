@@ -102,10 +102,12 @@ export const ContactPerson = (p: ContactPersonProps) => {
     >
       <ImageComponent
         className={styles.image}
+        alt={personAttributes.title}
         image={personAttributes.image}
         stylesheet={stylesheet}
         layout="responsive"
         src=""
+        
       />
       <h3 className={cn(stylesheet.name, styles.name)}>
         {personAttributes.title}
