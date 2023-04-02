@@ -11,7 +11,7 @@ Hierfür starten wir bei der Gruppe informatische Arbeitsgemeinschaften an diver
 
 An den folgenden Schulen werden schon Arbeitsgemeinschaften angeboten.
 
-**Zusammen schafft man mehr.** Vielleicht kann auch deine Schule bald mal auf dieser Seite stehen! Wir freuen uns auf eine Anfrage: <root@community-inf-ag.de>
+**Zusammen schafft man mehr.** Vielleicht kann auch deine Schule bald mal auf dieser Seite stehen! Wir freuen uns auf eine Anfrage: <community.der.inf.ags@gmail.com>
 
 - Annette-von-Droste-Hülshoff-Gymnasium
 - Gymnasium an der Koblenzer Straße
