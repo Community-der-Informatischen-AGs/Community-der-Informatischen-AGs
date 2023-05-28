@@ -20,7 +20,7 @@ export const LINKS = {
   blogs: "/blogs",
   impressum: "/impressum",
   search: "/search",
-  email: "root@community-inf-ag.de",
+  email: "community.der.inf.ags@gmail.com",
   beratungslehrer: "Nicolas Welling, Annette-von-Droste-Hülshoff-Gymnasium",
   beratungsemail: "nicolas.welling@schule.duesseldorf.de",
   youtube: "https://www.youtube.com/channel/UCCvZDmevquWRl4TnFjKNbpA",
