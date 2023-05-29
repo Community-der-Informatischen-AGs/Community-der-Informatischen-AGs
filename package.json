@@ -25,6 +25,7 @@
     "nprogress": "^0.2.0",
     "phosphor-react": "^1.4.1",
     "react": "18.2.0",
+    "react-cookie-consent": "^8.0.1",
     "react-dom": "18.2.0",
     "sass": "^1.54.0",
     "typeit-react": "^2.5.1-alpha.0"
