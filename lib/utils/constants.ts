@@ -25,6 +25,7 @@ export const LINKS = {
   beratungsemail: "nicolas.welling@schule.duesseldorf.de",
   youtube: "https://www.youtube.com/channel/UCCvZDmevquWRl4TnFjKNbpA",
   github: "https://github.com/Community-der-Informatischen-AGs",
+  instagram: "https://www.instagram.com/community_informatischer_ags/",
   ruizhang: "https://website-totallyinformatik.vercel.app"
 }
 

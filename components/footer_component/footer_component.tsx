@@ -38,8 +38,7 @@ export const Footer = () => {
           <div className={styles.logoContainer}>
             <InstagramLogo
               onClick={() => {
-                window.location.href =
-                  "https://www.instagram.com/"
+                window.location.href = LINKS.instagram
               }}
               size={40}
               weight="thin"
